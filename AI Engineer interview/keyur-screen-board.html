@@ -1,0 +1,806 @@
+<title>Keyur Screen Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF8F1;
+    --grid:#DDE6EE;
+    --ink:#20242B;
+    --ink-soft:#4A5058;
+    --p1:#2E5FA3;
+    --p2:#1E5B3C;
+    --p3:#6B3FA0;
+    --p4:#C0442C;
+    --p5:#1C74BC;
+    --p6:#8A6A3B;
+    --p7:#55606E;
+    --p8:#0E6C70;
+    --hand:'Kalam', 'Comic Sans MS', cursive;
+    --script:'Caveat', 'Kalam', cursive;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:#EFF3F7;
+    background-image:linear-gradient(var(--grid) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size:26px 26px;
+    font-family:var(--hand);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .toolbar{
+    position:sticky; top:0; z-index:20;
+    display:flex; gap:8px; align-items:center;
+    padding:10px 12px;
+    background:rgba(239,243,247,.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid #D6DEE7;
+  }
+  .toolbar .hint{font-size:14px;color:var(--ink-soft);margin-right:auto}
+  .toolbar .hint b{color:var(--p4)}
+  .toolbar button{
+    font-family:var(--hand); font-size:16px; font-weight:700;
+    color:var(--ink); background:var(--paper);
+    border:2px solid var(--ink); border-radius:14px 12px 15px 11px;
+    padding:4px 14px; cursor:pointer; line-height:1.4;
+    box-shadow:2px 2px 0 rgba(32,36,43,.18);
+  }
+  .toolbar button:hover{background:#fff}
+  .toolbar button:active{transform:translate(1px,1px); box-shadow:1px 1px 0 rgba(32,36,43,.18)}
+  .toolbar button:focus-visible{outline:3px solid var(--p5); outline-offset:2px}
+  .toolbar .clock{
+    font-family:var(--hand); font-weight:700; font-size:17px;
+    font-variant-numeric:tabular-nums; min-width:4.6ch; text-align:center; color:var(--ink);
+  }
+
+  .viewport{overflow:auto; padding:16px; height:calc(100% - 49px)}
+  .sizer{transform-origin:top left}
+  .canvas{
+    width:1720px;
+    background:var(--paper);
+    border:2px solid var(--ink);
+    border-radius:6px;
+    padding:26px 30px 22px;
+    box-shadow:5px 6px 0 rgba(32,36,43,.14);
+  }
+
+  h1{
+    font-family:var(--script);
+    font-weight:700;
+    font-size:62px; line-height:1;
+    text-align:center; margin:0 0 6px;
+    letter-spacing:.5px;
+  }
+  .underline{display:block; width:560px; height:8px; margin:0 auto 12px;}
+  .subtitle{
+    text-align:center; margin:0 0 8px;
+    font-size:20px; font-weight:300; color:var(--ink-soft);
+  }
+  .stamp{
+    text-align:center; margin:0 0 26px;
+    font-family:var(--script); font-size:24px; color:var(--p4);
+  }
+
+  .phase{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:0 18px;
+    padding-bottom:16px;
+  }
+
+  .tag{
+    align-self:start;
+    margin-top:6px;
+    border:2px solid var(--c);
+    border-radius:16px 13px 17px 12px;
+    padding:8px 6px 10px;
+    text-align:center;
+    color:var(--c);
+    background:var(--paper);
+  }
+  .tag b{display:block; font-size:15px; font-weight:700; line-height:1.25}
+  .tag i{display:block; font-style:normal; font-size:13px; font-weight:300; opacity:.85; margin-top:2px}
+  .tag em{display:block; font-style:normal; font-size:20px; margin-top:4px}
+  .tag.soft{border-style:dashed; opacity:.9}
+
+  .track{position:relative; display:grid; grid-template-columns:repeat(20,1fr); padding-bottom:16px}
+
+  .rail{
+    position:absolute; left:0; right:0; bottom:8px; height:3px;
+    background:var(--c);
+    border-radius:3px;
+    opacity:.9;
+  }
+  .rail::after{
+    content:""; position:absolute; left:0; right:0; top:-2px; height:3px;
+    background:var(--c); opacity:.25; transform:rotate(-.12deg);
+  }
+
+  .node{position:relative; padding:0 10px 0 0}
+  .stem{
+    position:absolute; left:13px; top:34px; bottom:8px; width:0;
+    border-left:2px dashed var(--c); opacity:.55;
+  }
+  .dot{
+    position:absolute; left:8px; bottom:3px; width:11px; height:11px;
+    border:2px solid var(--c); border-radius:50%; background:var(--paper);
+  }
+
+  .card{
+    display:block; width:100%; text-align:left;
+    background:transparent; border:0; padding:0; margin:0;
+    font-family:var(--hand); color:inherit; cursor:pointer;
+    transition:transform .15s ease;
+    border-radius:10px;
+  }
+  .node:hover .card{transform:translateY(-3px)}
+  .card:focus-visible{outline:3px solid var(--c); outline-offset:4px}
+
+  .head{display:flex; align-items:flex-start; gap:6px}
+  .num{
+    flex:0 0 auto;
+    width:27px; height:27px;
+    border:2px solid var(--c); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:700; color:var(--c);
+    background:var(--paper);
+  }
+  .title{
+    font-size:15px; font-weight:700; line-height:1.2;
+    color:var(--c); padding-top:2px;
+  }
+  .desc{
+    margin:8px 0 0 6px;
+    font-size:13px; font-weight:300; line-height:1.35;
+    color:var(--ink-soft);
+  }
+  .star{color:var(--p4); font-size:15px; margin-left:3px}
+  .agt{
+    display:inline; font-weight:300; font-size:12px;
+    color:var(--ink-soft); opacity:.9; margin-left:4px; white-space:nowrap;
+  }
+  .p-track .agt{font-size:12px; opacity:.8; color:var(--pc); font-weight:400; margin-left:5px}
+
+  .node.soft .num{border-style:dashed; opacity:.75}
+  .node.soft .title,.node.soft .desc{opacity:.8; font-weight:300}
+  .node.soft .stem{opacity:.3}
+  .node.opened .num{background:var(--c); color:var(--paper)}
+
+  .footer{
+    margin-top:6px;
+    border:2px solid var(--p4);
+    border-radius:18px 14px 19px 13px;
+    padding:12px 20px;
+    display:flex; align-items:center; justify-content:center; gap:16px;
+    font-size:17px; color:var(--ink);
+    flex-wrap:wrap;
+  }
+  .footer .arrow{color:var(--ink-soft); font-size:22px}
+  .footer b{color:var(--p4)}
+
+  /* ---------- detail panel ---------- */
+
+  .scrim{
+    position:fixed; inset:0; z-index:60; background:rgba(32,36,43,.34);
+    display:none;
+  }
+  .scrim.on{display:block}
+
+  .panel{
+    position:fixed; z-index:61; top:0; right:0; bottom:0; width:min(470px,94vw);
+    background:var(--paper);
+    border-left:3px solid var(--pc,var(--ink));
+    box-shadow:-8px 0 26px rgba(32,36,43,.22);
+    padding:0; overflow-y:auto;
+    display:none;
+  }
+  .panel.on{display:block}
+
+  .p-top{
+    position:sticky; top:0; background:var(--paper);
+    border-bottom:2px solid var(--pc,var(--ink));
+    padding:16px 20px 13px; display:flex; gap:11px; align-items:flex-start;
+  }
+  .p-num{
+    flex:0 0 auto; width:34px; height:34px;
+    border:2px solid var(--pc); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:16px; font-weight:700; color:var(--pc); background:var(--paper);
+  }
+  .p-hd{flex:1 1 auto; min-width:0}
+  .p-track{font-size:12px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:var(--pc); opacity:.85}
+  .p-title{font-family:var(--script); font-size:29px; line-height:1.05; font-weight:700; margin-top:1px}
+  .p-close{
+    flex:0 0 auto; font-family:var(--hand); font-size:19px; font-weight:700; line-height:1;
+    background:var(--paper); border:2px solid var(--ink); border-radius:12px 10px 13px 9px;
+    width:32px; height:32px; cursor:pointer; box-shadow:2px 2px 0 rgba(32,36,43,.18);
+  }
+  .p-close:hover{background:#fff}
+  .p-close:focus-visible{outline:3px solid var(--pc); outline-offset:2px}
+
+  .p-body{padding:16px 20px 40px}
+  .p-lbl{
+    font-size:12px; font-weight:700; letter-spacing:1.1px; text-transform:uppercase;
+    color:var(--ink-soft); margin:20px 0 8px;
+  }
+  .p-lbl:first-child{margin-top:0}
+
+  ul.p-ask{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px}
+  ul.p-ask li{
+    font-size:18px; font-weight:400; line-height:1.42;
+    padding:10px 13px;
+    background:#fff;
+    border:2px solid var(--pc);
+    border-radius:14px 11px 15px 10px;
+  }
+  ul.p-ask li b{font-weight:700}
+
+  .p-why{font-size:15px; font-weight:300; line-height:1.5; color:var(--ink-soft); margin:0}
+  .p-why b{font-weight:700; color:var(--ink)}
+
+  .p-sig{display:flex; flex-direction:column; gap:9px; margin-top:4px}
+  .sig{border:2px solid; border-radius:13px 10px 14px 9px; padding:9px 12px; font-size:14.5px; font-weight:300; line-height:1.45}
+  .sig b{display:block; font-family:var(--script); font-size:20px; font-weight:700; margin-bottom:2px}
+  .sig.g{border-color:var(--p2); color:var(--ink)}
+  .sig.g b{color:var(--p2)}
+  .sig.r{border-color:var(--p4); color:var(--ink)}
+  .sig.r b{color:var(--p4)}
+
+  .p-nav{display:flex; gap:8px; margin-top:26px; padding-top:16px; border-top:2px dashed #D6CFC0}
+  .p-nav button{
+    font-family:var(--hand); font-size:15px; font-weight:700; color:var(--ink);
+    background:var(--paper); border:2px solid var(--ink); border-radius:13px 11px 14px 10px;
+    padding:5px 14px; cursor:pointer; box-shadow:2px 2px 0 rgba(32,36,43,.18);
+  }
+  .p-nav button:hover{background:#fff}
+  .p-nav button:focus-visible{outline:3px solid var(--pc); outline-offset:2px}
+  .p-nav .spacer{flex:1 1 auto}
+
+  @media (prefers-reduced-motion:reduce){
+    .card{transition:none}
+    .node:hover .card{transform:none}
+  }
+</style>
+
+<div class="toolbar">
+  <span class="hint">Click a node for the questions &middot; <b>starred ones decide it</b> &middot; arrow keys move, Esc closes</span>
+  <span class="clock" id="face">00:00</span>
+  <button id="run" type="button">Start</button>
+  <button id="rst" type="button">Reset</button>
+  <button id="out" type="button" aria-label="Zoom out">&minus;</button>
+  <button id="fit" type="button">Fit</button>
+  <button id="in" type="button" aria-label="Zoom in">+</button>
+</div>
+
+<div class="viewport" id="viewport">
+  <div class="sizer" id="sizer">
+    <div class="canvas" id="canvas">
+      <h1>Keyur Patel &middot; PR-3 Screen Board</h1>
+      <svg class="underline" viewBox="0 0 560 8" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M2 5 C 140 1, 320 8, 558 3" fill="none" stroke="#C0442C" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <p class="subtitle">Req 1015986 &middot; AI Engineer (Tooling &amp; Governance) &middot; AWS for Goldman Sachs &middot; up to $150/hr</p>
+      <p class="stamp">Two deep dives, then an honest sweep. Duke has the migration without the agents, R.E. Mason has the agents without the migration.</p>
+      <div id="phases"></div>
+      <div class="footer">
+        <span>One thing to find out. <b>Do his agents produce code, at scale, behind gates?</b></span>
+        <span class="arrow">&#10230;</span>
+        <span>Write it up within the hour, while you still remember what he said.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="pTitle" tabindex="-1"></aside>
+
+<script>
+const TRACKS = [
+  {
+    n:"Open", name:"Set it up", range:"0–2 min", icon:"🎬", color:"var(--p5)", span:10,
+    topics:[
+      [0,"Frame it","Say the shape of the call out loud",{
+        ask:["Thanks for making time. I'm Triet, I work with Dexian on the technical side. This is a screen for the AI Engineer role, the tooling and governance one.",
+             "I'd rather go deep on a couple of projects than walk your whole resume. Then near the end I'll tell you what the role needs and get your honest read on each piece. Last few minutes are yours. Sound good?"],
+        why:"Saying the shape up front means the gap check at the end doesn't land as an ambush. And 'your honest read' earns its place, because it gives him permission to say no later, when the answer is no."
+      }],
+      [0,"Don't reveal the list","No AGT codes, no CDK, no GitLab",{
+        why:"A rule rather than a question. Naming the tooling up front costs you the rest of the call, because from that moment you hear what he thinks you want instead of how he works. You do name things later, in the gap check, once his own answers are already on the table."
+      }]
+    ]
+  },
+  {
+    n:"Deep dive 1", name:"R.E. Mason", range:"2–14 min · mine it", icon:"🔬", color:"var(--p1)", span:4,
+    topics:[
+      [0,"Which one, and what for","Let him pick, then get the picture",{
+        ask:["I've got your resume here and there's a few different things at R.E. Mason. Which one did you spend the most time on?",
+             "Before the tech, just tell me what it was for. What was the problem?",
+             "And who was actually using it? Is it live now?"],
+        why:"You know his stack in exhaustive detail and nothing at all about his projects. Every bullet names eight technologies and says 'architected and deployed.' None of them says what problem it solved. Letting him choose is deliberate. If he reaches for the flashiest stack rather than the one he lived in, that's already an answer.",
+        note:"What he can pick from: multi-agent RAG for regulated SOPs, the supervisor-worker Industrial Intelligence platform, a Bedrock AgentCore POC, MCP for bioreactor optimization, a DeltaV assistant in Copilot Studio. The supervisor-worker setup sits inside the Industrial Intelligence platform. It isn't a separate thing, though the resume's bullet structure makes it look like one.",
+        green:"Names users in plain words. Plant engineers, operators, a specific team. Knows whether it shipped.",
+        red:"Goes to the tech stack when you ask what it was for. Can't name a user. Doesn't know if it's live."
+      }],
+      [0,"Trace one request","Typing to answer, end to end",{
+        ask:["Alright, so how'd you build it?",
+             "Walk me through what happens when someone asks it a question. Start from them typing and take it to the answer coming back."],
+        why:"Tracing one request forces the sequence, and the sequence is what you can't recite from a diagram somebody showed you. A component list is what you get from a tour. A trace is what you get from having debugged the thing at eleven at night.",
+        green:"End to end without hunting. Mentions the awkward parts without being asked.",
+        red:"Lists components. That's a tour, not a trace."
+      }],
+      [0,"Model vs code","And what he took back",{
+        ask:["Where did you draw the line between what the model decides and what your code decides?",
+             "Anything you ended up taking away from the model after it got something wrong?"],
+        why:"Senior engineers delete capability. Mid engineers add it. The second question needs a real incident behind it, so it's hard to answer from theory.",
+        note:"What he claims: supervisor-worker with five FastAPI workers, intent classification, dynamic tool and worker routing, parallel execution. That is orchestrator-workers, the same shape AGT-005 needs. If it comes up, ask why five workers rather than one agent with five tools.",
+        green:"A specific thing he revoked, and the reason. Non-determinism fine for judgment, not for sequencing.",
+        red:"Never had to constrain a model. Treats more agency as always better."
+      }],
+      [0,"If it were code","Verification, then the gates around it",{
+        ask:["So before anyone actually looked at it, did the system have any way of telling whether what it produced was any good?",
+             "Here's what I'm curious about. With a document, someone has to read it to know it's right. If the agent had been writing code instead, would you check it differently?",
+             "Say the agent generates a CDK template, or a source file it's rewritten. Walk me through every check that artifact has to pass before a person ever sees it.",
+             "How would you tell the difference between output that's broken and output that's wrong? Something that won't compile, versus something that compiles fine and does the wrong thing.",
+             "What would you measure on the artifacts themselves, so you'd know whether the agent was getting better or worse month to month?",
+             "And when one of those checks fails, what happens to that artifact? Retry it, park it for a human, kill the whole run?"],
+        why:"The first two questions find the instinct. The next four find out whether he'd actually build anything.<br><br>Everything on his resume produces answers. SOPs, recommendations, natural-language SQL. The agents in PR-3 produce code and infrastructure. You grade an answer with a judge and a rubric. You check code by running it. So on question two you're listening for one word. Run.<br><br>Questions three to six are where guardrails and governance actually live for this role. They're deliberately concrete, because 'how do you do governance' gets you a paragraph of nothing and 'walk me through every check before a person sees it' gets you either a real pipeline or a blank.",
+        note:"He may well not have done this. That's fine and expected. Score the reasoning, and cross-check it against <i>What surprised you</i>, the next node along. If he describes elaborate verification here and then has no story about anything ever going wrong, the verification was designed rather than earned.<br><br>If he picked the SOP generator, SOP is Standard Operating Procedure. The step-by-step document a plant operator follows, and in life sciences the FDA cares what's in it. That's why his system has human approval attached.",
+        green:"Says run it, in a sentence or two, without being led. Build, tests, behavior diff against the original.<br>Names an ordered set of checks. Compile or synth, lint, a policy scan, deploy into somewhere disposable.<br>Gets broken versus wrong immediately. Broken the compiler catches. Wrong needs a behavior comparison or a test that already existed.<br>Measures the artifacts against a fixed corpus and watches the pass rate move.<br>Low confidence goes to a human queue rather than into the library.",
+        red:"Stays on judges, rubrics and DeepEval for something a compiler could settle.<br>'We had human review' is the entire story.<br>Only ever talks about broken, never about wrong.<br>Measures the model instead of the artifacts.<br>A failed check just retries, or quietly passes through anyway."
+      }],
+      [0,"What surprised you","Evidence for the last node",{
+        ask:["Tell me about a time one of your agents did something you didn't expect. What did you change afterward?",
+             "Was that change a gate, or a prompt?",
+             "Who could have overruled it? And what happened the time it was wrong and blocked good work?"],
+        why:"Ask this straight after <i>If it were code</i>, because it's the evidence for whatever he claimed there. A fix that was a gate in code confirms the verification he described. A fix that was a prompt tweak means the verification was aspirational, and you should mark the earlier answer down accordingly.<br><br>Everyone who has run agents in production has a story like this, and it isn't one you can invent convincingly on the spot. If he hasn't got one, that's the answer.",
+        note:"The middle question is the one to insist on. <b>Gate or prompt</b> is the whole distinction. A prompt is a request the model can talk its way past on an input nobody tested. A gate is code that fails.<br><br>The last question separates someone who designed a gate from someone who lived with one, because every real gate produces a false positive eventually and somebody has to decide what to do about it.",
+        green:"A real incident, a real diagnosis, and a structural fix. A check in code, a permission boundary, a loop cap. Separates reversible from irreversible without being asked. Knows who could override, and whether they ever did.",
+        red:"Nothing ever happened. Or the remedy was a better prompt and he doesn't see the problem with that."
+      }]
+    ]
+  },
+  {
+    n:"Deep dive 2", name:"Duke Energy", range:"14–24 min · the real match", icon:"🚚", color:"var(--p4)", span:4,
+    topics:[
+      [0,"Take him there","He won't go on his own",{
+        ask:["Let me jump back a bit. Tell me about the Azure to AWS migration at Duke. What were you actually moving, and how many of them?"],
+        why:"Duke is the closest thing on this resume to PR-3, and he won't take you there himself. R.E. Mason is newer and sounds better. Four of the five JD groups have a Duke bullet behind them.",
+        note:"What Duke gives you: Step Functions orchestration for AGT-005, reusable Terraform across dev, test, QA and prod for AGT-010, a real migration he led for Group A, and Jira features owned end to end for Group E. Plus runbooks, API specs and code reviews.<br><br>The caveat worth holding: his title there was AI Engineer but the work is mostly data engineering. Duke has the migration shape without the agents. R.E. Mason has the agents without the migration. Neither one covers PR-3 alone, and whether he can put the halves together is what Britni is actually paying you to find out.",
+        green:"Owns it as a design job. Has counts. Knows what varied from one pipeline to the next.",
+        red:"Was a pair of hands on somebody else's plan."
+      }],
+      [0,"Why Step Functions","The closest match on the page",{
+        ask:["You used Step Functions to orchestrate it. Why Step Functions rather than something you wrote yourself?",
+             "What was in each state? And what happened when one failed halfway through?"],
+        why:"AGT-005 is a Step Functions state machine orchestrating a migration, and he has done exactly that. It's the closest thing to a direct match anywhere on the resume, so find out whether it was his call or handed to him.",
+        green:"Retries, visibility, replay, not having to own the loop himself. Knows what failed mid-run and what happened next.",
+        red:"'It was already there,' with no opinion about it either way."
+      }],
+      [0,"Automated or by hand","The transformation question",{
+        ask:["How much of the conversion was automated versus rewritten by hand?",
+             "Did you build anything reusable, or was each pipeline its own job?"],
+        why:"The nearest he gets to AGT-031. Converting Data Factory and Databricks pipelines into Glue and Step Functions is transformation work, even if nothing generated the code.",
+        green:"Built something reusable and can say what it covered and what it didn't.",
+        red:"Every one hand-done, with no attempt to find the pattern."
+      }],
+      [0,"How did you know it matched","Reconciliation",{
+        ask:["How did you know the migrated pipeline produced the same results as the old one?",
+             "Did you run the old one and the new one side by side? What finally let you switch the old one off?"],
+        why:"Reconciliation is the part of a migration most people skip, and it's what a factory running hundreds of apps depends on. A real answer counts here even with no codemod experience anywhere. It's also the same instinct as the 'would you run it' question arriving from a different direction, so it cross-checks that answer.",
+        green:"Row counts, checksums, ran both in parallel for a stated period, a diff harness he wrote. Knows matching output and matching behavior aren't the same thing.",
+        red:"'We tested it.' 'QA signed off.' Can't say what got compared against what."
+      }],
+      [0,"The Terraform","Own or consume",{
+        ask:["The reusable Terraform. Did you own the modules other teams consumed, or were you consuming someone else's?",
+             "Where did state live, and how did you handle locking?",
+             "What actually differed between dev and prod?"],
+        why:"Ownership is the question, not the tool. The JD says 'CDK templates or similar tools', so Terraform clears it outright. But owning modules other teams depend on is a different job from running modules somebody else wrote, and the resume can't tell you which one he did.",
+        note:"What he claims: reusable Terraform across S3, Aurora PostgreSQL, Glue, Step Functions, Secrets Manager and DataSync, for dev, test, QA and production. These questions belong here rather than in a checklist at the end, because inside the migration story they're just the next thing you'd ask.",
+        green:"Can name who consumed them. Remote state and locking. Has a story about a module change that nearly destroyed something.",
+        red:"The Terraform claim doesn't survive two follow-ups. Environments differ only by variable file."
+      }]
+    ]
+  },
+  {
+    n:"Gap check", name:"Have you? If not, how?", range:"24–32 min · the honest sweep", icon:"🎯", color:"var(--p2)", span:4,
+    topics:[
+      [0,"Say this first","Permission to say no",{
+        ask:["I want to walk you through a few things this role specifically needs, and just get an honest read on how close you are to each one.",
+             "If you haven't done something, that's genuinely fine. I'd just want to hear how you'd go about it."],
+        why:"Say it once, then work the list. The 'if not' clause carries the whole thing. It makes saying no safe, which gets you truth instead of performance, and it turns every gap into a reasoning question you can still score.<br><br>The if-not answers end up worth more than the have-you ones. His have-you stories are rehearsed. His how-would-you answer isn't. It's also what lets you hand Britni the difference between hasn't done it but reasoned well and hasn't done it and couldn't, which are two very different recommendations."
+      }],
+      [0,"Transforming source","AGT-031, the real gap",{
+        ask:["A big part of this is transforming application source code against a set of rules. ORM mappings, that kind of thing. Have you built anything that rewrites code?",
+             "If not, how would you approach it?"],
+        why:"AGT-031 is the core of the role, and nothing on his resume shows source-to-source transformation. Give this one more time than the other three.",
+        green:"Deterministic rules for the patterns you already know, model for the long tail, and a confidence score deciding between them. Checks the result by compiling and running it. Says outright that hand review doesn't scale.",
+        red:"'I'd have an LLM rewrite it,' with nothing about checking the output."
+      }],
+      [0,"Assessing at scale","AGT-002, bigger than any window",{
+        ask:["Before you migrate an app you have to assess it, and these codebases are far bigger than any context window. Have you done anything like that?",
+             "If not, how would you?"],
+        why:"Fan-out is the obvious half of the answer. Coverage is the half that tells you something. The dangerous failure here isn't a crash, it's a worker quietly dropping its unit while the summary comes back reading complete and confident.",
+        green:"Splits by module or dependency, then accounts for coverage explicitly. Retryable workers. Mentions what a run costs once you're at hundreds of apps.",
+        red:"'Feed it to the model.' Assumes coverage rather than checking it."
+      }],
+      [0,"Library and gates","The governance half of the title",{
+        ask:["There's a library of reusable assets these agents produce, with gates deciding what gets promoted. Have you owned anything like that?",
+             "What would you gate on, so something an agent generated is trusted enough for someone else to reuse?"],
+        why:"He writes 'governance' constantly but he means AI governance. Guardrails, hallucination risk, human approval. PR-3 means delivery governance, which is what stops a bad artifact being promoted. Same word, different job.<br><br>This is also where nine years of FDA quality engineering either transfers or doesn't. Watch whether a gate to him is an automated check that fails a build, or a signature and a document trail. Both are real disciplines. Only one of them scales to a factory.",
+        green:"Automated checks that fail. A versioned registry. A named override path.",
+        red:"Approval workflows and documents. Governance as policy rather than as a mechanism."
+      }],
+      [0,"CDK, GitLab, containers","Low stakes, ask anyway",{
+        ask:["The infra side here is CDK rather than Terraform. Have you written CDK? What actually changes for you?",
+             "And delivery is GitLab, MR pipelines. You've been on GitHub. Does anything meaningful change?",
+             "Last one. Anything you've built that produced container images as part of a pipeline?"],
+        why:"The first two are near-certain nos and both are fine. The JD concedes CDK with 'or similar tools' and GitLab isn't in the written JD at all, so the follow-up is the entire point of asking.<br><br>The container question is the lowest-risk item in the whole req and you're asking it purely so you have a line for Britni. He has Docker, Kubernetes and Azure Container Apps, plus an actual containerized-and-deployed-to-Kubernetes line at Octapharma. Ten seconds, then move on.",
+        green:"Knows CDK is imperative, synthesizes to CloudFormation, and that constructs and drift work differently from Terraform state. Names a real pipeline that built and pushed an image.",
+        red:"'Same thing, I'd pick it up in a week.' Treats CDK and Terraform as interchangeable."
+      }]
+    ]
+  },
+  {
+    n:"Judgment", name:"Seniority markers", range:"Slip these into the dives", icon:"🧭", color:"var(--p3)", span:4,
+    topics:[
+      [0,"What did you remove","Marker 1",{
+        ask:["What's the last thing you took out of a system rather than added to it?","If you rebuilt that platform today, what wouldn't you build again?"],
+        why:"Not a separate block. Drop these into whichever deep dive is running, when the moment fits. Anthropic's own harness guidance reduces to one question, which is what can I stop doing. Senior engineers delete capability. Mid engineers add it.",
+        green:"Has an example ready and can say what he gained by taking it out.",
+        red:"Reaches for a feature he'd like to <i>add</i> instead, and doesn't notice he answered a different question."
+      }],
+      [0,"Hardest call","Marker 2, and your default",{
+        ask:["What was the hardest call in there?"],
+        why:"Reach for this whenever nothing else presents itself. It works better than 'what broke' because it asks for a decision rather than a disaster, so he doesn't go hunting for an impressively-sized failure to hand you.",
+        green:"Names a fork with two defensible sides, and says what he gave up by picking one.",
+        red:"Names a technical <i>difficulty</i> instead of a decision. Not the same thing, and easy to hear."
+      }],
+      [0,"Blast radius and cost","Marker 3",{
+        ask:["What's the worst thing that happens if it's wrong and nobody notices for a week?",
+             "What did you actually monitor, and who got paged?",
+             "What did a run cost? Did anyone care?"],
+        why:"Mid engineers ask whether it works. Senior ones have already worked out which failures they can live with.<br><br>The cost question is the one to weight heavily. Almost nobody offers a real number unprompted, and the people who have one have usually been close enough to production to feel the bill land."
+      }],
+      [0,"Disagree, then commit","Marker 4, the contractor test",{
+        ask:["You'd be joining an architecture you didn't pick, with gates owned by another team. How do you handle it when you'd have done it differently?",
+             "And this runs on a gated cadence. Waves, a definition of done, quality gates somebody else owns. Have you worked somewhere that structured?"],
+        why:"This is the marker that matters most for a contractor, and his resume says 'architected' and 'designed' on every single line. PR-3 doesn't own the orchestration choice. PR-5 owns Gate 2 and Gate 3. PR-6 runs the waves.<br><br>The second question should be his strongest answer of the whole call, because FDA design controls are stricter than any software gate he'll meet at Goldman. If he doesn't connect his own quality-engineering decade to it on his own, that's worth a note by itself.",
+        green:"States the disagreement plainly, gives the reason, then says how he made it work anyway. Reaches for his regulated background without being pointed at it.",
+        red:"No opinion at all. Or an opinion he still can't put down."
+      }],
+      [0,"Three careers","How he learns, and what he wants",{
+        ask:["You've gone quality engineering, then data science, then AI engineering. What drove each move?",
+             "What's the hardest thing you've had to learn in the last two years?",
+             "What do you want the next role to be?"],
+        why:"Self-taught, no CS degree, retrained twice on purpose, and picked up three AWS certs and an NVIDIA agentic-AI cert doing it. For someone twenty months into a specialty, how he learns tells you more than what he currently knows.<br><br>The last question is for Britni as much as for you. If PR-3 is a stopgap rather than something he wants, she needs that before she submits him on a twelve-month engagement."
+      }]
+    ]
+  },
+  {
+    n:"Scenarios", name:"How would you handle this", range:"Pick 2–3 · reasoning, not recall", icon:"🔬", color:"var(--p8)", span:2,
+    topics:[
+      [0,"Worse at turn seven","The obvious answer is wrong",{
+        ask:["Here's one I'm curious how you'd approach. An agent runs fine for the first six or seven tool calls, then starts picking wrong tools and giving worse answers. Nothing changed in the code. What do you check first?"],
+        why:"The best question in this set, because the intuitive answer is wrong. Everyone goes to the tool descriptions. The usual cause is that tool results get appended to the window and never leave, and in production those results run several times bigger than the fixtures anyone tested with. By turn eight the accumulated output has crowded out the instructions.<br><br>You can't reason your way to that from documentation. He either hit it once or he didn't, and both are fine answers as long as he gets somewhere sensible.",
+        green:"Asks how big the tool outputs are, or goes straight to the window filling. Prunes results after use. Knows a summarizer has to keep decisions and errors, because 'summarize the conversation' drops the state the agent needs next.",
+        red:"Goes to the tool descriptions and stays there. Or reaches for a bigger max_tokens."
+      }],
+      [0,"Five tools, wrong pick","Make him build the causal model",{
+        ask:["Say you've got five tools registered and the agent keeps reaching for the wrong one. Walk me through how you'd debug it.",
+             "And if two of them genuinely do similar things?"],
+        why:"Selection runs on the description far more than the name. Two tools that both say 'use this to find information' are indistinguishable from the inside. Someone who's read the docs says 'it uses the description.' Someone who's debugged it says 'I'd check whether two of those descriptions are saying the same thing.'",
+        green:"Goes to descriptions rather than the model. Reaches for an exclusion sentence, when <i>not</i> to use each one. Knows registering everything just in case makes selection worse. If two really overlap, merges them into one tool with a type parameter.",
+        red:"Blames the model, or reaches for a bigger one. Never considers that he registered too many."
+      }],
+      [0,"Misses on part numbers","Likely his own domain",{
+        ask:["Retrieval works fine in testing. In production it misses whenever someone searches by a specific part number or an error code. What's happening?"],
+        why:"Similarity search is semantic, so an exact identifier can lose to a chunk that reads closer but says nothing useful. The fix is usually a keyword pass alongside the vector one.<br><br>Worth knowing that this is probably a thing that happened to him. His users are plant engineers searching by tag numbers and equipment IDs, so if he's built real retrieval for them he has hit this exact wall.",
+        green:"Names the semantic versus exact-match problem. Reaches for hybrid or lexical search. Might mention a chunk boundary splitting the identifier away from its context.",
+        red:"'Tune the embeddings.' 'Use a better model.'"
+      }],
+      [0,"Where does the model decide","400 apps, four stages",{
+        ask:["Say you've got 400 applications, and each one goes assess, transform, build, deploy. Where would you let a model pick the next step, and where would you hardcode the sequence?"],
+        why:"The same principle as agent-versus-workflow, but he has to apply it to this program rather than recite it. It maps straight onto AGT-005, and it tells you whether he'd fight the architecture he's joining.<br><br>Pairs with the Step Functions question in the Duke dive. That one asks what he did. This one asks how he thinks.",
+        green:"Sequence fixed, judgment inside the steps. Reaches for replay, audit or cost as the reason without being prompted.",
+        red:"Wants a planning agent running the whole thing. Treats determinism as a limitation rather than a requirement."
+      }],
+      [0,"Before another team reuses it","Makes him build the gate",{
+        ask:["One of these agents generates a CDK template. What has to be true before you'd let another team pick it up and reuse it?"],
+        why:"Forces him to construct a gate rather than define the word. It's the same verification instinct as the run-it question arriving from a third direction, so it cross-checks that answer.",
+        green:"It deploys cleanly into somewhere disposable. It passes policy checks. It's versioned, somebody owns it, and there's a way to retire it.",
+        red:"'Code review.' 'Documentation.' Nothing automated, nothing that fails on its own."
+      }],
+      [0,"The judge says 8 on everything","Specific symptom, non-obvious cause",{
+        ask:["You've built an LLM judge to score outputs and it's giving almost everything a 7 or an 8. What's wrong with it?"],
+        why:"Models settle on a safe middle number when you ask for a bare score. The fix is asking for reasoning and specifics alongside the number, and calibrating against cases a human already labeled.",
+        green:"Recognises the clustering. Asks the judge to justify before it scores. Calibrates against labeled examples. Might add that format checks belong in code, not in a judge.",
+        red:"'Make the prompt stricter.' Treats the score as data without ever having checked it against reality."
+      }],
+      [0,"Bill triples, traffic flat","Where does he look",{
+        ask:["Your monthly bill triples and traffic hasn't changed. Where do you look first?"],
+        why:"Almost always context growth rather than volume. Longer conversations, bigger tool results, more tools registered, or a cache that stopped hitting because something dynamic moved ahead of the static part of the prompt.",
+        green:"Goes to tokens per call rather than calls per month. Mentions caching and why a stable prefix matters. Has a real cost number from somewhere in his own work.",
+        red:"'Switch to a cheaper model.' No instinct that context is what costs money."
+      }],
+      [0,"Reading a bank's repos","Trust boundary",{
+        ask:["These agents read source code out of Goldman's repositories. Where's the injection risk in that?"],
+        why:"The trust boundary is anything the agent reads that somebody else can write. For a code-transformation agent that's the entire input, comments and config included, and scoping the tools is the real defense rather than trying to spot bad input on the way in.",
+        green:"Names the trust boundary. Reaches for scoped permissions and a small blast radius instead of a filter.",
+        red:"Treats it as content filtering. Or hasn't considered that source code is untrusted input."
+      }],
+      [0,"LangGraph state","Concrete specifics, fast",{
+        ask:["In LangGraph, what does your state object actually hold? And where do the checkpoints get written?"],
+        why:"Not a scenario, a specifics check. LangGraph is on nearly every bullet of his resume, so this should be effortless. It's thirty seconds on the most-claimed technology on the page.",
+        green:"A concrete state shape, a real checkpointer with a backing store, and he knows where a human-in-the-loop interrupt sits in the graph.",
+        red:"Describes nodes and edges the way the documentation describes them."
+      }],
+      [0,"Bedrock and AgentCore","Honesty check",{
+        ask:["Why Bedrock rather than calling a model API directly?","AgentCore Gateway. What would it have given you, and did that ship or stay a POC?"],
+        why:"His resume says he was <i>evaluating</i> AgentCore Gateway, so the truthful answer is that it stayed a POC. A candid 'that one didn't ship' is a green flag. Inflating it is a bigger finding than the gap ever was.",
+        green:"Bedrock for procurement, data residency, or an AWS account they already had. Not because it's 'better.' Says plainly what shipped and what didn't.",
+        red:"Talks about the POC as though it went to production."
+      }]
+    ]
+  },
+  {
+    n:"Context", name:"His 15 years", range:"Read before, don't ask", icon:"📜", color:"var(--p7)", span:4, soft:true,
+    topics:[
+      [0,"Quality engineering","2011 to 2020, about 8 years",{
+        why:"BSN Medical, Amesbury, Trelleborg. IQ/OQ/PQ qualification, design controls, CAPA, supplier quality, statistical process control, and computer system validation on an EDMS to SAP migration.",
+        note:"He spent a decade deciding what evidence a thing needed before anyone could release it. That's promotion gates in a different vocabulary, and it's the most interesting thing on this resume for the governance question. It might mean unusually good instincts about gating. It might equally mean he thinks a gate is a signature. The library and gates question in the sweep tells you which."
+      }],
+      [0,"Into data science","2020 to 2022, with a 15-month gap",{
+        why:"Fractal Analytics for 3 months, a 15-month gap through the COVID period, then Octapharma Plasma for 12 and DirecTV for 4. Churn prediction, segmentation, forecasting, sentiment. First Docker and Kubernetes show up here.",
+        note:"The gap is Britni's question, not yours. Don't spend technical minutes on it."
+      }],
+      [0,"Boston Scientific","Oct 2022 to Nov 2024, 25 months",{
+        why:"Mostly marketing mix modeling, multi-touch attribution and forecasting. The first GenAI work is here though. A RAG query-analytics app, and a Streamlit tool on Bedrock, Titan and Guardrails AI.",
+        note:"Two bullets out of seven. This is where 'three years of GenAI' comes from, and it's worth knowing it was a side of the job rather than the job."
+      }],
+      [0,"Duke Energy","Nov 2024 to Aug 2025, 10 months",{
+        why:"Contractor, and the closest thing to PR-3 he has done. Migrated pipelines off Azure Data Factory and Databricks onto AWS Glue, Step Functions and Terraform, plus reusable infrastructure across four environments.",
+        note:"Then a 3-month gap before R.E. Mason, which is normal for contract work."
+      }],
+      [0,"R.E. Mason","Nov 2025 to now, 10 months",{
+        why:"Industrial process automation. DeltaV is Emerson's control system, and his listed clients are nuclear, government and life sciences, so his users are plant engineers and operators rather than software people. All the agentic work lives here.",
+        note:"Two 10-month AI roles back to back, on what would be a twelve-month engagement. Worth noticing, worth putting in the writeup for Britni, not worth your minutes on the call."
+      }]
+    ]
+  },
+  {
+    n:"Close", name:"Close &amp; write up", range:"32–38 min", icon:"📝", color:"var(--p5)", span:6,
+    topics:[
+      [0,"Logistics","His questions first",{
+        ask:["Fully remote works for you? Any location constraint I should flag?","Earliest start, and what notice do you owe R.E. Mason?","Anything else active right now that might move faster than this?"],
+        why:"Let him ask his questions before you ask these. What he chooses to ask about is its own signal, and it's the last thing you'll learn for free."
+      }],
+      [0,"No verdict","Not warm, not cool",{
+        ask:["Britni will follow up with next steps."],
+        why:"Give him no read either way. You're screening for a vendor, and any signal from you turns into a promise she then has to keep."
+      }],
+      [0,"Four paragraphs","Write it within the hour",{
+        why:"What he's actually built. Which project, who used it, whether it's live, which parts were his.<br><br>The verification answer. Did he say run it, and how fast did he get there. This is the one that decides it.<br><br>Senior or not, against the four markers. Removes things, why not what, blast radius unprompted, disagrees then commits. Name the evidence rather than the impression.<br><br>Where the JD and the job come apart. The written qualifications are soft, naming no language, framework or scale. The AGT work isn't soft at all. Say whether he clears the written bar, whether he clears the real one, and where AWS's own interviewer would find the floor.",
+        note:"Then a score per JD group, A through E. Then the gaps, each with context and a risk level. 'No CDK' is a dead end for her. 'Built orchestrator-worker agent systems, but every one emits prose rather than code, moderate risk, and the thing a second call should test' is something she can act on.<br><br>Flag these separately as hers rather than yours. The two consecutive 10-month roles, the gap from August to November 2025, and whatever he said he wants next."
+      }]
+    ]
+  }
+];
+
+const esc = s => String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+// What each node is actually testing. AGT codes where the mapping is real,
+// a plain category where it isn't. Over-tagging would make the tags useless.
+const AGT = {
+  "Frame it":                 "setup",
+  "Don't reveal the list":    "setup",
+
+  "Which one, and what for":  "grounding",
+  "Trace one request":        "grounding",
+  "Model vs code":            "AGT-005",
+  "If it were code":          "AGT-031 / 010 / gates",
+  "What surprised you":       "AGT-004 / gates",
+
+  "Take him there":           "AGT-005 / 031",
+  "Why Step Functions":       "AGT-005",
+  "Automated or by hand":     "AGT-031",
+  "How did you know it matched": "AGT-031",
+  "The Terraform":            "AGT-010",
+
+  "Say this first":           "setup",
+  "Transforming source":      "AGT-031",
+  "Assessing at scale":       "AGT-002",
+  "Library and gates":        "asset library / gates",
+  "CDK, GitLab, containers":  "AGT-010 / 004 / 009",
+
+  "What did you remove":      "seniority",
+  "Hardest call":             "seniority",
+  "Blast radius and cost":    "seniority",
+  "Disagree, then commit":    "ways of working",
+  "Three careers":            "seniority",
+
+  "Worse at turn seven":      "AGT-002",
+  "Five tools, wrong pick":   "AGT-005",
+  "Misses on part numbers":   "AGT-002",
+  "Where does the model decide": "AGT-005",
+  "Before another team reuses it": "asset library / gates",
+  "The judge says 8 on everything": "gates",
+  "Bill triples, traffic flat":"AGT-002",
+  "Reading a bank's repos":   "AGT-004 / 010",
+  "LangGraph state":          "his claim",
+  "Bedrock and AgentCore":    "his claim",
+
+  "Quality engineering":      "background",
+  "Into data science":        "background",
+  "Boston Scientific":        "background",
+  "Duke Energy":              "background",
+  "R.E. Mason":               "background",
+
+  "Logistics":                "close",
+  "No verdict":               "close",
+  "Four paragraphs":          "writeup"
+};
+
+// Nodes that decide the call. Matched by title so inserting a node never breaks this.
+const HOT = ["If it were code", "What surprised you", "Take him there", "Transforming source", "Worse at turn seven"];
+const INDEX = {};
+let seq = 0;
+
+document.getElementById('phases').innerHTML = TRACKS.map(p => `
+  <section class="phase" style="--c:${p.color}">
+    <div class="tag${p.soft ? ' soft' : ''}">
+      <b>${p.n}</b>
+      <b>${p.name}</b>
+      <i>${p.range}</i>
+      <em>${p.icon}</em>
+    </div>
+    <div class="track">
+      <div class="rail"></div>
+      ${p.topics.map(([_,title,desc,detail]) => {
+        const num = ++seq;
+        INDEX[num] = {num, title, desc, detail: detail || {}, track: p.n + ' · ' + p.name, color: p.color};
+        return `
+        <div class="node${p.soft ? ' soft' : ''}" id="n${num}" style="grid-column:span ${p.span}">
+          <div class="stem"></div>
+          <div class="dot"></div>
+          <button class="card" data-n="${num}" type="button">
+            <div class="head">
+              <div class="num">${num}</div>
+              <div class="title">${esc(title)}${HOT.indexOf(title) > -1 ? '<span class="star">&#9733;</span>' : ''}${AGT[title] ? `<span class="agt">(${esc(AGT[title])})</span>` : ''}</div>
+            </div>
+            <p class="desc">${esc(desc)}</p>
+          </button>
+        </div>`;
+      }).join('')}
+    </div>
+  </section>`).join('');
+
+// ---- panel ----
+const panel = document.getElementById('panel');
+const scrim = document.getElementById('scrim');
+const order = Object.keys(INDEX).map(Number).sort((a,b) => a-b);
+let current = null;
+let lastFocus = null;
+
+function render(n){
+  const t = INDEX[n];
+  if(!t) return;
+  const d = t.detail;
+  const i = order.indexOf(n);
+  panel.style.setProperty('--pc', t.color);
+
+  let html = `
+    <div class="p-top">
+      <div class="p-num">${t.num}</div>
+      <div class="p-hd">
+        <div class="p-track">${t.track}${AGT[t.title] ? `<span class="agt">${esc(AGT[t.title])}</span>` : ''}</div>
+        <div class="p-title" id="pTitle">${esc(t.title)}</div>
+      </div>
+      <button class="p-close" id="pClose" type="button" aria-label="Close">&times;</button>
+    </div>
+    <div class="p-body">`;
+
+  if(d.ask){
+    html += `<p class="p-lbl">Say</p><ul class="p-ask">${d.ask.map(a => `<li>${a}</li>`).join('')}</ul>`;
+  }
+  if(d.why){
+    html += `<p class="p-lbl">${d.ask ? 'Why this one' : 'What you need to know'}</p><p class="p-why">${d.why}</p>`;
+  }
+  if(d.note){
+    html += `<p class="p-lbl">On his resume</p><p class="p-why">${d.note}</p>`;
+  }
+  if(d.green || d.red){
+    html += `<p class="p-lbl">What you're hearing</p><div class="p-sig">`;
+    if(d.green) html += `<div class="sig g"><b>Good</b>${d.green}</div>`;
+    if(d.red)   html += `<div class="sig r"><b>Not good</b>${d.red}</div>`;
+    html += `</div>`;
+  }
+
+  html += `
+      <div class="p-nav">
+        ${i > 0 ? `<button data-go="${order[i-1]}" type="button">&larr; ${order[i-1]}</button>` : ''}
+        <span class="spacer"></span>
+        ${i < order.length-1 ? `<button data-go="${order[i+1]}" type="button">${order[i+1]} &rarr;</button>` : ''}
+      </div>
+    </div>`;
+
+  panel.innerHTML = html;
+  document.querySelectorAll('.node.opened').forEach(el => el.classList.remove('opened'));
+  const nd = document.getElementById('n'+n);
+  if(nd) nd.classList.add('opened');
+  current = n;
+
+  panel.querySelector('#pClose').onclick = close;
+  panel.querySelectorAll('[data-go]').forEach(b => {
+    b.onclick = () => render(+b.dataset.go);
+  });
+}
+
+function open(n){
+  lastFocus = document.activeElement;
+  render(n);
+  panel.classList.add('on');
+  scrim.classList.add('on');
+  panel.scrollTop = 0;
+  panel.focus();
+}
+function close(){
+  panel.classList.remove('on');
+  scrim.classList.remove('on');
+  document.querySelectorAll('.node.opened').forEach(el => el.classList.remove('opened'));
+  current = null;
+  if(lastFocus && lastFocus.focus) lastFocus.focus();
+}
+
+document.getElementById('phases').addEventListener('click', e => {
+  const b = e.target.closest('.card');
+  if(b) open(+b.dataset.n);
+});
+scrim.addEventListener('click', close);
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape' && current !== null) close();
+  if(current === null) return;
+  const i = order.indexOf(current);
+  if(e.key === 'ArrowRight' && i < order.length-1) render(order[i+1]);
+  if(e.key === 'ArrowLeft'  && i > 0)              render(order[i-1]);
+});
+
+// ---- zoom ----
+const canvas = document.getElementById('canvas');
+const sizer = document.getElementById('sizer');
+const viewport = document.getElementById('viewport');
+let zoom = 1;
+
+function apply(z){
+  zoom = Math.min(1.6, Math.max(0.2, z));
+  sizer.style.transform = `scale(${zoom})`;
+  sizer.style.width = (canvas.offsetWidth * zoom) + 'px';
+  sizer.style.height = (canvas.offsetHeight * zoom) + 'px';
+}
+function fit(){ apply((viewport.clientWidth - 32) / canvas.offsetWidth); }
+document.getElementById('in').onclick = () => apply(zoom + 0.15);
+document.getElementById('out').onclick = () => apply(zoom - 0.15);
+document.getElementById('fit').onclick = fit;
+
+apply(1);
+if (viewport.clientWidth < canvas.offsetWidth) fit();
+window.addEventListener('resize', () => apply(zoom));
+
+// ---- clock ----
+const face = document.getElementById('face');
+const runBtn = document.getElementById('run');
+let elapsed = 0, ticking = null;
+const pad = n => (n < 10 ? '0' : '') + n;
+function paintClock(){ face.textContent = pad(Math.floor(elapsed/60)) + ':' + pad(elapsed%60); }
+runBtn.onclick = () => {
+  if(ticking){ clearInterval(ticking); ticking = null; runBtn.textContent = 'Resume'; }
+  else { ticking = setInterval(() => { elapsed++; paintClock(); }, 1000); runBtn.textContent = 'Pause'; }
+};
+document.getElementById('rst').onclick = () => {
+  if(ticking){ clearInterval(ticking); ticking = null; }
+  elapsed = 0; runBtn.textContent = 'Start'; paintClock();
+};
+paintClock();
+</script>

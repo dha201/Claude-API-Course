@@ -1,0 +1,1059 @@
+﻿<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keyur Patel Screen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+
+<style>
+  :root {
+    --paper:      #F4F5F7;
+    --surface:    #FFFFFF;
+    --surface-2:  #EDEFF3;
+    --ink:        #14181F;
+    --ink-2:      #4A5462;
+    --ink-3:      #79838F;
+    --rule:       #DBDFE6;
+    --rule-hard:  #C3C9D3;
+    --accent:     #1F3B63;
+    --accent-ink: #1F3B63;
+    --accent-bg:  #E7EDF5;
+
+    --strong:     #0E6A56;
+    --strong-bg:  #E1F0EB;
+    --partial:    #8E6210;
+    --partial-bg: #F7EEDA;
+    --thin:       #9A3428;
+    --thin-bg:    #F8E6E2;
+
+    --shadow: 0 1px 2px rgba(20,24,31,.05), 0 8px 24px -14px rgba(20,24,31,.22);
+
+    --f-ui: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --f-say: "Newsreader", Georgia, "Times New Roman", serif;
+    --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #0F131A;
+      --surface:    #171C25;
+      --surface-2:  #1D232E;
+      --ink:        #E7EAF0;
+      --ink-2:      #A4AEBC;
+      --ink-3:      #6F7987;
+      --rule:       #262D39;
+      --rule-hard:  #364052;
+      --accent:     #86ACDC;
+      --accent-ink: #A9C6EC;
+      --accent-bg:  #17222F;
+
+      --strong:     #52C3A2;
+      --strong-bg:  #102A24;
+      --partial:    #DEA946;
+      --partial-bg: #2B2415;
+      --thin:       #E38271;
+      --thin-bg:    #2E1B18;
+
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 28px -16px rgba(0,0,0,.8);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper:      #0F131A;
+    --surface:    #171C25;
+    --surface-2:  #1D232E;
+    --ink:        #E7EAF0;
+    --ink-2:      #A4AEBC;
+    --ink-3:      #6F7987;
+    --rule:       #262D39;
+    --rule-hard:  #364052;
+    --accent:     #86ACDC;
+    --accent-ink: #A9C6EC;
+    --accent-bg:  #17222F;
+
+    --strong:     #52C3A2;
+    --strong-bg:  #102A24;
+    --partial:    #DEA946;
+    --partial-bg: #2B2415;
+    --thin:       #E38271;
+    --thin-bg:    #2E1B18;
+
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 28px -16px rgba(0,0,0,.8);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--f-ui);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .shell { max-width: 1140px; margin: 0 auto; padding: 0 24px 96px; }
+
+  /* ---------- sticky control strip ---------- */
+
+  .bar { position: sticky; top: 0; z-index: 40; background: var(--surface); border-bottom: 1px solid var(--rule-hard); }
+  .bar-in { max-width: 1140px; margin: 0 auto; padding: 10px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
+  .bar-id { font-weight: 700; font-size: .82rem; letter-spacing: .09em; text-transform: uppercase; color: var(--accent-ink); white-space: nowrap; }
+  .clock { display: flex; align-items: center; gap: 8px; }
+  .clock-face { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: 1.18rem; font-weight: 500; min-width: 4.4ch; color: var(--ink); }
+  .clock button {
+    font-family: var(--f-ui); font-size: .74rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+    padding: 5px 11px; border-radius: 3px; border: 1px solid var(--rule-hard);
+    background: var(--surface-2); color: var(--ink-2); cursor: pointer;
+  }
+  .clock button:hover { color: var(--ink); border-color: var(--ink-3); }
+  .clock button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .phases { display: flex; flex: 1 1 460px; gap: 3px; min-width: 0; }
+  .phase {
+    flex: 1 1 0; min-width: 0; display: block; text-decoration: none;
+    padding: 5px 7px 6px; border-radius: 3px; background: var(--surface-2);
+    border: 1px solid transparent; color: var(--ink-3);
+  }
+  .phase:hover { color: var(--ink-2); }
+  .phase:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .phase .p-t { display: block; font-family: var(--f-mono); font-size: .68rem; font-variant-numeric: tabular-nums; }
+  .phase .p-n { display: block; font-size: .74rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .phase.now { background: var(--accent-bg); border-color: var(--accent); color: var(--accent-ink); }
+  .phase.past { opacity: .45; }
+
+  /* ---------- masthead ---------- */
+
+  .head { padding: 46px 0 30px; max-width: 74ch; }
+  .kicker { font-family: var(--f-mono); font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 14px; }
+  h1 { font-size: clamp(2rem, 4.6vw, 2.9rem); line-height: 1.07; letter-spacing: -.022em; font-weight: 700; margin: 0 0 16px; text-wrap: balance; }
+  .dek { font-family: var(--f-say); font-size: 1.14rem; line-height: 1.6; color: var(--ink-2); margin: 0 0 14px; max-width: 62ch; }
+  .dek b { color: var(--ink); font-weight: 500; }
+
+  .facts { display: flex; flex-wrap: wrap; margin-top: 30px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .fact { padding: 13px 26px 13px 0; margin-right: 26px; border-right: 1px solid var(--rule); }
+  .fact:last-child { border-right: 0; margin-right: 0; padding-right: 0; }
+  .fact dt { font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 3px; }
+  .fact dd { margin: 0; font-family: var(--f-mono); font-size: .88rem; font-weight: 500; color: var(--ink); }
+
+  /* ---------- sections ---------- */
+
+  section { margin-top: 54px; scroll-margin-top: 92px; }
+  .sec-head { display: flex; align-items: baseline; gap: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--ink); margin-bottom: 22px; flex-wrap: wrap; }
+  .sec-time { font-family: var(--f-mono); font-size: .84rem; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--accent-ink); white-space: nowrap; }
+  h2 { font-size: 1.42rem; letter-spacing: -.014em; font-weight: 700; margin: 0; flex: 1 1 auto; }
+  .codes { font-family: var(--f-mono); font-size: .74rem; color: var(--ink-3); }
+
+  .why { font-size: .95rem; color: var(--ink-2); max-width: 72ch; margin: 0 0 22px; }
+  .why strong { color: var(--ink); font-weight: 600; }
+  .why em { font-style: italic; }
+
+  /* ---------- spoken lines ---------- */
+
+  .say { background: var(--surface); border: 1px solid var(--rule-hard); border-left: 4px solid var(--accent); border-radius: 3px; padding: 18px 22px; box-shadow: var(--shadow); margin: 0 0 20px; }
+  .say-lbl { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 9px; }
+  .say p { font-family: var(--f-say); font-size: 1.16rem; line-height: 1.52; margin: 0 0 11px; max-width: 64ch; color: var(--ink); }
+  .say p:last-child { margin-bottom: 0; }
+  .say p + p { padding-top: 11px; border-top: 1px dotted var(--rule-hard); }
+
+  .subhead { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 26px 0 11px; }
+
+  ul.say-list { list-style: none; margin: 0 0 20px; padding: 0; display: flex; flex-direction: column; gap: 9px; max-width: 74ch; }
+  ul.say-list li { font-family: var(--f-say); font-size: 1.03rem; line-height: 1.5; padding-left: 20px; position: relative; color: var(--ink); }
+  ul.say-list li::before { content: ""; position: absolute; left: 0; top: .66em; width: 9px; height: 1px; background: var(--ink-3); }
+
+  /* ---------- branches ---------- */
+
+  .branches { display: grid; grid-template-columns: repeat(auto-fit, minmax(232px, 1fr)); gap: 14px; margin: 0 0 8px; }
+  .br { background: var(--surface); border: 1px solid var(--rule); border-top: 3px solid var(--rule-hard); border-radius: 3px; padding: 15px 17px 17px; display: flex; flex-direction: column; gap: 9px; }
+  .br-chip { font-size: .67rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; align-self: flex-start; }
+  .br-cue { font-size: .91rem; line-height: 1.5; color: var(--ink-2); margin: 0; }
+  .br-do { font-size: .93rem; line-height: 1.5; margin: 0; padding-top: 9px; border-top: 1px solid var(--rule); color: var(--ink); }
+  .br-do b { display: block; font-size: .67rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
+  .br.s { border-top-color: var(--strong); }
+  .br.s .br-chip { background: var(--strong-bg); color: var(--strong); }
+  .br.p { border-top-color: var(--partial); }
+  .br.p .br-chip { background: var(--partial-bg); color: var(--partial); }
+  .br.t { border-top-color: var(--thin); }
+  .br.t .br-chip { background: var(--thin-bg); color: var(--thin); }
+
+  /* ---------- listen-for ---------- */
+
+  .listen { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 22px; }
+  .lz { border-radius: 3px; padding: 15px 17px; border: 1px solid var(--rule); }
+  .lz.g { background: var(--strong-bg); border-color: color-mix(in srgb, var(--strong) 26%, transparent); }
+  .lz.r { background: var(--thin-bg); border-color: color-mix(in srgb, var(--thin) 26%, transparent); }
+  .lz h4 { margin: 0 0 9px; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  .lz.g h4 { color: var(--strong); }
+  .lz.r h4 { color: var(--thin); }
+  .lz ul { margin: 0; padding-left: 17px; display: flex; flex-direction: column; gap: 5px; }
+  .lz li { font-size: .9rem; line-height: 1.45; color: var(--ink); }
+  .lz li em { font-style: italic; color: var(--ink-2); }
+
+  /* ---------- callouts ---------- */
+
+  .stop { display: flex; gap: 13px; align-items: flex-start; margin-top: 20px; padding: 13px 16px; background: var(--thin-bg); border-left: 3px solid var(--thin); border-radius: 0 3px 3px 0; }
+  .stop .s-lbl { font-family: var(--f-mono); font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--thin); white-space: nowrap; padding-top: 2px; }
+  .stop p { margin: 0; font-size: .92rem; line-height: 1.5; color: var(--ink); }
+  .note { margin-top: 20px; padding: 13px 16px; background: var(--accent-bg); border-left: 3px solid var(--accent); border-radius: 0 3px 3px 0; font-size: .92rem; line-height: 1.55; color: var(--ink); max-width: 78ch; }
+  .note b { font-weight: 700; }
+  .note em { font-style: italic; }
+
+  /* ---------- agent map ---------- */
+
+  .map { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1px; background: var(--rule-hard); border: 1px solid var(--rule-hard); border-radius: 3px; overflow: hidden; margin-bottom: 22px; }
+  .ag { background: var(--surface); padding: 14px 16px 16px; }
+  .ag-id { font-family: var(--f-mono); font-size: .72rem; font-weight: 600; color: var(--accent-ink); letter-spacing: .04em; }
+  .ag-n { font-size: .95rem; font-weight: 600; margin: 3px 0 6px; color: var(--ink); }
+  .ag-d { font-size: .87rem; line-height: 1.45; color: var(--ink-2); margin: 0; }
+  .ag-d b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- reaction table ---------- */
+
+  .react { border: 1px solid var(--rule-hard); border-radius: 3px; overflow: hidden; margin: 0 0 20px; }
+  .rx { display: grid; grid-template-columns: minmax(150px, 33%) 1fr; background: var(--surface); border-bottom: 1px solid var(--rule); }
+  .react .rx:last-child { border-bottom: 0; }
+  .react .rx.hd { background: var(--surface-2); border-bottom: 1px solid var(--rule-hard); }
+  .rx-when { padding: 12px 14px; font-size: .87rem; line-height: 1.42; color: var(--ink-2); background: var(--surface-2); border-right: 1px solid var(--rule); }
+  .rx-say { padding: 12px 16px; font-family: var(--f-say); font-size: 1.03rem; line-height: 1.45; color: var(--ink); }
+  .rx.hd .rx-when, .rx.hd .rx-say {
+    font-family: var(--f-ui); font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-3); padding-top: 9px; padding-bottom: 9px;
+  }
+  .rx.last .rx-when { color: var(--accent-ink); font-weight: 600; }
+  @media (max-width: 560px) {
+    .rx { grid-template-columns: 1fr; }
+    .rx-when { border-right: 0; border-bottom: 1px solid var(--rule); }
+    .react .rx.hd { display: none; }
+  }
+
+  /* ---------- pivot bank ---------- */
+
+  .pivots { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+  .pv { background: var(--surface); border: 1px solid var(--rule); border-radius: 3px; padding: 14px 16px; }
+  .pv-if { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-ink); margin: 0 0 7px; }
+  .pv-q { font-family: var(--f-say); font-size: 1rem; line-height: 1.48; margin: 0 0 8px; color: var(--ink); }
+  .pv-w { font-size: .84rem; line-height: 1.45; color: var(--ink-3); margin: 0; padding-top: 8px; border-top: 1px solid var(--rule); }
+
+  /* ---------- table ---------- */
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--rule-hard); border-radius: 3px; }
+  table { border-collapse: collapse; width: 100%; min-width: 820px; background: var(--surface); }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; font-size: .88rem; line-height: 1.45; }
+  thead th { background: var(--surface-2); font-size: .68rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; color: var(--ink-3); border-bottom: 1px solid var(--rule-hard); white-space: nowrap; }
+  tbody tr:last-child td { border-bottom: 0; }
+  td.dim { font-weight: 600; color: var(--ink); min-width: 178px; }
+  td.dim span { display: block; font-family: var(--f-mono); font-size: .7rem; font-weight: 400; color: var(--ink-3); margin-top: 3px; }
+  td.a1 { color: var(--thin); }
+  td.a4 { color: var(--strong); }
+  .score-n { font-family: var(--f-mono); font-weight: 600; font-size: .72rem; letter-spacing: .06em; }
+
+  /* ---------- writeup ---------- */
+
+  .writeup-head { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 12px; }
+  #copy {
+    font-family: var(--f-ui); font-size: .74rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    padding: 8px 15px; border-radius: 3px; border: 1px solid var(--accent);
+    background: var(--accent-bg); color: var(--accent-ink); cursor: pointer;
+  }
+  #copy:hover { background: var(--surface-2); }
+  #copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  pre.tpl { margin: 0; background: var(--surface); border: 1px solid var(--rule-hard); border-radius: 3px; padding: 20px 22px; overflow-x: auto; font-family: var(--f-mono); font-size: .81rem; line-height: 1.72; color: var(--ink); white-space: pre; }
+
+  /* ---------- reminders ---------- */
+
+  .rem { display: grid; grid-template-columns: repeat(auto-fit, minmax(268px, 1fr)); gap: 1px; background: var(--rule-hard); border: 1px solid var(--rule-hard); border-radius: 3px; overflow: hidden; }
+  .rem div { background: var(--surface); padding: 16px 18px; }
+  .rem h4 { margin: 0 0 6px; font-size: .69rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; color: var(--accent-ink); }
+  .rem p { margin: 0; font-size: .91rem; line-height: 1.5; color: var(--ink-2); }
+  .rem p b { color: var(--ink); font-weight: 600; }
+
+  footer { margin-top: 58px; padding-top: 20px; border-top: 1px solid var(--rule); font-family: var(--f-mono); font-size: .74rem; color: var(--ink-3); line-height: 1.7; }
+  footer a { color: var(--accent-ink); }
+
+  @media (max-width: 640px) {
+    .shell { padding: 0 16px 72px; }
+    .bar-in { padding: 9px 16px; }
+    .phases { order: 3; flex-basis: 100%; overflow-x: auto; }
+    .phase { flex: 0 0 84px; }
+    .fact { border-right: 0; padding-right: 0; margin-right: 0; flex: 1 1 44%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="bar-id">Screen &middot; PR-3</div>
+    <div class="clock">
+      <span class="clock-face" id="face">00:00</span>
+      <button id="run" type="button">Start</button>
+      <button id="rst" type="button">Reset</button>
+    </div>
+    <nav class="phases" id="phases" aria-label="Call phases">
+      <a class="phase" href="#frame" data-a="0"  data-b="2"><span class="p-t">0–2</span><span class="p-n">Frame</span></a>
+      <a class="phase" href="#cal"   data-a="2"  data-b="7"><span class="p-t">2–7</span><span class="p-n">Calibrate</span></a>
+      <a class="phase" href="#p1"    data-a="7"  data-b="13"><span class="p-t">7–13</span><span class="p-n">Boundary</span></a>
+      <a class="phase" href="#p2"    data-a="13" data-b="20"><span class="p-t">13–20</span><span class="p-n">Duke</span></a>
+      <a class="phase" href="#p3"    data-a="20" data-b="27"><span class="p-t">20–27</span><span class="p-n">Verify</span></a>
+      <a class="phase" href="#p4"    data-a="27" data-b="32"><span class="p-t">27–32</span><span class="p-n">Gates</span></a>
+      <a class="phase" href="#close" data-a="32" data-b="99"><span class="p-t">32–38</span><span class="p-n">Close</span></a>
+    </nav>
+  </div>
+</div>
+
+<div class="shell">
+
+  <header class="head">
+    <p class="kicker">Dexian technical pre-screen</p>
+    <h1>Keyur Patel against PR-3</h1>
+    <p class="dek">PR-3 is <b>harness engineering for a migration factory</b>. AGT-002, 004, 005, 009, 010 and 031 are not task areas. They are six agents, plus the asset library and promotion gates that decide whether what those agents emit can be trusted.</p>
+    <p class="dek">So the question is never "has he written CDK." It is whether he has built <b>the loop, the tools, and the checks that make a model's output safe to ship</b>, and whether any of that survives contact with generated code rather than generated prose.</p>
+
+    <dl class="facts">
+      <div class="fact"><dt>Req</dt><dd>1015986</dd></div>
+      <div class="fact"><dt>Role</dt><dd>PR-3 Tooling &amp; Governance</dd></div>
+      <div class="fact"><dt>Client</dt><dd>AWS for Goldman Sachs</dd></div>
+      <div class="fact"><dt>Call</dt><dd>Thu 8/27 · 4:30 PM EST</dd></div>
+      <div class="fact"><dt>Budget</dt><dd>30–40 min · Teams</dd></div>
+      <div class="fact"><dt>Output</dt><dd>Written rec to Britni</dd></div>
+    </dl>
+  </header>
+
+  <!-- THE FLEET -->
+  <section id="fleet">
+    <div class="sec-head">
+      <span class="sec-time">Before</span>
+      <h2>What the six agents actually are</h2>
+      <span class="codes">Read once, don't recite on the call</span>
+    </div>
+
+    <div class="map">
+      <div class="ag">
+        <div class="ag-id">AGT-002</div>
+        <div class="ag-n">Application Assessment</div>
+        <p class="ag-d">A <b>read</b> agent over codebases too large for any context window. Fan-out, orchestrator-workers, and the silent-coverage problem.</p>
+      </div>
+      <div class="ag">
+        <div class="ag-id">AGT-031</div>
+        <div class="ag-n">Standard Transformation</div>
+        <p class="ag-d">The <b>codemod</b>. ORM rules. Where does a deterministic rules engine end and model judgment begin?</p>
+      </div>
+      <div class="ag">
+        <div class="ag-id">AGT-005</div>
+        <div class="ag-n">Migration Orchestration</div>
+        <p class="ag-d">A <b>Step Functions state machine</b>. They chose deterministic sequencing on purpose. That choice is a probe.</p>
+      </div>
+      <div class="ag">
+        <div class="ag-id">AGT-009</div>
+        <div class="ag-n">Container Build</div>
+        <p class="ag-d">Emits <b>container definitions</b>. Verification is a build that either succeeds or doesn't.</p>
+      </div>
+      <div class="ag">
+        <div class="ag-id">AGT-010</div>
+        <div class="ag-n">Infrastructure Provisioning</div>
+        <p class="ag-d">Emits <b>CDK templates</b>. An agent writing infrastructure into a bank. Blast radius question.</p>
+      </div>
+      <div class="ag">
+        <div class="ag-id">AGT-004</div>
+        <div class="ag-n">GitLab Delivery</div>
+        <p class="ag-d">Opens <b>merge requests</b>. The only agent with a write to a system humans depend on. HITL lives here.</p>
+      </div>
+    </div>
+
+    <div class="note"><b>The asset library and promotion gates are the harness's verification layer.</b> What the agents emit doesn't go straight to production. It lands in a library, and a gate decides whether it gets promoted. That is what Governance means in this title, and it is not the AI-governance discipline Keyur's resume describes.</div>
+  </section>
+
+  <!-- TWO BARS -->
+  <section id="bars">
+    <div class="sec-head">
+      <span class="sec-time">Decide first</span>
+      <h2>The JD's bar is lower than the job's bar</h2>
+      <span class="codes">Read before you dial</span>
+    </div>
+
+    <p class="why">The written JD is a prose restatement of the AGT table. Every Key Responsibility maps onto a code. But its <strong>Required Qualifications name no language, no framework, no scale, no LLM platform, and never use the words model, prompt, eval or guardrail.</strong> The verbs are "familiarity with" and "strong understanding of." Compare the JPMC req in the same thread, which named Python, Java/Spring, vLLM and trace analysis. A recruiter wrote this one, not an engineer.</p>
+
+    <div class="branches">
+      <div class="br s">
+        <span class="br-chip">Screen to this</span>
+        <p class="br-cue">The AGT reality. Six agents that emit code and infrastructure into a bank, behind promotion gates, at wave scale. That is what determines whether he can actually do the work.</p>
+        <p class="br-do"><b>Why</b>If Britni submits him and AWS's own interviewer asks harness questions, a candidate who cleared only the soft bar gets embarrassed. That lands on Dexian, and on you.</p>
+      </div>
+      <div class="br p">
+        <span class="br-chip">Report to this</span>
+        <p class="br-cue">The JD's own categories, so Britni can map your scores onto the document she is holding without translating.</p>
+        <p class="br-do"><b>And</b>Say explicitly where the two diverge. That sentence is the most useful thing in your writeup.</p>
+      </div>
+      <div class="br t">
+        <span class="br-chip">Already closed</span>
+        <p class="br-cue">"CDK templates <em>or similar tools</em>" admits Terraform, which he has deeply. GitLab has vanished from the JD entirely. It now says "deployment pipelines."</p>
+        <p class="br-do"><b>So</b>Both original tooling gaps are non-issues by the client's own text. Don't spend a second of a 35-minute call on either.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAME -->
+  <section id="frame">
+    <div class="sec-head">
+      <span class="sec-time">0:00–2:00</span>
+      <h2>Frame the call</h2>
+    </div>
+
+    <div class="say">
+      <p class="say-lbl">Say this</p>
+      <p>Thanks for making time. I'm Triet, I work with Dexian on the technical side. This is a screen for the AI Engineer role on the Tooling and Governance side, req 1015986.</p>
+      <p>Rather than run through your whole resume I want to go deep on two or three things, mostly around how you've built agent systems and what you did to make them trustworthy. Last few minutes are yours. Sound good?</p>
+    </div>
+
+    <div class="note"><b>Don't</b> list the AGT agents or name CDK and GitLab. Once he knows what's on your checklist you stop learning how he reasons and start hearing what he thinks you want.</div>
+  </section>
+
+  <!-- CALIBRATION -->
+  <section id="cal">
+    <div class="sec-head">
+      <span class="sec-time">2:00–7:00</span>
+      <h2>Calibrate &middot; find out what he actually built</h2>
+    </div>
+
+    <p class="why">You know his tech stack in exhaustive detail and <strong>you know nothing about his projects.</strong> Every resume bullet names eight technologies and says "architected and deployed." Not one says what problem it solved, who used it, or whether it shipped. So don't open with an architecture question about a system you can't picture. He'll give you a rehearsed tour and you'll have nothing to test it against.</p>
+
+    <p class="why">Two things worth holding in your head. The domain is industrial process control, so his users are plant engineers and operators rather than software people. DeltaV is Emerson's control system, and his clients are listed as nuclear, government and life sciences. And the supervisor-worker setup with five workers isn't a separate project, it's <strong>part of</strong> the Industrial Intelligence platform. Don't ask about them as if they're two things.</p>
+
+    <p class="subhead">Beat one &middot; let him pick, then ask what it was for</p>
+
+    <div class="say">
+      <p class="say-lbl">Open with</p>
+      <p>I've got your resume in front of me and there's a few different things listed at R.E. Mason. Which one did you spend the most time on?</p>
+      <p>Okay. Before we get into the tech, just tell me what it was for. What was the problem?</p>
+      <p>And who was actually using it? Is it live now?</p>
+    </div>
+
+    <div class="note">Letting him choose is the point, and <b>what he picks is data.</b> Someone who reaches for the project with the shiniest stack rather than the one he lived in tells you something before he answers anything. "Who was using it" is also the single hardest line on a resume to fake. Tool names are free. Users are not.</div>
+
+    <p class="subhead">Beat two &middot; now the architecture question makes sense</p>
+
+    <div class="say">
+      <p class="say-lbl">Then</p>
+      <p>Alright, so how'd you build it?</p>
+      <p>If he stalls or goes abstract: walk me through what happens when someone asks it a question. Start from them typing and take me all the way to the answer coming back.</p>
+    </div>
+
+    <div class="note">That second one is the better question and worth using even if he doesn't stall. <b>Tracing a single request end to end forces the sequence</b>, and the sequence is the part you can't recite from a diagram someone showed you. A component list is what you get from a tour. A trace is what you get from having debugged it at eleven at night.</div>
+
+    <p class="subhead">Beat three &middot; stop asking, start reacting</p>
+
+    <p class="why">From here he should be talking for three or four minutes without you steering. Listen for one of these and pull on it. A prepared question fired after he stops is what turns a screen into an interrogation, and it also tells him you weren't listening.</p>
+
+    <div class="react">
+      <div class="rx hd"><div class="rx-when">When he</div><div class="rx-say">Say</div></div>
+      <div class="rx">
+        <div class="rx-when">Says "we" for the third time</div>
+        <div class="rx-say">Which bit of that did you write yourself?</div>
+      </div>
+      <div class="rx">
+        <div class="rx-when">Mentions a router, supervisor, or classifier</div>
+        <div class="rx-say">How does that decide? Is it a model call or a rule?</div>
+      </div>
+      <div class="rx">
+        <div class="rx-when">Skips past something in half a sentence</div>
+        <div class="rx-say">Back up a second. What was that one doing?</div>
+      </div>
+      <div class="rx">
+        <div class="rx-when">Names a framework or a service</div>
+        <div class="rx-say">What's LangGraph actually giving you there that you'd otherwise have to write?</div>
+      </div>
+      <div class="rx">
+        <div class="rx-when">Drops a number</div>
+        <div class="rx-say">What was it before?</div>
+      </div>
+      <div class="rx">
+        <div class="rx-when">Describes something that sounds painful</div>
+        <div class="rx-say">That sounds like it was a pain. What made it a pain?</div>
+      </div>
+      <div class="rx last">
+        <div class="rx-when">Finishes clean and nothing above fired</div>
+        <div class="rx-say">What was the hardest call in there?</div>
+      </div>
+    </div>
+
+    <div class="note">The last row is your default. <b>"What was the hardest call in there?"</b> beats "what broke" because it asks for a decision rather than a failure, so he doesn't go hunting for an impressively-sized disaster. A builder names a real fork with two defensible sides. Someone who was along for the ride names a technical difficulty instead, which is not the same thing and is easy to hear.</div>
+
+    <div class="branches">
+      <div class="br s">
+        <span class="br-chip">Builder</span>
+        <p class="br-cue">Answers "what was it for" in under a minute, in plain terms, with the users named. Traces a request end to end without hunting. Talks in decisions, not components. Has an opinion on why five workers and not one agent with five tools.</p>
+        <p class="br-do"><b>Run</b>All four probes, full depth, and use the pivot bank when he opens a door. Push past his experience and find where he stops.</p>
+      </div>
+      <div class="br p">
+        <span class="br-chip">Integrator</span>
+        <p class="br-cue">Fluent and accurate, but it's a tour. "LangGraph routes to the workers." Can describe the parts, struggles to trace one request through them. Answers "what was it for" by listing what it could do rather than what changed for anyone.</p>
+        <p class="br-do"><b>Run</b>Probes 1 and 2 only, at "what exactly did you do" level. Skip 3, keep 4. Expect borderline and write that plainly.</p>
+      </div>
+      <div class="br t">
+        <span class="br-chip">Narrating</span>
+        <p class="br-cue">Goes to the tech stack when you ask what it was for. Can't name a user. Doesn't know whether it's live. Persistent "we", and no answer when you ask which part was his.</p>
+        <p class="br-do"><b>Stop</b>Don't spend 25 more minutes confirming it. Short path below, close around 20 minutes.</p>
+      </div>
+    </div>
+
+    <div class="stop">
+      <span class="s-lbl">Short path</span>
+      <p>Three closed questions, then wrap. <em>Of everything here, what's the one thing you built end to end yourself? What could you show me? Where would you need ramp-up on a role like this?</em> An honest early no serves Britni better than a padded 45 minutes, and it protects you on the next screen she sends.</p>
+    </div>
+  </section>
+
+  <!-- PROBE 1 -->
+  <section id="p1">
+    <div class="sec-head">
+      <span class="sec-time">7:00–13:00</span>
+      <h2>Probe 1 &middot; The determinism boundary</h2>
+      <span class="codes">AGT-005 · the core harness decision</span>
+    </div>
+
+    <p class="why">Anthropic's own framing: a <em>workflow</em> is steps wired in your code, an <em>agent</em> is the model choosing its own sequence. Using an agent where a workflow suffices adds complexity without capability. <strong>AGT-005 orchestrates with a Step Functions state machine.</strong> The sequence is fixed, and only the judgment inside each step is not. Someone who has shipped this knows why. Someone who hasn't thinks more agency is always better.</p>
+
+    <div class="say">
+      <p class="say-lbl">Open with</p>
+      <p>In that system, where did you draw the line between what the model decides and what your code decides? Give me something specific you took away from the model after it got it wrong.</p>
+    </div>
+
+    <div class="say">
+      <p class="say-lbl">Then the grounded hypothetical</p>
+      <p>This role orchestrates its migration agents with a Step Functions state machine, so the sequence is fixed and only the work inside each step is model-driven. Does that match how you'd build it? What would you argue for instead?</p>
+    </div>
+
+    <div class="branches">
+      <div class="br s">
+        <span class="br-chip">Gets it</span>
+        <p class="br-cue">Names a specific capability he revoked and why. Articulates that non-determinism is fine for judgment and unacceptable for sequencing. Reaches for repeatability, auditability or cost as the reason without prompting.</p>
+        <p class="br-do"><b>Push</b>Where would you put the model inside AGT-031? Rules engine, model, or both? And where exactly is the seam?</p>
+      </div>
+      <div class="br p">
+        <span class="br-chip">Instinct only</span>
+        <p class="br-cue">Agrees the state machine is right but can't say why beyond "it's more reliable." No example of taking something back from the model.</p>
+        <p class="br-do"><b>Test it</b>Ask what he'd lose by making AGT-005 a planning agent instead. A real answer names cost, replay, and audit. A weak one restates "reliability."</p>
+      </div>
+      <div class="br t">
+        <span class="br-chip">More agency</span>
+        <p class="br-cue">Argues the orchestrator should be an agent that plans the migration. Treats determinism as a limitation rather than a requirement. Never had to constrain a model.</p>
+        <p class="br-do"><b>Note it</b>This is a real finding, not a small one. In a regulated bank migration, that instinct is the expensive kind of wrong.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBE 2 -->
+  <section id="p2">
+    <div class="sec-head">
+      <span class="sec-time">13:00–20:00</span>
+      <h2>Probe 2 &middot; The Duke migration</h2>
+      <span class="codes">AGT-005 · AGT-031 · AGT-010</span>
+    </div>
+
+    <p class="why"><strong>Duke is the closest thing on this resume to PR-3, and he won't take you there himself.</strong> R.E. Mason is newer and sounds better. But four of the five JD groups have a Duke bullet behind them, and the Step Functions line is the nearest thing to a direct match anywhere on the page. AGT-005 <em>is</em> a Step Functions state machine orchestrating a migration. He has done that.</p>
+
+    <p class="why">Hold the shape of it in your head while he answers. <strong>Duke has the migration without the agents. R.E. Mason has the agents without the migration.</strong> Neither covers PR-3 on its own, and whether he can put the halves together is the thing Britni is actually paying you to find out.</p>
+
+    <div class="say">
+      <p class="say-lbl">Open with</p>
+      <p>Let me jump back a bit. Tell me about the Azure to AWS migration at Duke. What were you actually moving, and how many of them?</p>
+    </div>
+
+    <div class="say">
+      <p class="say-lbl">On the orchestration</p>
+      <p>You used Step Functions for it. What else was on the table? Airflow, Glue workflows, just chaining Lambdas together?</p>
+      <p>What did Step Functions give you that those wouldn't have?</p>
+      <p>What was in each state, and what happened when one failed halfway through?</p>
+    </div>
+
+    <div class="say">
+      <p class="say-lbl">On the transformation</p>
+      <p>How much of the conversion was automated versus rewritten by hand?</p>
+      <p>Your resume says reusable infrastructure across four environments. What was actually in the reusable part, and what still had to be written for each pipeline?</p>
+    </div>
+
+    <div class="say">
+      <p class="say-lbl">Reconciliation, and it ties straight to Probe 3</p>
+      <p>How did you know the migrated pipeline produced the same results as the old one?</p>
+      <p>Did you run the old one and the new one side by side? What finally let you switch the old one off?</p>
+    </div>
+
+    <div class="note">Those last two are the same instinct as <b>Probe 3's "would you run it"</b>, arriving from the opposite direction, so treat them as a cross-check on that answer. Reconciliation is also PR-2's job on this program, so a real answer here says he can talk to the engineer moving the database while he rewrites the code that queries it.<br><br>"We ran both for six weeks and compared row counts" is a strong answer. <b>"We never actually turned the old one off"</b> is a common one, and it tells you something too.</div>
+
+    <p class="subhead">One ownership question on the Terraform</p>
+    <ul class="say-list">
+      <li>Did you own the modules other teams consumed, or were you consuming someone else's?</li>
+    </ul>
+
+    <div class="note">Just the one. AGT-010 is infrastructure provisioning, so <b>owning modules other teams depend on is a different job</b> from running modules somebody else wrote, and the resume can't tell you which he did. State backends and locking are too far into the weeds for a screen and map to nothing in this req, so I cut them.</div>
+
+    <div class="branches">
+      <div class="br s">
+        <span class="br-chip">Owned it</span>
+        <p class="br-cue">Has counts. Knows what varied from one pipeline to the next. Named alternatives to Step Functions and can say what he got. Real reconciliation, and an actual date the old system died.</p>
+        <p class="br-do"><b>Push</b>If it were 400 applications instead of a dozen pipelines, what breaks first? Listen for cost, rate limits and the review bottleneck.</p>
+      </div>
+      <div class="br p">
+        <span class="br-chip">Was on it</span>
+        <p class="br-cue">Migration is real, verification is hazy. "QA validated it." Step Functions was already the house choice and he never weighed it.</p>
+        <p class="br-do"><b>Score</b>Borderline. The pattern is right and the rigor is untested, which is a fair thing to write down as exactly that.</p>
+      </div>
+      <div class="br t">
+        <span class="br-chip">Pair of hands</span>
+        <p class="br-cue">Can't describe it concretely inside four minutes. Talks about it as a project he was on rather than work he did. No counts, no alternatives considered.</p>
+        <p class="br-do"><b>Move on</b>Score it and go to Probe 3. Don't keep fishing, you already have the answer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBE 3 -->
+  <section id="p3">
+    <div class="sec-head">
+      <span class="sec-time">20:00–27:00</span>
+      <h2>Probe 3 &middot; How does the agent know it's right?</h2>
+      <span class="codes">AGT-031 · AGT-009 · promotion gates</span>
+    </div>
+
+    <p class="why">This is <strong>the probe</strong>. Every harness Keyur has built emits answers. SOPs, recommendations, natural-language SQL. PR-3's agents emit code and infrastructure. You evaluate an answer with a judge and a rubric. You verify code by compiling it, running the tests, and diffing behavior. <strong>Anyone who has done real codegen harness work knows the compiler is the best evaluator they will ever get for free.</strong> Whether he reaches for it unprompted tells you more than anything else in the call.</p>
+
+    <div class="note"><b>SOP is Standard Operating Procedure.</b> In a regulated plant it's the written, step-by-step procedure an operator follows, and in life sciences the FDA cares what's in it. That's why his system has human approval bolted on. You can't ship an unreviewed one. Worth knowing so you can follow up instead of nodding.</div>
+
+    <div class="say">
+      <p class="say-lbl">Open with, about whatever project he picked</p>
+      <p>So before anyone actually looked at it, did the system have any way of telling whether what it produced was any good?</p>
+    </div>
+
+    <div class="say">
+      <p class="say-lbl">Then the one that matters</p>
+      <p>Here's what I'm curious about. With a document, someone has to read it to know it's right. If the agent had been writing code instead, would you check it differently?</p>
+    </div>
+
+    <div class="note"><b>You're listening for one word.</b> <em>Run.</em> Build it, compile it, run the tests, diff it against the old behavior. If he gets there quickly and without being led, he has done this. If he keeps reaching for judges and rubrics, he hasn't. <b>You don't need any codegen background to hear which one you got</b>, which is why this question names no tooling.</div>
+
+    <p class="subhead">Then keep going. This is where the gates actually are.</p>
+
+    <div class="say">
+      <p class="say-lbl">Ask all four, in this order</p>
+      <p>Say the agent generates a CDK template, or a source file it has rewritten. Walk me through every check that artifact has to pass before a person ever sees it.</p>
+      <p>How would you tell the difference between output that's broken and output that's wrong? Something that won't compile, versus something that compiles fine and does the wrong thing.</p>
+      <p>What would you measure on the artifacts themselves, so you'd know whether the agent was getting better or worse month to month?</p>
+      <p>And when one of those checks fails, what happens to that artifact? Retry it, park it for a human, kill the whole run?</p>
+    </div>
+
+    <div class="note">The first two questions find the instinct. <b>These four find out whether he'd actually build anything</b>, and they're deliberately concrete, because "how do you approach governance" gets you a paragraph of nothing while "walk me through every check before a person sees it" gets you either a real pipeline or a blank.<br><br><b>Broken versus wrong is the sharpest of the four.</b> The naive answer only covers broken, which the compiler catches for free. Wrong compiles cleanly and quietly does something else, and catching it needs a behavior comparison or a test that already existed. Someone who has built a transformation pipeline reaches for that distinction on their own.<br><br>He may well not have done any of this, and that's expected. Score the reasoning, then cross-check it against Probe 4. <b>If he describes an elaborate pipeline here and then has no story about anything ever going wrong, the pipeline was designed rather than earned.</b></div>
+
+    <div class="branches">
+      <div class="br s">
+        <span class="br-chip">Says run it</span>
+        <p class="br-cue">Build it. Run the tests. Lint it. Compare its behavior to the old version. Gets there in a sentence or two, without you leading him, because a check that either passes or fails beats a score whenever you can get one.</p>
+        <p class="br-do"><b>Push</b>And when there aren't any tests to run? What tells you it's fine then, and where does the doubtful stuff go?</p>
+      </div>
+      <div class="br p">
+        <span class="br-chip">Stays on evals</span>
+        <p class="br-cue">Answers in LLM-eval terms and doesn't leave. DeepEval, a rubric, a second model scoring the code. Real skill, useful elsewhere, wrong tool once the thing you're checking can just be run.</p>
+        <p class="br-do"><b>Hand it to him</b>Just ask: <em>would you run it?</em> If it lands straight away and he takes it somewhere, call that a 3. If he goes back to the judge, it's a 2.</p>
+      </div>
+      <div class="br t">
+        <span class="br-chip">Humans</span>
+        <p class="br-cue">"We had human review." That's the entire verification story. No automated signal between generation and a person.</p>
+        <p class="br-do"><b>Score it</b>A 1 on this dimension, and say why in the writeup. At factory scale, human review is the bottleneck this whole role exists to remove.</p>
+      </div>
+    </div>
+
+    <div class="listen">
+      <div class="lz g">
+        <h4>Green</h4>
+        <ul>
+          <li>Compile, test, lint, behavioral diff, scratch-environment deploy</li>
+          <li>Distinguishes textual equivalence from behavioral equivalence</li>
+          <li>Has a confidence score and a route for low-confidence output</li>
+          <li>A golden corpus or regression set that runs on every change</li>
+          <li><em>"The eval was the build, honestly"</em></li>
+        </ul>
+      </div>
+      <div class="lz r">
+        <h4>Red</h4>
+        <ul>
+          <li>Judge-only for an artifact a compiler could check</li>
+          <li>Human review as the sole gate</li>
+          <li>Can't name what a promotion gate would test</li>
+          <li>Talks about accuracy percentages with no test suite behind them</li>
+          <li>Treats "we added a guardrail" as verification</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBE 4 -->
+  <section id="p4">
+    <div class="sec-head">
+      <span class="sec-time">27:00–32:00</span>
+      <h2>Probe 4 &middot; Blast radius and gates</h2>
+      <span class="codes">AGT-004 · AGT-010 · asset library</span>
+    </div>
+
+    <p class="why">AGT-004 opens merge requests. AGT-010 provisions infrastructure. Inside a bank. His HITL checkpoint gates a document. These gate writes to systems people depend on. One question decides every one of them. <em>What is the worst outcome if this step runs without a human check?</em></p>
+
+    <div class="say">
+      <p class="say-lbl">Ask this, then insist on the second one</p>
+      <p>Tell me about a time one of your agents did something you didn't expect. What did you change afterward?</p>
+      <p>Was that change a gate, or a prompt?</p>
+    </div>
+
+    <div class="note"><b>Gate or prompt is the whole distinction</b>, and it's the sentence that connects this probe to the last one. A prompt is a request the model can talk its way past on an input nobody tested. A gate is code that fails.<br><br>So this probe is the evidence for whatever he described in Probe 3. A structural fix confirms it. A prompt tweak means the verification pipeline he sketched was aspirational, and you should mark that earlier answer down accordingly.</div>
+
+    <p class="subhead">Then</p>
+    <ul class="say-list">
+      <li>Who could have overruled it? And what happened the time it was wrong and blocked good work?</li>
+      <li>If an agent opens merge requests and provisions infrastructure at a bank, where do you put the human and what do you let run unattended?</li>
+      <li>There's an asset library here with promotion gates. What would you gate on, so something an agent generated is trusted enough for someone else to reuse?</li>
+    </ul>
+
+    <div class="note">The override question separates someone who designed a gate from someone who lived with one, because <b>every real gate produces a false positive eventually</b> and somebody has to decide what happens next.</div>
+
+    <div class="branches">
+      <div class="br s">
+        <span class="br-chip">Has scars</span>
+        <p class="br-cue">A real incident with a diagnosis, and the fix was <em>structural</em>. A gate in code, a permission boundary, a loop cap. Not a prompt tweak. Separates reversible from irreversible without being asked.</p>
+        <p class="br-do"><b>Push</b>Who could override the gate, and did they? What did you do the time the gate was wrong and blocked good work?</p>
+      </div>
+      <div class="br p">
+        <span class="br-chip">Prompt-fixed it</span>
+        <p class="br-cue">Has an incident, but the remedy was better instructions. Doesn't reach for a deterministic check the model can't talk its way past.</p>
+        <p class="br-do"><b>Test</b>Ask what stops it recurring on an input he hasn't seen. If he gets to "prompting isn't a guarantee" on his own, upgrade him.</p>
+      </div>
+      <div class="br t">
+        <span class="br-chip">No incident</span>
+        <p class="br-cue">Nothing unexpected ever happened. Everyone who has run agents in production has this story, so its absence is itself the finding.</p>
+        <p class="br-do"><b>Conclude</b>Combined with the earlier probes this likely settles the recommendation. Close early rather than fishing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIVOT BANK -->
+  <section id="pivots">
+    <div class="sec-head">
+      <span class="sec-time">Any time</span>
+      <h2>Pivot bank</h2>
+      <span class="codes">When he opens a door, walk through it</span>
+    </div>
+
+    <p class="why">The probes above are the spine. These are for when he volunteers something and you want to go deeper without losing the thread. <strong>The first three are scenarios rather than recall questions</strong>, so he can't answer them from having read the docs. They're also the kind of question that's enjoyable to answer, which matters, because a screen that feels like a conversation gets you more than one that feels like a quiz.</p>
+
+    <div class="pivots">
+      <div class="pv">
+        <p class="pv-if">Scenario &middot; the obvious answer is wrong</p>
+        <p class="pv-q">An agent runs fine for the first six or seven tool calls, then starts picking wrong tools and giving worse answers. Nothing changed in the code. What do you check first?</p>
+        <p class="pv-w">Everyone goes to the tool descriptions. The usual cause is tool results piling up in the window and crowding out the instructions, and in production those results run several times bigger than anyone's test fixtures. You can't reason to that from documentation. He either hit it once or he didn't.</p>
+      </div>
+      <div class="pv">
+        <p class="pv-if">Scenario &middot; probably happened to him</p>
+        <p class="pv-q">Retrieval works fine in testing. In production it misses whenever someone searches by a specific part number or error code. What's going on?</p>
+        <p class="pv-w">Similarity search is semantic, so an exact identifier loses to a chunk that reads closer but says nothing useful. Wants a keyword pass alongside the vector one. His users are plant engineers searching by tag numbers, so if he built real retrieval for them he has hit this wall.</p>
+      </div>
+      <div class="pv">
+        <p class="pv-if">Scenario &middot; specific symptom, non-obvious cause</p>
+        <p class="pv-q">You've built an LLM judge to score outputs and it gives almost everything a 7 or an 8. What's wrong with it?</p>
+        <p class="pv-w">Models settle on a safe middle number when you ask for a bare score. Wants reasoning before the score, and calibration against cases a human already labeled. "Make the prompt stricter" is the wrong instinct.</p>
+      </div>
+      <div class="pv">
+        <p class="pv-if">If he talks about tools or MCP</p>
+        <p class="pv-q">Say you've got five tools registered and the agent keeps reaching for the wrong one. Walk me through how you'd debug it.</p>
+        <p class="pv-w">Wants descriptions rather than the model. An exclusion sentence, when <em>not</em> to use each one. Knowing that registering everything just in case makes selection worse. Docs-reader says "it uses the description." Someone who's debugged it says "I'd check whether two of them say the same thing."</p>
+      </div>
+      <div class="pv">
+        <p class="pv-if">If he mentions fan-out or parallel workers</p>
+        <p class="pv-q">When you split work across workers, how did you know nothing got quietly dropped? What did one full run cost, and what would it cost at four hundred apps?</p>
+        <p class="pv-w">AGT-002 has to fan out over codebases no window holds. The dangerous failure isn't a crash, it's a worker skipping its unit while the summary reads complete. And the cost question is the one to weight, because almost nobody offers a real number unprompted.</p>
+      </div>
+      <div class="pv">
+        <p class="pv-if">If he talks about context or compaction</p>
+        <p class="pv-q">What's actually in your compaction prompt? What did you lose the first time you got it wrong?</p>
+        <p class="pv-w">Wants a summarizer that keeps file paths, decisions and errors. "Summarize the conversation" drops exactly the state the agent needs next turn.</p>
+      </div>
+      <div class="pv">
+        <p class="pv-if">If he cites Bedrock AgentCore</p>
+        <p class="pv-q">What did AgentCore Gateway give you that you'd otherwise have built yourself? Did that ship, or stop at POC?</p>
+        <p class="pv-w">His resume says POC. An honest "it stayed a POC" is a green flag. Inflating it is a much bigger finding than the gap itself.</p>
+      </div>
+      <div class="pv">
+        <p class="pv-if">If he's strong and you have room</p>
+        <p class="pv-q">If you were building AGT-031, transforming source against ORM rules. Rules engine, model, or both? Where's the seam?</p>
+        <p class="pv-w">Wants: deterministic rules for the known cases, model for the long tail, confidence routing between them. This is the role in one question.</p>
+      </div>
+      <div class="pv">
+        <p class="pv-if">If he mentions LangGraph or frameworks</p>
+        <p class="pv-q">What would you have to write yourself if you dropped the framework? What is it actually giving you?</p>
+        <p class="pv-w">Wants: loop, context management, checkpointing, retries. Someone who can't answer has never seen underneath the abstraction.</p>
+      </div>
+      <div class="pv">
+        <p class="pv-if">If answers stay abstract</p>
+        <p class="pv-q">Take me to the code. What file would I open, and what's in it?</p>
+        <p class="pv-w">The sharpest way to get him off abstractions. Almost impossible to answer about a system you were shown rather than one you built.</p>
+      </div>
+      <div class="pv">
+        <p class="pv-if">The JD's one real extra ask</p>
+        <p class="pv-q">This runs on a gated cadence. Waves, a Definition of Done, quality gates somebody else owns. Have you shipped inside something that structured?</p>
+        <p class="pv-w">The JD calls it "structured enterprise problem-solving methodologies." PR-5 owns Gate 2 and Gate 3. PR-6 runs Alpha/Beta/Gamma. His Duke Energy Jira feature ownership is the closest thing on the resume.</p>
+      </div>
+      <div class="pv">
+        <p class="pv-if">If you need a fit read for Britni</p>
+        <p class="pv-q">Most of this work is agents that emit code and infrastructure rather than answers. How close is that to what you've done?</p>
+        <p class="pv-w">Self-assessment against the real gap. A candid answer here is worth more to her than a confident one.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSE -->
+  <section id="close">
+    <div class="sec-head">
+      <span class="sec-time">32:00–38:00</span>
+      <h2>Close</h2>
+    </div>
+
+    <p class="subhead">Confirm before you hang up</p>
+    <ul class="say-list">
+      <li>Fully remote works? Any location constraint I should flag?</li>
+      <li>Earliest start, and what notice do you owe R.E. Mason?</li>
+      <li>Anything else active that might move faster than this?</li>
+    </ul>
+
+    <div class="note">Then his questions, and <b>no verdict</b>. Not a warm one, not a cool one. "Britni will follow up with next steps." You're screening for a vendor, and any signal from you becomes a promise she has to keep.</div>
+
+    <div class="stop">
+      <span class="s-lbl">30-min cut</span>
+      <p>The invite says <strong>30 to 40</strong>, so the timings above target 38 and assume the full window. If it's called at 30, drop <strong>Probe 1</strong> and shorten Calibrate. Keep <strong>Probe 2 (Duke)</strong>, <strong>Probe 3</strong> and <strong>Probe 4</strong> at full depth. Probe 1's state-machine question folds into Probe 2 in ninety seconds if you want it, since you're already talking about Step Functions there. <strong>Protect Probe 3.</strong> It's the one that decides this. Pick your version before you dial, not at minute 22.</p>
+    </div>
+  </section>
+
+  <!-- SCORECARD -->
+  <section id="score">
+    <div class="sec-head">
+      <span class="sec-time">Right after</span>
+      <h2>Scorecard</h2>
+      <span class="codes">Fill within the hour</span>
+    </div>
+
+    <p class="why">Rate each line separately with evidence attached to every number. One overall score hides which half was strong, and Britni's decision depends on which half. These anchors are my read of the req, not a house standard. Vikas confirmed none exists, so adjust them before you use them.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th><span class="score-n">1</span> Poor</th>
+            <th><span class="score-n">2</span> Borderline</th>
+            <th><span class="score-n">3</span> Solid</th>
+            <th><span class="score-n">4</span> Outstanding</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="dim">Determinism boundary<span>Probe 1 · AGT-005</span></td>
+            <td class="a1">Wants the orchestrator to be an agent. Never constrained a model.</td>
+            <td>Agrees with deterministic sequencing but can't say why beyond "reliability."</td>
+            <td>Named something he took back from the model, and the reason.</td>
+            <td class="a4">Articulates the seam per component. Reaches for replay, audit and cost unprompted.</td>
+          </tr>
+          <tr>
+            <td class="dim">Verifying generated code<span>Probe 3 · the decider</span></td>
+            <td class="a1">Human review is the whole gate. Nothing automated at all.</td>
+            <td>Judge and rubric only, even for something you could just run. Only ever talks about broken, never wrong.</td>
+            <td>Gets to build and tests once you offer it. Understands same-behavior checking.</td>
+            <td class="a4">Says run it, unprompted. An ordered set of checks, broken versus wrong, a fixed corpus, and a route for the doubtful cases.</td>
+          </tr>
+          <tr>
+            <td class="dim">Migration and delivery<span>Probe 2 · Duke · AGT-005/010</span></td>
+            <td class="a1">A pair of hands on someone else's plan. No counts, no alternatives weighed.</td>
+            <td>Migration real, verification hazy. Step Functions was the house choice, never his.</td>
+            <td>Owned it. Real reconciliation. Consumed modules but knows the boundary.</td>
+            <td class="a4">Counts, named alternatives, ran both systems in parallel, and a date the old one died. Owned modules others depended on.</td>
+          </tr>
+          <tr>
+            <td class="dim">Blast radius &amp; gates<span>Probe 4 · AGT-004/010</span></td>
+            <td class="a1">No incident ever. Cannot name what would need a human check.</td>
+            <td>Has an incident, but the fix was a prompt rather than a gate.</td>
+            <td>Structural fix in code. Separates reversible from irreversible.</td>
+            <td class="a4">Named the gate, the override path, and a false positive he corrected.</td>
+          </tr>
+          <tr>
+            <td class="dim">Evidence &amp; ownership<span>Cuts across everything</span></td>
+            <td class="a1">Persistent "we". No specifics. No failure he owns.</td>
+            <td>Some specifics, but his boundary versus the team stays unclear.</td>
+            <td>Says "I" on concrete components. At least one real failure with a diagnosis.</td>
+            <td class="a4">Unprompted constraints and workarounds. Real numbers. Names his own mistakes.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- WRITEUP -->
+  <section id="writeup">
+    <div class="sec-head">
+      <span class="sec-time">Send</span>
+      <h2>Writeup for Britni</h2>
+    </div>
+
+    <div class="writeup-head">
+      <p class="why" style="margin:0;">Every gap gets context and a risk level. "No CDK" is a dead end for her. "Has built orchestrator-worker agent systems, but all of them emit prose rather than code, moderate risk, and the thing a second conversation should test" is something she can act on.</p>
+      <button id="copy" type="button">Copy template</button>
+    </div>
+
+<pre class="tpl" id="tpl">Candidate:   Keyur Patel
+Req:         1015986 · PR-3 AI Engineer (Tooling &amp; Governance)
+Screened:    Triet Ha, [date], [minutes]
+Verdict:     [ Advance / Advance with reservations / Do not advance ]
+
+SUMMARY
+[Two or three sentences. Lead with fit against PR-3, which is building
+and governing agents that emit code. Do not lead with whether he is a
+good AI engineer in general. He is. That is not the question.]
+
+STRENGTHS, with what he actually said
+· [claim] .......... [the specific thing he described]
+· [claim] .......... [the specific thing he described]
+
+GAPS, with context and risk
+· [gap] ... [what he has instead] ... [low / moderate / high risk]
+· [gap] ... [what he has instead] ... [low / moderate / high risk]
+
+AGAINST THE JD AS WRITTEN
+· AI-assisted code transformation ....... [1-4]  [one line]
+· Agent orchestration / workflow ........ [1-4]  [one line]
+· Asset library &amp; deployment pipelines .. [1-4]  [one line]
+· Infra provisioning (CDK or similar) ... [1-4]  [one line]
+· App assessment &amp; container build ...... [1-4]  [one line]
+· Governance frameworks / promotion gates [1-4]  [one line]
+
+WHERE THE JD AND THE WORK DIVERGE
+[The most useful paragraph in this document. The JD's required
+qualifications are soft. They name no language, no framework, no
+scale, no model platform. The AGT table is not soft. Say plainly
+whether he clears the written bar, whether he clears the real one,
+and which questions AWS's own interviewer would find the floor with.]
+
+NOT ASSESSED
+[What you ran out of time for. Naming it tells her what a second
+conversation would be for.]
+
+LOGISTICS
+Remote: [ ]   Earliest start: [ ]   Notice: [ ]   Other pipelines: [ ]
+</pre>
+  </section>
+
+  <!-- REMINDERS -->
+  <section id="rem">
+    <div class="sec-head">
+      <span class="sec-time">Keep visible</span>
+      <h2>While you're on the call</h2>
+    </div>
+
+    <div class="rem">
+      <div>
+        <h4>Two questions do most of the work</h4>
+        <p><b>"What exactly did you do?"</b> and <b>"How did you know it worked?"</b> The second forces a verification story, and those are hard to invent on the spot.</p>
+      </div>
+      <div>
+        <h4>Use silence</h4>
+        <p>When an answer comes back thin, wait three seconds before asking anything. Silence breaks a rehearsed answer better than a follow-up does, because he starts filling it himself.</p>
+      </div>
+      <div>
+        <h4>He is strong here, and that's the trap</h4>
+        <p>His agent work is real. The screen is not "is he good at agents," it's <b>"do his agents emit code, at scale, behind gates."</b> Don't let a good conversation answer a different question.</p>
+      </div>
+      <div>
+        <h4>Don't decide at minute four</h4>
+        <p>Anchoring sets early and then quietly recruits everything after it. Write evidence as he says it, hold the ratings until the call ends.</p>
+      </div>
+      <div>
+        <h4>The halo is loud</h4>
+        <p>Deloitte in the subject line. Boston Scientific and Duke Energy. Three AWS certs including GenAI Developer Professional. None of it is evidence about PR-3.</p>
+      </div>
+      <div>
+        <h4>Skip entirely</h4>
+        <p>No live coding. Wrong instrument, and no time for it. No definitions. Nothing he could answer from skimming the docs last night.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Built against req 1015986, the R.E. Mason / Duke Energy resume, and the PR-2…PR-6 partner-role table.<br>
+    Harness framing from <a href="https://claude.com/blog/harnessing-claudes-intelligence">Anthropic, Agent Harness Design</a> · <a href="https://www.langchain.com/blog/the-anatomy-of-an-agent-harness">LangChain, The Anatomy of an Agent Harness</a> · <a href="https://www.anthropic.com/research/building-effective-agents">Building Effective Agents</a> · your own SOTA-Agentic-Harnesses-Research.md and Architect Professional Module 1.
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var face = document.getElementById('face');
+  var run = document.getElementById('run');
+  var rst = document.getElementById('rst');
+  var phases = Array.prototype.slice.call(document.querySelectorAll('.phase'));
+
+  var elapsed = 0;
+  var ticking = null;
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+  function paint() {
+    var m = Math.floor(elapsed / 60);
+    face.textContent = pad(m) + ':' + pad(elapsed % 60);
+    phases.forEach(function (p) {
+      var a = +p.dataset.a, b = +p.dataset.b;
+      p.classList.toggle('now', m >= a && m < b);
+      p.classList.toggle('past', m >= b);
+    });
+  }
+
+  function tick() { elapsed += 1; paint(); }
+
+  run.addEventListener('click', function () {
+    if (ticking) {
+      clearInterval(ticking);
+      ticking = null;
+      run.textContent = 'Resume';
+    } else {
+      ticking = setInterval(tick, 1000);
+      run.textContent = 'Pause';
+    }
+  });
+
+  rst.addEventListener('click', function () {
+    if (ticking) { clearInterval(ticking); ticking = null; }
+    elapsed = 0;
+    run.textContent = 'Start';
+    paint();
+  });
+
+  paint();
+
+  var copy = document.getElementById('copy');
+  copy.addEventListener('click', function () {
+    var text = document.getElementById('tpl').innerText;
+    var done = function () {
+      copy.textContent = 'Copied';
+      setTimeout(function () { copy.textContent = 'Copy template'; }, 1800);
+    };
+    try {
+      navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+    } catch (e) {
+      fallback(text, done);
+    }
+  });
+
+  function fallback(text, done) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) { /* nothing to do */ }
+    document.body.removeChild(ta);
+  }
+})();
+</script>

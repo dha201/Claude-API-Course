@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Engineer Interview Roadmap (40 Topics)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF8F1;
+    --grid:#DDE6EE;
+    --ink:#20242B;
+    --ink-soft:#4A5058;
+    --p1:#2E5FA3;
+    --p2:#1E5B3C;
+    --p3:#6B3FA0;
+    --p4:#C0442C;
+    --p5:#1C74BC;
+    --hand:'Kalam', 'Comic Sans MS', cursive;
+    --script:'Caveat', 'Kalam', cursive;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:#EFF3F7;
+    background-image:linear-gradient(var(--grid) 1px, transparent 1px),
+                     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size:26px 26px;
+    font-family:var(--hand);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .toolbar{
+    position:sticky; top:0; z-index:20;
+    display:flex; gap:8px; align-items:center;
+    padding:10px 12px;
+    background:rgba(239,243,247,.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid #D6DEE7;
+  }
+  .toolbar span{font-size:14px;color:var(--ink-soft);margin-right:auto}
+  .toolbar button{
+    font-family:var(--hand); font-size:16px; font-weight:700;
+    color:var(--ink); background:var(--paper);
+    border:2px solid var(--ink); border-radius:14px 12px 15px 11px;
+    padding:4px 14px; cursor:pointer; line-height:1.4;
+    box-shadow:2px 2px 0 rgba(32,36,43,.18);
+  }
+  .toolbar button:hover{background:#fff}
+  .toolbar button:active{transform:translate(1px,1px); box-shadow:1px 1px 0 rgba(32,36,43,.18)}
+  .toolbar button:focus-visible{outline:3px solid var(--p5); outline-offset:2px}
+
+  .viewport{overflow:auto; padding:16px; height:calc(100% - 49px)}
+  .sizer{transform-origin:top left}
+  .canvas{
+    width:1720px;
+    background:var(--paper);
+    border:2px solid var(--ink);
+    border-radius:6px;
+    padding:26px 30px 22px;
+    box-shadow:5px 6px 0 rgba(32,36,43,.14);
+  }
+
+  h1{
+    font-family:var(--script);
+    font-weight:700;
+    font-size:62px; line-height:1;
+    text-align:center; margin:0 0 6px;
+    letter-spacing:.5px;
+  }
+  .underline{display:block; width:520px; height:8px; margin:0 auto 12px;}
+  .subtitle{
+    text-align:center; margin:0 0 28px;
+    font-size:20px; font-weight:300; color:var(--ink-soft);
+  }
+
+  .phase{
+    display:grid;
+    grid-template-columns:132px 1fr;
+    gap:0 18px;
+    padding-bottom:16px;
+  }
+
+  .tag{
+    align-self:start;
+    margin-top:6px;
+    border:2px solid var(--c);
+    border-radius:16px 13px 17px 12px;
+    padding:8px 6px 10px;
+    text-align:center;
+    color:var(--c);
+    background:var(--paper);
+  }
+  .tag b{display:block; font-size:15px; font-weight:700; line-height:1.25}
+  .tag i{display:block; font-style:normal; font-size:13px; font-weight:300; opacity:.85; margin-top:2px}
+  .tag em{display:block; font-style:normal; font-size:20px; margin-top:4px}
+
+  .track{position:relative; display:grid; grid-template-columns:repeat(20,1fr); padding-bottom:16px}
+
+  .rail{
+    position:absolute; left:0; right:0; bottom:8px; height:3px;
+    background:var(--c);
+    border-radius:3px;
+    opacity:.9;
+  }
+  .rail::after{
+    content:""; position:absolute; left:0; right:0; top:-2px; height:3px;
+    background:var(--c); opacity:.25; transform:rotate(-.12deg);
+  }
+
+  .node{position:relative; padding:0 10px 0 0}
+  .stem{
+    position:absolute; left:13px; top:34px; bottom:8px; width:0;
+    border-left:2px dashed var(--c); opacity:.55;
+  }
+  .dot{
+    position:absolute; left:8px; bottom:3px; width:11px; height:11px;
+    border:2px solid var(--c); border-radius:50%; background:var(--paper);
+  }
+
+  .head{display:flex; align-items:flex-start; gap:6px}
+  .num{
+    flex:0 0 auto;
+    width:27px; height:27px;
+    border:2px solid var(--c); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:700; color:var(--c);
+    background:var(--paper);
+  }
+  .title{
+    font-size:15px; font-weight:700; line-height:1.2;
+    color:var(--c); padding-top:2px;
+  }
+  .desc{
+    margin:8px 0 0 6px;
+    font-size:13px; font-weight:300; line-height:1.35;
+    color:var(--ink-soft);
+  }
+
+  .node .card{transition:transform .15s ease}
+  .node:hover .card{transform:translateY(-3px)}
+
+  .gap .num{border-style:dashed; color:var(--c); opacity:.6}
+  .gap .title,.gap .desc{opacity:.55; font-weight:300}
+  .gap .stem{opacity:.3}
+
+  .footer{
+    margin-top:6px;
+    border:2px solid var(--p5);
+    border-radius:18px 14px 19px 13px;
+    padding:12px 20px;
+    display:flex; align-items:center; justify-content:center; gap:16px;
+    font-size:18px; color:var(--ink);
+    flex-wrap:wrap;
+  }
+  .footer .arrow{color:var(--ink-soft); font-size:22px}
+
+  @media (prefers-reduced-motion:reduce){
+    .node .card{transition:none}
+    .node:hover .card{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span>Pinch or use zoom to see the whole board</span>
+  <button id="out" aria-label="Zoom out">−</button>
+  <button id="fit">Fit</button>
+  <button id="in" aria-label="Zoom in">+</button>
+</div>
+
+<div class="viewport" id="viewport">
+  <div class="sizer" id="sizer">
+    <div class="canvas" id="canvas">
+      <h1>AI Engineer Interview Roadmap (40 Topics)</h1>
+      <svg class="underline" viewBox="0 0 520 8" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M2 5 C 130 1, 300 8, 518 3" fill="none" stroke="#2E5FA3" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <p class="subtitle">Your 40-Topic Journey from Foundations to Offer</p>
+      <div id="phases"></div>
+      <div class="footer">
+        <span>💡 Follow the roadmap. Master one layer at a time. Build, practice and iterate.</span>
+        <span class="arrow">⟶</span>
+        <span>🏆 Get Confident. Crack Interviews. Get Offers.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const phases = [
+  {
+    n:"Phase 1", name:"Foundations", range:"(1–10)", icon:"📖", color:"var(--p1)", span:2,
+    topics:[
+      [1,"AI Engineer Interview Roadmap","The complete big picture"],
+      [2,"Interview Process Explained","Rounds, evaluation, what to expect"],
+      [3,"AI Engineer Skills Breakdown","Technical + Soft skills"],
+      [4,"Resume That Gets You Hired","Structure, keywords, tips"],
+      [5,"The AI Engineer Knowledge Map","Python, APIs, LLMs, RAG, agents, cloud, system design"],
+      [6,"Coding Round Preparation","What to prepare & how much DSA is actually needed"],
+      [7,"Python for AI Engineers","FastAPI, async, Pydantic, typing, concurrency"],
+      [8,"LLM Fundamentals","Tokens, context window, temperature, structured output"],
+      [9,"Prompt Engineering","System prompts, few-shot, reasoning"],
+      [10,"Embeddings & Vector Search","Embeddings → vector DB → similarity search"]
+    ]
+  },
+  {
+    n:"Phase 2", name:"RAG, Tools & MCP", range:"(11–14)", icon:"🔍", color:"var(--p2)", span:5,
+    topics:[
+      [11,"RAG Interview Preparation","Chunking, retrieval, reranking, hybrid search, evaluation"],
+      [12,"Advanced RAG Questions","Query rewriting, metadata filtering, contextual retrieval"],
+      [13,"Tool Calling","How LLMs actually invoke tools"],
+      [14,"MCP Interview Preparation","MCP architecture, server / client / tools / resources"]
+    ]
+  },
+  {
+    n:"Phase 3", name:"Agents & Systems", range:"(15–20)", icon:"🤖", color:"var(--p3)", span:4,
+    topics:[
+      [15,"AI Agent Fundamentals","Agent vs workflow vs chatbot"],
+      [16,"Agent Architecture","Planner → tools → memory → execution → observation"],
+      [17,"Multi-Agent Systems","Supervisor, handoffs, shared state, communication"],
+      [18,"LangGraph Interview Questions","State, nodes, edges, checkpoints, human-in-loop"],
+      [19,"Agent Memory","Short-term vs long-term memory"],
+      [20,"Topic 20","Not legible in the source image — tell me the title and I'll drop it in", true]
+    ]
+  },
+  {
+    n:"Phase 4", name:"AI Design & Architecture", range:"(21–30)", icon:"🏗️", color:"var(--p4)", span:2,
+    topics:[
+      [21,"AI System Design","How to approach an AI architecture question"],
+      [22,"Design an Enterprise RAG System","Full architecture interview example"],
+      [23,"Design an AI Agent","Full agent architecture example"],
+      [24,"Design a Multi-Agent System","Enterprise multi-agent architecture"],
+      [25,"AWS for AI Engineers","S3, Lambda, DynamoDB, Bedrock, CloudWatch"],
+      [26,"Amazon Bedrock Questions","Models, Converse API, Knowledge Bases, Agents"],
+      [27,"AgentCore Questions","Runtime, Gateway, Identity, Memory, Policy"],
+      [28,"Production AI Architecture","Security, scaling, observability, cost"],
+      [29,"AI Security Questions","Prompt injection, data leakage, tool permissions"],
+      [30,"AI Cost Optimization","Tokens, caching, model selection, architecture"]
+    ]
+  },
+  {
+    n:"Phase 5", name:"Strategy & Prep", range:"(31–40)", icon:"🎯", color:"var(--p5)", span:2,
+    topics:[
+      [31,"How to Answer System Design Questions","A repeatable 7-step framework"],
+      [32,"How to Explain Your Projects","Turning projects into strong interview stories"],
+      [33,"The STAR Framework for Tech Interviews","Situation → Task → Action → Result"],
+      [34,"Questions You Should Ask Interviewers","Senior-level questions that show maturity"],
+      [35,"Common Interview Mistakes","What causes strong candidates to fail"],
+      [36,"The 30-Day Preparation Plan","Week-by-week preparation"],
+      [37,"The 7-Day Crash Plan","What to do if interview is next week"],
+      [38,"The Final Interview Checklist","What to revise 24 hours before"],
+      [39,"My Personal Interview Framework","Your distilled framework from 20+ interviews"],
+      [40,"The Complete AI Engineer Roadmap","One final visual roadmap"]
+    ]
+  }
+];
+
+const esc = s => s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+document.getElementById('phases').innerHTML = phases.map(p => `
+  <section class="phase" style="--c:${p.color}">
+    <div class="tag">
+      <b>${p.n}</b>
+      <b>${esc(p.name)}</b>
+      <i>${p.range}</i>
+      <em>${p.icon}</em>
+    </div>
+    <div class="track">
+      <div class="rail"></div>
+      ${p.topics.map(([num,title,desc,gap]) => `
+        <div class="node${gap ? ' gap' : ''}" style="grid-column:span ${p.span}">
+          <div class="stem"></div>
+          <div class="dot"></div>
+          <div class="card">
+            <div class="head">
+              <div class="num">${num}</div>
+              <div class="title">${esc(title)}</div>
+            </div>
+            <p class="desc">${esc(desc)}</p>
+          </div>
+        </div>`).join('')}
+    </div>
+  </section>`).join('');
+
+// Zoom
+const canvas = document.getElementById('canvas');
+const sizer = document.getElementById('sizer');
+const viewport = document.getElementById('viewport');
+let zoom = 1;
+
+function apply(z){
+  zoom = Math.min(1.6, Math.max(0.2, z));
+  sizer.style.transform = `scale(${zoom})`;
+  sizer.style.width = (canvas.offsetWidth * zoom) + 'px';
+  sizer.style.height = (canvas.offsetHeight * zoom) + 'px';
+}
+function fit(){
+  apply((viewport.clientWidth - 32) / canvas.offsetWidth);
+}
+document.getElementById('in').onclick = () => apply(zoom + 0.15);
+document.getElementById('out').onclick = () => apply(zoom - 0.15);
+document.getElementById('fit').onclick = fit;
+
+apply(1);
+if (viewport.clientWidth < canvas.offsetWidth) fit();
+window.addEventListener('resize', () => apply(zoom));
+</script>
+</body>
+</html>
