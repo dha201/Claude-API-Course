@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="1025" viewBox="0 0 1040 1025" font-family="Segoe UI, Calibri, Arial, sans-serif">
+<defs>
+<marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#9AA1AE"/>
+</marker>
+<style>
+.t    { font-size:22px; font-weight:700; fill:#1A1A2E }
+.st   { font-size:12.5px; fill:#6B7280 }
+.band { font-size:10px; font-weight:700; fill:#8B92A0; letter-spacing:1.2px }
+.bt   { font-size:13px; font-weight:700; fill:#1A1A2E }
+.bx   { font-size:10.5px; fill:#6B7280 }
+.cap  { font-size:10.5px; fill:#6B7280 }
+.lg   { font-size:11.5px; fill:#4B5563 }
+.bdg  { font-size:9px; font-weight:700; fill:#FFFFFF; letter-spacing:.5px }
+.grey { fill:#F8F9FB; stroke:#D5D9E0; stroke-width:1.3 }
+.amb  { fill:#FFF9EC; stroke:#E9A23B; stroke-width:1.6 }
+.ln   { stroke:#9AA1AE; stroke-width:1.5; marker-end:url(#ar); fill:none }
+</style>
+</defs>
+
+<rect width="1040" height="1025" fill="#FFFFFF"/>
+
+<!-- HEADER -->
+<text class="t"  x="38" y="40">C2. Introducing Azure Knowledge Base</text>
+<text class="st" x="38" y="68">Each source keeps its own index. One knowledge base wraps all three and returns a single ranked result.</text>
+
+<rect x="636" y="37" width="14" height="14" rx="3" fill="#FFFFFF" stroke="#B9BFC9" stroke-width="1.6"/>
+<text class="lg" x="659" y="49">Exists today</text>
+<rect x="766" y="37" width="14" height="14" rx="3" fill="#FFFFFF" stroke="#E9A23B" stroke-width="1.6"/>
+<text class="lg" x="789" y="49">New build</text>
+<rect x="873" y="37" width="14" height="14" rx="3" fill="#FFFFFF" stroke="#E05C5C" stroke-width="1.6"/>
+<text class="lg" x="896" y="49">Cannot be reused</text>
+
+<line x1="38" y1="90" x2="1010" y2="90" stroke="#E4E7EC" stroke-width="1"/>
+
+<!-- SOURCES -->
+<text class="band" x="38" y="145">SOURCES</text>
+<rect x="164" y="112" width="216" height="56" rx="7" class="grey"/>
+<text class="bt" x="272" y="136" text-anchor="middle">Project content</text>
+<text class="bx" x="272" y="153" text-anchor="middle">SharePoint</text>
+<rect x="466" y="112" width="215" height="56" rx="7" class="grey"/>
+<text class="bt" x="573" y="136" text-anchor="middle">DBR</text>
+<text class="bx" x="573" y="153" text-anchor="middle">Snowflake</text>
+<rect x="767" y="112" width="215" height="56" rx="7" class="grey"/>
+<text class="bt" x="874" y="136" text-anchor="middle">LDP</text>
+<text class="bx" x="874" y="153" text-anchor="middle">Azure SQL</text>
+
+<line class="ln" x1="272" y1="168" x2="272" y2="196"/>
+<line class="ln" x1="573" y1="168" x2="573" y2="196"/>
+<line class="ln" x1="874" y1="168" x2="874" y2="196"/>
+
+<!-- INGESTION -->
+<text class="band" x="38" y="230">INGESTION</text>
+<text class="bx"   x="38" y="245">data in</text>
+<rect x="164" y="200" width="216" height="60" rx="7" class="grey"/>
+<text class="bt" x="272" y="226" text-anchor="middle">Ingestion pipeline</text>
+<text class="bx" x="272" y="244" text-anchor="middle">unchanged</text>
+<rect x="466" y="200" width="215" height="60" rx="7" class="amb"/>
+<rect x="623" y="210" width="44" height="18" rx="9" fill="#F5A623"/>
+<text class="bdg" x="645" y="223" text-anchor="middle">NEW</text>
+<text class="bt" x="573" y="226" text-anchor="middle">DBR loader</text>
+<text class="bx" x="573" y="244" text-anchor="middle">Snowflake pull</text>
+<rect x="767" y="200" width="215" height="60" rx="7" class="amb"/>
+<rect x="924" y="210" width="44" height="18" rx="9" fill="#F5A623"/>
+<text class="bdg" x="946" y="223" text-anchor="middle">NEW</text>
+<text class="bt" x="874" y="226" text-anchor="middle">LDP loader</text>
+<text class="bx" x="874" y="244" text-anchor="middle">Azure SQL pull</text>
+
+<line class="ln" x1="272" y1="260" x2="272" y2="288"/>
+<line class="ln" x1="573" y1="260" x2="573" y2="288"/>
+<line class="ln" x1="874" y1="260" x2="874" y2="288"/>
+
+<!-- INDEXES -->
+<text class="band" x="38" y="335">INDEXES</text>
+<rect x="164" y="292" width="216" height="80" rx="7" class="grey"/>
+<text class="bt" x="272" y="318" text-anchor="middle">Project Similarity</text>
+<text class="bx" x="272" y="337" text-anchor="middle">existing schema</text>
+<text class="bx" x="272" y="352" text-anchor="middle">1.84M chunks</text>
+<rect x="466" y="292" width="215" height="80" rx="7" class="amb"/>
+<rect x="623" y="302" width="44" height="18" rx="9" fill="#F5A623"/>
+<text class="bdg" x="645" y="315" text-anchor="middle">NEW</text>
+<text class="bt" x="573" y="318" text-anchor="middle">DBR index</text>
+<text class="bx" x="573" y="337" text-anchor="middle">own schema,</text>
+<text class="bx" x="573" y="352" text-anchor="middle">built by hand</text>
+<rect x="767" y="292" width="215" height="80" rx="7" class="amb"/>
+<rect x="924" y="302" width="44" height="18" rx="9" fill="#F5A623"/>
+<text class="bdg" x="946" y="315" text-anchor="middle">NEW</text>
+<text class="bt" x="874" y="318" text-anchor="middle">LDP index</text>
+<text class="bx" x="874" y="337" text-anchor="middle">own schema,</text>
+<text class="bx" x="874" y="352" text-anchor="middle">built by hand</text>
+
+<text class="cap" x="164" y="389">Each source table holds different fields, so each index needs its own schema built by hand.</text>
+
+<line class="ln" x1="272" y1="416" x2="272" y2="401"/>
+<line class="ln" x1="573" y1="416" x2="573" y2="401"/>
+<line class="ln" x1="874" y1="416" x2="874" y2="401"/>
+
+<!-- KNOWLEDGE SOURCES -->
+<text class="band" x="38" y="441">KNOWLEDGE</text>
+<text class="band" x="38" y="455">SOURCES</text>
+<rect x="164" y="420" width="216" height="54" rx="7" class="amb"/>
+<rect x="322" y="428" width="44" height="18" rx="9" fill="#F5A623"/>
+<text class="bdg" x="344" y="441" text-anchor="middle">NEW</text>
+<text class="bt" x="252" y="443" text-anchor="middle">Knowledge source</text>
+<text class="bx" x="272" y="461" text-anchor="middle">wraps the index, holds no data</text>
+<rect x="466" y="420" width="215" height="54" rx="7" class="amb"/>
+<rect x="623" y="428" width="44" height="18" rx="9" fill="#F5A623"/>
+<text class="bdg" x="645" y="441" text-anchor="middle">NEW</text>
+<text class="bt" x="553" y="443" text-anchor="middle">Knowledge source</text>
+<text class="bx" x="573" y="461" text-anchor="middle">wraps the index, holds no data</text>
+<rect x="767" y="420" width="215" height="54" rx="7" class="amb"/>
+<rect x="924" y="428" width="44" height="18" rx="9" fill="#F5A623"/>
+<text class="bdg" x="946" y="441" text-anchor="middle">NEW</text>
+<text class="bt" x="854" y="443" text-anchor="middle">Knowledge source</text>
+<text class="bx" x="874" y="461" text-anchor="middle">wraps the index, holds no data</text>
+
+<line class="ln" x1="573" y1="514" x2="272" y2="480"/>
+<line class="ln" x1="573" y1="514" x2="573" y2="480"/>
+<line class="ln" x1="573" y1="514" x2="874" y2="480"/>
+
+<!-- KNOWLEDGE BASE -->
+<text class="band" x="38" y="538">KNOWLEDGE</text>
+<text class="band" x="38" y="552">BASE</text>
+<rect x="164" y="514" width="818" height="62" rx="7" class="amb"/>
+<rect x="924" y="524" width="44" height="18" rx="9" fill="#F5A623"/>
+<text class="bdg" x="946" y="537" text-anchor="middle">NEW</text>
+<text class="bt" x="573" y="543" text-anchor="middle">Azure Knowledge Base</text>
+<text class="bx" x="573" y="562" text-anchor="middle">one call reaches all three sources, then ranks and merges them inside Azure</text>
+
+<line class="ln" x1="573" y1="616" x2="573" y2="582"/>
+
+<!-- RETRIEVAL -->
+<text class="band" x="38" y="640">RETRIEVAL</text>
+<text class="bx"   x="38" y="655">services</text>
+<rect x="164" y="616" width="818" height="62" rx="7" class="amb"/>
+<rect x="924" y="626" width="44" height="18" rx="9" fill="#F5A623"/>
+<text class="bdg" x="946" y="639" text-anchor="middle">NEW</text>
+<text class="bt" x="573" y="645" text-anchor="middle">Source-agnostic retrieval service</text>
+<text class="bx" x="573" y="664" text-anchor="middle">one tool, one retrieve call, no tool for each index</text>
+
+<line class="ln" x1="573" y1="718" x2="573" y2="684"/>
+
+<!-- ORCHESTRATOR -->
+<text class="band" x="38" y="762">ORCHESTRATOR</text>
+<rect x="164" y="718" width="818" height="100" rx="7" fill="#F8F9FB" stroke="#D5D9E0" stroke-width="1.3"/>
+<text class="bt" x="180" y="742">Orchestrator preset</text>
+<rect x="176" y="756" width="194" height="50" rx="6" fill="#FFFFFF" stroke="#D5D9E0" stroke-width="1.3"/>
+<text class="bt" x="273" y="779" text-anchor="middle">Sequential tool calls</text>
+<text class="bx" x="273" y="795" text-anchor="middle">exists today</text>
+<text class="bx" x="400" y="778">No parallel invocation, and no answer-level merge.</text>
+<text class="bx" x="400" y="795">The knowledge base fans out and ranks on our behalf.</text>
+
+<line class="ln" x1="272" y1="848" x2="272" y2="824"/>
+<line class="ln" x1="874" y1="818" x2="874" y2="844"/>
+
+<!-- PROMPT AND ANSWER -->
+<rect x="164" y="848" width="216" height="55" rx="7" class="grey"/>
+<text class="bt" x="272" y="881" text-anchor="middle">User prompt</text>
+<rect x="767" y="848" width="215" height="55" rx="7" class="grey"/>
+<text class="bt" x="874" y="873" text-anchor="middle">Answer</text>
+<text class="bx" x="874" y="890" text-anchor="middle">+ citations per source</text>
+
+<!-- NOTES -->
+<rect x="164" y="928" width="401" height="77" rx="7" fill="#FDF2F2" stroke="#E05C5C" stroke-width="1.4"/>
+<text x="181" y="951" font-size="11.5px" font-weight="700" fill="#C0392B">chat_similarity stage one cannot be reused</text>
+<text x="181" y="971" font-size="10.5px" fill="#B4544B">Its facet, sorted-field lookup and filter count have</text>
+<text x="181" y="988" font-size="10.5px" fill="#B4544B">no equivalent in the retrieve call.</text>
+
+<rect x="583" y="928" width="399" height="77" rx="7" fill="#FFF9EC" stroke="#E9A23B" stroke-width="1.4"/>
+<text x="600" y="951" font-size="11.5px" font-weight="700" fill="#B4700E">Semantic rank always runs</text>
+<text x="600" y="971" font-size="10.5px" fill="#8A6420">The rerank step cannot be skipped, so decision D4</text>
+<text x="600" y="988" font-size="10.5px" fill="#8A6420">loses the protection it gives short documents.</text>
+</svg>

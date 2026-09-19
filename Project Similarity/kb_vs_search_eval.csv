@@ -1,0 +1,1638 @@
+Use-case category,Input prompt,KB result,chat_similarity (Search) result,Verdict,Why the KB path fell short
+Vendor / technology lookup,Which projects officially list Amazon Web Services as a vendor?,"I do not see any projects in the provided results that carry a CONFIRMED MATCH indicating an official vendor-field match for Amazon Web Services (AWS).
+
+One project does mention AWS in its project record:
+
+- Primavera Cloud Migration (PPL: 1012324) lists vendors as “AWS / Oracle” in the project record, but this result set does not include a CONFIRMED MATCH marker for an AWS vendor query, so I cannot classify it as an officially tagged AWS project for this question. Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=712): AWS / Oracle.
+
+Based on the evidence provided, there are no code-verified official AWS vendor matches in this result set. The closest item is Primavera Cloud Migration, where AWS is listed in the project record but is not confirmed as an official match for this specific vendor search.","The records show 10 projects that officially list Amazon Web Services (AWS) as a vendor. “Officially listed” here means the project carries a confirmed vendor match in its project record, not just a mention in project documents.
+
+Officially tagged with AWS
+
+1. Cloud - 2021 AWS Security project (PPL: 1010497)
+- Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=133): AMAZON WEB SERVICES INC.
+- AWS Professional Services were used to accelerate design and implementation of cloud security controls. [project_similarity:1010497_1010497_CO_Gatekeeper_Cloud_2021_AWS_Security_project.pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=41548)
+
+2. SPI NET (PPL: 1013215)
+- Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=684): Amazon Web Services / Accenture.
+- The project is building a GenAI-enabled supply chain platform through an AWS strategic partnership. [project_similarity:1013215_SPI NET Project (1013215) - Gate 3 - Aug2025.pptx:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=48818)
+
+3. 2021 Connected AWS Enablement (PPL: 1010563)
+- Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=616): AMAZON WEB SERVICES INC, AMAZON, DELOITTE CONSULTING LLP, NVISIUM, EXFIL SECURITY LLC, AT&T, HASHICORP INC, LEVEL 3 COMMUNICATIONS LLC.
+- The project established an AWS hosting environment and migrated workloads from on?premises infrastructure. [project_similarity:1010563_1010563_CP3_CO_Architect_LA_2021_AWS_Cloud_Enablement.pdf:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=42548)
+
+4. OneConnect Foundation Phase 2 (PPL: 1005981)
+- Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=36): AMAZON WEB SERVICES INC, SALESFORCE COM INC, AQUENT LLC, MASTERWORD SERVICES INC, AMAZON.
+
+5. 2023 Event Management AI Ops Replacement Project (PPL: 1012144)
+- Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=234): EXXONMOBIL ASIA PACIFIC PTE LTD, AMAZON WEB SERVICES INC, HCL AMERICA INC.
+- The project migrated enterprise event management and AIOps capabilities from an on?premises platform to a SaaS solution. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=4913429)
+
+6. Cloud Migration Project (PPL: 1009394)
+- Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=515): LEVEL 3 COMMUNICATIONS LLC, AMAZON WEB SERVICES INC, HCL TECHNOLOGIES LTD, SDL SHEFFIELD LTD, INFOSYS LTD, EXXONMOBIL PROD SOLUTIONS CO US, NVISIUM, AT&T.
+- The project expanded Managed AWS and supported large-scale cloud migrations. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2888389)
+
+7. Digital Reality Ecosystem - Phase 2 (PPL: 1011648)
+- Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=592): ORIGIN METROLOGY GROUP LLC, INDUSTRIAL MACHINE WORKS INC, RADIX US LLC, LTIMINDTREE LTD, AQUENT LLC, OBJECT MANAGEMENT GROUP INC, EXFIL SECURITY LLC, WOOD GROUP UK LTD, AMAZON WEB SERVICES INC, LEICA, FIELDNODE AS, LEMONLIGHT MEDIA INC, CINTOO US INC, VEE.
+
+8. Project Dragon (PPL: 1012607)
+- Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=510): AMAZON WEB SERVICES INC, HALCYON SERVICES INC, BEIJING WANGSU SCIENCE & TECHNOLOGY, YING SHI AI TE SHANGHAI RUAN JIAN, DELL CHINA CO LTD, GUANGZHOU TAIER NETWORK TECHNOLOGY, HCL AXON SOLUTIONS SHANGHAI CO LTD, AT&T CHINA CO LTD, DELOITTE CONSULTING LLP, D.
+
+9. Subsurface Data Foundation (SDF) (PPL: 1009735)
+- Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=533): MICROSOFT CORP, ACCENTURE INTERNATIONAL LTD, EXFIL SECURITY LLC, THE OPEN GROUP LLC, SCHLUMBERGER TECHNOLOGY CORP, INFOSYS LTD, EXXONMOBIL PROD SOLUTIONS CO US, KATALYST DATA MANAGEMENT LLC, EPAM SYSTEMS INC, AMAZON WEB SERVICES INC, ENVIRONMENTAL SYSTEMS.
+
+10. EC Transformation Project (PPL: 1011712)
+- Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=536): AMAZON, AMAZON WEB SERVICES INC, SIEMENS INDUSTRY SOFTWARE INC, EXFIL SECURITY LLC, INFOSYS LTD, MICROSOFT CORP.
+- The project upgrades Energy Components to a cloud-based version and establishes an EC data foundation. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=4144889)
+
+Not officially tagged with AWS
+- 2021 Oracle Platform Modernization lists AMAZON as a vendor, but it was not returned as a confirmed AWS vendor match for this query. The records do discuss AWS-related cloud strategy and migrations. [project_similarity:1009219_1009219_2021 Oracle Platform Modernization_CP3+CO_DocuSigned.pdf:Page-7](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=42257)
+
+Follow-up questions:
+<<Show only AWS-tagged projects that have closed out and summarize their lessons learned>>
+<<Which AWS-tagged projects had the highest actual spend and what outcomes did they report?>>","KB-path returns no projects; chat_similarity returns 10.
+- chat_similarity lists 10 projects and quotes the vendor field on each, showing AMAZON WEB SERVICES INC or 'Amazon Web Services / Accenture'
+- KB-path states no project in its results carries a confirmed Amazon Web Services vendor match, and names only 1012324 (vendor 'AWS / Oracle') as a record mention
+- The two share no projects
+- Both treat a vendor tagged only AMAZON as not an Amazon Web Services match; chat_similarity applies that to one excluded project, KB-path to its entire result set","The Search API has `searchMode`. Setting it to ""all"" means every word must match, so ""Amazon Web Services"" requires all three and a vendor tagged only AMAZON does not count. The Retrieval API has no `searchMode`, so every word is optional and a vendor tagged only AMAZON, or any vendor string containing SERVICES, counts as a hit. That one setting is the whole point of asking which projects carry a specific vendor.
+
+Because of this, the retrieve returned 9 projects (internally) and none carries an Amazon Web Services vendor tag, while the 10 that do carry it were not among them. The answer is not a shorter version of the right list, it is a different list.
+
+The answer still came back safe: the confirmed-match check caught the mismatch and reported no verified matches rather than listing the 9 wrong ones. That avoided a confident wrong answer, but the 10 correct projects were still unreachable."
+Vendor / technology lookup,Did we work with vendor Kinaxis for any projects? How satisfied we were/are with this vendor?,"**Ranking Summary**
+
+| Rank | Project Name | Question Match % | Solution | Gate | Start Year | Close Year | Vendor | Why Selected |
+|------|------|------|------|------|------|------|------|------|
+| 1 | Upstream SC Digital Enablement - Value Prototype (PPL: 1013533) | 67% | Custom Software Development | Stage 4 (in progress) | 2025 | 2026 (planned) | Kinaxis / Accenture | This project is officially tagged with Kinaxis as a vendor and includes documented evaluation activities and outcomes. It provides direct evidence about how Kinaxis was assessed, although it does not contain a formal vendor satisfaction review. |
+
+<details>
+<summary>How to read the Question Match %</summary>
+This shows how well each project matches your question, based on the evidence found in its documents. ""Criteria"" are the specific conditions in your question, like the timeframe, project type, gate, or outcome you asked about. A higher score means the project meets more of those criteria with stronger supporting evidence. A lower score means a partial match: relevant, but missing some criteria or backed by weaker evidence.
+</details>
+
+**Detailed Findings**
+
+### Upstream SC Digital Enablement - Value Prototype (PPL: 1013533)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8082506
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=685
+
+What we know about Kinaxis:
+- Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=685): Kinaxis / Accenture.
+- The project's objective was to prototype selected Upstream Supply Chain Planning and Marine routing optimization use cases and assess both Kinaxis and Lyric capabilities, with the goal of selecting the solution with the best functional fit and lower cost. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8082506)
+- Planned deliverables included executing use cases in Kinaxis and Lyric to validate functional capabilities and support solution selection. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8082506)
+- The project completed Kinaxis demonstrations and deep-dive evaluations as part of its vendor assessment process. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8082506)
+- The team also completed business, technical, and cost scoring of the evaluated platforms. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=685) [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8082506)
+- After the evaluation, a recommendation was presented to the steering committee and Lyric was selected as the lead-case solution for implementation rather than Kinaxis. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8082506)
+
+Regarding satisfaction with Kinaxis:
+- I did not find any documented vendor satisfaction scores, lessons learned, performance reviews, or explicit statements saying the team was satisfied or dissatisfied with Kinaxis.
+- The project is still in progress and has not reached closeout, so formal lessons learned and retrospective vendor assessments would not normally be available yet.
+- The strongest evidence available is that Kinaxis was evaluated through prototypes, demos, technical reviews, and scoring, but another solution (Lyric) was ultimately selected for implementation. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8082506)
+
+**Bottom line:** We do have at least one documented project that worked with and formally evaluated Kinaxis. The records show a structured comparison against Lyric and indicate that Lyric was chosen as the preferred implementation solution. However, the available records do not contain any explicit satisfaction rating or qualitative assessment of Kinaxis's performance. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8082506)
+
+<<Show me all projects that officially list Kinaxis as a vendor>>
+<<What business, technical, and cost evaluation results were recorded for the Kinaxis vs Lyric comparison?>>","**Ranking Summary**
+
+| Rank | Project Name | Question Match % | Solution | Gate | Start Year | Close Year | Why Selected |
+|------|------|------:|------|------|------|------|------|
+| 1 | Upstream SC Planning Transformation Project (PPL: 1012880) | 92% | Software as a Service (SaaS) | Closeout | 2024 | 2025 (actual) | Officially tagged with Kinaxis and includes closeout lessons learned, accomplishments, disappointments, benefits, and execution assessment, providing the strongest evidence about the experience with the vendor. |
+| 2 | Upstream SC Digital Enablement - Value Prototype (PPL: 1013533) | 83% | Custom Software Development | Gate 3/Design Complete | 2025 | 2026 (planned) | Officially tagged with Kinaxis and specifically evaluates Kinaxis against an alternative platform (Lyric), including risks, strengths, and selection findings. |
+| 3 | FP Supply Demand Balancing Solution Project (PPL: 1008821) | 75% | Non-SAP (Packaged Software) | Gate 3/Design Complete | 2021 | 2026 (planned) | Officially tagged with Kinaxis and contains substantial implementation, architecture, licensing, and integration information. |
+| 4 | FP Supply Demand Balancing PoW Lead Project (PPL: 1011794) | 50% | Not recorded | Gate 3/Design Complete | 2022 | 2028 (planned) | Closely related Supply Demand Balancing program that references Kinaxis RapidResponse as part of the solution landscape, but provides little vendor-performance commentary. |
+| 5 | FP Supply Demand Balancing Data Foundation Project (PPL: 1011588) | 42% | Software as a Service (SaaS) | Closeout | 2022 | 2025 (actual) | Part of the same Supply Demand Balancing ecosystem but the retrieved evidence focuses on architecture and data foundation rather than vendor satisfaction. |
+| 6 | RevUp Project (PPL: 72082) | 25% | Software as a Service (SaaS) | Closeout | 2018 | 2022 (actual) | Included in the results but used PROS rather than Kinaxis; useful mainly as a low-relevance comparison. |
+| 7 | 2026 Heavy Oil UDA Support Transition (PPL: 1013719) | 17% | Not recorded | Gate 3/Design Complete | 2025 | 2027 (planned) | Included in the results but has no Kinaxis involvement in the retrieved evidence. |
+
+<details>
+<summary>How to read the Question Match %</summary>
+This shows how well each project matches your question, based on the evidence found in its documents. ""Criteria"" are the specific conditions in your question, like the timeframe, project type, gate, or outcome you asked about. A higher score means the project meets more of those criteria with stronger supporting evidence. A lower score means a partial match: relevant, but missing some criteria or backed by weaker evidence.
+</details>
+
+**Detailed Findings**
+
+Overall, yes — Kinaxis was used on multiple projects.
+
+Officially tagged Kinaxis projects:
+- FP Supply Demand Balancing Solution Project (PPL: 1008821)
+- Upstream SC Planning Transformation Project (PPL: 1012880)
+- Upstream SC Digital Enablement - Value Prototype (PPL: 1013533)
+
+Based on the available evidence, the organization's experience with Kinaxis appears mixed but generally positive regarding functionality and platform capability, while challenges were reported around business resourcing, alignment, schedule impacts, integration complexity, and cost.
+
+### Upstream SC Planning Transformation Project (PPL: 1012880)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=6130332
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=506
+
+Evidence suggesting positive experience:
+- The project selected Kinaxis as the enterprise Advanced Planning System (APS) solution and completed a Kinaxis blueprint including requirements and user stories. [project_similarity:1012880_1012880 - CP3 & Closeout - Architect-GK-Sup Mgr endorsements.pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49592)
+- The project implemented S&OP processes and captured operating cost reductions of $7.3M annually, projected to $36.5M over five years. [project_similarity:1012880_1012880 - CP3 & Closeout - Architect-GK-Sup Mgr endorsements.pdf:Page-13](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49592)
+- A closeout lesson recommended leveraging enterprise-grade solutions because standardized platforms improved scalability, integration, sustainability, and alignment with enterprise architecture. [project_similarity:1012880_1012880 - CP3 & Closeout - Upstream SC Planning Transformation.pptx:Page-10](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49591)
+
+Evidence suggesting concerns:
+- The Kinaxis demand and supply planning implementation was stopped after broader business governance challenged scope, value, and cost. [project_similarity:1012880_1012880 - CP3 & Closeout - Upstream SC Planning Transformation.pptx:Page-8](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49591)
+- Lack of dedicated business resources slowed progress and increased vendor costs. [project_similarity:1012880_1012880 - CP3 & Closeout - Architect-GK-Sup Mgr endorsements.pdf:Page-11](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49592)
+- Delays led to additional vendor fees. [project_similarity:1012880_1012880 - CP3 & Closeout - Architect-GK-Sup Mgr endorsements.pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49592)
+
+Assessment:
+- The closeout record does not criticize Kinaxis as a product. Most lessons learned focus on governance, staffing, scope management, and data readiness rather than vendor performance. [project_similarity:1012880_1012880 - CP3 & Closeout - Upstream SC Planning Transformation.pptx:Page-10](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49591)
+
+### Upstream SC Digital Enablement - Value Prototype (PPL: 1013533)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8082506
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=685
+
+Purpose:
+- This project was created specifically to evaluate Kinaxis versus Lyric for planning and marine optimization capabilities. [project_similarity:1013533_1013533 Upstream SC - Value Prototype - Gates 1-2-3.pptx:Page-6](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49023)
+
+Positive observations about Kinaxis:
+- Kinaxis was evaluated for strong optimizer integration, vessel balancing, logistics routing, and configuration flexibility. [project_similarity:1013533_1013533 - Gates 1-2-3 - ITRM & Achitect Endorsement.pdf:Page-6](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49025)
+- The evaluation specifically sought to assess Kinaxis performance and integration capabilities. [project_similarity:1013533_1013533 - Gates 1-2-3 - ITRM & Achitect Endorsement.pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49025)
+
+Challenges and reservations:
+- The project identified marine optimization integration as a key Kinaxis risk that required prototyping before committing to a larger investment. [project_similarity:1013533_1013533 Upstream SC - Value Prototype - Gates 1-2-3.pptx:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49023)
+- Stakeholder management plans included regular governance checkpoints with Kinaxis to manage alignment and vendor relationship risks. [project_similarity:1013533_1013533 Upstream SC - Value Prototype - Gates 1-2-3.pptx:Page-12](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49023)
+
+Outcome:
+- The project's own status reporting states that Lyric was ultimately selected as the lead-case solution for implementation after business, technical, and cost scoring. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8082506)
+- The evidence shows Kinaxis remained a credible candidate but was not the final recommended platform for this initiative. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8082506)
+
+### FP Supply Demand Balancing Solution Project (PPL: 1008821)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2486165
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=565
+
+Official vendor listing:
+- Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=565): ECMARKET INC, KINAXIS CORP, CLOUDERA INC, UNITED CONSULT PLC, HCL TECHNOLOGIES CORPORATE, DISYS, DELOITTE CONSULTING LLP.
+
+Positive observations:
+- The project reports business engagement and commitment to move to the new tool, with vendor co-location increasing delivery velocity. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2486165)
+- Architecture reviews stated that Kinaxis supported modern authentication requirements and API-based integration approaches. [project_similarity:1008821_Endorsed_1008821 HW3 Supply Demand Balancing Program - Solution Gate 3.pdf:Page-13](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=43854)
+- The review described Kinaxis RapidResponse as a SaaS solution with global hosting options, a 99.5% SLA, scalability, monitoring, and native connectors. [project_similarity:1008821_Endorsed_1008821 HW3 Supply Demand Balancing Program - Solution Gate 3.pdf:Page-13](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=43854)
+
+Reservations:
+- The architecture review noted Kinaxis lacked native publish/subscribe and streaming capabilities and relied on workarounds through REST/SOAP interfaces. [project_similarity:1008821_Endorsed_1008821 HW3 Supply Demand Balancing Program - Solution Gate 3.pdf:Page-13](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=43854)
+
+Assessment:
+- This project is still in progress and has not had its closeout review yet, so final lessons learned and overall satisfaction have not been formally recorded.
+
+### FP Supply Demand Balancing Data Foundation Project (PPL: 1011588)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=3968346
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=499
+
+Findings:
+- This project supported the Supply Demand Balancing ecosystem by creating a common fuels supply-chain data model. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=3968346)
+- Retrieved evidence focuses on architecture and data integration. It does not contain specific lessons learned or satisfaction commentary about Kinaxis. [project_similarity:1011588_1011588_Closeout_GK_Endorsement_SDBP_Data_Foundation.pdf:Page-9](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49629)
+- This project has already closed, but the retrieved material is largely technical architecture content rather than vendor-performance feedback.
+
+### RevUp Project (PPL: 72082)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=44879
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=190
+
+Findings:
+- This project used PROS rather than Kinaxis. Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=190): PROS INC, AMEX BANK OF CANADA.
+- It does not provide evidence about Kinaxis satisfaction.
+
+### 2026 Heavy Oil UDA Support Transition (PPL: 1013719)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8568319
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=639
+
+Findings:
+- Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=639): No Vendor.
+- No Kinaxis involvement was found in the retrieved evidence.
+
+### FP Supply Demand Balancing PoW Lead Project (PPL: 1011794)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=4257704
+
+Findings:
+- The program architecture references RapidResponse as part of the Supply Demand Balancing solution stack. [project_similarity:1011794_Endorsed_POW_endorsement_request_-_Fuels_Product_Suppl (1).pdf:Page-7](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=43850)
+- No direct satisfaction, lessons learned, or vendor-performance assessment was retrieved for this lead project. It appears to function primarily as a program-level benefits vehicle. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=4257704)
+
+Overall conclusion:
+- Kinaxis was used extensively in Supply Chain planning initiatives and was formally selected as the enterprise APS solution in several efforts. [project_similarity:1012880_1012880 - CP3 & Closeout - Architect-GK-Sup Mgr endorsements.pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49592)
+- The strongest closeout evidence does not indicate dissatisfaction with Kinaxis itself; most recorded issues relate to governance, staffing, scope definition, data readiness, and business alignment. [project_similarity:1012880_1012880 - CP3 & Closeout - Upstream SC Planning Transformation.pptx:Page-10](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49591)
+- Kinaxis was viewed as scalable and enterprise-grade, but integration complexity, marine optimization capability, and overall implementation cost/risk were recurring concerns. [project_similarity:1008821_Endorsed_1008821 HW3 Supply Demand Balancing Program - Solution Gate 3.pdf:Page-13](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=43854) [project_similarity:1013533_1013533 Upstream SC - Value Prototype - Gates 1-2-3.pptx:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49023)
+- In the most recent comparative evaluation, Lyric was ultimately selected over Kinaxis for the targeted future implementation roadmap. [project_similarity:1013533_1013533 - Scope Change Endorsement - GK & ITRM.pdf:Page-8](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=50721)
+
+<<Show me all lessons learned from projects that used Kinaxis>>
+<<Compare Kinaxis versus Lyric findings from the Upstream SC Digital Enablement Value Prototype project>>","KB-path returns 1 project; chat_similarity returns 7.
+- Both name 1013533 as officially Kinaxis-tagged
+- chat_similarity adds 1008821 and 1012880 as officially tagged, plus 4 related-but-untagged projects
+- KB-path states no satisfaction evidence exists; chat_similarity quotes closeout lessons and the Kinaxis-vs-Lyric outcome with page citations","Two things went wrong. The vendor lookup ran as a free-text search instead of a vendor-field search, because the Retrieval API has no `searchFields`, so it returned 1 project instead of the 3 carrying the tag. And the satisfaction half of the question needs Closeout document text, which the flow only reaches after it works out the project's state. State comes from grouping by project, and the Retrieval API has no `facets` to group with, so the flow never routes to Closeout and reports that no satisfaction evidence exists, even though closeout lessons for one of the tagged projects sit in the index."
+Vendor / technology lookup,Which projects officially list Kinaxis as a vendor?,"**Ranking Summary**
+
+| Rank | Project Name | Question Match % | Solution | Gate | Start Year | Close Year | Why Selected |
+|------|------|------:|------|------|------|------|------|
+| 1 | Upstream SC Digital Enablement - Value Prototype (PPL: 1013533) | 92% | Custom Software Development | Stage 4 (in progress) | 2025 | 2026 (planned) | This project is a confirmed, officially tagged Kinaxis vendor match. The records show Kinaxis listed in the vendor field and the project's objective included evaluating Kinaxis capabilities for supply chain planning use cases. |
+
+<details>
+<summary>How to read the Question Match %</summary>
+This shows how well each project matches your question, based on the evidence found in its documents. ""Criteria"" are the specific conditions in your question, like the timeframe, project type, gate, or outcome you asked about. A higher score means the project meets more of those criteria with stronger supporting evidence. A lower score means a partial match: relevant, but missing some criteria or backed by weaker evidence.
+</details>
+
+**Detailed Findings**
+
+### Upstream SC Digital Enablement - Value Prototype (PPL: 1013533)
+
+Officially tagged Kinaxis project:
+- Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=685): Kinaxis / Accenture.
+- This project is included because it carries a confirmed vendor match for Kinaxis in the official project vendor record. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=685)
+- The project's objective was to prototype Upstream Supply Chain Planning and marine routing optimization use cases, validate business requirements, and assess Kinaxis and Lyric capabilities before selecting a lead solution. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8082506)
+- The project completed Kinaxis demonstrations and deep dives as part of its evaluation activities. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8082506)
+- The evaluation included business, technical, and cost scoring, and the recommendation presented to the steering committee selected Lyric as the lead implementation solution. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8082506)
+- Actual start year: 2025. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8082506)
+- Target close year: 2026, and the project is still in progress. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8082506)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8082506
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=685
+- PSR: https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=48810
+
+<<Show me projects that officially list Accenture as a vendor>>
+<<What outcomes and lessons learned are available for the Upstream SC Digital Enablement - Value Prototype project?>>","I found 3 projects that officially list Kinaxis as a vendor based on confirmed vendor matches.
+
+**Ranking Summary**
+
+| Rank | Project Name | Question Match % | Solution | Gate | Start Year | Close Year | Why Selected |
+|------|------|------:|------|------|------|------|------|
+| 1 | Upstream SC Planning Transformation Project (PPL: 1012880) | 92% | Software as a Service (SaaS) | Closeout | 2024 | 2025 (actual) | Officially tagged with KINAXIS CORP and includes extensive closeout documentation. |
+| 2 | Upstream SC Digital Enablement - Value Prototype (PPL: 1013533) | 83% | Custom Software Development | Gate 3/Design Complete | 2025 | 2026 (planned) | Officially tagged with Kinaxis / Accenture and centered on evaluating Kinaxis capabilities. |
+| 3 | FP Supply Demand Balancing Solution Project (PPL: 1008821) | 83% | Non-SAP (Packaged Software) | Gate 3/Design Complete | 2021 | 2026 (planned) | Officially tagged with KINAXIS CORP and uses Kinaxis in its supply-demand balancing solution. |
+| 4 | LVC Demand Planning Project (PPL: 1012781) | 42% | Custom Software Development | Closeout | 2023 | 2025 (actual) | References Kinaxis in project documentation, but there is no confirmed official Kinaxis vendor match. |
+| 5 | FP Supply Demand Balancing Data Foundation Project (PPL: 1011588) | 33% | Software as a Service (SaaS) | Complete record only | 2022 | 2025 (actual) | Related supply-chain project, but there is no confirmed official Kinaxis vendor match. |
+
+<details>
+<summary>How to read the Question Match %</summary>
+This shows how well each project matches your question, based on the evidence found in its documents. ""Criteria"" are the specific conditions in your question, like the timeframe, project type, gate, or outcome you asked about. A higher score means the project meets more of those criteria with stronger supporting evidence. A lower score means a partial match: relevant, but missing some criteria or backed by weaker evidence.
+</details>
+
+**Detailed Findings**
+
+Officially tagged Kinaxis vendor projects:
+
+- FP Supply Demand Balancing Solution Project (PPL: 1008821)
+  - Officially lists vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=565): ECMARKET INC, KINAXIS CORP, CLOUDERA INC, UNITED CONSULT PLC, HCL TECHNOLOGIES CORPORATE, DISYS, DELOITTE CONSULTING LLP.
+  - This is a supply-chain demand planning and supply-demand balancing implementation using Kinaxis-related capabilities. [project_similarity:1008821_Endorsed_1008821 HW3 Supply Demand Balancing Program - Solution Gate 3.pdf:Page-9](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=43854)
+
+- Upstream SC Planning Transformation Project (PPL: 1012880)
+  - Officially lists vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=506): MCKINSEY & CO INC, KINAXIS CORP.
+  - The project selected Kinaxis as the enterprise APS solution and developed a Kinaxis blueprint before the implementation was stopped following business-gate changes. [project_similarity:1012880_1012880 - CP3 & Closeout - Architect-GK-Sup Mgr endorsements.pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49592)
+
+- Upstream SC Digital Enablement - Value Prototype (PPL: 1013533)
+  - Officially lists vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=685): Kinaxis / Accenture.
+  - The project evaluated Kinaxis and Lyric for supply-chain planning and marine optimization use cases. [project_similarity:1013533_1013533 Upstream SC - Value Prototype - Gates 1-2-3.pptx:Page-6](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49023)
+
+Not officially tagged with Kinaxis:
+
+- LVC Demand Planning Project (PPL: 1012781)
+  - Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=548): ERNST & YOUNG US LLP, DELOITTE CONSULTING LLP, ACCENTURE INTERNATIONAL LTD.
+  - The documentation discusses transitioning demand planning execution to Kinaxis, but Kinaxis is not confirmed as an officially listed vendor for this project. [project_similarity:1012781_PPL_1012781_LVC Demand Planning_CP3&CO All endorsement.pdf:Page-8](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49518)
+
+- FP Supply Demand Balancing Data Foundation Project (PPL: 1011588)
+  - Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=499): EXFIL SECURITY LLC, ECMARKET INC, THOUGHTWORKS INC, GABOR KOHEGYI.
+  - No confirmed Kinaxis vendor tag appears for this project.
+
+<<Show the lessons learned from the Kinaxis-tagged projects>>
+<<Compare costs and outcomes across the three Kinaxis-tagged projects>>","KB-path returns 1 project; chat_similarity returns 3 tagged plus 2 explicitly excluded.
+- Both name 1013533
+- chat_similarity adds 1008821 and 1012880, quoting each project's full vendor list
+- chat_similarity separately lists 1012781 and 1011588 as mentioned-only, not officially tagged","The question asks for every project tagged Kinaxis, which means the search must look only at the vendor field. The Search API does that with `searchFields`. The Retrieval API has no `searchFields`, so it searches the full field set and returns a free-text match: 1 document instead of the 3 tagged projects. Two of the three tagged projects never enter the candidate set.
+
+The official-versus-mentioned split that chat_similarity reports depends on knowing which field matched. Once the field scope is gone, that distinction is gone with it, so the answer cannot say which projects are tagged and which only mention the name."
+Count / enumeration,"For SAP projects, what are the cost estimates from the last 2 years?","**Ranking Summary**
+
+| Rank | Project Name | Question Match % | Solution | Gate | Start Year | Close Year | Cost Estimate | Why Selected |
+|------|------|------:|------|------|------|------|------|------|
+| 1 | 2022 SPE - SAP Mainframe exit (PPL: 1011271) | 92% | SAP | Closeout | 2022 | 2024 (actual) | Gate 3 estimate: $18.7M; Approved budget: $18.7M; Actual spend: about $15.86M | SAP-tagged project with detailed cost history across Gate 1, Gate 3, CP3, and Closeout documents, including estimates, approved funding, and final spend. |
+
+<details>
+<summary>How to read the Question Match %</summary>
+This shows how well each project matches your question, based on the evidence found in its documents. ""Criteria"" are the specific conditions in your question, like the timeframe, project type, gate, or outcome you asked about. A higher score means the project meets more of those criteria with stronger supporting evidence. A lower score means a partial match: relevant, but missing some criteria or backed by weaker evidence.
+</details>
+
+**Detailed Findings**
+
+### 2022 SPE - SAP Mainframe exit (PPL: 1011271)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=3419333
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=435
+
+This was an SAP modernization project that migrated CARS, SHARP, STRIPES, and NAPES from the SAP mainframe platform to SAP HANA. The project is classified as SAP in PECT. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=435)
+
+Cost estimates evolved over the project lifecycle:
+
+- At Gate 1, the total project cost estimate was $26.0M, consisting of $16.3M expense and $9.7M capital. [project_similarity:1011271_SAP Mainframe Exit Project_1011271_Gate1, Staff, GK, DOAG.pdf:Page-17](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=41476)
+- In an October funding update, the most probable cost estimate (MPCE) was reduced to $20.4M, consisting of $6.5M expense and $13.9M capital. [project_similarity:1011271_SAP Mainframe Exit Project_1011271_Gate 1_AFR_DDOct21,22.pdf:Page-19](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=42755)
+- At Gate 2/3, the total project cost estimate was further reduced to $18.7M, consisting of $6.9M expense and $11.8M capital. [project_similarity:1011271_SAP Mainframe Exit Project 1011271 Gate 2 and 3 GSC President version Staff F.pdf:Page-12](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=43813)
+- The Gate 2/3 review noted that the project cost decreased from $26M to $18.7M due to contingency returns, aggressive cost savings, accelerated purchases, and scrutiny of vendor contracts. [project_similarity:1011271_SAP Mainframe Exit Project 1011271 Gate 2 and 3 GSC President version Staff F.pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=43813)
+
+Final approved and actual costs:
+
+- The approved budget recorded in WPM was $18.7M ($11.8M CAPEX and $6.9M OPEX). [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=3419333)
+- The project closed with a final actual cost of $15.8M and was completed under budget. [project_similarity:1011271_IT_Project_Endorsement_Request_PPL_1011271_ SAP Mainframe Exit Project Closeout.pdf:Page-3](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46759)
+- PECT reports actual spend of 15.86 million dollars (about $15.86M). WPM records the plan; PECT records what was actually spent. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=435)
+
+Financial outcomes:
+
+- The project's business case was based on avoiding approximately $43M in mainframe hardware, software, and maintenance costs over five years. [project_similarity:1011271_IT_Project_Endorsement_Request_PPL_1011271_ SAP Mainframe Exit Project Closeout.pdf:Page-3](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46759)
+- The recorded payback period at closeout was about 1.6 years. [project_similarity:1011271_IT_Project_Endorsement_Request_PPL_1011271_ SAP Mainframe Exit Project Closeout.pdf:Page-3](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46759)
+
+<<Show SAP projects with actual spend versus approved budget>>
+<<What lessons learned were recorded for SAP projects that closed in 2024?>>","**Ranking Summary**
+
+| Rank | Project Name | Question Match % | Solution | Gate | Start Year | Close Year | Cost Estimate | Why Selected |
+|---|---|---:|---|---|---|---|---|---|
+| 1 | 2022 SPE - SAP Mainframe exit (PPL: 1011271) | 92% | SAP | Closeout | 2022 | 2024 (actual) | Approved budget $18.7M; final actual spend about $15.86M | Direct SAP project with Gate, closeout, approved budget, and actual spend reported. |
+| 2 | e-Invoice Implementations 2024 (PPL: 1012334) | 75% | SAP | Gate 1 / Closeout | 2024 | 2025 (actual) | Approved budget $694K; actual spend about $620K | SAP implementation with approved budget and reported actual spend. |
+| 3 | LCS Business Start-Up (PPL: 1012244) | 67% | SAP | Closeout | 2023 | 2025 (actual) | Approved budget $3.6M; actual spend about $2.89M | SAP-enabled business startup with closeout and actual spend data. |
+| 4 | ERP VMware Version Upgrade (PPL: 1013483) | 67% | SAP, Hardware Deploy | Gate 3/Design Complete | 2025 | 2027 (planned) | Approved budget $4.6M | SAP infrastructure project with current budget estimate; still in progress. |
+| 5 | CDH Annual Sustainment and Evolution (CASE) (PPL: 1013707) | 58% | SAP | Gate 3/Design Complete | 2025 | 2027 (planned) | Approved budget $1.8M | SAP-tagged sustainment program with full funding approved. |
+| 6 | Project Polaris (PPL: 1011566) | 58% | SAP ERP transformation | Gate 2 | 2022 | 2028 (planned) | Approved budget about $2.543B | Major SAP transformation with current approved funding and evolving cost estimates. |
+| 7 | Supply Chain SCCT: Package 3 (PPL: 1011651) | 42% | Non-SAP | Closeout | 2023 | 2024 (actual) | Approved budget $2.1M | Not SAP, but included in retrieved set; has cost data. |
+| 8 | Mexico Mobilstore (PPL: 1010069) | 42% | Non-SAP | Gate 3/Design Complete | 2022 | 2024 (actual) | Approved budget $3.2M | Not SAP; includes SAP integration but project is tagged Non-SAP. |
+| 9 | Project Controls Expansion (Phase 2) (PPL: 1013671) | 42% | Non-SAP | Gate 3/Design Complete | 2026 | 2027 (planned) | Approved budget $4.0M | Not SAP; included due to retrieved result set. |
+| 10 | Infrastructure 2.0 Transition (PPL: 1013462) | 33% | Non-SAP / Service Deploy | Pre-Gate 1 to Stage 5 | 2025 | 2026 (planned) | Approved budget $5.8M | Not SAP; cost information available. |
+| 11 | India Lubes Plant IT Enablement (PPL: 1004293) | 33% | Site Enablement | Gate 3/Design Complete | 2019 | 2026 (actual recorded close date) | Approved budget $3.3M | Not SAP-tagged; includes SAP-related applications within broader site enablement scope. |
+
+<details>
+<summary>How to read the Question Match %</summary>
+This shows how well each project matches your question, based on the evidence found in its documents. ""Criteria"" are the specific conditions in your question, like the timeframe, project type, gate, or outcome you asked about. A higher score means the project meets more of those criteria with stronger supporting evidence. A lower score means a partial match: relevant, but missing some criteria or backed by weaker evidence.
+</details>
+
+**Detailed Findings**
+
+For SAP projects with activity, approvals, funding updates, or closeout records in the last two years, the cost estimates are:
+
+• 2022 SPE - SAP Mainframe exit (PPL: 1011271)
+- SAP HANA migration and mainframe retirement program covering CARS, SHARP, STRIPES, and NAPES. [project_similarity:1011271_IT_Project_Endorsement_Request_PPL_1011271_ SAP Mainframe Exit Project Closeout.pdf:Page-3](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46759)
+- Gate 3 funding reduced the project estimate from $26.0M to $18.7M through contingency return, vendor savings, and accelerated purchases. [project_similarity:1011271_SAP Mainframe Exit Project 1011271 Gate 2 and 3 GSC President version DOAG.pdf:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=43814)
+- Approved budget was $18.7M. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=3419333)
+- Actual spend was about $15.86M; this comes from PECT closeout reporting (WPM records the plan, PECT records what was actually spent). [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=435)
+- Closed in 2024 and reported completion under budget and on schedule. [project_similarity:1011271_IT_Project_Endorsement_Request_PPL_1011271_ SAP Mainframe Exit Project Closeout.pdf:Page-3](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46759)
+
+• e-Invoice Implementations 2024 (PPL: 1012334)
+- SAP DRC-based e-invoice implementation program covering multiple countries. [project_similarity:1012334_IT_Project_Endorsement_Request_PPL_1012334_p.pdf:Page-6](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46190)
+- Gate 1 funding request was $420K, with a total project basis of about $560K before contingency. [project_similarity:1012334_IT_Project_Endorsement_Request_PPL_1012334_p.pdf:Page-6](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46190)
+- Approved budget was $694K. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5368236)
+- Actual spend was about $620K. WPM records the approved budget; PECT records actual spend. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=210)
+- Closed in 2025. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5368236)
+
+• LCS Business Start-Up (PPL: 1012244)
+- Included SAP financial and materials master workstreams supporting Low Carbon Solutions startup activities. [project_similarity:1012244_1012244_LCS BSU_Pre G1 AF 2_Oct2023.msg:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=44833)
+- Approved budget was $3.6M. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5219054)
+- Actual spend was about $2.89M. WPM records the plan; PECT records actual spend. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=493)
+- Closed in 2025. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5219054)
+
+• ERP VMware Version Upgrade (PPL: 1013483)
+- SAP infrastructure modernization project upgrading VMware and SAP hosting environments. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=7824863)
+- Approved budget is $4.6M. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=7824863)
+- Gate 3 documentation noted a revised project cost of about $2.1M after budget adjustments. [project_similarity:1013483_IT_Project_Endorsement_Request_PPL_1013483_Architect.pdf:Page-6](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49927)
+- The project is still in progress, so final actual spend is not yet available.
+
+• CDH Annual Sustainment and Evolution (CASE) (PPL: 1013707)
+- SAP-tagged data platform sustainment and enhancement program. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8430665)
+- Full funding approved at $1.8M. [project_similarity:1013707_1013707 Project CASE_Arch_ITRM_GK_DOAG_Gate 2-3.pdf:Page-15](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=50954)
+- Approved budget is $1.8M. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8430665)
+- The project is still in progress, so final actual spend is not yet available.
+
+• Project Polaris (PPL: 1011566)
+- Enterprise-wide SAP ERP transformation replacing core ERP systems and simplifying roughly 1,000–1,500 surrounding applications. [project_similarity:1011566_1011566_G2_DOAG Endorsement_sanitized.pdf:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=45289)
+- Current approved funding in the project record is about $2.543B. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=3884255)
+- Cost estimates have increased over time: approximately $1.7B at Gate 1, $2.0B at Gate 2, about $3.09B in 2025 reviews, and about $3.13B in 2026 funding reviews. [project_similarity:001_1011566_G1_Adv_MC Endorsement.pdf:Page-13](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=43526) [project_similarity:1011566_1011566_G2_DOAG Endorsement_sanitized.pdf:Page-29](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=45289) [project_similarity:1011566_1011566_Polaris_-_July_2025_MC_Funding_Request (MC Endorsement).pdf:Page-17](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=48794) [project_similarity:1011566_Polaris Jun 2026 MC PPL 1011566 (MC endorsement).pdf:Page-24](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=50763)
+- The project remains in progress, so no final actual spend is available yet.
+
+Summary of SAP project cost estimates from the last two years:
+- Project Polaris: approximately $3.1B current estimated total cost.
+- SAP Mainframe Exit: $18.7M approved, $15.86M actual.
+- ERP VMware Version Upgrade: $4.6M approved budget (revised estimate around $2.1M in Gate 3 review).
+- LCS Business Start-Up: $3.6M approved, $2.89M actual.
+- CDH CASE: $1.8M approved.
+- e-Invoice Implementations 2024: $694K approved, $620K actual.
+
+<<Show only SAP projects that closed in 2024 or 2025 with actual spend and benefits>>
+<<Compare approved budget versus actual spend for the SAP projects>>","KB-path covers 1 project in depth; chat_similarity covers 11 in a ranked table.
+- Both report 1011271 with the same figures ($18.7M approved, $15.86M actual)
+- KB-path adds that project's full gate-by-gate cost history ($26.0M to $20.4M to $18.7M)
+- chat_similarity adds 10 further projects, labels 5 of them Non-SAP, and includes Project Polaris at $2.543B","The question asks for cost figures across a set of projects, which means the flow first has to know which projects are in the set. That step is a `facets` call with `top: 0`, which returns the list without any documents. The Retrieval API has no `facets` and rejects a zero-document request, so the call was forced to ask for a single document instead: 11 matched, 1 came back. That is why the answer covers one project in detail rather than the set.
+
+There is also no `count`, so the answer cannot say how much of the set it is showing."
+Count / enumeration,How many RGFX projects have been completed?,"Based on the projects provided, at least 3 RGFX-related projects are recorded as completed. The results shown are the top matches returned for RGFX projects, not necessarily every RGFX project that may exist.
+
+**Ranking Summary**
+
+| Rank | Project Name | Question Match % | Solution | Gate | Start Year | Close Year | Why Selected |
+|------|------|------:|------|------|------|------|------|
+| 1 | RGFX Annual EOL Program (PPL: 1012365) | 92% | Hardware Deploy (Infrastructure Hardware) | Closeout | 2024 | 2025 (actual) | Strong closeout documentation and project records confirm the project completed, with detailed accomplishments, spending, risks, and lessons learned. |
+| 2 | 2021 ACM - RGFX (PPL: 1007207) | 42% | Not recorded | Completed record | 2022 | 2022 (actual) | Clearly identified as an RGFX project and marked completed, though only project-record information is available. |
+| 3 | ACM 2023 - RGFX EOL (PPL: 1011707) | 17% | Not recorded | Not recorded | Not recorded | Not recorded | Included because it is an RGFX EOL project, but only a title record was retrieved so completion status cannot be verified from the evidence shown. |
+| 4 | EPC Data Foundation (PPL: 1012274) | 42% | Non-SAP (Packaged Software) | Complete | 2023 | 2024 (actual) | Completed project with strong records, but it is not an RGFX project and therefore serves only as a low-relevance comparison result. |
+
+<details>
+<summary>How to read the Question Match %</summary>
+This shows how well each project matches your question, based on the evidence found in its documents. ""Criteria"" are the specific conditions in your question, like the timeframe, project type, gate, or outcome you asked about. A higher score means the project meets more of those criteria with stronger supporting evidence. A lower score means a partial match: relevant, but missing some criteria or backed by weaker evidence.
+</details>
+
+**Detailed Findings**
+
+### RGFX Annual EOL Program (PPL: 1012365)
+
+- This RGFX hardware refresh project is recorded as completed. The project started in 2024 and closed in 2025. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5377705)
+- The closeout review states that EOL devices were replaced in Calgary, Melbourne, and Kuala Lumpur, a Cisco + Nutanix proof of concept was completed, and hardware purchases for Houston were completed. [project_similarity:1012365_PPL_1012365_CP3&CloseOut_12thMarch.pdf:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=47861)
+- Actual spend was approximately $2.11 million according to PECT closeout reporting (WPM records the approved plan; PECT records what was actually spent). [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=488)
+
+### 2021 ACM - RGFX (PPL: 1007207)
+
+- This project is marked completed in the project record. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=1788802)
+- The recorded start year is 2022 and the recorded close year is 2022. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=1788802)
+- The project focused on replacing end-of-life RGFX devices and supporting future platform growth. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=1788802)
+- Only high-level project-record information was available for this project, so no closeout document was retrieved to provide additional completion details.
+
+### ACM 2023 - RGFX EOL (PPL: 1011707)
+
+- This project is RGFX-related based on its title. No project details beyond the title were retrieved.
+- The evidence does not provide a completion status, dates, or outcomes for this project. Only a high-level reference to the project was available, so completion cannot be confirmed from the records shown.
+
+### EPC Data Foundation (PPL: 1012274)
+
+- This project is not an RGFX project.
+- It is recorded as completed, with a start year of 2023 and a close year of 2024 (actual). [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5330439)
+
+**Answer**
+
+From the RGFX-related projects in the evidence:
+
+- Confirmed completed: 2 projects
+  - RGFX Annual EOL Program (PPL: 1012365)
+  - 2021 ACM - RGFX (PPL: 1007207)
+
+- RGFX project present but completion cannot be confirmed from the retrieved evidence:
+  - ACM 2023 - RGFX EOL (PPL: 1011707)
+
+So there are at least 2 confirmed completed RGFX projects in the evidence, with a third RGFX project identified but lacking enough retrieved information to verify its completion status.
+
+<<Show me the lessons learned from completed RGFX projects>>
+<<Compare the costs and outcomes of all RGFX EOL projects>>","I found 2815 matching projects in the project records. Only the top 8 projects are shown in the evidence available here, so I cannot fit all 2815 into this response. Based on the 8 projects provided, all 8 are marked as completed, and 6 of them are directly RGFX-focused projects.
+
+**Ranking Summary**
+
+| Rank | Project Name | Question Match % | Solution | Gate | Start Year | Close Year | Why Selected |
+|------|------|------:|------|------|------|------|------|
+| 1 | RGFX Annual EOL Program (PPL: 1012365) | 83% | Hardware Deploy (Infrastructure Hardware) | Closeout | 2024 | 2025 (actual) | Direct RGFX end-of-life replacement program with detailed closeout documentation and completed status. |
+| 2 | 2025 RGFX Annual EOL Program (PPL: 1012962) | 83% | Hardware Deploy (Infrastructure Hardware) | Closeout | 2025 | 2026 (actual) | Direct RGFX hardware replacement program with closeout evidence and completed status. |
+| 3 | ACM 2023 - RGFX EOL (PPL: 1011707) | 42% | Not recorded | Record only | 2024 | 2024 (actual) | RGFX end-of-life replacement project with completed status, but only high-level project information is available. |
+| 4 | ACM 2022 - RGFX EOL (PPL: 1009537) | 42% | Not recorded | Record only | Not recorded | Not recorded | RGFX end-of-life replacement project with completed status, but only summary project record information is available. |
+| 5 | 2021 ACM - RGFX (PPL: 1007207) | 42% | Not recorded | Record only | 2022 | 2022 (actual) | RGFX infrastructure refresh program with completed status and project-record details. |
+| 6 | Next Gen HPC Geophysics RG and Data Enablement (PPL: 1012369) | 75% | Hardware Deploy (Infrastructure Hardware) | Closeout | 2024 | 2026 (actual) | Closely related to RGFX through remote graphics infrastructure replacement and HPC enablement. |
+| 7 | GP VIPER Phase 1 (EMCAPS-DF) (PPL: 1011725) | 50% | Software as a Service (SaaS), Service Deploy (Infrastructure Service) | Closeout | 2023 | 2025 (actual) | Completed project but not RGFX-focused; included because it was returned in the result set. |
+| 8 | 2023 EBX Retirement (PPL: 1011893) | 50% | Software as a Service (SaaS) | Closeout | 2023 | 2024 (actual) | Completed project but focused on platform retirement rather than RGFX infrastructure. |
+
+<details>
+<summary>How to read the Question Match %</summary>
+This shows how well each project matches your question, based on the evidence found in its documents. ""Criteria"" are the specific conditions in your question, like the timeframe, project type, gate, or outcome you asked about. A higher score means the project meets more of those criteria with stronger supporting evidence. A lower score means a partial match: relevant, but missing some criteria or backed by weaker evidence.
+</details>
+
+**Detailed Findings**
+
+• RGFX Annual EOL Program (PPL: 1012365)
+- Completed RGFX end-of-life replacement program covering a global platform across 13 sites and approximately 1,500 users. [project_similarity:1012365_PPL_1012365_CP3&CloseOut_12thMarch.pdf:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=47861)
+- Closed in 2025 based on the recorded close date. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5377705)
+- Actual spend was about $2.11M according to PECT closeout reporting (WPM records the plan; PECT records what was actually spent). [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=488)
+
+• 2025 RGFX Annual EOL Program (PPL: 1012962)
+- Completed replacement of end-of-life RGFX devices using a Cisco and Nutanix solution. [project_similarity:1012962_1012962 OSM and GK endorsement.pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=50210)
+- Completed deployments in Bangalore, Jakarta, and Houston. [project_similarity:1012962_1012962 OSM and GK endorsement.pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=50210)
+- Actual spend was about $1.73M according to PECT closeout reporting. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=623)
+
+• ACM 2023 - RGFX EOL (PPL: 1011707)
+- Completed RGFX end-of-life replacement project intended to replace high-power RGFX computing for Upstream users. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=4144799)
+- Only high-level project-record information was available for this project, so detailed outcomes and lessons learned were not retrieved.
+
+• ACM 2022 - RGFX EOL (PPL: 1009537)
+- Completed project focused on replacing end-of-life high-power RGFX computing for Upstream. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2889127)
+- Only summary project-record information was available, so detailed closeout findings were not available in the retrieved records.
+
+• 2021 ACM - RGFX (PPL: 1007207)
+- Completed RGFX infrastructure refresh program supporting visualization platforms used by geoscientists and engineers. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=1788802)
+- Key accomplishments included completion of the RGFX new-generation HCI request-for-quote process and deployment of EMHC SSD disks. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=1788802)
+
+• Next Gen HPC Geophysics RG and Data Enablement (PPL: 1012369)
+- Related RGFX/remote graphics project that replaced an end-of-life Remote Graphics System and associated infrastructure. [project_similarity:1012369_IT_Project_Endorsement_Request_PPL_1012369_closeout signed.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=50481)
+- Implemented FastX remote graphics software and retired legacy hardware. [project_similarity:1012369_IT_Project_Endorsement_Request_PPL_1012369_closeout signed.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=50481)
+
+• GP VIPER Phase 1 (EMCAPS-DF) (PPL: 1011725)
+- Completed data-platform and digital-enablement project rather than an RGFX infrastructure effort. [project_similarity:1011725_1011725_Closeout_ITRM_Endorsement_GP_Viper_Project.pdf:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=48498)
+- Actual spend was about $4.6M according to PECT closeout reporting. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=716)
+
+• 2023 EBX Retirement (PPL: 1011893)
+- Completed platform-retirement project focused on migrating use cases from EBX and retiring the platform. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=4531963)
+- Closed in 2024 and reported actual spend of about $1.12M. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=4531963) [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=355)
+
+Summary:
+- Completed projects shown in the evidence: 8
+- Directly RGFX-focused completed projects: 5
+  - RGFX Annual EOL Program (1012365)
+  - 2025 RGFX Annual EOL Program (1012962)
+  - ACM 2023 - RGFX EOL (1011707)
+  - ACM 2022 - RGFX EOL (1009537)
+  - 2021 ACM - RGFX (1007207)
+- If you also include the related Remote Graphics/HPC modernization effort, the total becomes 6 by adding Next Gen HPC Geophysics RG and Data Enablement (1012369).
+
+<<Show me the lessons learned from the completed RGFX projects>>
+<<Compare budgets and actual spend across the RGFX projects>>","KB-path returns 4 projects; chat_similarity returns 8.
+- Both name 1012365, 1007207, 1011707
+- chat_similarity adds 1012962 and 1009537 as RGFX-focused plus 1012369 as related, concluding 5 completed, or 6 including the related one
+- KB-path confirms 2 completed, cannot verify 1011707, and includes 1012274 as a non-RGFX comparison
+- chat_similarity opens with '2815 matching projects', a text-hit count rather than a project count","The question asks for a count of completed RGFX projects, which means the flow first needs the full set of RGFX projects. That set comes from a `facets` call, and the Retrieval API has no `facets`, so the flow saw 4 projects instead of the full set and could not confirm completion status for one of them. With no `count` there is also no total to check the sample against, so the answer reports ""at least 3"" rather than a figure."
+Count / enumeration,How many SAP projects are there in total?,"Based on the project evidence provided, I can confirm at least 1 SAP project:
+
+- 2022 SPE - SAP Mainframe exit (PPL: 1011271) is classified as an SAP project. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=435)
+
+I cannot determine the total number of SAP projects across the entire portfolio from this evidence alone. The results provided here show the projects retrieved for this search, not a complete inventory of every SAP project in the project corpus. From the evidence available, the confirmed count is at least 1 SAP project. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=435)","There are 47 SAP projects in total that match this query, according to the retrieval system's authoritative project count.
+
+The project evidence shown here includes only 11 of those projects, so it is a subset of the full result set rather than the complete list. If you'd like, I can also summarize the 47 SAP projects by status (finished vs. in progress), solution type, budget, user count, or close year.","KB-path gives no total; chat_similarity gives 47.
+- chat_similarity states 47 from the retrieval system's authoritative count and notes the 11 shown are a subset
+- KB-path confirms 'at least 1' (1011271) and states it cannot determine a portfolio total","The question asks for a total. The Retrieval API has no `count`, so the flow can only count what it happened to retrieve. That is why the answer says ""at least 1"" instead of a number. The `facets` step that would return the full set also collapses to a single document, so there is nothing left that can answer a count question."
+Comparison / estimate,Please provide the projects under S&M with WF reduction benefits. Projects closed in the last 2 years.,"No strong matches were found for this query as written. I can see several Sales & Marketing (S&M) projects that closed recently, but the records shown contain a mix of customer experience, analytics, commerce, and marketing initiatives, and only some explicitly document benefit categories. The evidence does not consistently identify a standardized “workforce reduction benefit” field across the projects surfaced.
+
+To narrow this to the right set, which of these do you mean by WF reduction benefits?
+
+- Workforce reduction through headcount/FTE elimination or avoidance
+- Reduced manual effort/productivity gains (for example automation that reduces sales, marketing, or support workload)
+- Both of the above
+
+It would also help to know whether you want:
+- Only projects that actually closed in 2024–2025, or
+- Projects that closed in the last two calendar years regardless of business area within S&M (Marketing, Sales, Analytics, Customer Experience, etc.)
+
+Some of the recent S&M projects in the evidence, such as Lubes OneConnect, Mexico Mobilstore, BCX India (Lubes), and Data Management & Analytics EAME, describe automation, customer self-service, or digital transformation outcomes, but that alone does not confirm a workforce-reduction benefit. I’d rather filter to the specific benefit definition you need than overstate the results.
+
+<<Show S&M projects with documented FTE reduction or avoidance benefits that closed in 2024–2025>>
+<<Show S&M projects with productivity or labor-efficiency benefits that closed in 2024–2025>>","**Ranking Summary**
+
+| Rank | Project Name | Question Match % | Solution | Gate | Start Year | Close Year | Why Selected |
+|---|---|---:|---|---|---|---|---|
+| 1 | Integrated Deal Evaluation Project (PPL: 1008805) | 92% | Service Deploy (Infrastructure Service) | Closeout/CP3 | 2021 | 2024 (actual) | Sales & Marketing portfolio project closed within the last two years and directly tied to workforce-efficiency objectives under the HW3 transformation. |
+| 2 | Replace EBX platform for ENC certification Process (PPL: 1009325) | 75% | Custom Software Development | Closeout | 2021 | 2025 (actual) | Closed within the last two years and contains explicit workforce-reduction benefits in closeout documentation. |
+| 3 | Project Zero (PPL: 1009333) | 67% | Software as a Service (SaaS) | Closeout | 2021 | 2025 (actual) | Strong workforce-reduction benefit evidence, but not an S&M project. |
+| 4 | Procurement Service Management (PPL: 1011866) | 67% | Non-SAP (Packaged Software) | Closeout | 2022 | 2024 (actual) | Closed recently and includes documented IT and business FTE reductions, though outside S&M. |
+| 5 | MWS - Zoom Deployment (PPL: 1006997) | 50% | Software as a Service (SaaS) | Closeout | 2021 | 2024 (actual) | Recently closed; benefits include workforce-related savings but not an S&M project. |
+| 6 | Cloud Migration Project (PPL: 1009394) | 50% | Service Deploy (Infrastructure Service) | Closeout | 2022 | 2025 (actual) | Recently closed with workforce-savings references, but outside S&M. |
+| 7 | eMERGE (IWMS) Replacement Project (PPL: 1009891) | 42% | Software as a Service (SaaS) | Closeout | 2022 | 2024 (actual) | Recently closed; benefits discussion exists but workforce reduction is not clearly documented in retrieved evidence. |
+| 8 | Intranet Replacement (PPL: 1012858) | 42% | Software as a Service (SaaS) | Closeout | 2024 | 2025 (actual) | Recently closed and includes productivity/workforce-savings benefits, but not S&M. |
+| 9 | IOL XStream to EC Conversion Project (PPL: 1010459) | 33% | Software as a Service (SaaS) | Closeout | 2021 | 2024 (actual) | Recently closed, but no workforce-reduction benefit evidence was retrieved. |
+| 10 | Angola Digital Enablement Platform and 3rd Party A (PPL: 1007849) | 25% | Hardware Deploy (Infrastructure Hardware) | Closeout | 2021 | 2024 (actual) | Recently closed, but no workforce-reduction benefits were retrieved. |
+| 11 | Canada East Digital Enablement 2022-2025 (PPL: 1011722) | 25% | Software as a Service (SaaS) | Gate 3 | 2023 | 2026 (planned) | Workforce-related efficiency benefits mentioned, but the project was not yet closed. |
+| 12 | FP Supply Demand Balancing Solution Project (PPL: 1008821) | 25% | Non-SAP (Packaged Software) | CP3 | 2021 | 2026 (planned) | Workforce-reduction benefits documented, but the project remains in progress. |
+| 13 | FP Supply Demand Balancing PoW Lead Project (PPL: 1011794) | 25% | Not recorded | CP3 | 2022 | 2028 (planned) | Workforce-reduction benefits documented, but the project remains in progress. |
+| 14 | Apps 2.0 (PPL: 1014113) | 25% | Service Project | Gate 1 | 2026 | 2029 (planned) | Significant workforce-efficiency benefits are planned, but the project is still early and not closed. |
+
+<details>
+<summary>How to read the Question Match %</summary>
+This shows how well each project matches your question, based on the evidence found in its documents. ""Criteria"" are the specific conditions in your question, like the timeframe, project type, gate, or outcome you asked about. A higher score means the project meets more of those criteria with stronger supporting evidence. A lower score means a partial match: relevant, but missing some criteria or backed by weaker evidence.
+</details>
+
+**Detailed Findings**
+
+For your specific request (""projects under S&M with workforce reduction benefits and closed in the last 2 years""), only one project clearly satisfies all criteria:
+
+### Integrated Deal Evaluation Project (PPL: 1008805)
+- Officially tagged to the Sales & Marketing portfolio and Sales capability. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=453)
+- Started in 2021 and closed in 2024. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2477085)
+- The project was identified as a key enabler for Fuels Sales, Supply and Pricing process automation and simplification. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2477085)
+- The project aimed to reduce time spent on deal-evaluation activities across Sales, Supply and Pricing teams through automation and integration. [project_similarity:1008805_1008805 - iDE Project CP3 Arhitecht, ITRM, OGS Manager, GK.pdf:Page-12](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=43094)
+- The delivered solution was intended to sustain organizational changes and workforce efficiencies driven by the HW3 transformation program. [project_similarity:1008805_1008805 - iDE Project CP3 Arhitecht, ITRM, OGS Manager, GK.pdf:Page-12](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=43094)
+
+### Other recently closed projects with workforce-reduction benefits (not S&M)
+
+#### Replace EBX platform for ENC certification Process (PPL: 1009325)
+- Closed in 2025. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2862349)
+- Closeout benefits included workforce efficiencies equivalent to 15 FTEs. [project_similarity:1009325_1009325_CP3&Closeout_ITRM_Endorsement_Replace_EBX_platform_Project.pdf:Page-14](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=47417)
+
+#### Procurement Service Management (PPL: 1011866)
+- Closed in 2024. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=4472038)
+- Benefits included a 3-IT-FTE reduction from replacing an in-house application with a SaaS solution. [project_similarity:1011866_1011866 - Procurement Service Management - Closeout GK.pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46810)
+- Benefits also included a 5-business-FTE reduction and an additional 1-business-FTE operating-cost reduction. [project_similarity:1011866_1011866 - Procurement Service Management - Closeout GK.pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46810)
+
+#### Project Zero (PPL: 1009333)
+- Closed in 2025. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2879061)
+- Closeout documentation recorded multiple workforce-reduction benefits, including reductions associated with reconciliation, task management, journal processing and intercompany-processing activities. [project_similarity:1009333_1009333_Closeout_GK_ Endorsement.pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49262)
+
+For a strict S&M-only view, the returned evidence identifies Integrated Deal Evaluation (PPL 1008805) as the clear match.","KB-path declines; chat_similarity answers.
+- chat_similarity ranks 14 projects and names 1008805 as the one clear S&M match, tagging the other 13 with explicit 'not S&M' or 'not closed' caveats
+- KB-path returns no qualifying projects and asks 2 narrowing questions: what WF reduction means, and which close-year range
+- KB-path names 4 recent S&M projects in passing (Lubes OneConnect, Mexico Mobilstore, BCX India, Data Management & Analytics EAME) without claiming they qualify","The question asks for a filtered set: projects under S&M with a specific benefit. The filter step is a `facets` operation, and the Retrieval API has no `facets`, so instead of the S&M list the flow got 9 loosely related projects. None of them scored above the reranker threshold, with the top at 1.49 against a threshold of 1.5, so the flow asked the user to narrow rather than answer."
+Comparison / estimate,What lessons were learned from SAP projects?,"I found 24 SAP-related projects that matched your request.
+
+Lessons learned are not available for all of them at once because that level of detail is only documented in some project closeout records, while other projects only have high-level project information available.
+
+A few good projects to start with that do contain detailed lessons learned write-ups are:
+- 2022 SPE - SAP Mainframe exit (PPL: 1011271)
+- 2020 SPE - SAP Systems and Tools Maturing Program (PPL: 1005492)
+- Proxxima Phase 1 IT Enablement Project (PPL: 1012318)
+- 2022 FronTier Upgrade Project (PPL: 1007814)
+- CST - Invoicing & Account Receivables: IIAP (PPL: 73278)
+- 2021 SPE - SAP Systems and Tools Maturing Program (PPL: 1007131)
+- Material Master Data Enrichment (PPL: 1008237)
+- 2023 FronTier Upgrade Project (PPL: 1009936)
+
+Which specific project or projects would you like me to focus on so I can pull out the lessons learned in detail?
+
+<<Show me the lessons learned from 2022 SPE - SAP Mainframe exit (PPL: 1011271)>>
+<<Summarize the lessons learned across the FronTier upgrade projects (PPL: 1007814 and 1009936)>>","I found 47 projects that matched your SAP project request.
+
+Lessons learned and closeout write-ups are not available across all 47 projects in a single response, and only some projects have that level of detail documented so far. A more useful approach is to focus on the projects that already contain lessons-learned or closeout-related write-ups.
+
+Good starting points include:
+- CST - Invoicing & Account Receivables: IIAP (PPL: 73278) – includes preparation of lessons learned and project closeout activities.
+- 2023 FronTier Upgrade Project (PPL: 1009936) – includes lessons learned conducted with more than 35 team members and supervisors.
+- Sales & Marketing Automation ITE Project (PPL: 1008797) – includes a completed lessons learned report.
+- Canada Gas Trading Enablement (PPL: 1012834) – includes collection and finalization of lessons learned.
+- MITAS Project (PPL: 65221) – includes critical lessons learned loaded into the repository.
+- EMTEC Lubes Tech Digital Transformation (LTDT) (PPL: 1008966) – includes lessons learned collection as part of project closure.
+
+Which specific project or projects would you like me to focus on so I can pull and summarize the lessons learned in detail?
+
+<<Show me the lessons learned from the 2023 FronTier Upgrade Project (PPL: 1009936)>>
+<<Summarize the lessons learned and project closeout findings from MITAS Project (PPL: 65221)>>","Both decline to list lessons and ask the user to pick a project first.
+- chat_similarity states 47 SAP projects; KB-path states 24
+- chat_similarity suggests 6 starting points; KB-path suggests 8
+- The two suggestion lists overlap on 2 projects (73278, 1009936)","The question asks about lessons across SAP projects. The flow cannot say how many SAP projects there are, And because it has no `facets`, it cannot tell which of those projects actually have Closeout lessons text until it fetches each one. It found only 8 of 24 with usable text and asked the user to narrow rather than summarize."
+Named-project lookup (role / fact),Architect and work support for 1000626,"For Project 1000626, ""Allegro 8 Upgrade to Horizon"":
+
+- Architect: Kasama Ruangrong [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=105362).
+- Work Support: Rose Hernandez [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=105362).
+
+Additional context:
+- Project Manager (per PSR/WPM record): Emese F. Boda [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=105362).
+- Work Lead (WPM): Emese F. Boda [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=105362).
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=105362
+- PSR: https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=30027
+
+<<Who was the delivery manager for 1000626?>>
+<<Show all key project roles for 1000626>>","For Project 1000626, ""Allegro 8 Upgrade to Horizon"":
+
+- Architect: Kasama Ruangrong [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=105362).
+- Work Support: Rose Hernandez [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=105362).
+
+Project reference:
+- WPM record: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=105362
+- PSR record: https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=30027
+
+<<Who was the delivery manager for 1000626?>>
+<<Show all key project roles for 1000626>>","Same answer to the question asked.
+- Both name Ruangrong, Kasama (Architect) and Hernandez, Rose (Work Support), cited to the project record
+- KB-path adds Project Manager and Work Lead, both Boda, Emese F","No issue. The project is named by id, so the flow looks it up directly and never needs a `count`, a grouping, or a field-scoped search. Both paths return the same roles."
+Named-project lookup (role / fact),Is Rocca officially the delivery manager on 1009338?,"Yes. For project MWS - SDWAN2023 (PPL 1009338), Pablo Rocca is officially listed as the Delivery Manager in the project's WPM record, and this is also confirmed by the project's verified role match (`CONFIRMED MATCH: roles_delivery_manager=Rocca, Pablo`). Delivery Manager: Pablo Rocca. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2887991)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2887991
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=509
+- PSR: https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=45073
+
+<<Who else held key project roles on 1009338?>>
+<<Show me all projects where Pablo Rocca is officially listed as Delivery Manager>>","Yes. Project 1009338 (MWS - SDWAN2023) is officially tagged with Pablo Rocca as the Delivery Manager. This is a code-verified match in the project record (`CONFIRMED MATCH: roles_delivery_manager=Rocca, Pablo`), and the WPM project record lists the Delivery Manager as Rocca, Pablo. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2887991)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2887991
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=509
+- PSR: https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=45073
+
+<<Show me all projects where Rocca, Pablo is officially listed as Delivery Manager>>
+<<Who are the other key project roles on 1009338?>>","Same answer.
+- Both confirm Rocca, Pablo as the officially tagged Delivery Manager, citing the same confirmed role match","No issue. The project and the role are both named, so the lookup is direct and both paths agree."
+Named-project lookup (role / fact),What lessons came from projects sponsored by Yusoff?,"No strong matches were found for this query. “Sponsored by Yusoff” is an organizational attribute, and there were no clear results that tied lessons learned directly to that sponsor across the retrieved records.
+
+It would help to narrow this in one or two ways:
+- Which organizational area was Yusoff sponsoring projects for (business unit, department, or portfolio)?
+- Are you looking for lessons from completed projects only (Closeout documents, where lessons learned are formally recorded), or also lessons and risks captured during planning and delivery stages?
+- Do you want a particular type of project: SAP, Non-SAP Packaged Software, SaaS (Workday, ServiceNow, Salesforce, Microsoft 365), Analytics, Infrastructure Services (cloud/network), or Infrastructure Hardware?
+
+<<Show me closeout lessons from SaaS projects sponsored by Yusoff>>
+<<What completed infrastructure projects sponsored by Yusoff recorded lessons learned?>>","Yusoff, Dzukhairiah is officially tagged as the Work Lead (not sponsor) on four projects in the records. The lessons and takeaways recorded on those projects were:
+
+1. Mumbai Office Relocation (PPL: 1012173)
+- Better IT equipment inventory tracking would help avoid raising multiple purchase orders. [project_similarity:1012173_1012173 - Mumbai Office Relocation (CP3, Closeout)_GK.pdf:Page-6](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=44795)
+- Using a single installation vendor would reduce schedule-change risk. [project_similarity:1012173_1012173 - Mumbai Office Relocation (CP3, Closeout)_GK.pdf:Page-6](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=44795)
+- Project teams should be informed early when existing vendors plan to outsource work to third parties. [project_similarity:1012173_1012173 - Mumbai Office Relocation (CP3, Closeout)_GK.pdf:Page-6](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=44795)
+- Business decisions on downtime should be locked early to avoid delays in moving equipment. [project_similarity:1012173_1012173 - Mumbai Office Relocation (CP3, Closeout)_GK.pdf:Page-6](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=44795)
+- Office-completion delays affected IT configuration and ISP installation schedules, which in turn drove resource-planning changes. [project_similarity:1012173_1012173 - Mumbai Office Relocation (CP3, Closeout)_GK.pdf:Page-6](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=44795)
+- Vendor support availability did not always match commitments, creating additional effort for the project team. [project_similarity:1012173_1012173 - Mumbai Office Relocation (CP3, Closeout)_GK.pdf:Page-6](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=44795)
+
+2. AP-KUL-KL Restacking (PPL: 1013394)
+- New vendors should receive detailed site introductions before requirements are provided to improve clarity, alignment, and communication. [project_similarity:1013394_1013394_AP KUL KL Restacking_CP3Closeout_GKEndorsement.pdf:Page-10](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=48901)
+- Contractor activities affecting EMIT equipment or infrastructure should be fully transparent to the IT team. [project_similarity:1013394_1013394_AP KUL KL Restacking_CP3Closeout_GKEndorsement.pdf:Page-10](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=48901)
+- The project also highlighted the value of close coordination between E&PS, CBRE, SITS, AV engineering, architects, risk advisors, and operations teams. [project_similarity:1013394_1013394_AP KUL KL Restacking_CP3Closeout_GKEndorsement.pdf:Page-10](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=48901)
+
+3. MWS - SDWAN2023 (PPL: 1009338)
+- The retrieved closeout material emphasizes sustainment and execution practices rather than a formal lessons-learned section. It notes the importance of linking value measurement to business performance indicators, planning for long-term subscription renewals, and ensuring support ownership transitions are defined. [project_similarity:1009338_IT_Project_Endorsement_Request_PPL_1009338_Gatekeeper.pdf:Page-14](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=47298)
+- No explicit lessons-learned list was retrieved for this project, so only these documented takeaways can be reported from the available evidence. This project's closeout records retrieved here focused more on benefits and sustainment than on a dedicated lessons section. [project_similarity:1009338_IT_Project_Endorsement_Request_PPL_1009338_Gatekeeper.pdf:Page-14](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=47298)
+
+4. AP-MY-KUL-Building-New-KL Phase 4 Level 19 (PPL: 1004539)
+- No lessons-learned document content was retrieved for this project. Only high-level project record information was available, showing it was an office fit-out and IT enablement effort. This appears to be an older project where only summary project records are available in the evidence provided. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=711413)
+
+Across the projects with detailed closeout documentation, the recurring themes were:
+- Engage vendors early and establish clear accountability.
+- Improve transparency between contractors, vendors, and IT teams.
+- Lock critical business decisions and schedules earlier.
+- Strengthen cross-functional coordination and governance.
+- Plan support transitions and sustainment ownership from the start. [project_similarity:1012173_1012173 - Mumbai Office Relocation (CP3, Closeout)_GK.pdf:Page-6](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=44795) [project_similarity:1013394_1013394_AP KUL KL Restacking_CP3Closeout_GKEndorsement.pdf:Page-10](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=48901) [project_similarity:1009338_IT_Project_Endorsement_Request_PPL_1009338_Gatekeeper.pdf:Page-14](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=47298)","KB-path declines; chat_similarity answers.
+- chat_similarity corrects the premise, stating Yusoff is tagged Work Lead rather than sponsor, then names 4 projects
+- chat_similarity returns Closeout lessons with page citations for 1012173 and 1013394, and states no lessons content was retrieved for 1009338 and 1004539
+- KB-path returns no projects and asks 3 narrowing questions: organizational area, completed-only or all stages, project type","The question needs the search to look only at the role fields, since the answer is ""projects that carry Yusoff in a role"". The Search API does that with `searchFields`. The Retrieval API has no `searchFields`, so it reads the field set fixed on the knowledge source instead. A mention of Yusoff anywhere now looks the same as an official role tag, and the answer cannot tell them apart.
+
+The Yusoff search matched 50 documents but the reranker returned 1. That cut happens inside the retrieve call, so the pipeline never sees the other 49 and has no way to widen the net. On the Search path the same step kept its candidates and narrowed them with the pipeline's own rules, reaching 23 projects.
+
+The missing `facets` also blocks a second step: as Lessons Learned requires the flow to work out a project's state (active or closed) from which gate documents exist. With no state, the flow never targets the Closeout documents where lessons are recorded. The follow-up search for ""Yusoff project sponsor lessons learned"" returned 0 references.
+
+Net: 0 projects passed the reranker threshold, so instead of answering, the flow asked the user to narrow the question."
+Sort by stored value,"List projects with Project Solution = 'Hardware Deploy (Infrastructure Hardware)'. Rank by Total Actuals descending, top 10, name/PPL/actuals/duration/status.","**Ranking Summary**
+
+| Rank | Project Name | Question Match % | Solution | Gate | Start Year | Close Year | Actual Spend | Duration | Status | Why Selected |
+|------|------|------|------|------|------|------|------|------|------|------|
+| 1 | Virtualization Hosts Replacement (VHR) (PPL: 1012495) | 92% | Hardware Deploy (Infrastructure Hardware) | Gate 3/Design Complete | 2024 | 2026 (planned) | ~$6.0M | 18 months | Still in progress | Explicitly tagged with Hardware Deploy (Infrastructure Hardware) and has the highest recorded actual spend among the returned projects, with detailed project and financial records. |
+| 2 | 2025 GEMS/W5 hardware migration (PPL: 1013111) | 92% | Hardware Deploy (Infrastructure Hardware) | Closeout | 2025 | 2025 (actual) | ~$2.16M | 11.5 months | Completed | Explicitly tagged with Hardware Deploy (Infrastructure Hardware) and includes recorded actual spend, duration, completion status, and closeout documentation. |
+
+<details>
+<summary>How to read the Question Match %</summary>
+This shows how well each project matches your question, based on the evidence found in its documents. ""Criteria"" are the specific conditions in your question, like the timeframe, project type, gate, or outcome you asked about. A higher score means the project meets more of those criteria with stronger supporting evidence. A lower score means a partial match: relevant, but missing some criteria or backed by weaker evidence.
+</details>
+
+**Detailed Findings**
+
+### 1. Virtualization Hosts Replacement (VHR) (PPL: 1012495)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5378086
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=699
+
+- Solution type: Hardware Deploy (Infrastructure Hardware), along with related service and packaged software components. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=699)
+- Actual spend: approximately $6.0 million. This comes from PECT actuals reporting (WPM records the approved budget plan; PECT records what was actually spent). [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=699)
+- Duration: 18 months. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=699)
+- Actual start year: 2024. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5378086)
+- Target close year: 2026, and the project is still in progress. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5378086)
+- Current work focuses on identifying a strategic replacement for the on-premises virtualization platform and migrating virtual machines that will remain in company data centers. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5378086)
+
+### 2. 2025 GEMS/W5 hardware migration (PPL: 1013111)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=6543509
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=557
+
+- Solution type: Hardware Deploy (Infrastructure Hardware). [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=557)
+- Actual spend: approximately $2.16 million. This comes from PECT actuals reporting (WPM records the approved budget plan; PECT records what was actually spent). [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=557)
+- Duration: about 11.5 months. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=557)
+- Actual start year: 2025. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=6543509)
+- Actual close year: 2025. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=6543509)
+- The project refreshed and migrated GEMS/W5 hardware, including conversion of multiple systems to virtual machines and replacement of legacy hardware with Superdome Flex infrastructure. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=6543509)
+- Project status is completed. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=6543509)
+
+<<Show hardware deployment projects with actual spend above $2M>>
+
+<<Show approved budget versus actual spend for these hardware deployment projects>>","Ranked by reported actual spend (from PECT, which records what was actually spent; WPM records the approved budget plan).
+
+| Rank | Project | PPL | Actual Spend | Duration | Status |
+|---|---|---|---:|---:|---|
+| 1 | Pioneer IT Integration (Project Sirius) | 1012761 | About $406.99M | 27.0 months | Still in progress [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=641) |
+| 2 | Cloud Managed Environment (CME) Deployment | 1011711 | About $117.40M | 36.0 months | Completed [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=632) |
+| 3 | Discovery Next HPC Guyana SF4D | 1012992 | About $105.07M | 19.7 months | Completed [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=507) |
+| 4 | Next Generation HPC | 1009770 | About $31.87M | 20.9 months | Completed [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=303) |
+| 5 | Denbury IT Integration | 1012612 | About $24.00M | 23.0 months | Still in progress [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=718) |
+| 6 | Zoom Enterprise Site Transformation Project (ZEST) | 1012929 | About $13.50M | 28.0 months | Still in progress [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=721) |
+| 7 | AM-CA-STJ-Building-New-St. John's Office Strategy | 1001096 | About $7.53M | 28.5 months | Completed [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=600) |
+| 8 | Virtualization Hosts Replacement (VHR) | 1012495 | About $6.00M | 18.0 months | Still in progress [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=699) |
+| 9 | 2025 Downstream HANA refresh | 1013070 | About $5.85M | 17.0 months | Completed [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=652) |
+| 10 | 2025 Deepwater Errea Wittu IT Infra & Suitcase | 1012433 | About $5.00M | 32.0 months | Still in progress [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=771) |
+
+Note: Global Security Genetec Deployments (PPL 1013037) also reports about $5.00M of actual spend and is tied with rank 10. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=735)","KB-path returns 2 projects; chat_similarity returns the 10 the prompt asked for.
+- chat_similarity delivers a ranked top-10 table with actuals, duration, and status per project, and flags a tie at rank 10
+- KB-path returns 2 projects with no ranking by actuals
+- The two share 1 project (1012495), which chat_similarity places 8th","The question asks for the top 10 projects sorted by actual spend. The flow does not sort in the search itself. It first gets the exact project list from a `facets` call with `top: 0`, then reads each project's stored value and sorts on it. The Retrieval API has no `facets` and rejects a zero-document request, so that first step returned 1 document out of 40 matched, and the sort had almost nothing to order. The answer is 2 projects ranked by how well their text matched the question, not 10 ranked by spend, so the ranking the prompt asked for is not what is in the column."
+Title resolution,Show me data for the Fronteer Upgrade project.,"No strong matches were found for this query. “Fronteer Upgrade” looks like a specific project name, but I don’t have any retrieved project records for that project in the results provided here.
+
+It would help to narrow the search by:
+- What type of project was it? SAP (ERP/S4HANA), Non-SAP Packaged Software (Oracle, IBM, other COTS tools), SaaS (Workday, ServiceNow, Salesforce, Microsoft 365), Analytics (BI/data platforms), Infrastructure Service (cloud, networking, managed services), or Infrastructure Hardware (servers, network equipment, device refreshes)?
+- What information are you looking for? Project status, lessons learned (Closeout), business requirements (Gate 2), design decisions (Gate 3/Design Complete), or execution/go-live issues (CP 3/Pre-Startup)?
+- Roughly when did the project run or close? A specific close year or year range can help isolate the right records.
+
+<<Show me Closeout lessons learned for a SaaS project that closed in 2024>>
+<<Find SAP upgrade projects and summarize their outcomes>>","2022 FronTier Upgrade Project (PPL 1007814)
+
+Project links:
+- WPM record: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2210344
+- PECT record: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=244
+- PSR closeout package: https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=39654
+
+Overview
+
+This project upgraded the Unconventional FronTier SAP S/4HANA system from version 1909 to version 2020 as part of the annual SAP maintenance strategy. Scope included security and controls, technical remediation, functional testing, Fiori activation and testing, partner application analysis, automation, change management, training, cutover, go-live, and warranty support. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2210344)
+
+The project was an SAP upgrade project in the Finance business capability area, delivered through an EMIT-managed upgrade approach. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=244)
+
+Schedule and status
+
+- Actual start year: 2021. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2210344)
+- Passed Gate 1 in 2022. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2210344)
+- Passed Gate 3 in 2022. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2210344)
+- Closed in 2022. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2210344)
+- Recorded duration was about 13.5 months. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=244)
+
+Cost
+
+- Approved project budget (plan): $5.3 million. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2210344)
+- Actual spend: approximately $3.72 million. This figure comes from PECT closeout reporting; WPM records the approved budget plan, while PECT records what was actually spent. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=244)
+
+Closeout reporting also states that approved funding was $5.3 million and actual spend plus committed costs were about $3.7 million. [project_similarity:1007814_1007814_CO_GK_Endorsement.pdf:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=42996)
+
+Accomplishments and outcomes
+
+The project reported:
+- Completion of the SAP S/4HANA v2020 upgrade.
+- Assessment of more than 200 interfaces and approximately 70 partner applications.
+- Continued expansion of automated testing.
+- Completion within budget and schedule. [project_similarity:1007814_1007814_CO_GK_Endorsement.pdf:Page-3](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=42996)
+
+The closeout summary highlighted:
+- Upgrade completed on time and under budget with minimal production issues.
+- Improved user acceptance testing and cutover validation approaches.
+- A fourfold increase in automation compared with the previous year, reducing staffing and time requirements.
+- Reduced project timeline through process improvements and application of lessons learned from prior upgrades. [project_similarity:1007814_1007814_CO_GK_Endorsement.pdf:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=42996)
+
+Challenges and disappointments
+
+The project recorded the following disappointments:
+- SAP provided limited tools for identifying change impacts.
+- No new Fiori applications were implemented because no business-process enhancement opportunity was identified.
+- The team's learning curve with a new testing tool limited dashboarding and automated reporting capabilities. [project_similarity:1007814_1007814_CO_GK_Endorsement.pdf:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=42996)
+
+Business value
+
+The project's objective was to improve stability, compliance, supportability, and security of the Frontier financial system by upgrading to a newer SAP S/4HANA version. [project_similarity:1007814_1007814_CO_GK_Endorsement.pdf:Page-3](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=42996)
+
+The project was also justified as part of the corporate SAP upgrade strategy to maintain application stability, supportability, compliance, and security, and to avoid risks associated with the end of support for the prior version. [project_similarity:1007814_1007814_CO_GK_Endorsement.pdf:Page-7](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=42996)
+
+Key project roles
+
+- Project Manager (per PSR): Jesica Baiguera.
+- WPM Work Lead: Jesica Baiguera. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2210344)
+- Delivery Manager: Stephanie S. Lagarde. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2210344)
+- Gate Keeper: Denene M. Hooper. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2210344)
+- Portfolio Owner: Steven C. Flanagan. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2210344)
+
+Vendor
+
+Vendors [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=244): QUALITEST.
+
+Suggested follow-up questions:
+<<What lessons learned were documented for the 2022 FronTier Upgrade Project?>>
+<<Show me the financial performance and budget variance for the 2022 FronTier Upgrade Project>>","KB-path declines; chat_similarity answers.
+- chat_similarity resolves the 'Fronteer' misspelling to 1007814 and returns full data: scope, schedule, $5.3M approved against $3.72M actual, accomplishments, disappointments, roles, and vendor
+- KB-path does not resolve the name, reports no records, and asks 3 narrowing questions: project type, information wanted, close-year range","The title in the prompt is misspelled (""Fronteer"" instead of ""FronTier""). The Search API can be told to allow fuzzy matching through `queryType`, which resolves the misspelling and find the project. The Retrieval API locks `queryType` to semantic, so the fuzzy operator is not an option and the misspelled title has nothing to match against. 0 projects passed the reranker threshold, so the FronTier Upgrade projects were never surfaced."
+Title resolution,Find projects similar to the MITAS Maintenance Platform.,"**Ranking Summary**
+
+| Rank | Project Name | Question Match % | Solution | Gate | Start Year | Close Year | Why Selected |
+|------|------|------:|------|------|------|------|------|
+| 1 | MITAS Project (PPL: 65221) | 92% | Non-SAP (Packaged Software) | Closeout | 2014 | 2022 (actual) | Direct MITAS/TMS6 terminal automation replacement program. Replaced legacy TAS/SCADA platforms with TopTech TMS6, SCADA and related terminal technologies across multiple operating locations. |
+| 2 | Enterprise AI Strategy Enablement (PPL: 1012423) | 67% | Non-SAP (Packaged Software) | Closeout | 2024 | 2025 (actual) | Similar as a platform-enablement program that established a reusable enterprise capability, governance model, and sustainment approach. Strong closeout documentation and lessons learned. |
+| 3 | 2022 MDM EnterWorks Platform Introduction (PPL: 1010688) | 50% | Non-SAP (Packaged Software) | Closeout | 2022 | 2022 (actual) | Similar because it introduced a strategic enterprise platform replacing an existing solution and established long-term support and integration capabilities. |
+| 4 | MITAS Cairo (PPL: 1008076) | 42% | Service Deploy (Infrastructure Service) | Complete | 2021 | 2023 (actual) | Very close operationally to MITAS Maintenance Platform work. Implemented MITAS architecture, TMS6 modernization, and terminal automation upgrades at petroleum terminals. |
+| 5 | MITAS- Arluno, Chivasso, and Genova (PPL: 1008073) | 42% | Service Deploy (Infrastructure Service) | Complete | 2021 | 2023 (actual) | Directly related MITAS/TMS6 deployment across multiple terminals, including infrastructure modernization and ICSR-compliant architecture. |
+| 6 | 2022 AE Sustainment (PPL: 1009445) | 33% | Custom Software Development | Complete | 2022 | 2023 (actual) | Similar because it modernized and sustained a strategic operational platform reaching end of life and requiring security and infrastructure upgrades. |
+| 7 | 2021 Connected AWS Enablement (PPL: 1010563) | 33% | Service Deploy (Infrastructure Service) | Complete | 2021 | 2022 (actual) | Similar as foundational infrastructure modernization enabling future workloads and standardization, though not terminal-operations focused. |
+| 8 | Model Validation (ATMv Modernization) (PPL: 1012357) | 25% | Service Deploy (Infrastructure Service) | Active project (past design complete) | 2024 | 2027 (planned) | Similar because it modernizes a business-critical platform facing end-of-life technology constraints. It is still in progress, so final outcomes and lessons learned are not yet available. |
+
+<details>
+<summary>How to read the Question Match %</summary>
+This shows how well each project matches your question, based on the evidence found in its documents. ""Criteria"" are the specific conditions in your question, like the timeframe, project type, gate, or outcome you asked about. A higher score means the project meets more of those criteria with stronger supporting evidence. A lower score means a partial match: relevant, but missing some criteria or backed by weaker evidence.
+</details>
+
+**Detailed Findings**
+
+### MITAS Project (PPL: 65221)
+
+Why it is similar:
+- This is the strongest match because it is a large-scale MITAS/TMS6 terminal automation modernization program replacing legacy terminal systems with the same technology family used by MITAS platform deployments. [project_similarity:65221_65221 MITAS Closeout (GK).pdf:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=40581)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=47779
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=119
+
+Key outcomes:
+- The project replaced the legacy BETA TAS/SCADA environment at 23 terminals with strategic solutions including TMS6, SCADA, CTi, and MultiLoad II. [project_similarity:65221_65221 MITAS Closeout (GK).pdf:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=40581)
+- It enabled retirement of the Beta, Esso Hub, and IOL Badgeman applications. [project_similarity:65221_65221 MITAS Closeout (GK).pdf:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=40581)
+- The project closed in 2022 and reported actual spend of about $13.4M. WPM records the plan; PECT records what was actually spent. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=119)
+
+Lessons learned:
+- Combining business and IT work under one integrated program improved execution and coordination. [project_similarity:65221_65221 MITAS Closeout (GK).pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=40581)
+- More complete site visits would have improved engineering design quality and reduced site surprises. [project_similarity:65221_65221 MITAS Closeout (GK).pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=40581)
+- Running legacy and new systems in parallel helped identify issues before go-live and reduced implementation risk. [project_similarity:65221_65221 MITAS Closeout (GK).pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=40581)
+- Attempting to retain legacy components alongside new technology created significant complexity and redesign effort. [project_similarity:65221_65221 MITAS Closeout (GK).pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=40581)
+
+---
+
+### Enterprise AI Strategy Enablement (PPL: 1012423)
+
+Why it is similar:
+- Like MITAS platform programs, this project established a reusable enterprise platform, governance structure, support model, and operating framework rather than delivering a single application. [project_similarity:1012423_1012423 - Enterprise AI - CP3 & Closeout (re-endorsement).pptx:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=48243)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5377916
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=512
+
+Key outcomes:
+- Built a centralized Enterprise AI capability used by multiple business use cases. [project_similarity:1012423_1012423 - Enterprise AI - CP3 & Closeout (re-endorsement).pptx:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=48243)
+- Established governance, reusable AI libraries, operating models, and responsible AI controls. [project_similarity:1012423_1012423 - Enterprise AI - CP3 & Closeout (re-endorsement).pptx:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=48243)
+- Actual spend was about $7.9M. WPM records the approved plan; PECT records actual spend. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=512)
+
+Lessons learned:
+- Communicate project objectives and expected outcomes to a broader stakeholder group earlier. [project_similarity:1012423_1012423 - Enterprise AI - CP3 & Closeout (re-endorsement).pptx:Page-9](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=48243)
+- Build support and sustainment models early in the project lifecycle. [project_similarity:1012423_1012423 - Enterprise AI - CP3 & Closeout (re-endorsement).pptx:Page-9](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=48243)
+- Develop change-management and communication plans early rather than after platform deployment begins. [project_similarity:1012423_1012423 - Enterprise AI - CP3 & Closeout (re-endorsement).pptx:Page-9](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=48243)
+
+---
+
+### 2022 MDM EnterWorks Platform Introduction (PPL: 1010688)
+
+Why it is similar:
+- Replaced an existing enterprise platform with a strategic standard platform and introduced new governance, integration, and support capabilities. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=3306758)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=3306758
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=260
+
+Key outcomes:
+- Established the EnterWorks enterprise MDM platform and delivered Vendor and Location MVP solutions. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=3306758)
+- Created integration between Snowflake and EnterWorks and developed a retirement roadmap for the previous platform. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=3306758)
+- Actual spend was about $2.88M. WPM records the plan; PECT records actual spend. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=260)
+
+A detailed closeout lessons-learned package was not retrieved for this project, so only high-level platform outcomes were available.
+
+---
+
+### MITAS Cairo (PPL: 1008076)
+
+Why it is similar:
+- Direct MITAS deployment involving TMS6 modernization, terminal automation replacement, and MITAS architecture implementation. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2211156)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2211156
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=136
+
+Key outcomes:
+- Replaced an end-of-life Danload 6000 TAS environment with TMS6 functionality and MITAS architecture. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2211156)
+- Added real-time invoicing, inventory management, and Ignition infrastructure capabilities. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2211156)
+- Actual spend was about $390,000. WPM records the plan; PECT records actual spend. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=136)
+
+Only operational status and project records were available; no closeout lessons-learned content was retrieved.
+
+---
+
+### MITAS- Arluno, Chivasso, and Genova (PPL: 1008073)
+
+Why it is similar:
+- Direct MITAS/TMS6 infrastructure replacement and modernization across multiple terminals. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2211153)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2211153
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=178
+
+Key outcomes:
+- Implemented MITAS server architecture and upgraded terminals to the latest TMS6 version. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2211153)
+- Modernized network segmentation and infrastructure to meet ICSR requirements. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2211153)
+- Actual spend was about $520,000. WPM records the plan; PECT records actual spend. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=178)
+
+Only project-record and implementation information was available; no closeout lessons learned were retrieved.
+
+---
+
+### 2022 AE Sustainment (PPL: 1009445)
+
+Why it is similar:
+- Focused on lifecycle management, security remediation, and modernization of a strategic operational platform reaching end of life. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2888758)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2888758
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=445
+
+Key outcomes:
+- Upgraded Automation Engine from v12.2 to v21 and modernized supporting infrastructure. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2888758)
+- Addressed security issues and completed production go-live and warranty activities. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2888758)
+- Actual spend was about $1.64M. WPM records the plan; PECT records actual spend. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=445)
+
+No detailed closeout lessons-learned material was retrieved.
+
+---
+
+### 2021 Connected AWS Enablement (PPL: 1010563)
+
+Why it is similar:
+- Platform-enablement project creating a standardized future-state infrastructure foundation, comparable to how MITAS creates a standard operational platform. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=3162984)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=3162984
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=616
+
+Key outcomes:
+- Created a cloud-hosting foundation to migrate workloads from on-premise environments. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=3162984)
+- Established infrastructure-as-code and standardized operational processes. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=3162984)
+- Actual spend was about $8.49M. WPM records the plan; PECT records actual spend. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=616)
+
+Only high-level project information was available; detailed closeout findings were not retrieved.
+
+---
+
+### Model Validation (ATMv Modernization) (PPL: 1012357)
+
+Why it is similar:
+- Modernization of a critical business platform facing end-of-life technology constraints, similar to the modernization drivers behind MITAS deployments. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5377688)
+
+Project links:
+- WPM: https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5377688
+- PECT: https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=751
+
+Key findings:
+- The project is modernizing an internally developed model validation platform dependent on Office 2016 technology approaching end of life. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5377688)
+- Production go-live is scheduled as part of the modernization program after additional integration work. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5377688)
+- The project started in 2024 and is targeted to close in 2027 (planned). [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5377688)
+
+This project is still in progress and has not had its closeout review yet, so lessons learned are not available.
+
+---
+
+### Process Tag Mapping to EDP Phase 1 (PPL: 1012922)
+
+Only a high-level project record was available for this project, and no detailed project documents or descriptive fields were retrieved. Because of that, there is not enough project content available to explain its similarity beyond the fact that it surfaced among the relevant matches.
+
+<<Show me only the MITAS-related projects and compare their costs, durations, and outcomes>>
+<<What lessons learned from MITAS Project (PPL: 65221) would apply to future terminal automation or TMS6 upgrades?>>","**Ranking Summary**
+
+| Rank | Project Name | Question Match % | Solution | Gate | Start Year | Close Year | Why Selected |
+|------|------|------:|------|------|------|------|------|
+| 1 | Global Terminal Automation System Cyber Remediatio (PPL: 1013545) | 83% | MITAS/TMS7 infrastructure modernization | Gate 2 | 2025 | 2030 (planned) | Strongest match to MITAS modernization, cyber remediation, terminal segmentation, and TMS6-to-TMS7 upgrade work across terminals. |
+| 2 | Terminal Automation System (TAS) Cyber (PPL: 1012331) | 83% | Service Deploy (Infrastructure Service) | Closeout | 2023 | 2026 (actual) | Pilot project for the NewMITAS platform, TMS7 deployment, cyber remediation, and terminal modernization that directly informed later MITAS rollouts. |
+| 3 | MITAS- Arluno, Chivasso, and Genova (PPL: 1008073) | 75% | Service Deploy (Infrastructure Service) | Closeout | 2021 | 2023 (actual) | Direct MITAS deployment and TMS6 upgrade project focused on ICSR compliance, infrastructure modernization, and terminal operations. |
+| 4 | MITAS Cairo (PPL: 1008076) | 75% | Service Deploy (Infrastructure Service) | Closeout | 2021 | 2023 (actual) | Direct MITAS/TMS6 replacement project with terminal automation modernization, Ignition deployment, and cyber-compliant infrastructure. |
+| 5 | MITAS Project (PPL: 65221) | 58% | Non-SAP (Packaged Software) | Closeout | 2014 | 2022 (actual) | Large-scale MITAS replacement initiative replacing legacy TAS/SCADA systems with TopTech TMS and new SCADA standards. |
+| 6 | Power Platform Sustainment (PPL: 1007536) | 42% | Software as a Service (SaaS) | Closeout | 2021 | 2022 (actual) | Included as a lower-relevance modernization and platform-governance project, though not a terminal automation solution. |
+| 7 | Upstream Maintenance Analytics Dataset (UMAD) (PPL: 1009849) | 33% | Not recorded | Cancellation Review | 2021 | 2022 (actual) | Weak match; relates to maintenance data and analytics rather than MITAS or terminal automation technology. |
+
+<details>
+<summary>How to read the Question Match %</summary>
+This shows how well each project matches your question, based on the evidence found in its documents. ""Criteria"" are the specific conditions in your question, like the timeframe, project type, gate, or outcome you asked about. A higher score means the project meets more of those criteria with stronger supporting evidence. A lower score means a partial match: relevant, but missing some criteria or backed by weaker evidence.
+</details>
+
+**Detailed Findings**
+
+### Global Terminal Automation System Cyber Remediatio (PPL: 1013545)
+
+- This project addresses cybersecurity concerns in the global MITAS environment, upgrades TMS6 to TMS7, and replaces end-of-life hardware. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8161941)
+- The project modernizes 49 TMS6 terminals and 12 additional terminals using the NewMITAS platform design. [project_similarity:1013545_1013545(G2)-ITRM_Endorsement-Global_Terminal_Automation_System_Cyber_Remediation(G-TAS).pdf:Page-3](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49488)
+- The design distributes terminals across separate segments to reduce the impact of cyber incidents and outages. [project_similarity:1013545_1013545(G2)-ITRM_Endorsement-Global_Terminal_Automation_System_Cyber_Remediation(G-TAS).pdf:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49488)
+- Key risks included Polaris program dependencies, hardware lead times, site-specific implementation challenges, and delays in finalizing segmentation architecture. [project_similarity:1013545_1013545-(G2_Advanced_Funding)-ITDOAG_Endorsement-Global_Terminal_Automation_System_Cyber_Remediation(G-TAS).pdf:Page-9](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=50316)
+- Actual spend is not yet available because the project is still in progress. The approved budget plan is $5.0M. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=8161941)
+
+### Terminal Automation System (TAS) Cyber (PPL: 1012331)
+
+- This project redesigned MITAS infrastructure, upgraded to TMS7, and deployed the solution at pilot terminals and laboratory environments to validate the modernization strategy. [project_similarity:1012331_IT_Project_Endorsement_Request_PPL1012331_C.pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=50227)
+- Accomplishments included successful upgrades of pilot terminals and labs with minimal business disruption and improved reliability and availability. [project_similarity:1012331_IT_Project_Endorsement_Request_PPL1012331_C.pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=50227)
+- A key lesson was that infrastructure surveys should involve specialists; local vendor modifications created additional effort and hardware costs when not identified early. [project_similarity:1012331_IT_Project_Endorsement_Request_PPL1012331_C.pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=50227)
+- Global rollout activities and remaining redesign items were transitioned to the Global TAS project. [project_similarity:1012331_IT_Project_Endorsement_Request_PPL1012331_C.pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=50227)
+- Actual spend was about $2.58M. WPM records the approved budget, while PECT records what was actually spent. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=744)
+
+### MITAS- Arluno, Chivasso, and Genova (PPL: 1008073)
+
+- The project upgraded TMS6, deployed MITAS architecture, addressed cybersecurity vulnerabilities, and implemented ICSR-compliant infrastructure across three terminals. [project_similarity:1008073_IT_Project_Endorsement_Request_1008073_Gatekeeper.pdf:Page-5](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=44553)
+- Accomplishments included successful MITAS and TMS6 deployment with minimal business disruption and conversion of queuing systems to MITAS compatibility. [project_similarity:1008073_IT_Project_Endorsement_Request_1008073_Gatekeeper.pdf:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=44553)
+- Lessons learned emphasized operator training, embedding improvements into business processes, maintaining strong engineering support, and ensuring operational sustainment through global TAS support teams. [project_similarity:1008073_IT_Project_Endorsement_Request_1008073_Ongoing Support Mgrs.pdf:Page-6](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=44588)
+- Challenges included unclear ownership of L1 equipment funding, Genova testing delays, SCADA implementation delays, and resource contention across multiple projects. [project_similarity:1008073_IT_Project_Endorsement_Request_1008073_Gatekeeper.pdf:Page-3](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=44553)
+- Actual spend was about $520,000. WPM records the plan; PECT records what was actually spent. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=178)
+
+### MITAS Cairo (PPL: 1008076)
+
+- The project replaced the end-of-life Danload 6000 terminal automation system with MITAS and TMS6 capabilities. [project_similarity:1008076_IT_Project_Endorsement_Request_1008076_Gatekeeper.pdf:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=44525)
+- Accomplishments included full MITAS conversion, Ignition deployment, replacement of L1 switches, infrastructure redundancy improvements, and decommissioning of the legacy TAS system. [project_similarity:1008076_IT_Project_Endorsement_Request_1008076_Gatekeeper.pdf:Page-1](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=44525)
+- Lessons learned highlighted operator training, automation of bill-of-lading management, Ignition-based tank management, and embedding improvements into operational processes. [project_similarity:1008076_IT_Project_Endorsement_Request_1008076_Gatekeeper.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=44525)
+- Challenges included vendor-payment delays caused by Egyptian banking restrictions and late reconsideration of architecture decisions that extended schedule and cost. [project_similarity:1008076_IT_Project_Endorsement_Request_1008076_Gatekeeper.pdf:Page-3](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=44525)
+- Actual spend was about $390,000. WPM records the plan; PECT records what was actually spent. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=136)
+
+### MITAS Project (PPL: 65221)
+
+- This project replaced Canada's legacy BETA TAS/SCADA platform with the standard TopTech TMS6V solution and a new SCADA platform intended as a future Midstream standard. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=47779)
+- The project started in 2014 and closed in 2022. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=47779)
+- Actual spend was about $13.39M. WPM records the plan; PECT records what was actually spent. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=119)
+- Only high-level project records were available for this older project, so detailed lessons learned and closeout narrative were not retrieved.
+
+### Power Platform Sustainment (PPL: 1007536)
+
+- This was a platform modernization and governance effort for Microsoft Power Platform rather than a terminal automation project. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2065478)
+- Lessons learned included clarifying project scope early, improving collaboration between the BVM and architect, and maintaining a single vendor-side delivery contact. [project_similarity:1007536_2021 Power Platform Sustaiment Closeout review_DSFeb28.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=41001)
+- The project reported platform limitations and resource constraints related to adoption of a new technology. [project_similarity:1007536_2021 Power Platform Sustaiment Closeout review_DSFeb28.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=41001)
+- Actual spend was about $410,000. WPM records the plan; PECT records what was actually spent. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=147)
+
+### Upstream Maintenance Analytics Dataset (UMAD) (PPL: 1009849)
+
+- The project focused on maintenance analytics datasets, KPI validation, and migration of reporting assets into EDH rather than terminal automation infrastructure. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2890607)
+- The project was cancelled and closed in 2022. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=2890607)
+- The retrieved document is a cancellation package and does not provide meaningful MITAS-related lessons learned. [project_similarity:1009849_IT_Project_Cancellation_Inform._PPL_1009849_GK_PM.pdf:Page-3](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=41482)
+- Only limited cancellation information was available, which is why detailed implementation outcomes are not present.
+
+<<Show me lessons learned across all MITAS-related projects>>
+
+<<Compare costs, durations, and outcomes for the MITAS Cairo, Arluno/Chivasso/Genova, and TAS Cyber projects>>","Both return results; 3 projects overlap.
+- Both name 65221, 1008076, 1008073
+- chat_similarity adds 2 further MITAS-family projects (1013545, 1012331) and flags 2 weak matches
+- KB-path adds 5 non-MITAS platform-modernization projects (for example Enterprise AI 1012423, MDM EnterWorks 1010688)
+- KB-path returns 4 closeout lessons for 65221; chat_similarity reports only high-level records for that same project","The question asks for projects similar to a named project. The flow resolves that name to an exact project ID which Retrieval API cannot do, so the flow fell back to general similarity. That is why the answer mixes real MITAS projects with unrelated platform-modernization projects."
+Thin-document / evidence coverage,Which SaaS projects closed in the last two years have a recorded duration under 12 months?,"No strong matches were found for this query.
+
+I can see SaaS-related projects in the results, but the available evidence does not clearly identify which projects both closed within the last two years and have a recorded duration under 12 months. For example, AppZen Implementation is a SaaS project with a recorded duration of about 4 months, but it is still in progress and is targeted to close later, so it does not meet your closed-project requirement. Kepler ETL/API Production Expansion has a closeout record, but the evidence does not identify it as a SaaS project or provide a recorded duration.
+
+It would help to narrow this in one of these ways:
+- What time period do you want to use for ""last two years""—projects that closed in 2024–2025, or a different range?
+- Should I look only for projects explicitly classified as ""Software as a Service (SaaS),"" or also include other cloud-hosted software implementations?
+- Are you interested only in closeout-stage projects (with lessons learned and final outcomes), or any completed project record?
+
+<<Show only Software as a Service (SaaS) projects that closed in 2024 or 2025>>
+<<Show completed SaaS projects with recorded durations under 12 months regardless of close year>>","**Ranking Summary**
+
+| Rank | Project Name | Question Match % | Solution | Gate | Start Year | Close Year | Duration | Why Selected |
+|------|------|------:|------|------|------|------|------|------|
+| 1 | Monitoring tool consolidation in the cloud (PPL: 1011945) | 100% | Software as a Service (SaaS) | Closeout | 2023 | 2024 (actual) | About 10.3 months | SaaS project that closed within the last two years and has a recorded duration under 12 months. Rich closeout, gate, cost, and benefits evidence is available. |
+| 2 | Software Supply Chain Security - Scanning Tool (PPL: 1013106) | 100% | Software as a Service (SaaS) | Closeout | 2025 | 2026 (actual) | About 11.5 months | SaaS project with recorded duration under 12 months and a documented closeout review. Includes lessons learned and final performance results. |
+| 3 | 2024 Algosec Expansion and Workflow Optimization (PPL: 1012482) | 100% | Software as a Service (SaaS) | Closeout | 2024 | 2025 (actual) | About 0.6 months | SaaS project that closed recently and has a recorded duration below 12 months. Extensive closeout documentation is available. |
+| 4 | Kepler ETL/API Production Expansion (PPL: 1012649) | 100% | Software as a Service (SaaS) | Closeout | 2023 | 2024 (actual) | About 9.6 months | SaaS project, recently closed, with duration under 12 months and documented closeout results. |
+| 5 | AppZen Implementation (PPL: 1013601) | 58% | Software as a Service (SaaS) | Gate 3/Design Complete | 2026 | 2027 (planned) | About 4.0 months | SaaS project with duration under 12 months, but it is still in progress and has not closed yet, so it does not satisfy the closeout criterion. |
+| 6 | NA-JOL-Joliet Admin Building (PPL: 1013391) | 58% | Software as a Service (SaaS) | Pre-Gate 1 | 2025 | 2026 (actual) | About 11.0 months | Tagged as SaaS with duration under 12 months, but available evidence is limited and not focused on SaaS delivery. |
+| 7 | IGA Transformation 2022 (PPL: 1009510) | 42% | SaaS IAM solution | CP 3/Pre-Startup | 2021 | 2026 (planned) | Not recorded | Uses a SaaS identity platform but is still in progress and does not have a recorded duration under 12 months. |
+| 8 | 2025 Trading Digital Roadmap Refresh (PPL: 1013124) | 92% | Software as a Service (SaaS) | Closeout | 2025 | 2025 (actual) | About 5.2 months | SaaS project that closed recently with duration well under 12 months and documented closeout results. |
+| 9 | Project Apex (PPL: 1009908) | 58% | SaaS planning platform | Gate 2 | 2021 | 2026 (actual) | Not recorded | Included because SaaS planning software was central to the project, but no duration under 12 months is recorded. |
+| 10 | App Delivery and Observability Enhancement (PPL: 1013434) | 42% | Not recorded as SaaS | Gate 3/Design Complete | 2025 | 2026 (planned) | Not recorded | Active project; does not meet the closed-project requirement. |
+| 11 | Data Storage Modernization - ITDW to SnowFlake (PPL: 1013623) | 42% | Not recorded as SaaS | Pre-Gate 1 | 2026 | 2027 (planned) | Not recorded | Active project and not a closed SaaS project in the requested period. |
+| 12 | E-vision: EMPS migration to Saas and Barrier mgt (PPL: 1013619) | 58% | SaaS migration | Gate 1 | 2026 | 2027 (planned) | Not recorded | SaaS-related project but still in progress, so closeout results and final duration are not available. |
+| 13 | S2P Sourcing Tools (PPL: 1012806) | 75% | Non-SAP (Packaged Software) | Closeout | 2024 | 2024 (actual) | About 11.9 months | Closed within the period and under 12 months, but not tagged as SaaS. |
+| 14 | ESM Expansion 2026 (PPL: 1013633) | 33% | Not recorded as SaaS | Pre-Gate 1 | 2026 | 2027 (planned) | Not recorded | Active project and does not meet the requested criteria. |
+| 15 | Data Foundational Project (PPL: 1013212) | 67% | Business Analysis (Analytics) | Closeout | 2024 | 2025 (actual) | About 10.6 months | Closed within the period and under 12 months, but not a SaaS project. |
+| 16 | Data Management & Analytics EAME (PPL: 1012265) | 67% | Business Analysis (Analytics) | Gate 3/Design Complete | 2023 | 2024 (actual) | About 10.7 months | Closed within the period and under 12 months, but not a SaaS project. |
+| 17 | Surveillance and Optimization Platform - 2023 (PPL: 1011735) | 50% | Custom Software Development | Closeout | 2023 | 2024 (actual) | About 10.8 months | Closed within the period and under 12 months, but not a SaaS project. |
+| 18 | 2024 IT Security Fortification (PPL: 1012453) | 50% | Non-SAP (Packaged Software) | Complete | 2024 | 2025 (actual) | About 10.5 months | Closed within the period and under 12 months, but not tagged as SaaS. |
+
+<details>
+<summary>How to read the Question Match %</summary>
+This shows how well each project matches your question, based on the evidence found in its documents. ""Criteria"" are the specific conditions in your question, like the timeframe, project type, gate, or outcome you asked about. A higher score means the project meets more of those criteria with stronger supporting evidence. A lower score means a partial match: relevant, but missing some criteria or backed by weaker evidence.
+</details>
+
+**Detailed Findings**
+
+The projects that meet all of your criteria (SaaS, closed in the last two years, and recorded duration under 12 months) are:
+
+1. Monitoring tool consolidation in the cloud (PPL: 1011945)
+- Solution type: Software as a Service (SaaS). [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=439)
+- Actual start year: 2023. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=4731244)
+- Closed in 2024. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=4731244)
+- Recorded duration was about 10.3 months. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=439)
+- Actual spend was about $1.57M; WPM records the plan and PECT records what was actually spent. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=439)
+- The project consolidated multiple monitoring tools into Datadog and delivered operating-cost reduction benefits through license savings and hardware retirement. [project_similarity:1011945_IT_Project_Endorsement_Request_PPL_1011945_Monitoring_Tool_Consolidation_G3_Dec_3_2023.pdf:Page-7](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=45111)
+
+2. Software Supply Chain Security - Scanning Tool (PPL: 1013106)
+- Solution type: Software as a Service (SaaS). [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=556)
+- Actual start year: 2025. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=6543441)
+- Closed in 2026. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=6543441)
+- Recorded duration was about 11.5 months. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=556)
+- Actual spend was about $980,000; WPM records the plan and PECT records what was actually spent. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=556)
+- The closeout reported the project completed on budget and delivered software supply-chain security scanning capabilities using ReversingLabs products. [project_similarity:1013106_(CP3_Closeout)_PPL 1013106_Software Supply Chain Security Scanning Tool_Signed.pdf:Page-7](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=50175)
+
+3. 2024 Algosec Expansion and Workflow Optimization (PPL: 1012482)
+- Solution type: Software as a Service (SaaS). [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=633)
+- Actual start year: 2024. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5378073)
+- Closed in 2025. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5378073)
+- Recorded duration was about 0.6 months in PECT. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=633)
+- Actual spend was about $600,000; WPM records the plan and PECT records what was actually spent. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=633)
+- The project migrated Algosec to AWS, automated port-opening requests, and completed under budget. [project_similarity:1012482_1012482 - 2024 Algosec Expansion and Workflow Optimization CP3 & Closeout Deck_OSM & GK.pdf:Page-24](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49192)
+
+4. Kepler ETL/API Production Expansion (PPL: 1012649)
+- Solution type: Software as a Service (SaaS). [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=320)
+- Actual start year: 2023. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5867325)
+- Closed in 2024. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5867325)
+- Recorded duration was about 9.6 months. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=320)
+- Actual spend was about $950,000; WPM records the plan and PECT records what was actually spent. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=320)
+- The project delivered a production Airflow cloud environment and finished slightly under budget. [project_similarity:1012649_IT_Project_Endorsement_Request_PPL_1012649_p.pdf:Page-7](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46675)
+
+5. 2025 Trading Digital Roadmap Refresh (PPL: 1013124)
+- Solution type: Software as a Service (SaaS). [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=523)
+- Actual start year: 2025. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=6543666)
+- Closed in 2025. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=6543666)
+- Recorded duration was about 5.2 months. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=523)
+- Actual spend was about $490,000; WPM records the plan and PECT records what was actually spent. [project_similarity:PECT Record](https://teamwork3.exxonmobil.com/sites/wrkdlvry/PECT/Lists/PECT/DispForm.aspx?ID=523)
+- The project delivered a trading digital roadmap covering the next three to five years and completed within the originally proposed schedule. [project_similarity:1013124_1013124_CombinedCP3Closeout_ArchitectOSMGatekeeper.pdf:Page-7](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=49218)
+
+For the remaining projects:
+
+- AppZen Implementation, IGA Transformation 2022, App Delivery and Observability Enhancement, Data Storage Modernization - ITDW to SnowFlake, E-vision: EMPS migration to Saas and Barrier mgt, and ESM Expansion 2026 are still in progress, so they do not meet the requirement of being closed. Their final outcomes and closeout metrics are not yet available because they have not reached project closeout.
+- S2P Sourcing Tools, Data Foundational Project, Data Management & Analytics EAME, Surveillance and Optimization Platform - 2023, and 2024 IT Security Fortification closed within the period and have durations under 12 months, but they are not tagged as SaaS projects.
+- NA-JOL-Joliet Admin Building is tagged as SaaS in PECT and has an 11?month duration, but the available project narrative is a facilities/building deployment and does not provide SaaS-specific implementation details. Only high-level information was available for this project.
+- Project Apex used SaaS planning software but the available records do not provide a recorded project duration under 12 months.
+
+In summary, the strongest matches to your request are:
+- Monitoring tool consolidation in the cloud
+- Software Supply Chain Security - Scanning Tool
+- 2024 Algosec Expansion and Workflow Optimization
+- Kepler ETL/API Production Expansion
+- 2025 Trading Digital Roadmap Refresh
+
+<<Show the lessons learned from these five SaaS projects>>
+<<Rank these SaaS projects by actual spend and duration>>","KB-path declines; chat_similarity answers.
+- chat_similarity ranks 18 projects and names 5 meeting all criteria, with duration and spend per project, plus stated reasons for excluding the rest
+- KB-path returns no qualifying projects and asks 3 narrowing questions: which 2-year range, whether to include non-SaaS cloud software, and closeout-only or any completed record","The question asks for a filtered set: SaaS projects, closed in a window, with a recorded duration under 12 months. That is a filter-and-group operation, and the Retrieval API has no `facets`, so the flow could not build the matching set. 4 projects came back with a low 'top reranker score' of 1.28 against a threshold of 1.5, so nothing passed and the flow asked the user to narrow instead."
+Thin-document / evidence coverage,"Extract all lessons learned for these eight project IDs: 1009338, 1009392, 1010069, 1011517, 1011718, 1011742, 1012268, 1012329. Structure the result by project number and name, brief description, and interpret whether each lesson learned is positive or negative impact and categorize the theme of the learning (if you cannot interpret the impact category, just show the exact lesson learned).","Below are the lessons learned extracted from the available closeout records, organized by project.
+
+Project 1009338 — MWS - SDWAN2023
+
+Brief description:
+Global SD-WAN deployment to enable internet-first connectivity, support modern client capabilities, improve security posture, and reduce dependence on MPLS circuits. [project_similarity:1009338_IT_Project_Endorsement_Request_PPL_1009338_Gatekeeper.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=47298)
+
+Lessons learned:
+
+- Positive impact | Theme: Execution management / Delivery model
+  - Objective-based outcomes increased focus on execution. [project_similarity:1009338_IT_Project_Endorsement_Request_PPL_1009338_Gatekeeper.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=47298)
+
+- Positive impact | Theme: Standardization and process design
+  - Standardizing repeatable work, building robust work-management processes, creating dedicated execution teams, and defining strong coordination processes were critical for handling the many hand-offs involved. [project_similarity:1009338_IT_Project_Endorsement_Request_PPL_1009338_Gatekeeper.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=47298)
+
+- Positive impact | Theme: Requirements management / Cross-team alignment
+  - Capturing requirements from other capability teams and projects early is critical, even when the project is primarily focused on cost efficiency. [project_similarity:1009338_IT_Project_Endorsement_Request_PPL_1009338_Gatekeeper.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=47298)
+
+- Negative impact | Theme: Technical architecture
+  - SD-WAN technology required substantially different WAN and VLAN design work than anticipated. [project_similarity:1009338_IT_Project_Endorsement_Request_PPL_1009338_Gatekeeper.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=47298)
+
+- Negative impact | Theme: Automation and engineering capacity
+  - Pressure to accelerate deployment reduced focus on developing automated solutions for complex processes and capabilities. [project_similarity:1009338_IT_Project_Endorsement_Request_PPL_1009338_Gatekeeper.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=47298)
+
+- Negative impact with mitigation | Theme: Financial governance
+  - Non-transparent billing and cost-account changes in some countries delayed cost-object creation and CAPEX allocation; bi-weekly follow-up with procurement and country payables teams proved important. [project_similarity:1009338_IT_Project_Endorsement_Request_PPL_1009338_Gatekeeper.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=47298)
+
+Project 1009392 — 2022 DCC - Broadcom MF Software Replacement
+
+Brief description:
+Mainframe modernization project replacing Broadcom software modules with IBM and related alternatives before major license-cost increases. [project_similarity:1009392_IT_Project_Endorsement_Request_PPL_1009392_Gatekeeper.pdf:Page-3](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46641)
+
+Lessons learned:
+
+- Negative impact | Theme: Program management and resourcing
+  - Running multiple workstreams simultaneously with several IBM business partners while using the same ExxonMobil project resources was challenging. The lesson was that the effort would have been better managed as a single program, with staffing strategies and temporary hires planned before Gate 1 to handle peak workload periods. [project_similarity:1009392_IT_Project_Endorsement_Request_PPL_1009392_Gatekeeper.pdf:Page-3](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46641)
+
+Project 1010069 — Mexico Mobilstore
+
+Brief description:
+Salesforce-based redesign of the Mobil Oil application and customer commerce capabilities for the Mexico lubricants business. [project_similarity:1010069_IT_Project_Endorsement_Request_PPL_1010069.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46223)
+
+Lessons learned:
+
+- Positive impact | Theme: Release and launch strategy
+  - A phased launch approach (soft launch, massive launch, public launch) generated valuable feedback and reduced customer impact from startup issues. [project_similarity:1010069_IT_Project_Endorsement_Request_PPL_1010069.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46223)
+
+- Positive impact | Theme: Vendor and stakeholder management
+  - Managing more than 15 vendors required strong relationship and coordination skills, particularly across Spanish-language ceremonies. [project_similarity:1010069_IT_Project_Endorsement_Request_PPL_1010069.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46223)
+
+- Positive impact | Theme: Quality assurance / Independent review
+  - An external “cold-eyes” review by Salesforce reduced rework and lowered the number of production launch issues. [project_similarity:1010069_IT_Project_Endorsement_Request_PPL_1010069.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46223)
+
+- Positive impact | Theme: Incremental rollout
+  - Starting with existing customers in a soft launch allowed lessons to be incorporated before broader releases and limited customer disruption. [project_similarity:1010069_IT_Project_Endorsement_Request_PPL_1010069.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46223)
+
+- Negative impact | Theme: Technology adoption assumptions
+  - The team incorrectly assumed Salesforce would be easier to implement simply because it was newer technology. [project_similarity:1010069_IT_Project_Endorsement_Request_PPL_1010069.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46223)
+
+- Positive impact | Theme: Knowledge reuse
+  - Existing learnings from ConnectBenkel and Salesforce Marketing Cloud should be used as a planning baseline to reduce future journey-building effort. [project_similarity:1010069_IT_Project_Endorsement_Request_PPL_1010069.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46223)
+
+- Positive impact | Theme: Team collaboration
+  - Project ceremonies and delivery strategies were successfully adapted for a roughly 60-person team from approximately 15 companies working in English and Spanish without sacrificing quality. [project_similarity:1010069_IT_Project_Endorsement_Request_PPL_1010069.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46223)
+
+- Negative impact | Theme: Agile delivery roles
+  - Not having a Scrum Master doubled the Product Owner’s responsibilities. [project_similarity:1010069_IT_Project_Endorsement_Request_PPL_1010069.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46223)
+
+- Negative impact | Theme: Stakeholder engagement
+  - Distributors should have been involved in PI Planning earlier to surface objections to the system design sooner. [project_similarity:1010069_IT_Project_Endorsement_Request_PPL_1010069.pdf:Page-4](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46223)
+
+Project 1011517 — Predictive Order Inflow
+
+Brief description:
+Machine-learning solution that predicts customer order inflow and automates SAP actions to improve demand forecasting and order fulfillment decisions. [project_similarity:1011517_IT_Project_Endorsement_Request_PPL_1011517_p.pdf:Page-9](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46111)
+
+Lessons learned:
+
+- Negative impact | Theme: Knowledge management and workforce transition
+  - Personnel changes caused knowledge loss and rework. Early documentation was insufficient and knowledge-transfer time was inadequate. More time should have been allocated to training replacement resources, even if that required extending statement-of-work commitments. [project_similarity:1011517_IT_Project_Endorsement_Request_PPL_1011517_p.pdf:Page-9](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46111)
+
+- Negative impact | Theme: Vendor capability assessment
+  - Vendor expertise in the Aera product was lower than expected. Developers had SQL skills but lacked sufficient industry, supply-chain, and product experience, creating development challenges. [project_similarity:1011517_IT_Project_Endorsement_Request_PPL_1011517_p.pdf:Page-9](https://ishareteam2.na.xom.com/sites/emitpsr/Lists/Project%20Stage%20Deliverables%20%20Endorsements/DispForm.aspx?ID=46111)
+
+Project 1011718 — 2023 Upstream Digital Acceleration
+
+Brief description:
+Digital acceleration program supporting upstream operations through agile delivery of digital opportunities for Kearl and Cold Lake. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=4155366)
+
+Lessons learned:
+- No lessons-learned content was retrieved for this project. The project has closed, but the available records for this request contained only summary information and did not include a lessons-learned section.
+
+Project 1011742 — Real Time Wells Data: Corva Dev Center Apps
+
+Brief description:
+Development of real-time drilling and wells applications on the Corva platform to optimize drilling performance and reduce non-productive time. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=4155438)
+
+Lessons learned:
+- No formal lessons-learned section was retrieved for this project. The records available for this request include accomplishments and project disappointments, but not explicit lessons learned. Because the user asked specifically for lessons learned, those disappointments are not being reclassified as lessons.
+
+Project 1012268 — Gas Direct 2.0 Project
+
+Brief description:
+Enhancement of the Gas Direct platform, including helium-process support and delivery of multiple software releases. [project_similarity:WPM Record](https://exxonmobilit.pvcloud.com/planview/PLP/EntityLandingPage.aspx?pt=PROJECT&scode=5321023)
+
+Lessons learned:
+- No lessons-learned content was retrieved for this project. The available records contain project status and accomplishment information but no documented lessons-learned section.
+
+Project 1012329 — 23CP MOIT - Process Ops Alarm Management & Monitor
+
+Brief description:
+Only a high-level project record was available for this request.
+
+Lessons learned:
+- No lessons-learned content was retrieved for this project. Only minimal project information was available in the records returned for this request, so no lesson details could be extracted.
+
+Suggested follow-up questions:
+
+<<Summarize the lessons learned across all eight projects and identify the most common themes>>
+
+<<Create a lessons-learned matrix showing project number, theme, impact, and recommended action for future projects>>","## Lessons Learned by Project
+
+ 
+
+### 1009338 — MWS - SDWAN2023
+
+ 
+
+**Brief description**: Global SD-WAN deployment enabling internet-first connectivity, Zoom, Zero Trust, and CME readiness across hundreds of sites. Project started in 2022 and closed in 2024. Project description: MWS strategy enablement through SD-WAN and site readiness activities. `[1]`
+
+ 
+
+| Theme | Impact | Lesson Learned / Interpretation |
+
+|---|---|---|
+
+| Technology adoption | Positive | Versa Analytics capabilities were not yet fully explored and should be incorporated into the branch monitoring strategy as bandwidth increases. This suggests future projects can extract more value by leveraging platform capabilities earlier. `[2]` |
+
+| Planning / execution alignment | Negative | Site cutover commitments should be aligned and enforced during Sprint and PI planning once hardware and circuits are available. Misalignment can delay deployments. `[2]` |
+
+| Vendor management | Positive | Continuously pivoting to alternative local circuit vendors when existing vendors failed to meet standards accelerated benefit realization. `[2]` |
+
+ 
+
+### 1009392 — 2022 DCC - Broadcom MF Software Replacement
+
+ 
+
+**Brief description**: Mainframe software replacement project migrating away from Broadcom products to IBM equivalents to avoid major licensing-cost increases. `[3]`
+
+ 
+
+| Theme | Impact | Lesson Learned / Interpretation |
+
+|---|---|---|
+
+| Schedule management | Negative | Migration activities were affected by financial quarterly-close and month-end-close approval cycles. Future projects should build schedule contingency to absorb approval delays. `[4]` |
+
+ 
+
+### 1010069 — Mexico Mobilstore
+
+ 
+
+**Brief description**: Salesforce-based digital commerce and mobile application transformation for Mexico lubricants business, including e-commerce, payments, and distributor portal capabilities. `[5]`
+
+ 
+
+| Theme | Impact | Lesson Learned / Interpretation |
+
+|---|---|---|
+
+| Agile delivery / resourcing | Negative | Lack of a Scrum Master doubled Product Owner responsibilities and reduced delivery effectiveness. `[6]` |
+
+| Stakeholder engagement | Negative | Distributors should have been involved in PI Planning earlier to surface design objections sooner. `[6]` |
+
+| Access management | Negative | Third-party onboarding and technical access processes took excessive time because access provisioning was not role-based. `[6]` |
+
+| Procurement / vendor management | Negative | Unpredictable purchase-order timing for third-party resources created scheduling uncertainty and delayed work starts. `[6]` |
+
+| Support model | Negative | Time-zone differences reduced issue resolution speed because EMIT support was unavailable during much of the business day in Mexico. `[6]` |
+
+| Platform governance | Negative | Resource competition and unmanaged Salesforce configuration changes caused delays and rework. `[6]` |
+
+| Architecture review | Positive | Salesforce Cold Eyes Review was considered a worthwhile investment that helped prevent and recover from issues. `[6]` |
+
+| Team collaboration | Negative | Developers working in silos led to rework; project ceremonies should be designed to expose and correct this behavior earlier. `[6]` |
+
+| Delivery methodology | Positive | A hybrid waterfall/agile approach was necessary because one vendor could not operate in a fully agile model. `[6]` |
+
+ 
+
+### 1011517 — Predictive Order Inflow
+
+ 
+
+**Brief description**: AI-driven demand forecasting and order inflow optimization solution for Supply Chain. `[7]`
+
+ 
+
+| Theme | Impact | Lesson Learned / Interpretation |
+
+|---|---|---|
+
+| Process enablement | Positive | Focus on supplementing rather than replacing existing business processes improved adoption. `[8]` |
+
+| Process standardization | Positive | Standardized, harmonized, and automated processes contributed to success. `[8]` |
+
+| Architecture | Positive | Modern architecture and API-based development practices supported delivery success. `[8]` |
+
+| User engagement | Positive | Broad understanding of value across sales and supply-chain roles aided adoption. `[8]` |
+
+| Strategy alignment | Positive | Clear alignment of objectives with business priorities and a compelling business case drove success. `[8]` |
+
+| Delivery approach | Positive | Iterative execution and funding helped balance speed, cost, and quality. `[8]` |
+
+| Benefits management | Positive | Explicit linkage of value measurement to business KPIs improved realization tracking. `[8]` |
+
+| Sustainment | Positive | Training and embedding support teams throughout delivery eliminated the need for a disruptive transition-to-support event. `[8]` |
+
+ 
+
+### 1011718 — 2023 Upstream Digital Acceleration
+
+ 
+
+**Brief description**: Upstream Canada digital acceleration program using agile fusion teams to deliver operational digital initiatives. `[9]`
+
+ 
+
+| Theme | Impact | Lesson Learned / Interpretation |
+
+|---|---|---|
+
+| Solution strategy | Positive | Evaluate build, buy, reuse, and rent options instead of defaulting to building new solutions. `[10]` |
+
+| Capability development | Positive | Pilot projects are valuable mechanisms for building cloud and modern architecture capabilities. `[10]` |
+
+| Continuous improvement | Positive | Iterative application of lessons learned improved subsequent pilots and outcomes. `[10]` |
+
+| Technical debt | Negative | Security/compliance and technical debt must be actively managed before they become material issues. `[10]` |
+
+| Leadership sponsorship | Positive | Strong business leadership support enabled rapid reprioritization and delivery pivots. `[10]` |
+
+| Business partnership | Positive | Fusion teams and strong Product Owner engagement were critical for clear requirements and rapid value delivery. `[10]` |
+
+| Resource continuity | Negative | Attrition, role changes, and business availability constraints disrupted delivery and knowledge retention. `[10]` |
+
+ 
+
+### 1011742 — Real Time Wells Data: Corva Dev Center Apps
+
+ 
+
+**Brief description**: Development of drilling and wells analytics applications on the Corva platform to reduce NPT and improve drilling performance. `[11]`
+
+ 
+
+| Theme | Impact | Lesson Learned / Interpretation |
+
+|---|---|---|
+
+| Scope management | Positive | The team successfully substituted new high-value use cases when existing concepts became infeasible, preserving business value. `[11]` |
+
+| Vendor dependency management | Negative | RTPSA Phase 2 had to be removed because of unforeseen technical dependencies within the Corva platform. `[11]` |
+
+| Portfolio prioritization | Negative | AITI was removed from scope because business priorities shifted to support the Pioneer integration effort. `[11]` |
+
+| Governance / decision quality | Positive | Gate 3 decisions were made early enough to avoid pursuing technically infeasible vendor-dependent work. `[11]` |
+
+ 
+
+### 1012268 — Gas Direct 2.0 Project
+
+ 
+
+**Brief description**: Enhancement of the Gas Direct platform with helium processing, reporting, payments, and mobile capabilities. `[12]`
+
+ 
+
+| Theme | Impact | Lesson Learned / Interpretation |
+
+|---|---|---|
+
+| Knowledge management | Negative | Functional and technical knowledge gaps created cost and schedule risk; vendor expertise was required to compensate for limited internal capability. `[13]` |
+
+| Resource strategy | Positive | Leveraging LionHeart resources reduced dependence on limited EM resources. `[13]` |
+
+| Support ownership | Negative | Future projects should identify long-term EMIT support ownership early across all affected business lines. `[13]` |
+
+ 
+
+### 1012329 — 23CP MOIT - Process Ops Alarm Management & Monitor
+
+ 
+
+**Brief description**: Process operations alarm monitoring and enterprise cockpit integration project. `[14]`
+
+ 
+
+No explicit lessons learned, retrospective findings, or closeout learning statements were found in the retrieved evidence. The retrieved closeout material appears to be economic documentation rather than a lessons-learned report. `[15]`
+
+ 
+
+## Cross-Project Themes
+
+ 
+
+Most common negative themes:
+
+ 
+
+- Stakeholder engagement and early business involvement.
+
+- Vendor and third-party dependency management.
+
+- Resource availability, onboarding, and knowledge gaps.
+
+- Schedule impacts from external dependencies and approval cycles.
+
+- Technical debt and platform governance.
+
+ 
+
+Most common positive themes:
+
+ 
+
+- Strong business sponsorship and fusion-team collaboration.
+
+- Iterative/agile delivery approaches.
+
+- Early architecture reviews and governance checkpoints.
+
+- Continuous learning through pilots and phased implementation.
+
+- Flexibility to adapt scope when technical realities changed.
+
+ 
+
+## Citations (16)
+
+ 
+
+1. WPM Record
+
+2. 1009338_IT_Project_Endorsement_Request_PPL_1009338_Gatekeeper.pdf (p.5)
+
+3. WPM Record
+
+4. 1009392_IT_Project_Endorsement_Request_PPL_1009392_Gatekeeper.pdf (p.5)
+
+5. WPM Record
+
+6. 1010069_IT_Project_Endorsement_Request_PPL_1010069.pdf (p.5)
+
+7. WPM Record
+
+8. 1011517_IT_Project_Endorsement_Request_PPL_1011517_p.pdf (p.20)
+
+9. WPM Record
+
+10. 1011718_IT_Project_Endorsement_Request_PPL_1011718_OSM_GK.pdf (p.6)
+
+11. WPM Record
+
+12. WPM Record
+
+13. 1012268_IT_Project_Endorsement_Request_PPL_1012268_ Closeout_OSM_GK.pdf (p.10)
+
+14. WPM Record
+
+15. 1012329_1012329(CO)ITCASH_Process_Ops_Alarm_+_Monitoring-Suffix.xlsm (loc.23)
+
+16. project_similarity:Closeout - Endorsement","Both return lessons.
+- KB-path extracts lessons with page citations for 4 of the 8 named projects (1009338, 1009392, 1010069, 1011517) and reports none found for the other 4
+- chat_similarity reports lessons for 7, and 1 listed as 'retrospective observations'.","The semantic ranker from the KB retrieval cuts the content even when the content exists. The flow asks for a project's full evidence, and the retrieve call returns only the chunks the ranker scored highest: 1 to 4 chunks per project in the recorded run, not the full closeout section. Whereas the Search path asks for up to 50 chunks per project per gate and gets them. "

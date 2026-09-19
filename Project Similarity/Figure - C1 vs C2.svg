@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="690" viewBox="0 0 1240 690" font-family="Segoe UI, Calibri, Arial, sans-serif">
+<defs>
+<marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#98A2B3"/>
+</marker>
+<style>
+.t   { font-size:26px; font-weight:700; fill:#101828 }
+.st  { font-size:13.5px; fill:#667085 }
+.band{ font-size:9.5px; font-weight:700; fill:#98A2B3; letter-spacing:1.1px }
+.bt  { font-size:14px; font-weight:600; fill:#101828 }
+.bx  { font-size:11px; fill:#667085 }
+.hd  { font-size:16px; font-weight:700; fill:#101828 }
+.hs  { font-size:11.5px; fill:#667085 }
+.bdg { font-size:8.5px; font-weight:700; fill:#FFFFFF; letter-spacing:.5px }
+.lg  { font-size:11px; fill:#475467 }
+.cap { font-size:13px; fill:#475467 }
+.grey{ fill:#FFFFFF; stroke:#D0D5DD; stroke-width:1.2 }
+.soft{ fill:#F9FAFB; stroke:#D0D5DD; stroke-width:1.2 }
+.amb { fill:#FFFBEB; stroke:#F59E0B; stroke-width:1.4 }
+.blu { fill:#EFF6FF; stroke:#3B82F6; stroke-width:1.4 }
+.ln  { stroke:#98A2B3; stroke-width:1.4; marker-end:url(#ar); fill:none }
+</style>
+</defs>
+
+<rect width="1240" height="690" fill="#FFFFFF"/>
+
+<!-- HEADER -->
+<text class="t"  x="24" y="40">Option C &#8212; two ways to reach three indexes</text>
+<text class="st" x="24" y="65">The orchestrator does the work, or Azure does it.</text>
+
+<rect x="812" y="24" width="13" height="13" rx="3" class="grey"/>
+<text class="lg" x="832" y="35">Exists today</text>
+<rect x="912" y="24" width="13" height="13" rx="3" class="amb"/>
+<text class="lg" x="932" y="35">New build</text>
+<rect x="1006" y="24" width="13" height="13" rx="3" class="blu"/>
+<text class="lg" x="1026" y="35">Azure-managed</text>
+
+<line x1="24" y1="86" x2="1216" y2="86" stroke="#E4E7EC" stroke-width="1"/>
+
+<!-- COLUMN HEADERS -->
+<rect x="120" y="100" width="530" height="50" rx="7" class="soft"/>
+<text class="hd" x="138" y="124">C1. Existing AI StarterKit Framework</text>
+<text class="hs" x="138" y="142">The orchestrator reaches each index itself</text>
+
+<rect x="690" y="100" width="530" height="50" rx="7" class="blu"/>
+<text class="hd" x="708" y="124">C2. Introducing Azure Knowledge Base</text>
+<text class="hs" x="708" y="142">Azure reaches the indexes for us</text>
+
+<!-- BAND: INDEXES -->
+<text class="band" x="16" y="200">INDEXES</text>
+
+<rect x="120" y="168" width="166" height="70" rx="7" class="grey"/>
+<text class="bt" x="136" y="198">Project</text>
+<text class="bt" x="136" y="214">Similarity</text>
+<text class="bx" x="136" y="230">exists today</text>
+
+<rect x="302" y="168" width="166" height="70" rx="7" class="amb"/>
+<rect x="424" y="178" width="34" height="16" rx="8" fill="#F59E0B"/>
+<text class="bdg" x="433" y="189">NEW</text>
+<text class="bt" x="318" y="206">DBR</text>
+<text class="bx" x="318" y="226">new index</text>
+
+<rect x="484" y="168" width="166" height="70" rx="7" class="amb"/>
+<rect x="606" y="178" width="34" height="16" rx="8" fill="#F59E0B"/>
+<text class="bdg" x="615" y="189">NEW</text>
+<text class="bt" x="500" y="206">LDP</text>
+<text class="bx" x="500" y="226">new index</text>
+
+<rect x="690" y="168" width="166" height="70" rx="7" class="grey"/>
+<text class="bt" x="706" y="198">Project</text>
+<text class="bt" x="706" y="214">Similarity</text>
+<text class="bx" x="706" y="230">exists today</text>
+
+<rect x="872" y="168" width="166" height="70" rx="7" class="amb"/>
+<rect x="994" y="178" width="34" height="16" rx="8" fill="#F59E0B"/>
+<text class="bdg" x="1003" y="189">NEW</text>
+<text class="bt" x="888" y="206">DBR</text>
+<text class="bx" x="888" y="226">new index</text>
+
+<rect x="1054" y="168" width="166" height="70" rx="7" class="amb"/>
+<rect x="1176" y="178" width="34" height="16" rx="8" fill="#F59E0B"/>
+<text class="bdg" x="1185" y="189">NEW</text>
+<text class="bt" x="1070" y="206">LDP</text>
+<text class="bx" x="1070" y="226">new index</text>
+
+<!-- BAND: AZURE (C2 only) -->
+<text class="band" x="16" y="305">AZURE</text>
+
+<rect x="690" y="278" width="530" height="62" rx="7" class="blu"/>
+<rect x="1176" y="288" width="34" height="16" rx="8" fill="#3B82F6"/>
+<text class="bdg" x="1185" y="299">NEW</text>
+<text class="bt" x="708" y="304">Azure Knowledge Base</text>
+<text class="bx" x="708" y="324">one knowledge source for each index</text>
+
+<!-- C2 fan-out: knowledge base up to three indexes -->
+<line class="ln" x1="955" y1="278" x2="773" y2="242"/>
+<line class="ln" x1="955" y1="278" x2="955" y2="242"/>
+<line class="ln" x1="955" y1="278" x2="1137" y2="242"/>
+
+<!-- BAND: TOOLS -->
+<text class="band" x="16" y="400">TOOLS</text>
+
+<rect x="120" y="370" width="166" height="62" rx="7" class="amb"/>
+<text class="bt" x="136" y="396">Retrieval tool</text>
+<text class="bx" x="136" y="416">Project Similarity</text>
+
+<rect x="302" y="370" width="166" height="62" rx="7" class="amb"/>
+<text class="bt" x="318" y="396">Retrieval tool</text>
+<text class="bx" x="318" y="416">DBR</text>
+
+<rect x="484" y="370" width="166" height="62" rx="7" class="amb"/>
+<text class="bt" x="500" y="396">Retrieval tool</text>
+<text class="bx" x="500" y="416">LDP</text>
+
+<rect x="690" y="370" width="530" height="62" rx="7" class="amb"/>
+<text class="bt" x="708" y="396">Retrieval tool</text>
+<text class="bx" x="708" y="416">reads the knowledge base</text>
+
+<!-- C1: tools straight up to their own index -->
+<line class="ln" x1="203" y1="370" x2="203" y2="242"/>
+<line class="ln" x1="385" y1="370" x2="385" y2="242"/>
+<line class="ln" x1="567" y1="370" x2="567" y2="242"/>
+
+<!-- C2: tool up to knowledge base -->
+<line class="ln" x1="955" y1="370" x2="955" y2="344"/>
+
+<!-- BAND: ORCHESTRATOR -->
+<text class="band" x="16" y="495">ORCHESTRATOR</text>
+
+<rect x="120" y="466" width="530" height="62" rx="7" class="soft"/>
+<text class="bt" x="138" y="492">Orchestrator</text>
+<text class="bx" x="138" y="512">combines what each tool returns</text>
+
+<rect x="690" y="466" width="530" height="62" rx="7" class="soft"/>
+<text class="bt" x="708" y="492">Orchestrator</text>
+<text class="bx" x="708" y="512">receives one combined result</text>
+
+<!-- C1 fan-out: orchestrator up to three tools -->
+<line class="ln" x1="385" y1="466" x2="203" y2="436"/>
+<line class="ln" x1="385" y1="466" x2="385" y2="436"/>
+<line class="ln" x1="385" y1="466" x2="567" y2="436"/>
+
+<!-- C2: orchestrator up to the one tool -->
+<line class="ln" x1="955" y1="466" x2="955" y2="436"/>
+
+<!-- BAND: PROMPT -->
+<text class="band" x="16" y="588">PROMPT</text>
+
+<rect x="120" y="562" width="530" height="54" rx="7" class="grey"/>
+<text class="bt" x="138" y="595">User prompt</text>
+
+<rect x="690" y="562" width="530" height="54" rx="7" class="grey"/>
+<text class="bt" x="708" y="595">User prompt</text>
+
+<line class="ln" x1="385" y1="562" x2="385" y2="532"/>
+<line class="ln" x1="955" y1="562" x2="955" y2="532"/>
+
+<!-- CAPTION -->
+<line x1="24" y1="644" x2="1216" y2="644" stroke="#E4E7EC" stroke-width="1"/>
+<text class="cap" x="120" y="668">C1 fans out in our code.</text>
+<text class="cap" x="690" y="668">C2 fans out inside Azure.</text>
+</svg>

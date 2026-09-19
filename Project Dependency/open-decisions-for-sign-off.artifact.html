@@ -1,0 +1,1201 @@
+<title>Dependency Agent Sign-Off</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+
+<style>
+:root {
+  --ground: #F4F7F7;
+  --surface: #FFFFFF;
+  --surface-sunk: #EDF2F2;
+  --ink: #0E1A1C;
+  --ink-soft: #37484B;
+  --muted: #64777A;
+  --rule: #D5E0E0;
+  --rule-strong: #B6C6C6;
+  --accent: #0E5257;
+  --accent-soft: #DCEBEA;
+  --signal: #9A5518;
+  --signal-soft: #F6E8DA;
+  --slate: #3F5566;
+  --slate-soft: #E2E9EF;
+  --shadow: 0 1px 2px rgba(14, 26, 28, .05), 0 8px 24px -18px rgba(14, 26, 28, .35);
+  --measure: 68ch;
+}
+:root:not([data-theme="light"]) {
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ground: #0A1112;
+    --surface: #101A1C;
+    --surface-sunk: #162224;
+    --ink: #E7EFEF;
+    --ink-soft: #BCCBCC;
+    --muted: #8B9E9F;
+    --rule: #223134;
+    --rule-strong: #33474A;
+    --accent: #63C6C2;
+    --accent-soft: #16302F;
+    --signal: #DDA463;
+    --signal-soft: #2E2317;
+    --slate: #9FB6C8;
+    --slate-soft: #1B262E;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px -18px rgba(0, 0, 0, .8);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ground: #0A1112;
+  --surface: #101A1C;
+  --surface-sunk: #162224;
+  --ink: #E7EFEF;
+  --ink-soft: #BCCBCC;
+  --muted: #8B9E9F;
+  --rule: #223134;
+  --rule-strong: #33474A;
+  --accent: #63C6C2;
+  --accent-soft: #16302F;
+  --signal: #DDA463;
+  --signal-soft: #2E2317;
+  --slate: #9FB6C8;
+  --slate-soft: #1B262E;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px -18px rgba(0, 0, 0, .8);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: "IBM Plex Sans", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+/* ---------------------------------------------------------------- header */
+.masthead {
+  padding: 56px 0 32px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.eyebrow {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+h1 {
+  font-family: Newsreader, ui-serif, Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(2.1rem, 1.4rem + 2.6vw, 3.1rem);
+  line-height: 1.1;
+  letter-spacing: -.015em;
+  margin: 0;
+  text-wrap: balance;
+  max-width: 20ch;
+}
+.standfirst {
+  margin: 0;
+  max-width: var(--measure);
+  font-size: 1.06rem;
+  color: var(--ink-soft);
+}
+.provenance {
+  margin: 0;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+/* ----------------------------------------------------------- stat strip */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 36px 0 0;
+}
+.stat {
+  background: var(--surface);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.stat b {
+  font-family: Newsreader, ui-serif, Georgia, serif;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.stat span {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------- blocks */
+section { margin-top: 64px; }
+
+h2 {
+  font-family: Newsreader, ui-serif, Georgia, serif;
+  font-weight: 500;
+  font-size: 1.85rem;
+  letter-spacing: -.01em;
+  margin: 0 0 6px;
+  text-wrap: balance;
+}
+h3 {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 44px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+}
+.lede {
+  margin: 0 0 22px;
+  max-width: var(--measure);
+  color: var(--ink-soft);
+}
+p { margin: 0 0 14px; max-width: var(--measure); }
+p:last-child { margin-bottom: 0; }
+
+code, .mono {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: .875em;
+}
+code {
+  background: var(--surface-sunk);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: .05em .32em;
+}
+
+/* ------------------------------------------------------------ callout */
+.first {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--signal);
+  border-radius: 3px;
+  padding: 22px 24px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.first h2 { font-size: 1.35rem; margin: 0; }
+
+/* -------------------------------------------------------------- tables */
+.scroller {
+  overflow-x: auto;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 640px;
+  font-size: 14.5px;
+}
+thead th {
+  background: var(--surface-sunk);
+  text-align: left;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--rule-strong);
+  white-space: nowrap;
+}
+tbody td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr:hover td { background: var(--surface-sunk); }
+td.id, th.id { width: 1%; white-space: nowrap; }
+td.id a {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+td.id a:hover, td.id a:focus-visible { border-bottom-color: var(--accent); }
+td.num { text-align: right; font-variant-numeric: tabular-nums; width: 1%; white-space: nowrap; }
+td.owner, th.owner { width: 1%; white-space: nowrap; }
+td.sign { width: 1%; white-space: nowrap; text-align: center; }
+tr[data-decided="true"] td:not(.sign) { opacity: .5; }
+
+/* --------------------------------------------------------------- chips */
+.chip {
+  display: inline-block;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.chip.sme    { background: var(--accent-soft); color: var(--accent); }
+.chip.owner  { background: var(--signal-soft); color: var(--signal); }
+.chip.eng    { background: var(--slate-soft);  color: var(--slate); }
+.chip.stake  { background: var(--slate-soft);  color: var(--slate); }
+
+.weight {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  color: var(--muted);
+}
+.weight b { font-size: 15px; font-weight: 600; color: var(--ink); }
+
+/* -------------------------------------------------------------- cards */
+.cards { display: flex; flex-direction: column; gap: 18px; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  box-shadow: var(--shadow);
+  scroll-margin-top: 20px;
+}
+.card[data-decided="true"] { opacity: .62; }
+.card-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px 14px;
+  padding: 18px 22px 14px;
+  border-bottom: 1px solid var(--rule);
+}
+.card-id {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+.card-q {
+  font-family: Newsreader, ui-serif, Georgia, serif;
+  font-size: 1.28rem;
+  font-weight: 500;
+  line-height: 1.25;
+  margin: 0;
+  flex: 1 1 320px;
+  text-wrap: balance;
+}
+.card-meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.card-body { padding: 18px 22px 20px; display: flex; flex-direction: column; gap: 14px; }
+.card-body > * { margin: 0; }
+
+.cases {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.7;
+  word-spacing: .1em;
+}
+
+ul.opts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  max-width: var(--measure);
+}
+ul.opts li {
+  padding-left: 20px;
+  position: relative;
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+ul.opts li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: .62em;
+  width: 7px;
+  height: 7px;
+  border: 1.5px solid var(--rule-strong);
+  border-radius: 50%;
+}
+.opts-label, .risk-label {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.risk {
+  border-top: 1px dashed var(--rule);
+  padding-top: 13px;
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  max-width: var(--measure);
+}
+.risk .risk-label { display: block; margin-bottom: 4px; color: var(--signal); }
+
+/* ------------------------------------------------------------- matrix */
+.matrix table { min-width: 720px; font-size: 13px; }
+.matrix td.case {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-weight: 600;
+  white-space: nowrap;
+  width: 1%;
+}
+.matrix .refs { display: flex; flex-wrap: wrap; gap: 5px; }
+.matrix .refs a {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11.5px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 2px 7px;
+  border-radius: 2px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.matrix .refs a.nf { background: var(--slate-soft); color: var(--slate); }
+.matrix .refs a:hover, .matrix .refs a:focus-visible { outline: 1px solid currentColor; }
+.matrix .none { color: var(--muted); font-style: italic; }
+
+/* ------------------------------------------------------------ sign-off */
+.sign input {
+  appearance: none;
+  width: 17px;
+  height: 17px;
+  border: 1.5px solid var(--rule-strong);
+  border-radius: 3px;
+  background: var(--surface);
+  cursor: pointer;
+  display: block;
+  margin: 2px auto 0;
+  position: relative;
+}
+.sign input:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.sign input:checked::after {
+  content: "";
+  position: absolute;
+  left: 4.5px;
+  top: 1px;
+  width: 4px;
+  height: 9px;
+  border: solid var(--surface);
+  border-width: 0 2px 2px 0;
+  transform: rotate(42deg);
+}
+.sign input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.localnote {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin: 10px 0 0;
+  max-width: var(--measure);
+}
+
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+footer {
+  margin-top: 72px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+@media (max-width: 640px) {
+  .masthead { padding-top: 36px; }
+  .card-head, .card-body { padding-left: 16px; padding-right: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">Project dependency &middot; EDA and data mapping</p>
+  <h1>Open decisions before the SQL Agent is signed off</h1>
+  <p class="standfirst">We ran twenty walkthroughs against live ADO data, and every one of them ends with
+  <span class="mono">Needs confirmation: yes</span>. This page collects what they are all waiting on, deduplicated
+  down to 23 decisions and ordered by how many walkthroughs each one changes.</p>
+  <p class="provenance">Source: section 2.3 of the EDA and data mapping working doc, the "Needs confirmation" block
+  and "Still open" list at the foot of each walkthrough.<br>Walkthroughs first run 2026-08-28. Compiled 2026-09-02.</p>
+</header>
+
+<div class="stats">
+  <div class="stat"><b>20/20</b><span>walkthroughs answer "needs confirmation: yes"</span></div>
+  <div class="stat"><b>16</b><span>functional decisions after dedup</span></div>
+  <div class="stat"><b>7</b><span>non-functional decisions</span></div>
+  <div class="stat"><b>1</b><span>walkthrough with no functional gap (F03.1)</span></div>
+  <div class="stat"><b>3</b><span>measurements to commission before the room meets</span></div>
+</div>
+
+<section>
+  <div class="first">
+    <h2>Take two decisions first</h2>
+    <p>Roughly ninety raw bullets collapse into 23 decisions, mostly because the same question keeps getting
+    restated against a different prompt. Two of those 23 sit underneath everything else, and both are worth
+    settling before the room touches anything narrower.</p>
+    <p><a href="#F2" class="mono"><strong>F2</strong></a>, what the word "dependency" covers, changes the answer set in
+    11 of the 20 walkthroughs. <a href="#F1" class="mono"><strong>F1</strong></a>, how a repeated work item number
+    resolves, changes which item the agent answers about in 8 of 20. Neither one is a data question. They are
+    business definitions the data cannot settle on its own, and several of the remaining decisions read differently
+    once they are closed.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Functional decisions</h2>
+  <p class="lede">Sixteen decisions about what the agent should answer, ordered by weight. The count is how many
+  of the twenty walkthroughs raise each one.</p>
+
+  <div class="scroller">
+    <table>
+      <thead>
+        <tr>
+          <th class="sign">Done</th>
+          <th class="id">#</th>
+          <th>Decision</th>
+          <th class="num">Cases</th>
+          <th class="owner">Decide with</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-row="F2"><td class="sign"><input type="checkbox" data-key="F2" aria-label="Mark F2 decided"></td><td class="id"><a href="#F2">F2</a></td><td>Which link types the word "dependency" covers</td><td class="num">11</td><td class="owner"><span class="chip owner">Product owner</span></td></tr>
+        <tr data-row="F1"><td class="sign"><input type="checkbox" data-key="F1" aria-label="Mark F1 decided"></td><td class="id"><a href="#F1">F1</a></td><td>Which item to answer for when a number names items in several orgs</td><td class="num">8</td><td class="owner"><span class="chip owner">Product owner</span></td></tr>
+        <tr data-row="F4"><td class="sign"><input type="checkbox" data-key="F4" aria-label="Mark F4 decided"></td><td class="id"><a href="#F4">F4</a></td><td>Whether recall may depend on the user's exact wording</td><td class="num">5</td><td class="owner"><span class="chip owner">Product owner</span></td></tr>
+        <tr data-row="F7"><td class="sign"><input type="checkbox" data-key="F7" aria-label="Mark F7 decided"></td><td class="id"><a href="#F7">F7</a></td><td>Which date pattern counts as a delay or a risk</td><td class="num">5</td><td class="owner"><span class="chip owner">Product owner</span></td></tr>
+        <tr data-row="F3"><td class="sign"><input type="checkbox" data-key="F3" aria-label="Mark F3 decided"></td><td class="id"><a href="#F3">F3</a></td><td>Which field a prompt term gets searched in</td><td class="num">4</td><td class="owner"><span class="chip sme">Data SME</span></td></tr>
+        <tr data-row="F6"><td class="sign"><input type="checkbox" data-key="F6" aria-label="Mark F6 decided"></td><td class="id"><a href="#F6">F6</a></td><td>Whether removed, archived and "do not use" rows stay in scope</td><td class="num">4</td><td class="owner"><span class="chip sme">Data SME</span></td></tr>
+        <tr data-row="F11"><td class="sign"><input type="checkbox" data-key="F11" aria-label="Mark F11 decided"></td><td class="id"><a href="#F11">F11</a></td><td>What an aggregate answer returns, and how complete it must be</td><td class="num">4</td><td class="owner"><span class="chip owner">Product owner</span></td></tr>
+        <tr data-row="F13"><td class="sign"><input type="checkbox" data-key="F13" aria-label="Mark F13 decided"></td><td class="id"><a href="#F13">F13</a></td><td>Whether the link graph is the whole dependency truth</td><td class="num">4</td><td class="owner"><span class="chip sme">Data SME</span></td></tr>
+        <tr data-row="F5"><td class="sign"><input type="checkbox" data-key="F5" aria-label="Mark F5 decided"></td><td class="id"><a href="#F5">F5</a></td><td>Which candidate to answer from when a search returns several</td><td class="num">3</td><td class="owner"><span class="chip owner">Product owner</span></td></tr>
+        <tr data-row="F9"><td class="sign"><input type="checkbox" data-key="F9" aria-label="Mark F9 decided"></td><td class="id"><a href="#F9">F9</a></td><td>What the agent does with a prompt term the data never records</td><td class="num">3</td><td class="owner"><span class="chip owner">Product owner</span></td></tr>
+        <tr data-row="F8"><td class="sign"><input type="checkbox" data-key="F8" aria-label="Mark F8 decided"></td><td class="id"><a href="#F8">F8</a></td><td>Which area level names the team the answer quotes</td><td class="num">2</td><td class="owner"><span class="chip sme">Data SME</span></td></tr>
+        <tr data-row="F10"><td class="sign"><input type="checkbox" data-key="F10" aria-label="Mark F10 decided"></td><td class="id"><a href="#F10">F10</a></td><td>What evidence establishes "the right contact"</td><td class="num">2</td><td class="owner"><span class="chip owner">Product owner</span></td></tr>
+        <tr data-row="F12"><td class="sign"><input type="checkbox" data-key="F12" aria-label="Mark F12 decided"></td><td class="id"><a href="#F12">F12</a></td><td>Which date fields define "start" and "complete"</td><td class="num">2</td><td class="owner"><span class="chip sme">Data SME</span></td></tr>
+        <tr data-row="F14"><td class="sign"><input type="checkbox" data-key="F14" aria-label="Mark F14 decided"></td><td class="id"><a href="#F14">F14</a></td><td>Whether a present-tense prompt is bounded to open work</td><td class="num">2</td><td class="owner"><span class="chip owner">Product owner</span></td></tr>
+        <tr data-row="F15"><td class="sign"><input type="checkbox" data-key="F15" aria-label="Mark F15 decided"></td><td class="id"><a href="#F15">F15</a></td><td>How many prompt terms the agent combines before it stops</td><td class="num">2</td><td class="owner"><span class="chip eng">Engineering</span></td></tr>
+        <tr data-row="F16"><td class="sign"><input type="checkbox" data-key="F16" aria-label="Mark F16 decided"></td><td class="id"><a href="#F16">F16</a></td><td>Whether results get filtered to the prompt's own naming</td><td class="num">2</td><td class="owner"><span class="chip owner">Product owner</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="localnote">The tick boxes are a scratchpad for whoever drives the session. They save in this browser
+  only, so nobody else opening this page sees them.</p>
+
+  <h3>Finding the right work item</h3>
+  <div class="cards">
+
+    <article class="card" id="F1">
+      <div class="card-head">
+        <span class="card-id">F1</span>
+        <h4 class="card-q">Which item does the agent answer for when a number names items in several orgs?</h4>
+        <span class="card-meta"><span class="weight"><b>8</b> of 20</span><span class="chip owner">Product owner</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F01.1 &nbsp;F01.2 &nbsp;F02.1 &nbsp;F06.2 &nbsp;F07.1 &nbsp;F07.2 &nbsp;F08.1 &nbsp;F08.2</p>
+        <p>A work item number is not unique. 382 of the 46,566 numbers that carry any dependency link carry them
+        in two orgs, and no number reaches three. Every tested case resolved by luck of the data rather than by
+        rule, because only one org's item happened to carry a dependency link and the unscoped walk came back with
+        a single row. F06.2 and F08.1 resolve the same three-way collision two different ways and both land on the
+        same item, which hides the fact that the agent has no rule at all.</p>
+        <div>
+          <span class="opts-label">Options on the table</span>
+          <ul class="opts">
+            <li>Ask the user for the org before answering.</li>
+            <li>Answer once per org and let the user pick.</li>
+            <li>Walk the links unscoped and answer from whichever item carries dependency links (F06.2).</li>
+            <li>Match the prompt's own qualifier against the area path (F08.1's "Trading IT / Allegro").</li>
+          </ul>
+        </div>
+        <p>Nobody has measured how often several same-number items each hold dependency links, and that is the
+        number deciding whether this needs a disambiguation step at all. F07.2, F08.1 and F08.2 each resolved their
+        collision through the prompt's team qualifier, and all three flag the same gap. A qualifier that matches
+        two candidates' paths leaves the number ambiguous again.</p>
+        <p class="risk"><span class="risk-label">Left open</span>The agent can answer confidently about the wrong
+        team's work item.</p>
+      </div>
+    </article>
+
+    <article class="card" id="F5">
+      <div class="card-head">
+        <span class="card-id">F5</span>
+        <h4 class="card-q">Which candidate does the agent answer from when a search returns several?</h4>
+        <span class="card-meta"><span class="weight"><b>3</b> of 20</span><span class="chip owner">Product owner</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F02.2 &nbsp;F04.1 &nbsp;F04.2</p>
+        <p>This is the same problem in three shapes. F02.2's prompt says "in SAP" without naming the sub-track or
+        the PI wave, and four candidates match. F04.1's walk returns two successors, <code>1850341</code> under Rail
+        Data and Analytics and <code>1828281</code> under Rail Optimization, and nothing in the data labels which one
+        owns the write-back dependency. F04.2 returns two items with byte-identical titles and no other
+        distinguishing text.</p>
+        <p>Every tested case survived the ambiguity because the candidates converged on the same answer. F04.2 says
+        it plainly. The tied pair differs on <code>CLOSED_DATE</code>, 2025-11-19 against 2026-01-29, but picking the
+        newer one is a choice rather than a rule the schema states. The non-converging case has never been tested.</p>
+        <p class="risk"><span class="risk-label">Left open</span>The agent picks arbitrarily, and that answer looks
+        exactly as confident as any other.</p>
+      </div>
+    </article>
+
+    <article class="card" id="F15">
+      <div class="card-head">
+        <span class="card-id">F15</span>
+        <h4 class="card-q">How many prompt terms does the agent combine before it stops narrowing?</h4>
+        <span class="card-meta"><span class="weight"><b>2</b> of 20</span><span class="chip eng">Engineering</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F04.1 &nbsp;F04.2</p>
+        <p>F04.1's three terms intersect to exactly one row. Drop one of them and "write-back to SCDH" returns 9.
+        Nothing in the schema states a rule for when to stop adding terms. F04.2 raises the mirror case, where
+        <code>981562</code>, the item holding the answer, matches <code>%GITHUB%RUNNER%</code> directly and sits in
+        the 613 rows the IDEAS filter excludes. A different term combination would have found that answer without
+        walking any links at all.</p>
+        <p class="risk"><span class="risk-label">Left open</span>Recall swings on an implementation detail nobody
+        has agreed.</p>
+      </div>
+    </article>
+
+    <article class="card" id="F3">
+      <div class="card-head">
+        <span class="card-id">F3</span>
+        <h4 class="card-q">Which field does a prompt term get searched in?</h4>
+        <span class="card-meta"><span class="weight"><b>4</b> of 20</span><span class="chip sme">Data SME</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F03.2 &nbsp;F05.2 &nbsp;F09.1 &nbsp;F09.2</p>
+        <p>The schema states no rule here, and the field choice changes what the agent finds rather than just how
+        much of it. "Process mining" returns 214 unrelated rows in <code>TITLE</code> and misses the requester, but
+        resolves correctly against the area path. "SAP PO" is useless in <code>TITLE</code>, at 5,016 rows across 273
+        teams, and works in the area path. The squad names <code>Bengals</code> and <code>Ravens</code> sit in both
+        fields with very different coverage, 677 items by title against 17,951 by area. "Brazil Tax Reform" resolves
+        to no usable set in any field we checked.</p>
+        <p>The distinction the working doc draws is worth keeping. A title says what one work item does, whereas an
+        area path says what type of work a team does. That is close to a rule already, and it is definitely the one
+        I would put in front of the SME to confirm or reject.</p>
+        <p class="risk"><span class="risk-label">Left open</span>The same prompt succeeds or fails depending on
+        which field the generated SQL happens to hit.</p>
+      </div>
+    </article>
+
+    <article class="card" id="F4">
+      <div class="card-head">
+        <span class="card-id">F4</span>
+        <h4 class="card-q">Can recall depend on the user's exact wording?</h4>
+        <span class="card-meta"><span class="weight"><b>5</b> of 20</span><span class="chip owner">Product owner</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F02.2 &nbsp;F03.2 &nbsp;F05.1 &nbsp;F05.2 &nbsp;F09.2</p>
+        <p>Five separate walkthroughs found real work that the prompt's own wording cannot reach, and each one
+        misses it a different way.</p>
+        <ul class="opts">
+          <li>F02.2 spells the initiative "Brazil Tax Reform" in the prompt while the linked teams spell it
+          "Brazilian TAX Reform". Widening to <code>%BRAZIL%TAX%</code> returns 32 rows against the prompt's 10, and
+          two of the extras are items the initiative already links to.</li>
+          <li>In F03.2 and F09.2, Celonis is the process mining product, and 331 of its 477 items sit under paths
+          with no "mining" in them, invisible to the <code>%MINING%</code> search.</li>
+          <li>F05.1's subject terms as spelled catch 111 items, which leaves out "NF-e" with a hyphen and
+          "e-billing".</li>
+          <li>F05.2's two prompt tokens cover 8 of the 12 Bengals-to-Ravens links. The other 4 are the same
+          dependency worded as "Refresh ACC tables from Mike's List".</li>
+        </ul>
+        <p>None of these changed a verdict, which is exactly why they are easy to sign off without noticing. What
+        the room has to settle is whether the agent may answer from a wording-sensitive search with no signal to the
+        user at all, or whether it owes them a synonym pass or a coverage caveat.</p>
+      </div>
+    </article>
+
+    <article class="card" id="F9">
+      <div class="card-head">
+        <span class="card-id">F9</span>
+        <h4 class="card-q">What does the agent do with a prompt term the data never records?</h4>
+        <span class="card-meta"><span class="weight"><b>3</b> of 20</span><span class="chip owner">Product owner</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F03.2 &nbsp;F09.1 &nbsp;F09.2</p>
+        <p>"SAP" appears in no field on F03.2's target item across either database, and it reaches 13 of the 579
+        items F09.2 returns, none of them the four verified ones. The tables are SAP tables. The data never says so.
+        F09.1's "Brazil Tax Reform" behaves the same way, at 503 rows across 76 teams, and its 44 dependency links
+        never reach the <code>SAP PO-CI</code> group the answer names.</p>
+        <p>Both walkthroughs answered correctly on the remaining terms, so the failure stays silent. F09.2 states it
+        flatly. The answer rests on two terms out of three, and a prompt naming a different source system would
+        narrow the set no further.</p>
+        <p class="risk"><span class="risk-label">Left open</span>The user believes their third term did work it
+        never did.</p>
+      </div>
+    </article>
+  </div>
+
+  <h3>What counts as a dependency</h3>
+  <div class="cards">
+
+    <article class="card" id="F2">
+      <div class="card-head">
+        <span class="card-id">F2</span>
+        <h4 class="card-q">Which link types does the word "dependency" cover?</h4>
+        <span class="card-meta"><span class="weight"><b>11</b> of 20</span><span class="chip owner">Product owner</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F01.1 &nbsp;F01.2 &nbsp;F02.1 &nbsp;F02.2 &nbsp;F07.1 &nbsp;F07.2 &nbsp;F08.1 &nbsp;F08.2 &nbsp;F09.1 &nbsp;F10.1 &nbsp;F10.2</p>
+        <p>Rule 4 keeps <code>Predecessor</code> and <code>Consumes From</code> and drops everything else. Every
+        walkthrough counts that exclusion and none of them reads it.</p>
+        <div class="scroller">
+          <table>
+            <thead><tr><th class="id">Case</th><th>Kept</th><th>Excluded and never read</th></tr></thead>
+            <tbody>
+              <tr><td class="id">F01.1</td><td>1 link</td><td>70 active: 62 <code>Related</code>, 4 <code>Child</code>, 4 <code>Parent</code></td></tr>
+              <tr><td class="id">F01.2</td><td>1 link</td><td>87 active: 71 <code>Related</code>, 12 <code>Child</code>, 4 <code>Parent</code></td></tr>
+              <tr><td class="id">F02.1</td><td>1 <code>Predecessor</code></td><td>12: 8 <code>Related</code>, 4 <code>Parent</code></td></tr>
+              <tr><td class="id">F02.2</td><td>6 link targets</td><td>25 on item <code>1627170</code></td></tr>
+              <tr><td class="id">F07.1</td><td>1 link</td><td>69 across the four same-numbered items</td></tr>
+              <tr><td class="id">F07.2</td><td>2 of 20 active links</td><td>18: 12 <code>Child</code>, 5 <code>Related</code>, 1 <code>Parent</code></td></tr>
+              <tr><td class="id">F08.1</td><td>7 predecessors</td><td>18: 17 <code>Related</code>, 1 <code>Parent</code>, 12 of them in the same deadlock cluster</td></tr>
+              <tr><td class="id">F08.2</td><td>2 predecessors</td><td>7: 6 <code>Related</code>, 1 <code>Parent</code>, all same-team earlier table work</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Every one of those rows carries the same sentence. A reading of "depends on" that includes the parent
+        epic's team would change the answer, and nothing in the data rules that reading out. F07.2 is the sharpest
+        version, given that the prompt literally says "linked dependencies" and the agent returns 2 of the item's 20
+        links.</p>
+        <p>There is a second half to this decision, which is the two dependency mechanisms underneath it.
+        <code>Predecessor</code> is 100% same-org and <code>Consumes From</code> is 100% cross-org. F10.1 counts
+        10,972 out-of-sequence <code>Predecessor</code> links and leaves the 150 <code>Consumes From</code> ones
+        outside the number, and F10.2 does the same. F09.1's aggregate never splits its 192 <code>Predecessor</code>
+        links from its 19 <code>Consumes From</code> ones, so whether late delivery clusters in one mechanism is
+        untested.</p>
+        <div>
+          <span class="opts-label">Options on the table</span>
+          <ul class="opts">
+            <li>Dependency link types only, as Rule 4 has it today.</li>
+            <li>Dependency types plus <code>Related</code>.</li>
+            <li>The full link list with the type shown, and the user judges.</li>
+          </ul>
+        </div>
+        <p class="risk"><span class="risk-label">Left open</span>Every answer in the corpus is provisional, because
+        the set it is drawn from is provisional.</p>
+      </div>
+    </article>
+
+    <article class="card" id="F6">
+      <div class="card-head">
+        <span class="card-id">F6</span>
+        <h4 class="card-q">Do removed, archived and "do not use" rows stay in scope?</h4>
+        <span class="card-meta"><span class="weight"><b>4</b> of 20</span><span class="chip sme">Data SME</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F02.1 &nbsp;F05.1 &nbsp;F05.2 &nbsp;F06.1</p>
+        <p>Four different exclusions turn up across these cases, and none of them is settled.</p>
+        <ul class="opts">
+          <li>A <code>Removed</code>-state item still carries active links. F05.1 has 4 of 30 links pointing at
+          <code>Removed</code> predecessors and F05.2 has 1 of 10. Item <code>1773259</code> has
+          <code>STATE = Removed</code> and <code>IS_ACTIVE = TRUE</code> on its link.</li>
+          <li>3 of F05.1's 30 links point at items under <code>OTC FnL (Do not use)</code>. The area code excludes
+          itself by name and live items consume from it anyway.</li>
+          <li>4,426 of the 25,469 Snowflake-titled items in F06.1 sit under <code>zArchive</code>,
+          <code>zRetired</code> or <code>To-be Retired</code>. Excluding them changes every count in the ranking,
+          though not the top team. Whether the <code>z</code> prefix means retired is itself unconfirmed.</li>
+          <li>F02.1 notes that every query applies <code>IS_ACTIVE</code> and <code>IS_CURRENT</code> while none of
+          them counts what those filters remove, so how many deleted or superseded links sit behind them is
+          unknown.</li>
+        </ul>
+        <p class="risk"><span class="risk-label">Left open</span>Two engineers write the same query and get
+        different totals.</p>
+      </div>
+    </article>
+
+    <article class="card" id="F13">
+      <div class="card-head">
+        <span class="card-id">F13</span>
+        <h4 class="card-q">Is the link graph the whole dependency truth?</h4>
+        <span class="card-meta"><span class="weight"><b>4</b> of 20</span><span class="chip sme">Data SME</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F02.1 &nbsp;F02.2 &nbsp;F04.1 &nbsp;F05.1</p>
+        <p>Three other places record the same relationship, and no walkthrough reads any of them.
+        <code>CUSTOM_DEPENDENCY_CONTACT</code> and <code>CUSTOM_DEPENDENCY_TYPE</code> are purpose-built fields on
+        the item table. Azure SQL carries <code>DependencyRequestInfo</code> and <code>DependencyType</code>. F04.1
+        found a hand-written <code>#1828281</code> pointer in a description and checked one case, where the pointer
+        was also in the link graph. One case is not a measurement.</p>
+        <p>F05.1 adds the other side of it. 101 of its 111 subject items carry no active dependency link at all,
+        counted and never read. If teams do dependent work without recording a link, the graph is a floor rather
+        than a census.</p>
+        <p class="risk"><span class="risk-label">Left open</span>Nobody knows whether the agent's route is the short
+        one or the lossy one.</p>
+      </div>
+    </article>
+
+    <article class="card" id="F14">
+      <div class="card-head">
+        <span class="card-id">F14</span>
+        <h4 class="card-q">Is a present-tense prompt bounded to open work?</h4>
+        <span class="card-meta"><span class="weight"><b>2</b> of 20</span><span class="chip owner">Product owner</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F02.1 &nbsp;F02.2</p>
+        <p>F02.1's prompt is present tense and its only link target closed on 2026-02-03. Every one of F02.2's link
+        targets is <code>Closed</code>, <code>Done</code> or <code>Removed</code>, and the prompt asks who to
+        coordinate with on work starting now. The widened search surfaced <code>1997392</code> in state
+        <code>Planning</code>, which no step walks.</p>
+        <p class="risk"><span class="risk-label">Left open</span>"Who do I need to coordinate with" gets answered
+        from finished work.</p>
+      </div>
+    </article>
+  </div>
+
+  <h3>Naming the team or the contact</h3>
+  <div class="cards">
+
+    <article class="card" id="F8">
+      <div class="card-head">
+        <span class="card-id">F8</span>
+        <h4 class="card-q">Which area level names the team the answer quotes?</h4>
+        <span class="card-meta"><span class="weight"><b>2</b> of 20</span><span class="chip sme">Data SME</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F02.1 &nbsp;F09.1</p>
+        <p>No area level carries a fixed meaning. F02.1's level 3 reads <code>Enabling Services and Advisors</code>,
+        level 4 reads <code>EnablingServices</code>, and the expected answer says "Enabling Services". F09.1 is the
+        expensive version. Its expected answer names the level-4 group <code>SAP PO-CI</code> at 3,548 items, while
+        5 of its 7 verified predecessors resolve to the level-5 subteam <code>SAP PO-CPI - West</code>. The reported
+        worst-case gap moves with that choice, +113 days for the group against +56 for the subteam.</p>
+        <p>F09.1 also excludes the sibling path <code>EIS / SAP PO-CPI</code>, another 1,587 items, by name. If the
+        business reads that path as part of the same SAP PO family, the aggregate changes again.</p>
+        <div>
+          <span class="opts-label">Options on the table</span>
+          <ul class="opts">
+            <li>Fix a level and always quote it.</li>
+            <li>Quote the full area path.</li>
+            <li>Resolve the level per query from <code>DEPTH</code>.</li>
+          </ul>
+        </div>
+        <p class="risk"><span class="risk-label">Left open</span>The same team gets three different names across
+        three answers, and a gap figure moves by 57 days depending on which one.</p>
+      </div>
+    </article>
+
+    <article class="card" id="F10">
+      <div class="card-head">
+        <span class="card-id">F10</span>
+        <h4 class="card-q">What evidence establishes "the right contact"?</h4>
+        <span class="card-meta"><span class="weight"><b>2</b> of 20</span><span class="chip owner">Product owner</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F03.2 &nbsp;F06.1</p>
+        <p>F06.1 ranks teams three ways and gets three answers. <code>Operations Snowflake</code> is 17th by item
+        titles, 4th once tags count, and first if you accept that a team named for the platform owns the platform.
+        No route puts it first on the evidence. There is a second split sitting underneath that one. The teams that
+        do Snowflake work and the teams that supply Snowflake data are different lists, and the expected answer
+        reads as the supplier side.</p>
+        <p>F03.2 names the deeper problem. <code>CDH Foundation West</code> leads the ranking 16 to 1, which is a
+        wide gap, but the query returns a count of past links. It does not say the team is currently the right
+        contact, only that it has been on prior table work. The agent reports history and the user reads a
+        recommendation.</p>
+        <p class="risk"><span class="risk-label">Left open</span>The agent recommends a contact on evidence nobody
+        agreed counts as ownership.</p>
+      </div>
+    </article>
+
+    <article class="card" id="F16">
+      <div class="card-head">
+        <span class="card-id">F16</span>
+        <h4 class="card-q">Do results get filtered to the prompt's own naming?</h4>
+        <span class="card-meta"><span class="weight"><b>2</b> of 20</span><span class="chip owner">Product owner</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F05.1 &nbsp;F05.2</p>
+        <p>F05.1's walk returns <code>NASA</code> as a top external supplier with 10 links, and the Golden Dataset's
+        answer includes <code>NASA</code> items, but no field ties that name to the prompt's "OTC". Only 1 of those
+        10 links is the golden pair. If "OTC" was meant narrowly, the other 9 drop out of the answer. F05.2 has the
+        same shape, where a "who does Bengals depend on" prompt picks up the <code>Avatar</code> branch, 2 of the 14
+        external links, which this prompt never asked about.</p>
+        <div>
+          <span class="opts-label">Options on the table</span>
+          <ul class="opts">
+            <li>Present every team the walk returns.</li>
+            <li>Present only teams whose names match the prompt's own term.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <h3>Dates and risk</h3>
+  <div class="cards">
+
+    <article class="card" id="F7">
+      <div class="card-head">
+        <span class="card-id">F7</span>
+        <h4 class="card-q">Which date pattern counts as a delay or a risk?</h4>
+        <span class="card-meta"><span class="weight"><b>5</b> of 20</span><span class="chip owner">Product owner</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F01.2 &nbsp;F08.1 &nbsp;F08.2 &nbsp;F10.1 &nbsp;F10.2</p>
+        <p>Five different date shapes turn up across these cases, and the walkthroughs report them inconsistently.
+        Nobody has ruled on which of them is supposed to count as risk.</p>
+        <ul class="opts">
+          <li>F08.2 reports a predecessor closing 116 days before its successor and another closing 1 day after,
+          and calls neither one the risky shape. They are not the same failure.</li>
+          <li>F01.2 reports a +1 gap as "no delay" while noting the same pair is an inverted close order, one of the
+          10,968 F10.1 counts corpus-wide.</li>
+          <li>F08.1 returns predecessor <code>1929157</code>, still <code>New</code> while its successor is
+          <code>Closed</code>. The Golden Dataset omits it. Nobody has said whether that is mis-sequenced by
+          definition.</li>
+          <li>F10.1 offers three causes for out-of-sequence links, a data-quality issue, a reversed direction, or a
+          link added after the work finished, and no field distinguishes them.
+          <code>FCT_ADO_WORKITEM_LINKS_HISTORY</code> records when a link was created, which separates the third
+          cause from the first two, and no step reads it.</li>
+          <li>F10.2 notes that a null close date on an item in state <code>Analyze</code> means work in progress and
+          on a <code>Removed</code> item means something else. The count treats both the same.</li>
+        </ul>
+        <p>F10.1 flags the blind spot underneath all of it. The count drops any link with a missing close date on
+        either end, and comparing dates cannot detect an out-of-sequence dependency whose predecessor is still open.
+        That is 19,208 links with no successor close date and 13,251 with no predecessor close date.</p>
+        <p class="risk"><span class="risk-label">Left open</span>"Dependency risk" means whatever the query author
+        decided that day.</p>
+      </div>
+    </article>
+
+    <article class="card" id="F12">
+      <div class="card-head">
+        <span class="card-id">F12</span>
+        <h4 class="card-q">Which date fields define "start" and "complete"?</h4>
+        <span class="card-meta"><span class="weight"><b>2</b> of 20</span><span class="chip sme">Data SME</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F08.1 &nbsp;F10.2</p>
+        <p><code>START_DATE</code> is populated on 5% of items and sits empty on F08.1's item, so the walkthrough
+        reads <code>CREATED_DATE</code> as the start instead. If the business means the planned start, that
+        substitution is wrong and silent. F10.2 hits the same problem at the other end. The prompt says "missing or
+        incomplete", the walkthrough tests only <code>CLOSED_DATE IS NULL</code>, and the future-planned target date
+        the expected answer mentions sits in a field no step reads. Nothing so far distinguishes
+        <code>COMPLETED_DATE</code> from <code>CLOSED_DATE</code> either.</p>
+      </div>
+    </article>
+  </div>
+
+  <h3>What the answer contains</h3>
+  <div class="cards">
+    <article class="card" id="F11">
+      <div class="card-head">
+        <span class="card-id">F11</span>
+        <h4 class="card-q">What does an aggregate answer return, and how complete must it be?</h4>
+        <span class="card-meta"><span class="weight"><b>4</b> of 20</span><span class="chip owner">Product owner</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F02.2 &nbsp;F09.1 &nbsp;F10.1 &nbsp;F10.2</p>
+        <p>F10.1's prompt says "find dependency records", which reads as a list, and the condition matches 10,972 of
+        them. Nobody has said whether the answer is a count, a sample or a ranked list, or what it would rank by.
+        F10.2 asks the narrower version of that. A link with a missing close date is partially analyzable, so the
+        agent either drops it, reports it separately, or answers with a caveat, and no rule says which.</p>
+        <p>Completeness has the same gap on the single-item side. F02.2 skips 2 of its 6 link targets, the
+        <code>Tax_BA</code> pair, so what the item waits on them for goes unstated. F09.1 leaves 124 of 132 rows
+        unexamined, and those rows span 21 teams, which means a second Sonda/Comply pattern under a different
+        dependency team would slip past unnoticed.</p>
+        <p class="risk"><span class="risk-label">Left open</span>The answer is as complete as the query author felt
+        like being.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section>
+  <h2>Non-functional decisions</h2>
+  <p class="lede">Seven decisions about what the agent costs, how long it takes, and what it says when something is
+  missing. None of them has a number attached yet.</p>
+
+  <div class="scroller">
+    <table>
+      <thead>
+        <tr>
+          <th class="sign">Done</th>
+          <th class="id">#</th>
+          <th>Decision</th>
+          <th class="num">Cases</th>
+          <th class="owner">Decide with</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-row="N1"><td class="sign"><input type="checkbox" data-key="N1" aria-label="Mark N1 decided"></td><td class="id"><a href="#N1">N1</a></td><td>The end-to-end response time budget</td><td class="num">20</td><td class="owner"><span class="chip stake">Stakeholder</span></td></tr>
+        <tr data-row="N3"><td class="sign"><input type="checkbox" data-key="N3" aria-label="Mark N3 decided"></td><td class="id"><a href="#N3">N3</a></td><td>How much result data reaches the model, and where the cutoff sits</td><td class="num">9</td><td class="owner"><span class="chip eng">Engineering</span></td></tr>
+        <tr data-row="N2"><td class="sign"><input type="checkbox" data-key="N2" aria-label="Mark N2 decided"></td><td class="id"><a href="#N2">N2</a></td><td>Cost per question, and whether full table scans are acceptable</td><td class="num">8</td><td class="owner"><span class="chip stake">Stakeholder</span></td></tr>
+        <tr data-row="N4"><td class="sign"><input type="checkbox" data-key="N4" aria-label="Mark N4 decided"></td><td class="id"><a href="#N4">N4</a></td><td>What the agent says when Azure SQL free text is missing</td><td class="num">8</td><td class="owner"><span class="chip owner">Product owner</span></td></tr>
+        <tr data-row="N6"><td class="sign"><input type="checkbox" data-key="N6" aria-label="Mark N6 decided"></td><td class="id"><a href="#N6">N6</a></td><td>Timeout handling and the mandatory org filter</td><td class="num">6</td><td class="owner"><span class="chip eng">Engineering</span></td></tr>
+        <tr data-row="N5"><td class="sign"><input type="checkbox" data-key="N5" aria-label="Mark N5 decided"></td><td class="id"><a href="#N5">N5</a></td><td>What the agent says when it finds nothing</td><td class="num">5</td><td class="owner"><span class="chip owner">Product owner</span></td></tr>
+        <tr data-row="N7"><td class="sign"><input type="checkbox" data-key="N7" aria-label="Mark N7 decided"></td><td class="id"><a href="#N7">N7</a></td><td>Whether answers carry an as-of date</td><td class="num">2</td><td class="owner"><span class="chip owner">Product owner</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cards" style="margin-top:28px">
+
+    <article class="card" id="N1">
+      <div class="card-head">
+        <span class="card-id">N1</span>
+        <h4 class="card-q">What is the end-to-end response time budget?</h4>
+        <span class="card-meta"><span class="weight"><b>20</b> of 20</span><span class="chip stake">Stakeholder</span></span>
+      </div>
+      <div class="card-body">
+        <p>Every one of the twenty walkthroughs raises this, and every one records the same absence. Nobody has
+        agreed a limit.</p>
+        <p>The measured parts do exist. A keyed lookup on <code>WORKITEM_ID_SOURCE</code> runs about 2 seconds. A
+        <code>LIKE</code> scan of the 6.4M-row item table also runs about 2 seconds. A corpus-wide count joining
+        the 25.3M-row link table to the item table twice runs 3.1 to 5.0 seconds. An org-scoped Azure SQL lookup
+        takes about 13 seconds, and an unscoped one times out.</p>
+        <p>Step counts run from 2 queries in F06.2 and F08.2 to 6 in F09.1 and F09.2. F09.1 is the worst case on
+        paper, at 6 Snowflake queries of 2 to 5 seconds each plus Azure SQL lookups of about 13 seconds.</p>
+        <p>F09.2 names the architectural fork that decides the real number. A single-shot generator pays the
+        round-trip cost once, whereas an agent that plans between steps pays it per step. That is the difference
+        between roughly 25 seconds and something well past a minute, and the team should pick against a stated
+        target rather than discover the number in the pilot.</p>
+      </div>
+    </article>
+
+    <article class="card" id="N2">
+      <div class="card-head">
+        <span class="card-id">N2</span>
+        <h4 class="card-q">What does a question cost, and are full table scans acceptable?</h4>
+        <span class="card-meta"><span class="weight"><b>8</b> of 20</span><span class="chip stake">Stakeholder</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F02.2 &nbsp;F03.2 &nbsp;F04.2 &nbsp;F05.1 &nbsp;F06.1 &nbsp;F06.2 &nbsp;F09.1 &nbsp;F09.2</p>
+        <p>Eight walkthroughs carry the same sentence. Nobody has measured or budgeted warehouse credits per
+        question.</p>
+        <p>Every text search is a full scan of 6.4M rows with no field that could skip rows. F05.1 and F06.1 run
+        four of them per question. F09.2 runs six. F09.1's step 6 joins the 6.4M-row item table to the 25.3M-row
+        link table with no index.</p>
+        <p class="risk"><span class="risk-label">Commission first</span>This one definitely needs a number before
+        the pilot rather than after it.</p>
+      </div>
+    </article>
+
+    <article class="card" id="N3">
+      <div class="card-head">
+        <span class="card-id">N3</span>
+        <h4 class="card-q">How much result data reaches the model, and where does the cutoff sit?</h4>
+        <span class="card-meta"><span class="weight"><b>9</b> of 20</span><span class="chip eng">Engineering</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F02.2 &nbsp;F03.2 &nbsp;F06.1 &nbsp;F06.2 &nbsp;F08.1 &nbsp;F08.2 &nbsp;F09.1 &nbsp;F09.2 &nbsp;F10.1</p>
+        <p>Intermediate result sets range from 3 rows to 10,972 records. F03.2 and F09.2 both return 5,329 items at
+        step 2 and 579 at step 3. F09.1 carries 132 rows and aggregates 195 links. F10.1's 10,972 records do not
+        fit a model context at all.</p>
+        <p>F06.1 shows that the cutoff is a correctness question before it is a cost question. Its step 1 returns
+        1,040 teams, and one of the two expected teams ranks 123rd. Truncate at any reasonable cutoff and the
+        expected answer disappears.</p>
+      </div>
+    </article>
+
+    <article class="card" id="N4">
+      <div class="card-head">
+        <span class="card-id">N4</span>
+        <h4 class="card-q">What does the agent say when Azure SQL free text is missing?</h4>
+        <span class="card-meta"><span class="weight"><b>8</b> of 20</span><span class="chip owner">Product owner</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F02.2 &nbsp;F03.1 &nbsp;F04.1 &nbsp;F04.2 &nbsp;F05.1 &nbsp;F06.1 &nbsp;F09.1 &nbsp;F09.2</p>
+        <p>Today the agent says nothing, which is the part to fix. Azure SQL <code>dbo.WorkItems</code> holds
+        1,167,138 rows, about 18% of the Snowflake corpus, and it is the only source of <code>Description</code>
+        and <code>AcceptanceCriteria</code>.</p>
+        <p>Testing found the gap almost everywhere it looked. F03.1 asked for 2 items and got 1, F09.2 asked for 24
+        and got 14, F05.1 got 26 of 29 with the 3 it missed including a Golden Dataset successor, F02.2 lost one
+        item's text, and F06.1 got nothing at all and returned a Snowflake-only answer without saying so.</p>
+        <div>
+          <span class="opts-label">Options on the table</span>
+          <ul class="opts">
+            <li>Answer from whatever came back.</li>
+            <li>Declare the answer partial and name what was missing.</li>
+            <li>Retry.</li>
+            <li>Drop Azure SQL and answer from Snowflake alone.</li>
+          </ul>
+        </div>
+        <p class="risk"><span class="risk-label">Commission first</span>Nobody has measured how often current
+        Snowflake items are absent from Azure SQL, or why. That measurement is worth scheduling whichever behaviour
+        wins.</p>
+      </div>
+    </article>
+
+    <article class="card" id="N5">
+      <div class="card-head">
+        <span class="card-id">N5</span>
+        <h4 class="card-q">What does the agent say when it finds nothing?</h4>
+        <span class="card-meta"><span class="weight"><b>5</b> of 20</span><span class="chip owner">Product owner</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F01.1 &nbsp;F01.2 &nbsp;F02.1 &nbsp;F06.2 &nbsp;F07.2</p>
+        <p>Nothing states a rule for any of the three shapes: a number that names no item, a number whose items
+        carry no dependency link, and a prompt qualifier that matches no candidate's area path. F07.2 is that last
+        shape, where a team name spelled differently from the area path's spelling returns zero rows.</p>
+        <p>F06.2 states the requirement most usefully. The agent must say the item cannot be resolved rather than
+        guess an org.</p>
+      </div>
+    </article>
+
+    <article class="card" id="N6">
+      <div class="card-head">
+        <span class="card-id">N6</span>
+        <h4 class="card-q">How are timeouts handled, and is the org filter mandatory?</h4>
+        <span class="card-meta"><span class="weight"><b>6</b> of 20</span><span class="chip eng">Engineering</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F02.2 &nbsp;F04.1 &nbsp;F04.2 &nbsp;F05.2 &nbsp;F06.1 &nbsp;F09.2</p>
+        <p>An Azure SQL lookup with no org filter times out, so the org from the Snowflake step has to carry into
+        the Azure SQL step. That is a hard constraint on query construction, not a preference.</p>
+        <p>F06.1's Azure SQL attempt times out at 20 to 45 seconds and returns nothing, so trying it buys the wait
+        and no rows. F05.2 is the sharpest case. A <code>LIKE</code> scan for a nickname in Azure SQL free text
+        times out past 120 seconds with or without an org filter, and if Snowflake had not resolved the term first,
+        the agent would have had no working text search left. It has to report that rather than hang.</p>
+      </div>
+    </article>
+
+    <article class="card" id="N7">
+      <div class="card-head">
+        <span class="card-id">N7</span>
+        <h4 class="card-q">Do answers carry an as-of date?</h4>
+        <span class="card-meta"><span class="weight"><b>2</b> of 20</span><span class="chip owner">Product owner</span></span>
+      </div>
+      <div class="card-body">
+        <p class="cases">F10.1 &nbsp;F10.2</p>
+        <p>Corpus-wide figures move daily. Measured over one day, 2026-08-28 to 2026-08-29, out-of-sequence links
+        went from 10,968 to 10,972, total <code>Predecessor</code> links from 77,786 to 77,879, links with no
+        successor close date from 19,161 to 19,208, and links with no predecessor close date from 13,217 to
+        13,251.</p>
+        <p>Any figure the agent quotes is a snapshot of the day it ran. Whether the answer says so is the
+        decision.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="matrix">
+  <h2>Which decisions each walkthrough raises</h2>
+  <p class="lede">Read it the other way when someone in the room asks what changes if a decision goes one way.
+  Every case except F03.1 raises at least one functional decision, which is why none of them can be signed off
+  on its own.</p>
+  <div class="scroller">
+    <table>
+      <thead><tr><th class="id">Case</th><th>Functional</th><th>Non-functional</th></tr></thead>
+      <tbody>
+        <tr><td class="case">F01.1</td><td><span class="refs"><a href="#F1">F1</a><a href="#F2">F2</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N5">N5</a></span></td></tr>
+        <tr><td class="case">F01.2</td><td><span class="refs"><a href="#F1">F1</a><a href="#F2">F2</a><a href="#F7">F7</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N5">N5</a></span></td></tr>
+        <tr><td class="case">F02.1</td><td><span class="refs"><a href="#F1">F1</a><a href="#F2">F2</a><a href="#F6">F6</a><a href="#F8">F8</a><a href="#F13">F13</a><a href="#F14">F14</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N5">N5</a></span></td></tr>
+        <tr><td class="case">F02.2</td><td><span class="refs"><a href="#F2">F2</a><a href="#F4">F4</a><a href="#F5">F5</a><a href="#F11">F11</a><a href="#F13">F13</a><a href="#F14">F14</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N2">N2</a><a class="nf" href="#N3">N3</a><a class="nf" href="#N4">N4</a><a class="nf" href="#N6">N6</a></span></td></tr>
+        <tr><td class="case">F03.1</td><td><span class="none">none</span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N4">N4</a></span></td></tr>
+        <tr><td class="case">F03.2</td><td><span class="refs"><a href="#F3">F3</a><a href="#F4">F4</a><a href="#F9">F9</a><a href="#F10">F10</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N2">N2</a><a class="nf" href="#N3">N3</a></span></td></tr>
+        <tr><td class="case">F04.1</td><td><span class="refs"><a href="#F5">F5</a><a href="#F13">F13</a><a href="#F15">F15</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N4">N4</a><a class="nf" href="#N6">N6</a></span></td></tr>
+        <tr><td class="case">F04.2</td><td><span class="refs"><a href="#F5">F5</a><a href="#F15">F15</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N2">N2</a><a class="nf" href="#N4">N4</a><a class="nf" href="#N6">N6</a></span></td></tr>
+        <tr><td class="case">F05.1</td><td><span class="refs"><a href="#F4">F4</a><a href="#F6">F6</a><a href="#F13">F13</a><a href="#F16">F16</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N2">N2</a><a class="nf" href="#N4">N4</a></span></td></tr>
+        <tr><td class="case">F05.2</td><td><span class="refs"><a href="#F3">F3</a><a href="#F4">F4</a><a href="#F6">F6</a><a href="#F16">F16</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N6">N6</a></span></td></tr>
+        <tr><td class="case">F06.1</td><td><span class="refs"><a href="#F6">F6</a><a href="#F10">F10</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N2">N2</a><a class="nf" href="#N3">N3</a><a class="nf" href="#N4">N4</a><a class="nf" href="#N6">N6</a></span></td></tr>
+        <tr><td class="case">F06.2</td><td><span class="refs"><a href="#F1">F1</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N2">N2</a><a class="nf" href="#N3">N3</a><a class="nf" href="#N5">N5</a></span></td></tr>
+        <tr><td class="case">F07.1</td><td><span class="refs"><a href="#F1">F1</a><a href="#F2">F2</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a></span></td></tr>
+        <tr><td class="case">F07.2</td><td><span class="refs"><a href="#F1">F1</a><a href="#F2">F2</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N5">N5</a></span></td></tr>
+        <tr><td class="case">F08.1</td><td><span class="refs"><a href="#F1">F1</a><a href="#F2">F2</a><a href="#F7">F7</a><a href="#F12">F12</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N3">N3</a></span></td></tr>
+        <tr><td class="case">F08.2</td><td><span class="refs"><a href="#F1">F1</a><a href="#F2">F2</a><a href="#F7">F7</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N3">N3</a></span></td></tr>
+        <tr><td class="case">F09.1</td><td><span class="refs"><a href="#F2">F2</a><a href="#F3">F3</a><a href="#F8">F8</a><a href="#F9">F9</a><a href="#F11">F11</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N2">N2</a><a class="nf" href="#N3">N3</a><a class="nf" href="#N4">N4</a></span></td></tr>
+        <tr><td class="case">F09.2</td><td><span class="refs"><a href="#F3">F3</a><a href="#F4">F4</a><a href="#F9">F9</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N2">N2</a><a class="nf" href="#N3">N3</a><a class="nf" href="#N4">N4</a><a class="nf" href="#N6">N6</a></span></td></tr>
+        <tr><td class="case">F10.1</td><td><span class="refs"><a href="#F2">F2</a><a href="#F7">F7</a><a href="#F11">F11</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N3">N3</a><a class="nf" href="#N7">N7</a></span></td></tr>
+        <tr><td class="case">F10.2</td><td><span class="refs"><a href="#F2">F2</a><a href="#F7">F7</a><a href="#F11">F11</a><a href="#F12">F12</a></span></td><td><span class="refs"><a class="nf" href="#N1">N1</a><a class="nf" href="#N7">N7</a></span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Running the session</h2>
+  <p>Split the room first. F3, F6, F8, F12 and F13 are data questions the SME can answer from the schema and a few
+  queries. The rest are business definitions, and asking a data SME to rule on what "dependency risk" means
+  produces an answer nobody in the room is bound by.</p>
+  <p>Then take F2 before anything else. Eleven of the twenty walkthroughs change if the answer to "which link types
+  count" changes, and several of the other decisions read differently once it is settled.</p>
+  <p>Three items need a measurement before anyone can decide them, so they are definitely worth commissioning now
+  rather than debating in the room: how often several same-number items each carry dependency links (F1), how often
+  current Snowflake items are missing from Azure SQL (N4), and what a question costs in warehouse credits (N2).
+  None of the three takes long to run, and having those numbers on the table turns three arguments into three
+  readings.</p>
+</section>
+
+<footer>
+  Compiled from the "Needs confirmation" and "Still open" blocks of all twenty walkthroughs in section 2.3 of the
+  EDA and data mapping working doc.<br>
+  Walkthroughs first run 2026-08-28 against live Snowflake and Azure SQL. Page compiled 2026-09-02.
+</footer>
+
+</div>
+
+<script>
+(function () {
+  var KEY = "dep-signoff-v1";
+  var state = {};
+  try {
+    var raw = window.localStorage.getItem(KEY);
+    if (raw) state = JSON.parse(raw) || {};
+  } catch (e) { state = {}; }
+
+  function paint(id, on) {
+    var row = document.querySelector('tr[data-row="' + id + '"]');
+    if (row) row.setAttribute("data-decided", on ? "true" : "false");
+    var card = document.getElementById(id);
+    if (card) card.setAttribute("data-decided", on ? "true" : "false");
+  }
+
+  var boxes = document.querySelectorAll('input[type="checkbox"][data-key]');
+  Array.prototype.forEach.call(boxes, function (box) {
+    var id = box.getAttribute("data-key");
+    if (state[id]) { box.checked = true; paint(id, true); }
+    box.addEventListener("change", function () {
+      state[id] = box.checked;
+      paint(id, box.checked);
+      try { window.localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+    });
+  });
+})();
+</script>

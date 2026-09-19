@@ -1,0 +1,438 @@
+We need to spawn dedicated subagents to further review the implementation. Note that the below contain two sections, one is coding standard and the other is documentation.
+
+ 
+
+Coding Standard rules:
+
+1.           write extremely simple code, it should be "skimmable" and you should still be able to understand it
+
+2.           minimize possible states by reducing number of arguments, remove or narrow any state
+
+3.           use discriminated unions to reduce number of states the code can be in
+
+4.           exhaustively handle any objects with multiple different types, fail on unknown type
+
+5.           don't write defensive code, assume the values are always what types tell you they are
+
+6.           use asserts when loading data, and always be highly opinionated about the parameters you pass around. don't let things be optional if not strictly required
+
+7.           remove any changes that are not strictly required
+
+8.           bias for fewer lines of code
+
+9.           no complex or clever code
+
+10.        don't break out into too many function, that's hard to read
+
+11.        early returns are great
+
+12.        use asserts instead of try catches or default values when you do expect something to exist
+
+13.        never pass overrides except strictly necessary, keep argument count low
+
+14. don't make arguments optional if they are actually required
+
+15. Ensure variables and functions naming are consistent, easy to understand
+
+16. Ensure NOT to change any functionalities of the features, the focus is to write clean code. Aiming for elegancy, simple code and functional programming that follow the best programming fundamental and best practices. Ensuring the changes and ONLY changes we made are organized and maintainable on the long run.
+
+17. Again the code must follow the best Engineer practices, standard and fundamental such as DRY, SOLID, ETC (Easy to Change and Maintain)
+
+ 
+
+Ensure that the functionalities and behaviors of the features are preserved.
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+need to follow:
+
+ 
+
+- Code or docstring/comments that use internal notes are forbidden. For example, "phase1", "phase2", etc.. Are not allowed to be used as variable, type, function name.
+
+ 
+
+- This type of comment needs to be updated: "    """Run the DI-bound parse/chunk phase without embedding or uploading.""" why does it matter to comment " without embedding or uploading." Does this provide any value at all? Obviously not, it does NOT. This comment is utterly useless, it simply tells what the code is doing where the reader can simply read the code itself to understand. Either think of WHY and comment it or remove it entirely.
+
+ 
+
+Other examples are:
+
+```
+
+def list_blobs_by_prefix(prefix: str) -> list[str]:
+
+    """Return all blob names under the given prefix."""
+
+    container = get_container()
+
+    return [blob.name for blob in container.list_blobs(name_starts_with=prefix)]
+
+ 
+
+ 
+
+def delete_blob(blob_key: str) -> None:
+
+    """Delete a single blob by key."""
+
+    container = get_container()
+
+    container.delete_blob(blob_key)
+
+```
+
+ 
+
+This is a very bad practice.
+
+Again, Follow the rules from Agents.md and again ensure all documentation explain the 'WHY', some of 'WHAT' is fine if the function and logic is complex - it's good to abstract the complex parts with natural language. However ensure there is no em dashes - please replace them with word or colons. Also no special characters or emojis like arrow.
+
+ 
+
+Further redundancy like:
+
+```
+
+logging.info("Sync data ingestion request received.")
+
+```
+
+Needs to be removed entirely. This provides 0 value at all.
+
+ 
+
+Something like this is fine, it follows the best standard practices for public function to have docstring that shows args and returns and their meaning and usage. AS well as why.
+
+def format_api_response(result: Dict[str, Any], tool_name: str) -> ToolResponse:
+
+    """Format API response with tool name, follow-up questions, and supplemental data.
+
+   
+
+    Keys 'answer' and 'followup_questions' are mapped to dedicated ToolResponse fields.
+
+    Any additional keys in the result dict are collected into supplemental_data.
+
+   
+
+    Args:
+
+        result: The API response dictionary containing 'answer' and 'followup_questions'
+
+        tool_name: The name of the tool that generated the response
+
+       
+
+    Returns:
+
+        ToolResponse object with structured tool output
+
+    """
+
+The more critical is the one that state internal discussion or within md docs that should not be used as code (variable, function, etc...).
+
+ 
+
+---
+
+ 
+
+Write docstrings and comments that are concise and self-contained: a reader
+
+with no access to other documentation, code, or this conversation should
+
+still fully understand the behavior.
+
+ 
+
+- Explain only what is non-obvious. Skip anything already visible from the
+
+  function signature, variable names, or a sentence stated one line earlier,
+
+  including its logical negation (e.g. don't follow "X is skipped" with
+
+  "without this, X would not be skipped").
+
+- If you name a system, mechanism, or term the reader could not already
+
+  know, explain concretely what it is in the same sentence. Never name a
+
+  concept and move on without defining it.
+
+- Never include internal discussion, debugging history, or migration
+
+  rationale ("we used to do X", "ran into issue Y and fixed it with Z").
+
+- No em dashes, no double-hyphen substitutes, no arrows. Use plain words
+
+  or normal punctuation instead.
+
+ 
+
+DocString or inline comments should be simple plain English that is as direct as possible. For example: "If there's a real structured filter (e.g. project_solution eq 'SAP'), fire one extra facet call (free) that checks only the filter, ignoring the search text completely. Essentially: "does anything in the whole index match this filter, yes or no."
+
+This captures the design and intention of the function and it's purpose and also the rationale behind it. Make sure to use Common Dev/Eng vocabs, things like "relevance guess" is terrible. Also this can be in a sentence or two. THe less wrod/verbose, the better it is. As long as we are able to capture all main points/topics.
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ ------------------------------------------------------------------------------
+
+ 
+
+rules
+
+ 
+
+- Name the literal term and the actual field being searched, not a paraphrase of the idea.
+
+- No em dashes. Use a colon, comma, or period.
+
+- Resolve ambiguous nouns (e.g. a bare "items" that could mean rows, requests, or results).
+
+- State the mechanism, never a feeling. No vague phrases like "a relevance guess".
+
+- Every claim carries its number and its source step.
+
+- One line of why after the concrete what. Not a paragraph.
+
+- No ticket numbers, internal plan-task labels, or references to files the reader cannot
+
+  open.
+
+ 
+
+No unexplained comparatives
+
+ 
+
+A comparative word ("sharpest", "strongest", "best", "top") asserts a judgment without
+
+giving the reason. State the reason instead of the judgment. "The most specific words to
+
+search on, since they are the two systems the prompt names" is a reason. "The sharpest
+
+term" is not.
+
+ 
+
+Self-containment
+
+ 
+
+A reader with no document must be able to follow. Do not lean on the
+
+chat, a prior conversation, or shared context to make a sentence make sense. If a sentence
+
+only reads clearly because you just explained it out loud, it fails. Rewrite it so the
+
+mechanism and the reason sit in the sentence itself.
+
+ 
+
+Standardized vocabulary
+
+ 
+
+Use the actual system's own terms. Never substitute an analogy or a synonym for a term the
+
+underlying system already names. Pick one name per thing and repeat it; do not rotate
+
+synonyms.
+
+ 
+
+Do not invent a label for a thing the data names
+
+ 
+
+Make it scannable
+
+ 
+
+Break paragraphs into bullet lists. Group bullets by category when the output splits that
+
+way. Verbatim data first, then one short summary sentence. No wall of prose where a list
+
+works.
+
+ 
+
+Centralize
+
+ 
+
+One fact lives in one place. If a summary block repeats every step's own output almost
+
+verbatim, cut it or reduce it to only the facts the verdict actually rests on. Do not
+
+restate
+
+ 
+
+Cut fluff
+
+ 
+
+Delete on sight: "Verified live", "Checked live", "real" as an intensifier, "Note that",
+
+"It is worth noting", "Importantly". State the fact. Stop.
+
+ 
+
+Be direct
+
+ 
+
+- Get to the point as fast as possible. No wind-up.
+
+- Fewest words possible. Sacrifice grammar for concision and intuition over correctness.
+
+- Simple, plain language a reader understands on the first pass.
+
+ 
+
+ 
+
+MOST IMPORTANT, do NOT keep any historic context, inline doc and docstring must only discuss the business logic, things that are ambiguous that can't be derive from the code itself. ADR when applicable and makes sense.
+
+ 
+
+ 
+
+Writing voice:
+
+Plain, direct verbs: "we want to deploy," "it takes long," "I thought we just need to modify," "can you review," "knock out."
+
+Short sentences that state the thing plainly, then the reason in the next sentence.
+
+Contractions and casual connectors: "it's," "we need to," "this is because," "so that we can."
+
+No hedging, but also no stiff "The difference. / The forced behavior." label scaffolding.
+
+You explain cause to effect in flowing lines: "This is still unclear on how the differences between the two APIs and the capability of Retrieval API affect the final result."
+
+You name the concrete thing: "the doc can say ... Search API is able to use the select clause to choose a specific field to focus on, reducing noise. Whereas Retrieval API doesn't have that capability and has to look through all fields. This means that on use cases where user asks about xyz, Retrieval API results in worse output due to the noise."
+
+So the label scaffolding ("The difference / The forced behavior / The consequence") is too stiff. You write it as flowing sentences that walk difference to behavior to cost, in plain words. Here's the revised version of each, in your voice.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------
+
+/caveman ultra, Okay I will delegate the doc and knowledge consolidation to another work session. Can you write up the full plan on what we should consolidate and compress without losing details. For anything that we have found ground truth on such as the following, we should keep but for any historical context that can poison understanding that lead to bias and incorrect assumptions, remove them. 
+For instance, this is now ground truth:
+"
+Where we went wrong
+
+Reading the gibberish probe. We took "0 references, count 0" to mean no vector query ran. But count is counted after the reranker: "documents retrieved that were sufficiently relevant to pass the reranker threshold". The vector search did return neighbours for zqxjvwkbhf. The reranker then scored them as irrelevant and dropped every one.
+The threshold sweep. Thresholds 1.0 to 3.0 all gave count 1, so we called the threshold inert. The only survivor scored 3.846, above every threshold we tried, so that sweep couldn't show a cut.
+The 1-versus-50 gap. We blamed a missing vector lane. The real losses were three settings:
+searchFields on the production knowledge source left out body, which starved the keyword side: 1 reference instead of 9.
+The reranker threshold cut candidates.
+The output token budget capped references at about 9.
+resultsProcessing: "none" looked useless. It still returned 9, because the token budget was the cap. That hid its effect until we raised maxOutputSize.
+What made it work
+
+Nothing changed in the vector setup. Two request settings made the results visible and let them through:
+
+resultsProcessing: "none" skips the reranker, so all 51 candidates showed up, including the gibberish ones.
+maxOutputSize 200,000 raises the token budget, so all 50 come back as references.
+Bypassing the semantic reranker
+
+It's mandatory by default, and older versions had no way around it. That's where "you can't bypass it" came from: the Q&A thread asked why it's mandatory, and the earlier docs described it that way. The 2026-08-01-preview API added a per-source switch: "set "resultsProcessing": "none" on a knowledgeSourceParams entry to bypass reranking for a specific knowledge source and preserve its underlying result order" (Query a knowledge base). We had it on the list early, but it looked inert because of the token cap.
+
+How a retrieve runs, per knowledge source
+
+
+1. Retrieval    BM25 over searchFields  +  vector query (index vectorizer)
+                merged, filter applied, up to 50 candidates per subquery
+                        │
+2. Reranker     semantic ranker (L2) scores each candidate, drops those
+                below rerankerThreshold          ← "none" skips this step
+                activity count = survivors
+                        │
+3. Output       dedup, per-source and document limits, token budget
+                (maxOutputSize) → references     ← 200,000 lifts the cap
+With none:
+
+Candidates keep their step 1 order.
+References carry no rerankerScore.
+Sending rerankerThreshold in the same request returns HTTP 400.
+"
+Anything that predate to that can be remove entirely, although we can compress all that we have learned into a summary so that future agents will not make a mistake again. 
