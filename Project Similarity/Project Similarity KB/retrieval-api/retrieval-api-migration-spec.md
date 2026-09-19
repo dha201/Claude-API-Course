@@ -1,6 +1,6 @@
 # Moving chat_similarity to the Knowledge Retrieval API
 
-chat_similarity runs on the Search API today. We ran 16 user questions through it on both APIs (F23):
+chat_similarity runs on the Search API today. We ran 16 user questions through it on both APIs ([F23](evidence.md#f23)):
 
 ```
   16 questions
@@ -14,7 +14,7 @@ chat_similarity runs on the Search API today. We ran 16 user questions through i
 - The 2 that match both name a project by ID and ask for a stored fact.
 - Nothing has to be found, counted or grouped, so both APIs get there.
 
-That run used a knowledge source setup that switched vector search off. We've since found the settings that give the Retrieval API the same document results as the Search API (F16), so document fetch can move. Counting and grouping can't: the retrieve request has no parameter for them. So the Search API stays for those calls, and everything else moves:
+That run used a knowledge source setup that switched vector search off. We've since found the settings that give the Retrieval API the same document results as the Search API ([F16](evidence.md#f16)), so document fetch can move. Counting and grouping can't: the retrieve request has no parameter for them. So the Search API stays for those calls, and everything else moves:
 
 ```
   STAYS ON SEARCH API             MOVES TO RETRIEVAL API
@@ -24,7 +24,7 @@ That run used a knowledge source setup that switched vector search off. We've si
   sort by stored value
 ```
 
-F and O numbers point to [retrieval-api-findings.md](retrieval-api-findings.md), which has the measurements and commands behind every number here.
+F, O and ADR numbers link to the measurements, open items and decisions behind every number here. [README.md](README.md) maps the documents.
 
 ---
 
@@ -77,7 +77,7 @@ F and O numbers point to [retrieval-api-findings.md](retrieval-api-findings.md),
 
 > "Extract all lessons learned for these eight project IDs: 1009338, 1009392, 1010069, 1011517, 1011718, 1011742, 1012268, 1012329. Structure the result by project number and name, brief description, and interpret whether each lesson learned is positive or negative impact and categorize the theme of the learning (if you cannot interpret the impact category, just show the exact lesson learned)."
 
-Project 1012329 on each API (F17):
+Project 1012329 on each API ([F17](evidence.md#f17)):
 
 | | Search API | Retrieval API |
 |---|---|---|
@@ -87,7 +87,7 @@ Project 1012329 on each API (F17):
 | Evidence fetch runs | yes | never |
 | Closeout chunks searched | 598 | 0 |
 
-At Unknown the flow fetches nothing, so the answer reports no lessons for 1012329. Its lessons are retrievable: queried directly, the Retrieval API returns the same lesson chunks as the Search API (F16).
+At Unknown the flow fetches nothing, so the answer reports no lessons for 1012329. Its lessons are retrievable: queried directly, the Retrieval API returns the same lesson chunks as the Search API ([F16](evidence.md#f16)).
 
 **Deliver**
 
@@ -104,7 +104,7 @@ At Unknown the flow fetches nothing, so the answer reports no lessons for 101232
 
 **Today**
 
-- The Retrieval API runs hybrid search: keyword search plus vector search on `content_vector`, through the index's vectorizer `ps_text_3_small` (F8).
+- The Retrieval API runs hybrid search: keyword search plus vector search on `content_vector`, through the index's vectorizer `ps_text_3_small` ([F8](evidence.md#f8)).
 - It then passes the results through the semantic reranker, which drops most of them, and through an output token budget, which caps what's left.
 - chat_similarity sends `rerankerThreshold` 1.0 and the default budget.
 
@@ -114,19 +114,19 @@ Project 1009338, 601 Closeout chunks, search text "lessons learned", vector sear
 
 | Retrieval API request | References | Source |
 |---|---:|---|
-| default reranking, default budget | 9 | F11 |
-| `rerankerThreshold` 0 | 13 | F11 |
-| reranking off (`resultsProcessing: "none"`), default budget | 9 | F11 |
-| reranking off, `maxOutputSize` 200,000 | 50 | F12 |
-| Search API, hybrid + semantic ranker | 50 | F14 |
+| default reranking, default budget | 9 | [F11](evidence.md#f11) |
+| `rerankerThreshold` 0 | 13 | [F11](evidence.md#f11) |
+| reranking off (`resultsProcessing: "none"`), default budget | 9 | [F11](evidence.md#f11) |
+| reranking off, `maxOutputSize` 200,000 | 50 | [F12](evidence.md#f12) |
+| Search API, hybrid + semantic ranker | 50 | [F14](evidence.md#f14) |
 
-The 50 are the same 50 chunks the Search API returns (F15). Across all eight projects, default reranking returns 4 to 25 references and loses a lessons chunk on 2 projects; reranking off with the larger budget matches the Search API on every project (F16).
+The 50 are the same 50 chunks the Search API returns ([F15](evidence.md#f15)). Across all eight projects, default reranking returns 4 to 25 references and loses a lessons chunk on 2 projects; reranking off with the larger budget matches the Search API on every project ([F16](evidence.md#f16)).
 
 **Deliver**
 
 - On each evidence retrieve: `resultsProcessing: "none"` on the knowledge source entry, `maxOutputDocuments` 50, `maxOutputSize` 200,000, and no `rerankerThreshold` (sending it with `none` returns HTTP 400).
 - Anything that sorts or filters on `rerankerScore` changes, because references carry no score with reranking off.
-- Measure the token and latency cost of 50 chunks per project against 4 to 25 (O4).
+- Measure the token and latency cost of 50 chunks per project against 4 to 25 ([O4](runbook.md#o4)).
 - Expected: the eight-project prompt returns lessons for 7 of 8 projects. 1012329 waits for work 1.
 
 ---
@@ -149,7 +149,7 @@ The 50 are the same 50 chunks the Search API returns (F15). Across all eight pro
 
 **Example**
 
-On the eight-project prompt, the trace logged 32 retrieve calls and 7 capability gaps (F17). None of it shows in the answer.
+On the eight-project prompt, the trace logged 32 retrieve calls and 7 capability gaps ([F17](evidence.md#f17)). None of it shows in the answer.
 
 ```
   TODAY
@@ -180,7 +180,7 @@ On the eight-project prompt, the trace logged 32 retrieve calls and 7 capability
 
 - The Retrieval API can't set search fields per request. It uses the `searchFields` list stored on the knowledge source, for keyword and vector search both.
 - Ours holds an explicit list of 29 fields, and `content_vector` isn't one of them.
-- A list that doesn't name the vector field switches vector search off. Microsoft doesn't document this; we measured it (F9).
+- A list that doesn't name the vector field switches vector search off. Microsoft doesn't document this; we measured it ([F9](evidence.md#f9)).
 
 **Example**
 
@@ -188,15 +188,15 @@ Project 1009338, Closeout filter, "lessons learned":
 
 | Knowledge source | Vector search | References | Source |
 |---|---|---:|---|
-| production, 29-field list | off | 1 | F7, F9 |
-| same, list removed | on | 9 | F7 |
-| same, list removed, work 2 settings | on | 50 | F12 |
+| production, 29-field list | off | 1 | [F7](evidence.md#f7), [F9](evidence.md#f9) |
+| same, list removed | on | 9 | [F7](evidence.md#f7) |
+| same, list removed, work 2 settings | on | 50 | [F12](evidence.md#f12) |
 
-The 1 is the single keyword hit: the Search API with its vector query removed also finds 1 (F14).
+The 1 is the single keyword hit: the Search API with its vector query removed also finds 1 ([F14](evidence.md#f14)).
 
 **Deliver**
 
-- Remove `searchFields` from the knowledge source the evidence fetch uses. A short list that names `content_vector` also keeps vector search on (F10), with two points still unproven (O5).
+- Remove `searchFields` from the knowledge source the evidence fetch uses. A short list that names `content_vector` also keeps vector search on ([F10](evidence.md#f10)), with two points still unproven ([O5](runbook.md#o5)).
 - The knowledge source is shared, so try the change on a copy first.
 - Expected: the vector half runs, and with work 2 the eight projects match the Search API.
 
@@ -212,7 +212,7 @@ The 1 is the single keyword hit: the Search API with its vector query removed al
   - facets to find which projects match a filter
   - count to say exactly how many
   - stored values to sort by spend or date
-- The retrieve request has no parameter for any of these (O6).
+- The retrieve request has no parameter for any of these ([O6](runbook.md#o6)).
 
 **Example 1**
 
@@ -222,7 +222,7 @@ The 1 is the single keyword hit: the Search API with its vector query removed al
 |---|---|
 | 47 | no total |
 
-The Retrieval API can only count what it happened to retrieve (F23, row 6).
+The Retrieval API can only count what it happened to retrieve ([F23](evidence.md#f23), row 6).
 
 **Example 2**
 
@@ -233,7 +233,7 @@ The Retrieval API can only count what it happened to retrieve (F23, row 6).
 | 10 projects in spend order | 2 projects |
 | ZEST 1012929, $13.5M, is sixth | ZEST 1012929 missing |
 
-(F23, row 12)
+([F23](evidence.md#f23), row 12)
 
 **Deliver**
 
@@ -254,7 +254,7 @@ The Retrieval API can only count what it happened to retrieve (F23, row 6).
 
 **Example**
 
-Eight-project prompt on the Retrieval API as deployed (F17):
+Eight-project prompt on the Retrieval API as deployed ([F17](evidence.md#f17)):
 
 - The 8 projects hold 4,259 Closeout chunks between them.
 - Search API: 45 chunks for project 1009338 alone.
@@ -265,7 +265,7 @@ Eight-project prompt on the Retrieval API as deployed (F17):
 **Deliver**
 
 - Uses the stamped gate coverage from work 1, the settings from work 2 and the field list from work 4.
-- Rerun the eight-project prompt and the 16 questions (O2).
+- Rerun the eight-project prompt and the 16 questions ([O2](runbook.md#o2)).
 - Expected: all 8 projects return their lessons.
 
 ---
@@ -289,7 +289,7 @@ Eight-project prompt on the Retrieval API as deployed (F17):
 |---|---|
 | 10 tagged projects | none confirmed |
 
-(F23, row 1.) Without `searchMode=all`, every word is optional, so a vendor tagged only "AMAZON", or any vendor containing "SERVICES", counts as a match.
+([F23](evidence.md#f23), row 1.) Without `searchMode=all`, every word is optional, so a vendor tagged only "AMAZON", or any vendor containing "SERVICES", counts as a match.
 
 **Example 2**
 
@@ -299,14 +299,14 @@ Eight-project prompt on the Retrieval API as deployed (F17):
 |---|---|
 | answers | declines |
 
-(F23, row 13.) That run used the knowledge source with vector search off, so only keyword search ran, and keyword search has no fuzzy matching without the `full` parser. Whether vector search finds the project once it's on is untested.
+([F23](evidence.md#f23), row 13.) That run used the knowledge source with vector search off, so only keyword search ran, and keyword search has no fuzzy matching without the `full` parser. Whether vector search finds the project once it's on is untested.
 
 **Deliver**
 
-- The Retrieval API's filter accepts a field list, a parser and an all-words flag per request, through `search.ismatch` (F21).
+- The Retrieval API's filter accepts a field list, a parser and an all-words flag per request, through `search.ismatch` ([F21](evidence.md#f21)).
 - That brings back field scope, all-words matching and fuzzy matching.
-- Tested on "Fronteer": documents found with the filter, none without it (F21).
-- Expected: the 10 Amazon Web Services projects, kept separate from mentions, and the Fronteer project found. Not yet tested end to end (O9).
+- Tested on "Fronteer": documents found with the filter, none without it ([F21](evidence.md#f21)).
+- Expected: the 10 Amazon Web Services projects, kept separate from mentions, and the Fronteer project found. Not yet tested end to end ([O9](runbook.md#o9)).
 
 ---
 
@@ -327,7 +327,7 @@ Eight-project prompt on the Retrieval API as deployed (F17):
 |---|---|
 | answers | top score 1.28 against a threshold of 1.5, asks the user to narrow |
 
-- The Retrieval API did this on 4 of the 16 questions (F23).
+- The Retrieval API did this on 4 of the 16 questions ([F23](evidence.md#f23)).
 - With reranking off (work 2), references carry no reranker score at all, so this check needs another signal or a separately reranked call.
 
 ```
@@ -338,7 +338,7 @@ Eight-project prompt on the Retrieval API as deployed (F17):
                      document fetch SaaS q.    down gate
 ```
 
-A service-side minimum score of 2.5 has been suggested but has no source sentence and is untested (staging U3).
+A service-side minimum score of 2.5 has been suggested but has no source sentence and is untested (staging [U3](staging-findings.md#u3)).
 
 **Deliver**
 
@@ -362,7 +362,7 @@ A service-side minimum score of 2.5 has been suggested but has no source sentenc
 
 **Tested so far**
 
-- Named projects: 9 of 9 access checks behaved correctly on the eight-project prompt (F17).
+- Named projects: 9 of 9 access checks behaved correctly on the eight-project prompt ([F17](evidence.md#f17)).
 - Questions across every project, like the vendor or SAP questions: not tested.
 
 **Deliver**
@@ -387,7 +387,7 @@ A service-side minimum score of 2.5 has been suggested but has no source sentenc
 **Example**
 
 - With default reranking, the made-up word `zqxjvwkbhf`, which only vector search can match, shows count 0. That looks like no vector search ran.
-- With reranking off it shows 51 candidates, all of them the Search API's own vector matches for the same word (F8).
+- With reranking off it shows 51 candidates, all of them the Search API's own vector matches for the same word ([F8](evidence.md#f8)).
 
 **Deliver**
 

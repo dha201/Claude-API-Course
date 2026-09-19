@@ -1,10 +1,10 @@
 # Can the Knowledge Retrieval API replace the Search API in chat_similarity?
 
-**Short answer: not as a drop-in replacement.** Configuration brings the evidence fetch to parity with the Search API (F16). Grouping, counting and sorting have no parameter in the retrieve contract, and they break project state, Source Priority and every "how many" or "top N by" question (F17, F23).
+**Short answer: not as a drop-in replacement.** Configuration brings the evidence fetch to parity with the Search API ([F16](evidence.md#f16)). Grouping, counting and sorting have no parameter in the retrieve contract, and they break project state, Source Priority and every "how many" or "top N by" question ([F17](evidence.md#f17), [F23](evidence.md#f23)).
 
 Both APIs hit the same index, the same chunks and the same vectors. So the remaining gap isn't ranking quality. It's which operations the request can ask for.
 
-Finding IDs (F1 to F23) and open items (O1 to O9) are in [retrieval-api-findings.md](retrieval-api-findings.md), which holds every measured number.
+Findings ([F1](evidence.md#f1) to [F23](evidence.md#f23)), open items ([O1](runbook.md#o1) to [O9](runbook.md#o9)) and decisions ([ADR 1](decisions.md#adr-1) to [ADR 7](decisions.md#adr-7)) link to the finding, open item or decision. [README.md](README.md) maps the documents.
 
 ## The toy index
 
@@ -57,7 +57,7 @@ Ranking works on both APIs once the knowledge source and the request are set up 
   references
 ```
 
-The production knowledge source loses at all three: its field list turns the vector query off, the reranker drops candidates, and the default token budget caps what's left. Remove the list, bypass the reranker and raise the budget, and the knowledge base returns the same 50 chunks as the Search API on project 1009338 (F15) and the same counts on all eight test projects (F16). The settings are in "Configuration that works" in the findings document.
+The production knowledge source loses at all three: its field list turns the vector query off, the reranker drops candidates, and the default token budget caps what's left. Remove the list, bypass the reranker and raise the budget, and the knowledge base returns the same 50 chunks as the Search API on project 1009338 ([F15](evidence.md#f15)) and the same counts on all eight test projects ([F16](evidence.md#f16)). The settings are in [Configuration that works](ground-truth.md#configuration-that-works).
 
 ## Operation 2: grouping. Count, project state and Source Priority break the most
 
@@ -85,7 +85,7 @@ The Retrieval API has no facet. It ranks chunks and returns the top-ranked ones.
    P2 and P4 are invisible.
 ```
 
-On the real index the same question got 3 tagged projects from the Search API and 1 project from the Retrieval API (F23, row 3).
+On the real index the same question got 3 tagged projects from the Search API and 1 project from the Retrieval API ([F23](evidence.md#f23), row 3).
 
 A facet and `searchFields` answer different questions:
 
@@ -105,15 +105,15 @@ lessons + Closed  →  [Closeout doc, lessons_learned_log]
 lessons + Unknown →  []   (empty: nothing is fetched)
 ```
 
-State comes from the record row's `work_status` first and the `gate_label` facet second. With no facet, a project without a record row reads Unknown, and at Unknown the lessons rule fetches nothing. That's what happened to project 1012329 in the eight-project run (F17).
+State comes from the record row's `work_status` first and the `gate_label` facet second. With no facet, a project without a record row reads Unknown, and at Unknown the lessons rule fetches nothing. That's what happened to project 1012329 in the eight-project run ([F17](evidence.md#f17)).
 
 Second, when two fetched sources still disagree, the answering model takes the lower priority number. That part survives either API. It fails upstream on the Retrieval API: with no state, nothing authoritative is fetched, so the conflicting pair never reaches the model.
 
 ## Operation 3: count and sort
 
-**Count.** "How many SAP projects" should answer 47, one number, independent of what was retrieved. The retrieve request has no count, so the Retrieval API can only count what it happened to retrieve, and it gave no total (F23, row 6). A wrong answer, not a smaller one.
+**Count.** "How many SAP projects" should answer 47, one number, independent of what was retrieved. The retrieve request has no count, so the Retrieval API can only count what it happened to retrieve, and it gave no total ([F23](evidence.md#f23), row 6). A wrong answer, not a smaller one.
 
-**Sort.** "Top 10 Hardware Deploy by spend" must order by the stored actuals number. The retrieve request has no `orderby`, so it returns the chunks with the highest relevance. ZEST 1012929, sixth by spend, was missing from the Retrieval API answer (F23, row 12).
+**Sort.** "Top 10 Hardware Deploy by spend" must order by the stored actuals number. The retrieve request has no `orderby`, so it returns the chunks with the highest relevance. ZEST 1012929, sixth by spend, was missing from the Retrieval API answer ([F23](evidence.md#f23), row 12).
 
 ## Operation 4: pick the field. Where the workaround lives
 
@@ -141,7 +141,7 @@ search.ismatch(
 
 The `'full'` here is the filter's own parser, not the request's. `search.ismatch` parses its own search string, so it takes the same `queryType` and `searchMode` arguments the Search API request takes. The request-level query type stays locked to semantic. Two strings, two parsers.
 
-The service accepts these filters and returns documents, and the misspelled "Fronteer" matched with `'Fronteer~1'` and `'full'` where it matched nothing without the filter (F21). The full argument reference is in the findings document under "Field scope, fuzzy and all-word matching".
+The service accepts these filters and returns documents, and the misspelled "Fronteer" matched with `'Fronteer~1'` and `'full'` where it matched nothing without the filter ([F21](evidence.md#f21)). The full argument reference is in [search-ismatch-reference.md](search-ismatch-reference.md#field-scope-fuzzy-and-all-word-matching-through-searchismatch).
 
 ### The catch
 
@@ -193,13 +193,13 @@ Facet results and hybrid results never mix chunk by chunk. They merge as project
 4c. All words       every word of the vendor name  ✓             ✓ via ismatch
 ```
 
-The 16-prompt evaluation ran on the production knowledge source, where the vector query was off (F23). Its 12 worse answers mix rows 2 and 3 with the evidence-fetch loss that row 1's settings now fix, so it needs a rerun (O2).
+The 16-prompt evaluation ran on the production knowledge source, where the vector query was off ([F23](evidence.md#f23)). Its 12 worse answers mix rows 2 and 3 with the evidence-fetch loss that row 1's settings now fix, so it needs a rerun ([O2](runbook.md#o2)).
 
 ## The verdict
 
 The Retrieval API can't replace the Search API for chat_similarity as it stands. Ranking reaches parity with configuration. The blocking gap is grouping, because counting, project state and Source Priority all hang off the facet. Field scoping, fuzzy matching and all-word matching have a path through `search.ismatch` in `filterAddOn`.
 
-"No parameter" describes the retrieve contract. Whether a workaround exists is open: an MCP server knowledge source could return counts and groups computed by our own code (O6). Whether `search.ismatch` fixes the failing prompts end to end is also open (O9).
+"No parameter" describes the retrieve contract. Whether a workaround exists is open: an MCP server knowledge source could return counts and groups computed by our own code ([O6](runbook.md#o6)). Whether `search.ismatch` fixes the failing prompts end to end is also open ([O9](runbook.md#o9)).
 
 ## Query hints: the remaining knob, and why it doesn't help chat_similarity
 
@@ -255,7 +255,7 @@ _facet_member_ids:                      no facet exists
 exact project ID list + exact count
 ```
 
-A filter hint lines up with our filter building, not our facet. It can't substitute even there: `roles_work_lead` holds thousands of person names that no hint can enumerate, and our guard is deterministic where a hint is best effort. The decomposer already does what the hint planner does, grounded in real enum sets, with a demotion path. The documented blockers are in the findings document under "Query hints", and the decision is ADR 3.
+A filter hint lines up with our filter building, not our facet. It can't substitute even there: `roles_work_lead` holds thousands of person names that no hint can enumerate, and our guard is deterministic where a hint is best effort. The decomposer already does what the hint planner does, grounded in real enum sets, with a demotion path. The documented blockers are in [search-ismatch-reference.md](search-ismatch-reference.md#query-hints-and-why-querytype-shows-full), and the decision is [ADR 3](decisions.md#adr-3).
 
 ## Why "key roles" works on the knowledge base and "lessons" didn't
 
@@ -263,4 +263,4 @@ Same question shape, opposite outcomes, because the two answers live in differen
 
 Roles are metadata. The `roles_*` fields are project metadata stamped onto every chunk of the project, and the knowledge source returns them in `sourceData` on every reference. Any sample of the project's chunks carries the full answer, so even one reference is enough.
 
-Lessons are content. They sit in a handful of Closeout chunks, and those chunks have to be retrieved. On the production knowledge source the vector query was off and BM25 found 1 to 4 results per project, so the flow reported "no lessons found" for projects whose lessons are on file (F17). With the vector query on, the reranker bypassed and the budget raised, every project returns the same lesson-mentioning chunks as the Search API (F16).
+Lessons are content. They sit in a handful of Closeout chunks, and those chunks have to be retrieved. On the production knowledge source the vector query was off and BM25 found 1 to 4 results per project, so the flow reported "no lessons found" for projects whose lessons are on file ([F17](evidence.md#f17)). With the vector query on, the reranker bypassed and the budget raised, every project returns the same lesson-mentioning chunks as the Search API ([F16](evidence.md#f16)).

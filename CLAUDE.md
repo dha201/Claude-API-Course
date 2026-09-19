@@ -36,7 +36,7 @@ PowerShell traps already hit here:
 
 ## Documents
 
-- Documents describe the current state and the ground truth. Leave out how we got there: no "previously", no "correction", no change history.
+- Documents describe the current state and the ground truth. Leave out how we got there: no "previously", no "correction", no change history. The one exception is a folder's `history.md`, which holds that folder's history and nothing else.
 - Unproven findings go to a staging document first. A finding moves to the main document only with the command, the number it produced, and a date.
 - Inline comments and docstrings cover business logic and whatever the code cannot explain by itself.
 - Write an ADR when a decision had a real alternative that was rejected for a stated reason.
@@ -74,4 +74,6 @@ Voice:
 
 ## Project Similarity
 
-Working documents live in `Project Similarity/Project Similarity KB/`. The staging document for unproven findings is `staging-findings.md` in that folder, and its promotion rule is at the top of the file.
+Working documents live in `Project Similarity/Project Similarity KB/retrieval-api/`. Start at its `README.md`, which maps the files and how they cite each other. The staging document for unproven findings is `staging-findings.md` in that folder, and its promotion rule is at the top of the file.
+
+IDs are stable: F (evidence.md), A (commands.md), O (runbook.md), U (staging-findings.md), ADR (decisions.md). Link every ID to its anchor, for example `evidence.md#f12`.
