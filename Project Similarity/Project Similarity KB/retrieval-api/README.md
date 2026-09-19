@@ -24,13 +24,13 @@ Investigation documents:
 | [ground-truth.md](ground-truth.md) | Current state: status, current facts, how a retrieve runs, what each setting controls, the configuration that works, capability gaps. Every claim cites its finding inline | you need what's true now |
 | [evidence.md](evidence.md) | [F1](evidence.md#f1) to [F23](evidence.md#f23): setup, result table, date and the commands behind each finding | you need the number behind a claim |
 | [commands.md](commands.md) | [A1](commands.md#a1) to [A37](commands.md#a37): every command run, verbatim, with its raw result | you need to rerun or audit a measurement |
-| [runbook.md](runbook.md) | Pitfalls, open items [O1](runbook.md#o1) to [O9](runbook.md#o9) with their commands, operating notes, cleanup | you're about to run something |
+| [runbook.md](runbook.md) | Pitfalls, open items [O1](runbook.md#o1) to [O10](runbook.md#o10) with their commands, operating notes, cleanup | you're about to run something |
 | [implementation.md](implementation.md) | Python reference code and porting checklist for `chat_similarity` | you're changing the application |
 | [decisions.md](decisions.md) | [ADR 1](decisions.md#adr-1) to [ADR 7](decisions.md#adr-7) | you need why a choice was made |
-| [search-ismatch-reference.md](search-ismatch-reference.md) | `search.ismatch` grammar and traps, Search API against Retrieval API parameters, query hints | you're writing a `filterAddOn` or mapping a Search API call |
+| [search-api-parity.md](search-api-parity.md) | Every Search API capability `chat_similarity` uses, by call site, with its Retrieval API route and status; blocked rows; the parameter table; `search.ismatch` and query hints how-to | you need to know whether the Retrieval API can do something, and how |
 | [sources.md](sources.md) | Microsoft quotes, what no Microsoft page says, sentences not to cite, outside evidence | you're citing Microsoft or prior art |
 | [history.md](history.md) | How the investigation got here, claims that turned out wrong, old labels | you meet an old claim or label |
-| [staging-findings.md](staging-findings.md) | Unproven claims [U2](staging-findings.md#u2) to [U8](staging-findings.md#u8) with their tests, and the promotion rule | you have a claim without a measurement |
+| [staging-findings.md](staging-findings.md) | Unproven claims [U2](staging-findings.md#u2) to [U9](staging-findings.md#u9) with their tests, and the promotion rule | you have a claim without a measurement |
 
 ## How the documents cite each other
 
@@ -39,6 +39,7 @@ Investigation documents:
                 │  cite F#, O#, ADR#
                 ▼
         ground-truth.md ──[F#]──► evidence.md ──[A#]──► commands.md
+   search-api-parity.md ──[F#]──┘
                 │
                 └──[URL]──► Microsoft page (quote kept in sources.md)
 
@@ -60,8 +61,8 @@ IDs are stable. Files can change; an ID never changes meaning and is never reuse
 |---|---|---|
 | [F1](evidence.md#f1) to [F23](evidence.md#f23) | A measured finding | [evidence.md](evidence.md) |
 | [A1](commands.md#a1) to [A37](commands.md#a37) | A command that ran, with its raw result | [commands.md](commands.md) |
-| [O1](runbook.md#o1) to [O9](runbook.md#o9) | An open item, usually with a command to run | [runbook.md](runbook.md) |
-| [U2](staging-findings.md#u2) to [U8](staging-findings.md#u8) | An unproven claim with its test | [staging-findings.md](staging-findings.md) |
+| [O1](runbook.md#o1) to [O10](runbook.md#o10) | An open item, usually with a command to run | [runbook.md](runbook.md) |
+| [U2](staging-findings.md#u2) to [U9](staging-findings.md#u9) | An unproven claim with its test | [staging-findings.md](staging-findings.md) |
 | [ADR 1](decisions.md#adr-1) to [ADR 7](decisions.md#adr-7) | A decision with a rejected alternative | [decisions.md](decisions.md) |
 | P0 to P8 | Test prompts for query parsing | [runbook.md](runbook.md#o9) |
 

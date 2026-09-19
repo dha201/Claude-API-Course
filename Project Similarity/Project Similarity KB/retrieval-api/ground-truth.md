@@ -4,17 +4,17 @@ What is true now about the Azure AI Search Retrieval API for Project Similarity.
 
 ## Question and status
 
-Can the Azure AI Search Retrieval API (a knowledge base over a knowledge source, at `minimal` reasoning effort) replace the Search API for document retrieval in `chat_similarity`?
+Can the Azure AI Search Retrieval API (a knowledge base over a knowledge source, at `minimal` reasoning effort) replace every Search API call in `chat_similarity`? The goal is a full migration with no Search API calls left ([ADR 7](decisions.md#adr-7)).
 
 Across 16 user prompts graded answer by answer, the Retrieval API path was worse on 12, gave the same answer on 2, both paths declined 1, and 1 was mixed ([F23](evidence.md#f23)). The failures fall into three groups:
 
 | Failure | What happens | Status |
 |---|---|---|
 | Evidence fetch | The production setup returns 1 reference for `lessons learned` on a project whose 601 Closeout chunks give the Search API 50 results | Solved by configuration: parity with the Search API on all eight test projects ([F16](evidence.md#f16)). Not yet applied in `chat_similarity` ([O2](runbook.md#o2)) |
-| Gate list | The retrieve request has no `facets`, so `gates_present` comes back empty. A project with no record row then resolves to state Unknown and gets no evidence call. This hit project 1012329 in the eight-project run ([F17](evidence.md#f17)) | Needs a redesign ([O6](runbook.md#o6)) |
-| Count and sort | The retrieve request has no `count` and no `orderby`. "How many SAP projects are there in total?" gets 47 on the Search API and no total on the Retrieval API. "Top 10 Hardware Deploy by spend" can't be ordered by spend ([F23](evidence.md#f23)) | Needs a redesign ([O6](runbook.md#o6)) |
+| Gate list | The retrieve request has no `facets`, so `gates_present` comes back empty. A project with no record row then resolves to state Unknown and gets no evidence call. This hit project 1012329 in the eight-project run ([F17](evidence.md#f17)) | Design: gate coverage stamped at ingest ([search-api-parity.md](search-api-parity.md#gate-coverage), [O6](runbook.md#o6)) |
+| Count and sort | The retrieve request has no `count` and no `orderby`. "How many SAP projects are there in total?" gets 47 on the Search API and no total on the Retrieval API. "Top 10 Hardware Deploy by spend" can't be ordered by spend ([F23](evidence.md#f23)) | Design: enumerate the matching projects and count and sort in code ([search-api-parity.md](search-api-parity.md#complete-project-enumeration), [O10](runbook.md#o10)) |
 
-The last two are gaps in the retrieve contract. No workaround is proven and none is ruled out. An MCP server knowledge source could, for example, return counts and groups computed by our own code, and that's untested.
+The last two are gaps in the retrieve contract: it has no `facets`, `count` or `orderby`. Both routes are untested. Every Search API capability `chat_similarity` uses, and its Retrieval API route, is mapped in [search-api-parity.md](search-api-parity.md): 3 proven, 2 syntax only, 9 design, 1 with no route.
 
 Project 1009338, filter `project_id eq '1009338' and gate_label eq 'Closeout'` (601 chunks), query `lessons learned`:
 
@@ -153,51 +153,6 @@ Trade-offs:
 - **Precision.** Default reranking returns 4 to 25 references and drops a lesson chunk on 2 of 8 projects. `none` returns 50 per project and loses none ([F16](evidence.md#f16)). On 1009338 the 9 reranked references and the 50 unreranked ones hold the same 2 lesson chunks ([F11](evidence.md#f11), [F12](evidence.md#f12)), so `none` sends 41 more chunks for no extra lesson chunk there. How many of the 50 carry lessons prose without the word "lesson" is unmeasured ([O4](runbook.md#o4)).
 - **Tokens.** Fifty references per project cost more tokens in the answer step than 4 to 25. The size is unmeasured ([O4](runbook.md#o4)).
 - **Latency.** Activity `elapsedMs` under `none` ranged from 447 to 1,135 ms per retrieve ([A26](commands.md#a26), [A28](commands.md#a28), [A35](commands.md#a35)). Reranked rows report 0, a reporting quirk ([F8](evidence.md#f8)), so the two modes can't be compared from `elapsedMs`. Wall-clock time against the 30-second target is unmeasured ([O4](runbook.md#o4)).
-- **Scores.** References under `none` carry no `rerankerScore`, so any code that sorts or filters on it must change.
+- **Scores.** References under `none` carry no `rerankerScore`, so any code that sorts or filters on it must change ([ranking signal](search-api-parity.md#ranking-signal)).
 - **`maxOutputDocuments` 200.** Returns 143 to 159 references at the 200,000 budget ([F13](evidence.md#f13)). Nothing measured needs it.
 - **Gate list.** 1012329 still gets no evidence call until the gate-list failure is fixed ([F17](evidence.md#f17), [O6](runbook.md#o6)).
-
-## Capability gaps not fixed by configuration
-
-`chat_similarity` discovery runs four operations. The Retrieval API supports the first, and the fourth through a filter function:
-
-```
-                                 what the question needs           Search API       Retrieval API
-  1.  Rank chunks                documents that read alike         ✓                ✓
-  2.  Group by field             one bucket per project            ✓ facets         ✗ no parameter
-  3a. Count                      the exact total                   ✓ count          ✗ no parameter
-  3b. Sort                       order by a stored number          ✓ orderby        ✗ no parameter
-  4a. Scope the field            look only in the roles field      ✓ searchFields   ✓ via search.ismatch
-  4b. Fuzzy match                survive a misspelling             ✓ queryType full ✓ via search.ismatch
-  4c. All words                  every word of the vendor name     ✓ searchMode all ✓ via search.ismatch
-```
-
-"No parameter" is a finding about the retrieve contract. Whether a workaround exists is open ([O6](runbook.md#o6)).
-
-### Grouping, project state and Source Priority
-
-```
-  facets  ──►  gate coverage     ──►  project state   ──►  Source Priority
-               (gates_present)        (Closed,             (which source system
-                                       Active-past-G3,      is authoritative for
-                                       Unknown)             the topic)
-```
-
-Source Priority is the rule for when WPM, PECT and PSR record the same fact differently. The fetch of the authoritative source is keyed by project state, and for lessons the policy is:
-
-```
-  lessons + Closed   →  [Closeout document, lessons_learned_log]
-  lessons + Unknown  →  []   nothing is fetched
-```
-
-With no facets, state comes only from the record row's `work_status`. A project without a record row reads Unknown and gets nothing ([F17](evidence.md#f17)). Three ways out:
-
-1. Derive project state from the record row only, and drop the gate fallback.
-2. Precompute gate coverage at ingest and stamp it onto every chunk.
-3. Give the Unknown state a non-empty source list.
-
-### Count and sort
-
-The retrieve request has no `count` and no `orderby`, so the Retrieval API can only count what it happened to retrieve and can only order by relevance ([F23](evidence.md#f23) rows 6 and 12).
-
-Field scoping, fuzzy matching and all-word matching come back through `search.ismatch` in `filterAddOn` ([F21](evidence.md#f21)). The grammar, the traps and the full Search API parameter mapping are in [search-ismatch-reference.md](search-ismatch-reference.md).

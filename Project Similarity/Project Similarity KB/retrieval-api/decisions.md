@@ -26,7 +26,7 @@ Each decision had a real alternative that was rejected for a stated reason.
 
 - **Decision.** Keep filter generation in the decomposer.
 - **Rejected alternative.** Filter hints and boosts on the knowledge source.
-- **Why.** The blockers table in [search-ismatch-reference.md](search-ismatch-reference.md#query-hints-and-why-querytype-shows-full).
+- **Why.** The blockers table in [search-api-parity.md](search-api-parity.md#query-hints-and-why-querytype-shows-full).
 - **Revisit when.** The pipeline moves above `minimal` and off `gpt-4o`, and a `multiWordExpression` boost for phrases such as "lessons learned" is wanted. That hint kind duplicates nothing the decomposer does.
 
 <a id="adr-4"></a>
@@ -61,10 +61,11 @@ Each decision had a real alternative that was rejected for a stated reason.
 
 <a id="adr-7"></a>
 
-## ADR 7: Keep counts, groups and sorts on the Search API
+## ADR 7: Migrate fully to the Retrieval API
 
-- **Status.** Proposed in the migration spec, awaiting stakeholder approval.
-- **Decision.** Facets, counts, field-value lookups and sorts by stored value stay on the Search API, behind the retrieval boundary in spec work item 3. Ranking and document fetch move to the Retrieval API.
-- **Rejected alternatives.** Moving every call to the Retrieval API: the retrieve request has no `facets`, `count` or `orderby`, and "How many SAP projects are there in total?" got no total ([F23](evidence.md#f23)). An MCP server knowledge source that returns counts computed by our own code: untested, and it rules out `minimal` effort: "The minimal retrieval reasoning effort isn't supported. Use low or medium instead." ([MCP server knowledge source, Limitations and considerations](https://learn.microsoft.com/en-us/azure/search/agentic-knowledge-source-how-to-mcp-server)).
-- **Why.** The Search API already answers these questions: 47 SAP projects, and the top 10 by spend in order ([F23](evidence.md#f23)).
-- **Revisit when.** [O6](runbook.md#o6) finds a workaround inside the Retrieval API.
+- **Status.** Accepted as the goal. The routes for discovery Lanes 2 to 4 are unproven ([O10](runbook.md#o10)).
+- **Decision.** Every retrieval call in `chat_similarity` goes through the knowledge base retrieve request, and no Search API call remains. [search-api-parity.md](search-api-parity.md) maps every call site to its route.
+- **Rejected alternative.** A hybrid that keeps facets, counts, field-value lookups and sorts on the Search API behind a retrieval boundary, with ranking and document fetch on the Retrieval API.
+- **Why.** The migration target is one retrieval path, through the knowledge base.
+- **Cost.** The retrieve request has no `facets`, `count`, `orderby` or `skip`. Lanes 2 to 4 depend on enumerating matching projects in code, at most 200 rows per call ([F6](evidence.md#f6)), with completeness unproven ([U9](staging-findings.md#u9)). The MCP server fallback rules out `minimal` effort: "The minimal retrieval reasoning effort isn't supported. Use low or medium instead." ([MCP server knowledge source, Limitations and considerations](https://learn.microsoft.com/en-us/azure/search/agentic-knowledge-source-how-to-mcp-server)).
+- **Revisit when.** [O10](runbook.md#o10) fails and no other route inside the Retrieval API is found.

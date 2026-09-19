@@ -2,7 +2,7 @@
 
 ## Microsoft documentation
 
-Quotes that back one claim sit next to that claim in [ground-truth.md](ground-truth.md) and [search-ismatch-reference.md](search-ismatch-reference.md). The quotes below back the vector-query and index findings. All were checked on the current page on 2026-09-18.
+Quotes that back one claim sit next to that claim in [ground-truth.md](ground-truth.md) and [search-api-parity.md](search-api-parity.md). The quotes below back the vector-query and index findings. All were checked on the current page on 2026-09-18.
 
 **The vector query at `minimal` effort.**
 
@@ -34,7 +34,7 @@ Quotes that back one claim sit next to that claim in [ground-truth.md](ground-tr
 |---|---|
 | "if the only searchable field is a vector field, then only pure vector search is used" | deleted on 2026-06-12, commit `3832581a`; absent from the current create-index page |
 | portal objects "still use the 2025-08-01-preview schema" | absent from the overview page. The current wording: "Objects created in either portal might use preview schemas and require migration when you move to the generally available REST API version" |
-| "Facets, sorting, document count pagination, and orderby are not available." | absent from the current retrieve page. Cite the retrieve contract (the parameter tables in [search-ismatch-reference.md](search-ismatch-reference.md)) instead |
+| "Facets, sorting, document count pagination, and orderby are not available." | absent from the current retrieve page. Cite the retrieve contract (the parameter tables in [search-api-parity.md](search-api-parity.md)) instead |
 | The create-index criteria row "Scoring profile / Optional / Boosts relevance for specific fields. Set defaultScoringProfile to apply automatically." | present, but the retrieve page says retrieve doesn't apply index scoring profiles |
 | `alwaysQuerySource` on the reasoning-effort page | that page now names the property `alwaysQueryKnowledgeSource`; the retrieve page still says `alwaysQuerySource` |
 | "expect to call a native Azure OpenAI or Foundry endpoint directly" (Q&A 5955030) | not on the page; the staff answer's wording is in [runbook.md, Operating notes](runbook.md#operating-notes) |

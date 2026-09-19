@@ -1,5 +1,7 @@
 # Moving chat_similarity to the Knowledge Retrieval API
 
+> The split below, with counts and sorts staying on the Search API, conflicts with [ADR 7](decisions.md#adr-7): the goal is a full migration. This spec gets rewritten once [O10](runbook.md#o10) shows whether counts and sorts have a Retrieval API route.
+
 chat_similarity runs on the Search API today. We ran 16 user questions through it on both APIs ([F23](evidence.md#f23)):
 
 ```

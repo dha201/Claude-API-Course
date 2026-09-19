@@ -118,9 +118,14 @@ The keyword-scope half has no count-based test. The vector query fills every can
 
 <a id="o6"></a>
 
-### O6. Grouping, count and sort
+### O6. Discovery design: gate coverage and ranking signal
 
-Design work, no command. Pick a project-state option under [Grouping, project state and Source Priority](ground-truth.md#grouping-project-state-and-source-priority), and move counts and sorts to code that doesn't depend on the retrieve contract: the Search API, or an MCP server knowledge source that returns results computed by our own code (untested).
+Design work, no command. Two choices, both laid out in [search-api-parity.md](search-api-parity.md):
+
+- **Gate coverage.** Pick one of the three ways out under [Gate coverage](search-api-parity.md#gate-coverage). Stamping coverage at ingest keeps today's behavior and needs an index change.
+- **Ranking signal.** Pick how `rank_projects` orders projects and runs the narrow-down gate without `rerankerScore`, from the options under [Ranking signal](search-api-parity.md#ranking-signal).
+
+Counting and sorting are [O10](#o10).
 
 <a id="o7"></a>
 
@@ -173,6 +178,25 @@ No command yet. [F21](evidence.md#f21) proves the syntax parses. Whether it fixe
 | P8 | "Give me lessons learned from closed projects in the Kinaxis portfolio." | phrase boost | `search.ismatchscoring('"lessons learned"^3','body,title','full','any')`, `search.ismatch` with the same arguments, no filter |
 
 Run P0, P1, P3 and P8 first. Hold the filter scope and `maxOutputDocuments` fixed and vary only the `search.ismatch` call. Record per arm: references, activity count, the golden project IDs recovered, and how many returned chunks carry the target content. The last column decides. Run the arms on a knowledge source with the vector query on ([F9](evidence.md#f9)), or the result measures the missing vector query instead of the filter.
+
+<a id="o10"></a>
+
+### O10. Complete project enumeration on the Retrieval API
+
+Tests the route for Lanes 2, 3 and 4 under [Complete project enumeration](search-api-parity.md#complete-project-enumeration), and staging claim [U9](staging-findings.md#u9). The filter is the Hardware Deploy prompt from [F23](evidence.md#f23) row 12. The Search API side facets `project_id`. The Retrieval API side retrieves up to 200 rows with the reranker bypassed, collects `project_id` in code, and sorts by `pect_total_actuals` in code. `ps-ks-allfields` must still store `searchFields: []`.
+
+```powershell
+$h = @{ 'api-key' = $env:AZURE_SEARCH_API_KEY }; $ep = $env:AZURE_SEARCH_ENDPOINT; $f = "project_solution eq 'Hardware Deploy (Infrastructure Hardware)'"; $su = "$ep/indexes/project_similarity_index/docs/search?api-version=2024-07-01"; $rtu = "$ep/knowledgebases/ps-kb-allfields/retrieve?api-version=2026-08-01-preview"; $sp = @(); $kp = @(); try { $q = @{ search = '*'; filter = $f; facets = @('project_id,count:1000'); top = 0; count = $true } | ConvertTo-Json -Depth 6; $r = Invoke-RestMethod -Method Post -Uri $su -Headers $h -Body $q -ContentType 'application/json'; $sp = @($r.'@search.facets'.project_id | Where-Object { $_ } | ForEach-Object { [string]$_.value }); 'Search API     matching rows = ' + $r.'@odata.count' + '   distinct projects (facet) = ' + $sp.Count } catch { $m = if ($_.ErrorDetails.Message) { $_.ErrorDetails.Message } else { $_.Exception.Message }; 'Search API     ERROR ' + $m }; try { $b = @{ intents = @( @{ type = 'semantic'; search = '*' } ); knowledgeSourceParams = @( @{ knowledgeSourceName = 'ps-ks-allfields'; kind = 'searchIndex'; filterAddOn = $f; includeReferences = $true; includeReferenceSourceData = $true; maxOutputDocuments = 200; resultsProcessing = 'none' } ); maxOutputDocuments = 200; maxOutputSize = 200000; includeActivity = $true } | ConvertTo-Json -Depth 12; $r2 = Invoke-RestMethod -Method Post -Uri $rtu -Headers $h -Body $b -ContentType 'application/json'; $refs = @($r2.references | Where-Object { $_ }); $a = @($r2.activity | Where-Object { $_.type -eq 'searchIndex' })[0]; $kp = @($refs | ForEach-Object { [string]$_.sourceData.project_id } | Where-Object { $_ } | Sort-Object -Unique); 'Retrieval API  references = ' + $refs.Count + '   candidates = ' + $a.count + '   distinct projects = ' + $kp.Count + '   references without project_id = ' + @($refs | Where-Object { -not $_.sourceData.project_id }).Count; $best = @{}; foreach ($x in $refs) { $p = [string]$x.sourceData.project_id; $v = $x.sourceData.pect_total_actuals; if ($p -and ($null -ne $v)) { if ((-not $best.ContainsKey($p)) -or ([double]$v -gt $best[$p])) { $best[$p] = [double]$v } } }; 'top 10 by pect_total_actuals, sorted in code from Retrieval API references:'; $i = 0; foreach ($e in @($best.GetEnumerator() | Sort-Object Value -Descending | Select-Object -First 10)) { $i++; '  {0,2}. {1,-10} {2:N0}' -f $i, $e.Key, $e.Value }; if ($i -eq 0) { '  (no reference carries pect_total_actuals)' } } catch { $m = if ($_.ErrorDetails.Message) { $_.ErrorDetails.Message } else { $_.Exception.Message }; 'Retrieval API  ERROR ' + $m }; if ($sp.Count -and $kp.Count) { $miss = @($sp | Where-Object { $kp -notcontains $_ }); 'in the facet but missing from the Retrieval API: ' + $miss.Count + '   ' + (($miss | Select-Object -First 10) -join ', ') } else { 'comparison skipped: one side returned no projects' }
+```
+
+Read it for:
+
+- `matching rows` 200 or fewer, and `missing from the Retrieval API: 0`: retrieve returned every matching project. Lanes 2 and 4 have a route for filters this size, and U9 can be promoted.
+- `missing` above 0 while `matching rows` is 200 or fewer: retrieve drops rows even with the reranker bypassed, the same pattern as [F18](evidence.md#f18). The route fails as built; the next try filters to record rows only.
+- `matching rows` above 200: the 200-row cap binds. The project count can still match if chunks crowd into few projects; if it doesn't, the filter needs splitting.
+- `references without project_id` above 0: `project_id` isn't in `sourceDataFields` on `ps-ks-allfields`, so the distinct count is too low.
+- The top 10: ZEST 1012929 should be sixth, as in the Search API answer ([F23](evidence.md#f23) row 12). `(no reference carries pect_total_actuals)` means the field isn't in `sourceDataFields` or sits only on rows that didn't come back.
+- `ERROR` on either side: that side proves nothing, and the comparison is skipped.
 
 ## Operating notes
 

@@ -1,12 +1,12 @@
 # Open questions, answered
 
-Short answers to the questions in [open_questions.md](open_questions.md), grouped by topic. Finding IDs ([F1](evidence.md#f1) to [F23](evidence.md#f23)), open items ([O1](runbook.md#o1) to [O9](runbook.md#o9)) and decisions ([ADR 1](decisions.md#adr-1) to [ADR 7](decisions.md#adr-7)) link to the numbers, commands and Microsoft quotes behind each answer. [README.md](README.md) maps the documents.
+Short answers to the questions in [open_questions.md](open_questions.md), grouped by topic. Finding IDs ([F1](evidence.md#f1) to [F23](evidence.md#f23)), open items ([O1](runbook.md#o1) to [O10](runbook.md#o10)) and decisions ([ADR 1](decisions.md#adr-1) to [ADR 7](decisions.md#adr-7)) link to the numbers, commands and Microsoft quotes behind each answer. [README.md](README.md) maps the documents.
 
 | # | Topic | Status |
 |---|---|---|
 | 1 | Does the Retrieval API run vector search, and why was failure B thin? | Answered: it runs; the production `searchFields` list switched it off |
 | 2 | Query parsing and `search.ismatch` | Answered; the end-to-end comparison is [O9](runbook.md#o9) |
-| 3 | Capabilities the knowledge base abstracts away | Answered; grouping, count and sort need a redesign ([O6](runbook.md#o6)) |
+| 3 | Capabilities the knowledge base abstracts away | Answered; grouping, count and sort have designed routes, untested ([O6](runbook.md#o6), [O10](runbook.md#o10)) |
 | 4 | Who plans the query | Decided: the decomposer ([ADR 3](decisions.md#adr-3)) |
 | 5 | Call path, REST or MCP | Decided: REST ([ADR 4](decisions.md#adr-4)); one check left ([O8](runbook.md#o8)) |
 
@@ -33,17 +33,17 @@ Short answers to the questions in [open_questions.md](open_questions.md), groupe
 
 ## Topic 2. Query parsing and `search.ismatch`
 
-**Why the planner sets `queryType` to "full".** It doesn't choose it. A generated boost such as `language:(ja\-JP)^2` needs the `full` parser, so emitting a boost forces it. At `minimal` effort no planner runs, so the query reaches the index unchanged. See [search-ismatch-reference.md](search-ismatch-reference.md#query-hints-and-why-querytype-shows-full).
+**Why the planner sets `queryType` to "full".** It doesn't choose it. A generated boost such as `language:(ja\-JP)^2` needs the `full` parser, so emitting a boost forces it. At `minimal` effort no planner runs, so the query reaches the index unchanged. See [search-api-parity.md](search-api-parity.md#query-hints-and-why-querytype-shows-full).
 
-**Every `search.ismatch` parameter.** Four arguments: the query text, a comma-separated field list, the parser (`simple` or `full`) and the search mode (`any` or `all`); the last two come as a pair. Grammar, operators, escaping, silent traps and worked examples are in [search-ismatch-reference.md](search-ismatch-reference.md#field-scope-fuzzy-and-all-word-matching-through-searchismatch). The service accepts the syntax inside `filterAddOn` ([F21](evidence.md#f21)).
+**Every `search.ismatch` parameter.** Four arguments: the query text, a comma-separated field list, the parser (`simple` or `full`) and the search mode (`any` or `all`); the last two come as a pair. Grammar, operators, escaping, silent traps and worked examples are in [search-api-parity.md](search-api-parity.md#field-scope-fuzzy-and-all-word-matching-through-searchismatch). The service accepts the syntax inside `filterAddOn` ([F21](evidence.md#f21)).
 
 **Prompts to compare `full`, `simple` and neither.** The eight-project prompt can't test parsing, because it names every project and no text reaches a parser. Nine candidate prompts, P0 to P8, and the arms to run are in [O9](runbook.md#o9). Run P0, P1, P3 and P8 first, on a knowledge source with the vector query on.
 
 ## Topic 3. Capabilities the knowledge base abstracts away
 
-**Features the knowledge base abstracts away.** `facets`, `count` and `orderby` have no parameter in the retrieve request, and they carry the gate list, project state, Source Priority, totals and "top N by" questions ([F17](evidence.md#f17), [F23](evidence.md#f23)). Field scoping, fuzzy and all-word matching come back through `search.ismatch` ([F21](evidence.md#f21)). Whether a workaround exists for the first three is open ([O6](runbook.md#o6)).
+**Features the knowledge base abstracts away.** `facets`, `count` and `orderby` have no parameter in the retrieve request. Their routes, and the status of every other call site, are in the [parity map](search-api-parity.md#parity-map). The test that decides counts and sorts is [O10](runbook.md#o10).
 
-**Retrieval API method against Search API equivalent.** Three tables in [search-ismatch-reference.md](search-ismatch-reference.md#search-api-parameters-against-the-retrieval-api): parameters with no retrieve equivalent, parameters kept or moved onto the knowledge source, and what only the Retrieval API has.
+**Retrieval API method against Search API equivalent.** One table, [Search API parameters against the Retrieval API](search-api-parity.md#search-api-parameters-against-the-retrieval-api), with each parameter pointing to the call site that uses it.
 
 **`resultsProcessing: "none"`, why not considered.** It's now part of the working configuration. It skips the reranker, and it looked inert at first only because the default token budget capped references at 9. Raising `maxOutputSize` to 200,000 let all 50 through ([F12](evidence.md#f12)). It drops `rerankerScore` from references and can't be sent with `rerankerThreshold` ([How a retrieve runs](ground-truth.md#how-a-retrieve-runs)).
 

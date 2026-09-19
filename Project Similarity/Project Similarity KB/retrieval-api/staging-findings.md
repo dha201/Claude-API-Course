@@ -2,7 +2,7 @@
 
 Promotion rule: a finding moves from this file only with a command that ran on `workdeliverygpt-dev-srch`, the number it produced, and a date. Then the command goes to [commands.md](commands.md), the result table to [evidence.md](evidence.md) as a new finding, and the claim to [ground-truth.md](ground-truth.md). The flow is drawn in [README.md](README.md#how-the-documents-cite-each-other). A documentation quote alone isn't enough, because Microsoft pages change: the create-index page still lists scoring profiles, while the retrieve page says retrieve doesn't apply them ([U6](#u6)).
 
-Azure AI Search agentic retrieval, API version `2026-08-01-preview`, index `project_similarity_index`. Microsoft quotes were checked on the current page on 2026-09-18. Finding IDs ([F1](evidence.md#f1) to [F23](evidence.md#f23)) link to [evidence.md](evidence.md) and open items ([O1](runbook.md#o1) to [O9](runbook.md#o9)) to [runbook.md](runbook.md).
+Azure AI Search agentic retrieval, API version `2026-08-01-preview`, index `project_similarity_index`. Microsoft quotes were checked on the current page on 2026-09-18. Finding IDs ([F1](evidence.md#f1) to [F23](evidence.md#f23)) link to [evidence.md](evidence.md) and open items ([O1](runbook.md#o1) to [O10](runbook.md#o10)) to [runbook.md](runbook.md).
 
 | # | Claim | Status | Matters for |
 |---|---|---|---|
@@ -13,6 +13,7 @@ Azure AI Search agentic retrieval, API version `2026-08-01-preview`, index `proj
 | [U6](#u6) | Retrieve doesn't apply index scoring profiles | documented, not measured | ranking levers |
 | [U7](#u7) | `prioritizedContentFields` decides what the reranker scores | unread | default reranking quality |
 | [U8](#u8) | Several `intents[]` widen recall on failing prompts | partly measured ([F22](evidence.md#f22)) | recall with reranking on |
+| [U9](#u9) | With the reranker bypassed, retrieve returns every row that matches `filterAddOn`, up to `maxOutputDocuments` | untested; the test is [O10](runbook.md#o10) | the full migration of discovery Lanes 2 to 4 |
 
 <a id="u2"></a>
 
@@ -100,3 +101,15 @@ The reranker reads the knowledge source's semantic configuration: "For search in
 ```
 
 **Test.** Send these five on `ps-kb-allfields` for 1009338, once with default reranking and once with `resultsProcessing: "none"`, and record references per intent, duplicate `psr_row_id` values across intents, and chunks carrying lessons prose. With `resultsProcessing: "none"` and `maxOutputSize` 200,000 one intent already reaches parity ([F16](evidence.md#f16)), so this matters only if default reranking is kept. Test it separately from [U2](#u2), or a gain can't be attributed.
+
+<a id="u9"></a>
+
+## U9. Retrieve returns every matching row with the reranker bypassed
+
+**Claim.** With `resultsProcessing: "none"`, `maxOutputDocuments` 200 and `maxOutputSize` 200,000, a retrieve returns every row that matches `filterAddOn`, up to 200. The distinct `project_id` values in the references then equal the Search API's facet on `project_id` for the same filter.
+
+**Why it's plausible.** With the reranker bypassed, candidates follow `maxOutputDocuments`: 200 at 200 ([F13](evidence.md#f13)).
+
+**Why it's open.** On project 1012173, `*` with `resultsProcessing: "none"` and 200 documents returned 50 of 88 chunks, unexplained ([F18](evidence.md#f18)). No run has compared a retrieve against a facet on the same filter.
+
+**Test.** [O10](runbook.md#o10). It decides whether discovery Lanes 2 to 4 have a route on the Retrieval API ([search-api-parity.md](search-api-parity.md#complete-project-enumeration)).

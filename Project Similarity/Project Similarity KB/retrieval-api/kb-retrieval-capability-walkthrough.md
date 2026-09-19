@@ -1,10 +1,10 @@
 # Can the Knowledge Retrieval API replace the Search API in chat_similarity?
 
-**Short answer: not as a drop-in replacement.** Configuration brings the evidence fetch to parity with the Search API ([F16](evidence.md#f16)). Grouping, counting and sorting have no parameter in the retrieve contract, and they break project state, Source Priority and every "how many" or "top N by" question ([F17](evidence.md#f17), [F23](evidence.md#f23)).
+**Short answer: not as a drop-in replacement.** Configuration brings the evidence fetch to parity with the Search API ([F16](evidence.md#f16)). Grouping, counting and sorting have no parameter in the retrieve contract, and they break project state, Source Priority and every "how many" or "top N by" question ([F17](evidence.md#f17), [F23](evidence.md#f23)). Their routes are designed and untested ([parity map](search-api-parity.md#parity-map)).
 
 Both APIs hit the same index, the same chunks and the same vectors. So the remaining gap isn't ranking quality. It's which operations the request can ask for.
 
-Findings ([F1](evidence.md#f1) to [F23](evidence.md#f23)), open items ([O1](runbook.md#o1) to [O9](runbook.md#o9)) and decisions ([ADR 1](decisions.md#adr-1) to [ADR 7](decisions.md#adr-7)) link to the finding, open item or decision. [README.md](README.md) maps the documents.
+Findings ([F1](evidence.md#f1) to [F23](evidence.md#f23)), open items ([O1](runbook.md#o1) to [O10](runbook.md#o10)) and decisions ([ADR 1](decisions.md#adr-1) to [ADR 7](decisions.md#adr-7)) link to the finding, open item or decision. [README.md](README.md) maps the documents.
 
 ## The toy index
 
@@ -141,7 +141,7 @@ search.ismatch(
 
 The `'full'` here is the filter's own parser, not the request's. `search.ismatch` parses its own search string, so it takes the same `queryType` and `searchMode` arguments the Search API request takes. The request-level query type stays locked to semantic. Two strings, two parsers.
 
-The service accepts these filters and returns documents, and the misspelled "Fronteer" matched with `'Fronteer~1'` and `'full'` where it matched nothing without the filter ([F21](evidence.md#f21)). The full argument reference is in [search-ismatch-reference.md](search-ismatch-reference.md#field-scope-fuzzy-and-all-word-matching-through-searchismatch).
+The service accepts these filters and returns documents, and the misspelled "Fronteer" matched with `'Fronteer~1'` and `'full'` where it matched nothing without the filter ([F21](evidence.md#f21)). The full argument reference is in [search-api-parity.md](search-api-parity.md#field-scope-fuzzy-and-all-word-matching-through-searchismatch).
 
 ### The catch
 
@@ -180,26 +180,11 @@ There are two merges at different grains. The chunk merge sits inside the conten
 
 Facet results and hybrid results never mix chunk by chunk. They merge as project ID lists.
 
-## The full table
+## Where each operation stands
 
-```
-                    what the question needs     Search API   Retrieval API
-1.  Rank chunks     documents that read alike      ✓             ✓ with the settings in F16
-2.  Group           one bucket per project         ✓ facet       ✗ no parameter
-3a. Count           the exact total                ✓ count       ✗ no parameter
-3b. Sort            order by a stored number       ✓ orderby     ✗ no parameter
-4a. Scope the field look only in the roles field   ✓             ✓ via ismatch
-4b. Fuzzy match     survive a misspelling          ✓             ✓ via ismatch
-4c. All words       every word of the vendor name  ✓             ✓ via ismatch
-```
+Operation 1 is proven on the evidence fetch ([F16](evidence.md#f16)). Operations 2 and 3 have designed routes that nobody has run yet, and operation 4 works as syntax only ([F21](evidence.md#f21)). Each call site in the pipeline, with its Search API feature, its Retrieval API route and its status, is in the [parity map](search-api-parity.md#parity-map).
 
-The 16-prompt evaluation ran on the production knowledge source, where the vector query was off ([F23](evidence.md#f23)). Its 12 worse answers mix rows 2 and 3 with the evidence-fetch loss that row 1's settings now fix, so it needs a rerun ([O2](runbook.md#o2)).
-
-## The verdict
-
-The Retrieval API can't replace the Search API for chat_similarity as it stands. Ranking reaches parity with configuration. The blocking gap is grouping, because counting, project state and Source Priority all hang off the facet. Field scoping, fuzzy matching and all-word matching have a path through `search.ismatch` in `filterAddOn`.
-
-"No parameter" describes the retrieve contract. Whether a workaround exists is open: an MCP server knowledge source could return counts and groups computed by our own code ([O6](runbook.md#o6)). Whether `search.ismatch` fixes the failing prompts end to end is also open ([O9](runbook.md#o9)).
+The 16-prompt evaluation ran on the production knowledge source, where the vector query was off ([F23](evidence.md#f23)), so it needs a rerun ([O2](runbook.md#o2)).
 
 ## Query hints: the remaining knob, and why it doesn't help chat_similarity
 
@@ -255,7 +240,7 @@ _facet_member_ids:                      no facet exists
 exact project ID list + exact count
 ```
 
-A filter hint lines up with our filter building, not our facet. It can't substitute even there: `roles_work_lead` holds thousands of person names that no hint can enumerate, and our guard is deterministic where a hint is best effort. The decomposer already does what the hint planner does, grounded in real enum sets, with a demotion path. The documented blockers are in [search-ismatch-reference.md](search-ismatch-reference.md#query-hints-and-why-querytype-shows-full), and the decision is [ADR 3](decisions.md#adr-3).
+A filter hint lines up with our filter building, not our facet. It can't substitute even there: `roles_work_lead` holds thousands of person names that no hint can enumerate, and our guard is deterministic where a hint is best effort. The decomposer already does what the hint planner does, grounded in real enum sets, with a demotion path. The documented blockers are in [search-api-parity.md](search-api-parity.md#query-hints-and-why-querytype-shows-full), and the decision is [ADR 3](decisions.md#adr-3).
 
 ## Why "key roles" works on the knowledge base and "lessons" didn't
 
