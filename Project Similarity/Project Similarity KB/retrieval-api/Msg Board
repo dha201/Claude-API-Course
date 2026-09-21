@@ -1,0 +1,14 @@
+Some features from Search API are not yet available in KB Retrieval API, meaning KB is unable to perform the same as chat similarity's Search and result in lower quality output. 
+ 
+This is why we would need to modify the harness with custom function to fill in those gaps until KB Retrieval releases the feature we need.
+ 
+Essentially, Retrieval performance will eventually be on par with the existing chat similarity Search. 
+However, there are 2 main concerns: 
+Some features are still not available on KB such as facet (grouping), count, etc... which are the cores that allows a higher project recall - the ability to find all all relevant projects when user asks a broad question (i.e, which project worked with vendor: Kinaxis), without facet (grouping), one project with greater data might take up more space and leave out relevant projects. 
+Reference to examples from row 3 and 4 from the "kb_vs_search_eval_.xlsx". 
+
+--> Need custom code (modification to the harness) as work around
+Some KB Retrieval features (i.e. Disable Reranking) are still in Preview (not production ready). 
+This means that there might be changes to the API that require on going maintenance. 
+From MS documentation: "Azure AI Search releases some features, capabilities, and properties in preview. In the documentation, this functionality is marked (preview). Preview functionality, whether standalone or part of a generally available feature, isn't covered by a service-level agreement, isn't recommended for production workloads, and might change or be constrained before it becomes generally available."
+)
