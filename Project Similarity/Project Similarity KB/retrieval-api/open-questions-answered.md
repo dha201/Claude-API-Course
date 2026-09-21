@@ -29,7 +29,7 @@ Short answers to the questions in [open_questions.md](open_questions.md), groupe
 
 **Failure B: what's the cause, if the index is hybrid?** You were right to expect hybrid. The Retrieval API runs BM25 and the vector query through the index vectorizer ([F8](evidence.md#f8)). The production knowledge source's explicit `searchFields` list names no vector field, and that switches the vector query off, leaving 1 BM25 hit ([F9](evidence.md#f9)). The reranker and the default token budget cut further ([F11](evidence.md#f11), [F12](evidence.md#f12)). With the list removed, reranking bypassed and `maxOutputSize` 200,000, the knowledge base matches the Search API on all eight projects ([F16](evidence.md#f16)).
 
-**Steps to test the vector profile, then the knowledge base with it.** Done. The vectorizer works through the proxy from the Search API ([F1](evidence.md#f1)), it uses the model that built the index ([F2](evidence.md#f2)), and the gibberish-token test proves the knowledge base runs the vector query ([F8](evidence.md#f8)). A model on the knowledge base isn't needed for vector search at `minimal` effort ([ADR 1](decisions.md#adr-1)). The remaining step is [O2](runbook.md#o2) in the application repository.
+**Steps to test the vector profile, then the knowledge base with it.** Done. The vectorizer works through the proxy from the Search API ([F1](evidence.md#f1)), it uses the model that built the index ([F2](evidence.md#f2)), and the gibberish-token test proves the knowledge base runs the vector query ([F8](evidence.md#f8)). A model on the knowledge base isn't needed for vector search at `minimal` effort ([ADR 1](decisions.md#adr-1)). The remaining step is [O2](runbook.md#o2).
 
 ## Topic 2. Query parsing and `search.ismatch`
 

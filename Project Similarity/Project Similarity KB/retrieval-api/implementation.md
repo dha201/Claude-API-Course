@@ -2,7 +2,7 @@
 
 Reference code for applying the configuration in [ground-truth.md](ground-truth.md#configuration-that-works) to `chat_similarity`. The decisions behind it are [ADR 5](decisions.md#adr-5) and [ADR 6](decisions.md#adr-6).
 
-For the implementation agent working in the `chat_similarity` repository. It encodes [F9](evidence.md#f9) to [F16](evidence.md#f16). It was not run from this repository; the request bodies match the ones that ran in [A32](commands.md#a32) to [A37](commands.md#a37). It uses plain REST because `resultsProcessing` exists only from `2026-08-01-preview` (and `maxOutputSize` from `2026-05-01-preview`), and whether the `azure-search-documents` Python SDK exposes them is unchecked.
+For the implementation agent working in the `chat_similarity` repository. It encodes [F9](evidence.md#f9) to [F16](evidence.md#f16). It was not run; the request bodies match the ones that ran in [A32](commands.md#a32) to [A37](commands.md#a37). It uses plain REST because `resultsProcessing` exists only from `2026-08-01-preview` (and `maxOutputSize` from `2026-05-01-preview`), and whether the `azure-search-documents` Python SDK exposes them is unchecked.
 
 ```python
 import os

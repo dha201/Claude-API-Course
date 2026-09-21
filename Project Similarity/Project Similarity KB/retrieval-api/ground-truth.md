@@ -26,7 +26,7 @@ Project 1009338, filter `project_id eq '1009338' and gate_label eq 'Closeout'` (
     maxOutputSize 200,000                                          (the same 50 chunks as the Search API)
 ```
 
-The next step runs in the application repository: apply [Configuration that works](#configuration-that-works) to `chat_similarity`, then rerun the eight-project prompt and the 16-prompt evaluation ([O2](runbook.md#o2)).
+Next step: apply [Configuration that works](#configuration-that-works) to `chat_similarity`, then rerun the eight-project prompt and the 16-prompt evaluation ([O2](runbook.md#o2)).
 
 ## Current facts
 

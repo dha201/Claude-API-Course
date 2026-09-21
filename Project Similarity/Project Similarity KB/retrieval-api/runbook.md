@@ -23,7 +23,7 @@ What to know before running anything, the open items with their commands, and op
 
 ## Open items
 
-Load `. .\src\api\env.ps1` from the root of the application repository in each new PowerShell shell before running these ([A31](commands.md#a31)). Every command below was run under Constrained Language Mode against a local stub that fakes Azure responses, on both the success path and a failure path. The stub checks syntax, request shape and readout, not service behavior. Unproven claims about synonym maps, a reranker score floor, `alwaysQuery`, scoring profiles, `prioritizedContentFields` and several intents have their tests in [staging-findings.md](staging-findings.md).
+Load `. .\src\api\env.ps1` in each new PowerShell shell before running these ([A31](commands.md#a31)). Every command below was run under Constrained Language Mode against a local stub that fakes Azure responses, on both the success path and a failure path. The stub checks syntax, request shape and readout, not service behavior. Unproven claims about synonym maps, a reranker score floor, `alwaysQuery`, scoring profiles, `prioritizedContentFields` and several intents have their tests in [staging-findings.md](staging-findings.md).
 
 <a id="o1"></a>
 
@@ -46,7 +46,7 @@ Read it for:
 
 ### O2. Apply the configuration in `chat_similarity` and rerun the prompts
 
-Runs in the application repository, not here. Apply [Configuration that works](ground-truth.md#configuration-that-works) to the knowledge source and the evidence-fetch retrieve request, using [implementation.md](implementation.md) as the reference.
+Apply [Configuration that works](ground-truth.md#configuration-that-works) to the knowledge source and the evidence-fetch retrieve request, using [implementation.md](implementation.md) as the reference.
 
 - Expect lessons for 7 of 8 projects on the eight-project prompt. 1012329 still gets no evidence call until [O6](#o6) is fixed.
 - Rerun the 16-prompt evaluation ([F23](evidence.md#f23)). It ran with the vector query off, so every Retrieval API row may change.
@@ -200,7 +200,7 @@ Read it for:
 
 ## Operating notes
 
-- **Environment.** In each new PowerShell shell, run `. .\src\api\env.ps1` from the root of the application repository. It sets `AZURE_SEARCH_ENDPOINT` and `AZURE_SEARCH_API_KEY`.
+- **Environment.** In each new PowerShell shell, run `. .\src\api\env.ps1`. It sets `AZURE_SEARCH_ENDPOINT` and `AZURE_SEARCH_API_KEY`.
 - **API versions.** Search API queries use `2024-07-01`, index reads use `2026-04-01`, and knowledge sources, knowledge bases and retrieve use `2026-08-01-preview`.
 - **Test objects.** `ps-kb-isolated` (over the production knowledge source), `ps-kb-allfields` and `ps-ks-allfields` (`searchFields: []` after [A36](commands.md#a36)). [ADR 2](decisions.md#adr-2) says why they exist.
 - **Knowledge base LLM.** If a model is ever attached, it must be a native endpoint. The Microsoft staff answer on [Q&A 5955030](https://learn.microsoft.com/en-us/answers/questions/5955030/apim-not-supported-for-knowledge-base-llm-in-agent), 2026-08-01: "These calls expect a native Azure OpenAI/Foundry endpoint and a supported auth model, not an APIM proxy."

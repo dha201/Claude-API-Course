@@ -2,7 +2,7 @@
 
 Can the Azure AI Search Retrieval API (a knowledge base over a knowledge source, at `minimal` reasoning effort) replace the Search API for document retrieval in `chat_similarity`?
 
-For document fetch, yes: with three settings the Retrieval API returns the same chunks as the Search API on all eight test projects ([F16](evidence.md#f16)). For grouping, counting and sorting, not as it stands: the retrieve request has no `facets`, `count` or `orderby` ([O6](runbook.md#o6)). The next step is [O2](runbook.md#o2), applying the settings in the application repository.
+For document fetch, yes: with three settings the Retrieval API returns the same chunks as the Search API on all eight test projects ([F16](evidence.md#f16)). For grouping, counting and sorting, not as it stands: the retrieve request has no `facets`, `count` or `orderby` ([O6](runbook.md#o6)). The next step is [O2](runbook.md#o2), applying the settings to `chat_similarity`.
 
 Service `workdeliverygpt-dev-srch`, index `project_similarity_index`, Retrieval API version `2026-08-01-preview`.
 
