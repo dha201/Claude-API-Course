@@ -1,7 +1,5 @@
 # Moving chat_similarity to the Knowledge Retrieval API
 
-> The split below, with counts and sorts staying on the Search API, conflicts with [ADR 7](decisions.md#adr-7): the goal is a full migration. This spec gets rewritten once [O10](runbook.md#o10) shows whether counts and sorts have a Retrieval API route.
-
 chat_similarity runs on the Search API today. We ran 16 user questions through it on both APIs ([F23](evidence.md#f23)):
 
 ```
@@ -16,15 +14,22 @@ chat_similarity runs on the Search API today. We ran 16 user questions through i
 - The 2 that match both name a project by ID and ask for a stored fact.
 - Nothing has to be found, counted or grouped, so both APIs get there.
 
-That run used a knowledge source setup that switched vector search off. We've since found the settings that give the Retrieval API the same document results as the Search API ([F16](evidence.md#f16)), so document fetch can move. Counting and grouping can't: the retrieve request has no parameter for them. So the Search API stays for those calls, and everything else moves:
+That run used a knowledge source setup that switched vector search off. We've since found the settings that give the Retrieval API the same document results as the Search API ([F16](evidence.md#f16)).
+
+The goal is to move every call to the Retrieval API, with no Search API calls left ([ADR 7](decisions.md#adr-7)). Document fetch has a proven route. The rest have routes we still need to test:
 
 ```
-  STAYS ON SEARCH API             MOVES TO RETRIEVAL API
-  ───────────────────             ──────────────────────
-  filter counts                   semantic discovery
-  field-value lookup              document fetch
-  sort by stored value
+  PIPELINE STEP            SEARCH API TODAY              RETRIEVAL API ROUTE                  STATUS
+  ───────────────────────  ────────────────────────────  ───────────────────────────────────  ──────────
+  document fetch           hybrid + semantic ranker      settings in work 2 and 4             proven
+  semantic discovery       hybrid, two filters           two retrieve calls, merged           hypothesis
+  field-value membership   facets on project_id          list matching rows, dedupe in code   hypothesis
+  sort by stored value     facets, then sort in code     list matching rows, sort in code     hypothesis
+  filter counts            facet count                   list matching rows, count in code    hypothesis
+  project state            gate_label facet              gate coverage stamped at ingest      design
 ```
+
+The retrieve request has no `facets`, `count`, `orderby` or `skip`, so membership, sort and count all rest on one idea: pull every matching record row (at most 200 per call) and do the grouping in our own code. Each call site, its route and the hypothesis behind it are in [search-api-parity.md](search-api-parity.md#parity-map).
 
 F, O and ADR numbers link to the measurements, open items and decisions behind every number here. [README.md](README.md) maps the documents.
 
@@ -36,14 +41,14 @@ F, O and ADR numbers link to the measurements, open items and decisions behind e
 |---|---|---|---|
 | 1 | Gate coverage stamp | Projects with no record row get no lessons | nothing |
 | 2 | Evidence fetch settings | The reranker and the output budget cut 50 results to 9 | nothing |
-| 3 | Retrieval boundary | Unsupported calls get dropped silently | nothing |
+| 3 | Retrieval layer | Unsupported calls get dropped silently | nothing |
 | 4 | Knowledge source field list | The field list switches vector search off | nothing |
-| 5 | Discovery keeps its aggregates | No totals, no sort by value | 3 |
+| 5 | Discovery on the Retrieval API | No totals, no project lists, no sort by value | 3, 4 |
 | 6 | Document fetch on the Retrieval API | 10 chunks out of 4,259 | 1, 2, 3, 4 |
 | 7 | Per-request field scoping | Can't tell an official tag from a mention | 3, 4 |
-| 8 | Refusal threshold | Asks the user to narrow on 4 of 16 | 2, 6 |
+| 8 | Ranking signal and refusal threshold | Asks the user to narrow on 4 of 16 | 2, 6 |
 | 9 | Access control parity | Untested across all projects | 3 |
-| 10 | Trace parity | Log can't show whether vector search ran | 3 |
+| 10 | Trace | Log can't show whether vector search ran | 3 |
 | 11 | Regression suite | 16 questions only run by hand | 5, 6, 7, 8 |
 
 ```
@@ -53,11 +58,11 @@ F, O and ADR numbers link to the measurements, open items and decisions behind e
                                              │         │             │
   4 Knowledge source field list ─────────────┤         ▼             │
                               │              │   8 Threshold ────────┤
-  3 Retrieval boundary ───────┼──────────────┘                       │
-        │                     └──────────────► 7 Field scoping ──────┤
-        ├──► 5 Discovery aggregates ─────────────────────────────────┼──► 11 Regression
+  3 Retrieval layer ──────────┼──────────────┘                       │
+        │                     ├──────────────► 7 Field scoping ──────┤
+        │                     └──────────────► 5 Discovery ──────────┼──► 11 Regression
         ├──► 9 Access control                                        │      suite
-        └──► 10 Trace parity                                         │
+        └──► 10 Trace                                                │
 ```
 
 1, 2, 3 and 4 can start right away.
@@ -96,7 +101,8 @@ At Unknown the flow fetches nothing, so the answer reports no lessons for 101232
 - Stamp each project's gate coverage onto every chunk during indexing.
 - Project state reads from that field instead of a facet.
 - Expected: project 1012329 returns its lessons.
-- Works on both APIs, so it's worth doing even if nothing else ships.
+- It also works on the Search API today, so it's worth doing first.
+- Hypothesis behind it: [U14](staging-findings.md#u14).
 
 ---
 
@@ -133,7 +139,7 @@ The 50 are the same 50 chunks the Search API returns ([F15](evidence.md#f15)). A
 
 ---
 
-## 3. Retrieval boundary
+## 3. Retrieval layer
 
 **Waits for:** nothing
 
@@ -160,17 +166,18 @@ On the eight-project prompt, the trace logged 32 retrieve calls and 7 capability
                                       └──► unsupported parts dropped
 
   AFTER
-  step ──► boundary ──┬──► Search API      group, count, sort
-                      └──► Retrieval API   rank, field scope
+  step ──► retrieval layer ──► retrieve request(s) ──► Retrieval API
+                  │
+                  ├──► membership, count, sort: list matching rows, then group in code (work 5)
+                  └──► a need with no route: fails and shows in the trace
 ```
 
 **Deliver**
 
-- Every retrieval call goes through one interface.
-- Each call says what it needs: rank, group, count, sort or field scope.
-- The interface picks the API that can do it.
-- Nothing gets dropped silently.
-- Moving a step between APIs later is a config change.
+- Every retrieval call goes through one interface, and every call becomes a retrieve request.
+- Each call says what it needs: rank, membership, count, sort or field scope.
+- The interface builds the retrieve request for it, including the row listing and in-code grouping from work 5.
+- Nothing gets dropped silently. A need with no route fails and shows in the trace.
 
 ---
 
@@ -204,17 +211,18 @@ The 1 is the single keyword hit: the Search API with its vector query removed al
 
 ---
 
-## 5. Discovery keeps its aggregates
+## 5. Discovery on the Retrieval API
 
-**Waits for:** 3
+**Waits for:** 3, 4
 
 **Today**
 
-- chat_similarity uses:
-  - facets to find which projects match a filter
-  - count to say exactly how many
-  - stored values to sort by spend or date
-- The retrieve request has no parameter for any of these ([O6](runbook.md#o6)).
+- chat_similarity finds candidate projects in four lanes:
+  - Lane 1: hybrid search, run twice (filter with the tag, and without it) and merged
+  - Lane 2: facets on `project_id` to list every project whose field holds a value
+  - Lane 3: facets for the project set, then reads each project's value and sorts in code
+  - Lane 4: a facet count, the "exactly how many" in the answer
+- The retrieve request has no `facets`, `count`, `orderby` or `skip`, and returns at most 200 rows per call ([F6](evidence.md#f6)).
 
 **Example 1**
 
@@ -237,10 +245,21 @@ The Retrieval API can only count what it happened to retrieve ([F23](evidence.md
 
 ([F23](evidence.md#f23), row 12)
 
+**Hypotheses to test before building**
+
+| # | Hypothesis | Test |
+|---|---|---|
+| [U12](staging-findings.md#u12) | Two retrieve calls, with and without the tag filter, return Lane 1's candidate projects | rerun the discovery prompts on both |
+| [U9](staging-findings.md#u9) | With the reranker bypassed, retrieve returns every row that matches the filter, up to 200 | [O10](runbook.md#o10) |
+| [U10](staging-findings.md#u10) | Filtering to record rows gives one row per project per source | [O10](runbook.md#o10) with a `row_type` clause |
+| [U11](staging-findings.md#u11) | A filter over 200 rows can be split into slices and merged | after U9 and U10 |
+
 **Deliver**
 
-- Filter counts, field-value lookups and sort by stored value stay on the Search API, behind the boundary from work 3.
-- Expected: 47, and the 10 projects in spend order.
+- Lane 1 as two retrieve calls, merged in code.
+- Lanes 2 to 4 from one listing: retrieve the matching record rows with the reranker bypassed, then take distinct `project_id` in code for the list, count them for the total, and sort them by the stored value.
+- Expected: 47, and the 10 projects in spend order with ZEST 1012929 sixth.
+- If the listing can't return every matching project, the fallback is an MCP server knowledge source that returns counts computed by our own code. It can't run at `minimal` effort, so it needs a model ([ADR 7](decisions.md#adr-7)).
 
 ---
 
@@ -267,6 +286,7 @@ Eight-project prompt on the Retrieval API as deployed ([F17](evidence.md#f17)):
 **Deliver**
 
 - Uses the stamped gate coverage from work 1, the settings from work 2 and the field list from work 4.
+- With the reranker off, nothing reranks against the full question. The hypothesis is that answers don't change ([U17](staging-findings.md#u17)).
 - Rerun the eight-project prompt and the 16 questions ([O2](runbook.md#o2)).
 - Expected: all 8 projects return their lessons.
 
@@ -308,17 +328,18 @@ Eight-project prompt on the Retrieval API as deployed ([F17](evidence.md#f17)):
 - The Retrieval API's filter accepts a field list, a parser and an all-words flag per request, through `search.ismatch` ([F21](evidence.md#f21)).
 - That brings back field scope, all-words matching and fuzzy matching.
 - Tested on "Fronteer": documents found with the filter, none without it ([F21](evidence.md#f21)).
-- Expected: the 10 Amazon Web Services projects, kept separate from mentions, and the Fronteer project found. Not yet tested end to end ([O9](runbook.md#o9)).
+- Expected: the 10 Amazon Web Services projects, kept separate from mentions, and the Fronteer project found. Not yet tested end to end ([U13](staging-findings.md#u13), [O9](runbook.md#o9)).
 
 ---
 
-## 8. Refusal threshold
+## 8. Ranking signal and refusal threshold
 
 **Waits for:** 2, 6
 
 **Today**
 
-- chat_similarity asks the user to narrow down when nothing scores high enough to be a confident match.
+- chat_similarity orders projects by reranker score.
+- It asks the user to narrow down when nothing scores high enough to be a confident match.
 - It checks the top reranker score against a threshold of 1.5.
 
 **Example**
@@ -344,7 +365,7 @@ A service-side minimum score of 2.5 has been suggested but has no source sentenc
 
 **Deliver**
 
-1. Decide what the narrow-down gate reads once references have no reranker score.
+1. Decide what orders projects and what the narrow-down gate reads once references have no reranker score. First hypothesis: stage 1 order, and narrow down only when few projects come back ([U15](staging-findings.md#u15)).
 2. Measure where that signal lands across all 16 questions.
 3. Set the threshold from that data.
 
@@ -369,13 +390,13 @@ A service-side minimum score of 2.5 has been suggested but has no source sentenc
 
 **Deliver**
 
-- Same user, same question: exactly the same projects and documents on both APIs.
+- Same user, same question: exactly the same projects and documents as the Search API shows today ([U16](staging-findings.md#u16)).
 - Every source system covered.
 - Nothing leaks through citations.
 
 ---
 
-## 10. Trace parity
+## 10. Trace
 
 **Waits for:** 3
 
@@ -393,8 +414,8 @@ A service-side minimum score of 2.5 has been suggested but has no source sentenc
 
 **Deliver**
 
-- One trace format on both APIs, joined to the Retrieval API's execution log.
-- Any answer can be reproduced from its trace, whichever API served it.
+- Our trace lines, joined to the Retrieval API's execution log for each retrieve call.
+- Any answer can be reproduced from its trace.
 
 ---
 

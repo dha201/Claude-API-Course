@@ -14,6 +14,14 @@ Azure AI Search agentic retrieval, API version `2026-08-01-preview`, index `proj
 | [U7](#u7) | `prioritizedContentFields` decides what the reranker scores | unread | default reranking quality |
 | [U8](#u8) | Several `intents[]` widen recall on failing prompts | partly measured ([F22](evidence.md#f22)) | recall with reranking on |
 | [U9](#u9) | With the reranker bypassed, retrieve returns every row that matches `filterAddOn`, up to `maxOutputDocuments` | untested; the test is [O10](runbook.md#o10) | the full migration of discovery Lanes 2 to 4 |
+| [U10](#u10) | Filtering to record rows returns one row per project per source, so 200 rows cover up to 200 projects | untested | the route for Lanes 2 to 4 |
+| [U11](#u11) | A filter that matches more than 200 rows can be split into slices of 200 or fewer and merged in code | untested | filters larger than 200 rows |
+| [U12](#u12) | Two retrieve calls, with and without the tag filter, return the candidate projects of Lane 1 | untested | Lane 1 discovery |
+| [U13](#u13) | `search.ismatch` in `filterAddOn` reproduces the answers that per-request field scope, all-words and fuzzy matching give on the Search API | untested | Lanes 1 and 2, title matching |
+| [U14](#u14) | Gate coverage stamped on every chunk at ingest reproduces the `gate_label` facet | untested | project state and Source Priority |
+| [U15](#u15) | Without `rerankerScore`, stage 1 order plus a narrow-down rule on project count keeps `rank_projects` answering | untested | ranking and the narrow-down gate |
+| [U16](#u16) | The same ACL filter in `filterAddOn` shows each user the same projects and documents as the Search API | untested | access control |
+| [U17](#u17) | Losing the separate rerank string (`semanticQuery`) doesn't change the answers | untested | answer quality |
 
 <a id="u2"></a>
 
@@ -113,3 +121,93 @@ The reranker reads the knowledge source's semantic configuration: "For search in
 **Why it's open.** On project 1012173, `*` with `resultsProcessing: "none"` and 200 documents returned 50 of 88 chunks, unexplained ([F18](evidence.md#f18)). No run has compared a retrieve against a facet on the same filter.
 
 **Test.** [O10](runbook.md#o10). It decides whether discovery Lanes 2 to 4 have a route on the Retrieval API ([search-api-parity.md](search-api-parity.md#complete-project-enumeration)).
+
+<a id="u10"></a>
+
+## U10. Record rows give one row per project per source
+
+**Claim.** Adding a `row_type` clause to `filterAddOn` limits a retrieve to record rows, which the index holds once per project per source. With [U9](#u9), up to 200 rows then cover up to 200 projects, instead of a few document-heavy projects filling the 200 slots with chunks.
+
+**Why it's plausible.** The index holds one PECT and one WPM record row per project, and chunk rows separately ([Project similarity retrieval diagram.md](../../Project%20similarity%20retrieval%20diagram.md), section 4). The record read in `profile_projects` came back for 7 of 8 projects ([F17](evidence.md#f17)).
+
+**Why it's open.** The `row_type` values aren't recorded here. The filtered field must exist on the record row, not only on chunks.
+
+**Test.** Read the `row_type` values, then rerun [O10](runbook.md#o10) with a `row_type` clause added and compare the project lists again. Route: [Complete project enumeration](search-api-parity.md#complete-project-enumeration).
+
+<a id="u11"></a>
+
+## U11. Filters over 200 rows can be sliced
+
+**Claim.** A filter that matches more than 200 rows can be split into disjoint slices of 200 rows or fewer, for example by adding a range on a field, and the slices merged in code give the complete project set.
+
+**Why it's open.** The retrieve request has no `skip` for paging. No field is known to split every filter evenly, and each slice adds a retrieve call against the 30-second target.
+
+**Test.** After U9 and U10 pass, pick a filter with more than 200 matching rows and compare the merged slices against the Search API facet. Route: [Complete project enumeration](search-api-parity.md#complete-project-enumeration).
+
+<a id="u12"></a>
+
+## U12. Two retrieve calls reproduce Lane 1
+
+**Claim.** Lane 1 runs a precision query (filter with the tag) and a recall query (filter without it) and merges them. Two retrieve calls with the same two filters, merged in code, return the same candidate projects.
+
+**Why it's plausible.** Hybrid retrieval with a filter returns the Search API's results on the evidence fetch ([F15](evidence.md#f15), [F16](evidence.md#f16)).
+
+**Why it's open.** Discovery has never run on the Retrieval API with the vector query on. Lane 1's merge sorts by score, and with the reranker bypassed there's no score to sort by ([U15](#u15)).
+
+**Test.** Run the discovery prompts from [F23](evidence.md#f23) (rows 1 to 7, 11, 12) through both and compare the candidate project IDs. Route: [parity map](search-api-parity.md#parity-map), Lane 1.
+
+<a id="u13"></a>
+
+## U13. `search.ismatch` reproduces field scope, all-words and fuzzy answers
+
+**Claim.** `search.ismatch` arguments 2 to 4 in `filterAddOn` give the answers the Search API gets from per-request `searchFields`, `searchMode all` and `queryType full`.
+
+**Why it's plausible.** The service accepts the syntax, and `'Fronteer~1'` matched 15 documents where no filter matched 0 ([F21](evidence.md#f21)).
+
+**Why it's open.** `search.ismatch` filters; it doesn't scope ranking the way `searchFields` does. No answer has been compared end to end.
+
+**Test.** [O9](runbook.md#o9). Route: [parity map](search-api-parity.md#parity-map), Lane 1 and Lane 2.
+
+<a id="u14"></a>
+
+## U14. A gate coverage stamp replaces the `gate_label` facet
+
+**Claim.** A field stamped on every chunk at ingest, listing the gates the project has documents for, gives `profile_projects` the same `gates_present` as the `gate_label` facet. Project state then no longer needs facets.
+
+**Why it's plausible.** The facet counts `gate_label` values on chunks, which ingest already knows.
+
+**Why it's open.** It needs an index change and a re-ingest, and the stamp goes stale if gate documents arrive between ingests.
+
+**Test.** After the re-ingest, compare the stamped list against the facet for the eight projects in [F17](evidence.md#f17). Route: [Gate coverage](search-api-parity.md#gate-coverage).
+
+<a id="u15"></a>
+
+## U15. A ranking signal without `rerankerScore`
+
+**Claim.** With the reranker bypassed, ordering projects by stage 1 order, and asking the user to narrow only when few projects come back, keeps `rank_projects` answering the prompts it answers on the Search API.
+
+**Why it's open.** Today the narrow-down gate compares the top reranker score against 1.5, and the Retrieval API asked to narrow on 4 of 16 prompts ([F23](evidence.md#f23), rows 7, 11, 13, 15). No other signal has been tried. A second retrieve with default reranking, read only for its scores, is the alternative.
+
+**Test.** After [O2](runbook.md#o2), rerun those 4 prompts with each candidate signal. Route: [Ranking signal](search-api-parity.md#ranking-signal).
+
+<a id="u16"></a>
+
+## U16. ACL filters carry over
+
+**Claim.** The same per-source ACL filter columns in `filterAddOn` show each user the same projects and documents on the Retrieval API as on the Search API.
+
+**Why it's plausible.** Named projects passed 9 of 9 access checks on the eight-project prompt ([F17](evidence.md#f17)).
+
+**Why it's open.** Open-scope questions, where the filter decides which projects appear at all, are untested. So is `x-ms-query-source-authorization`.
+
+**Test.** Run open-scope prompts such as [F23](evidence.md#f23) rows 1 and 6 as users with different access, and compare project IDs and citations. Route: [parity map](search-api-parity.md#parity-map), access control.
+
+<a id="u17"></a>
+
+## U17. Losing the separate rerank string doesn't change answers
+
+**Claim.** The Search API reranks against a separate `semanticQuery` holding the full question ([F19](evidence.md#f19)). The Retrieval API can't; with the reranker bypassed nothing reranks. The answers stay the same anyway, because the retrieved set matches ([F15](evidence.md#f15)) and `rank_projects` and the token budget decide what reaches the answer.
+
+**Why it's open.** Parity was measured on result sets, not on order or on answers.
+
+**Test.** Compare answers from [O2](runbook.md#o2) against the Search API answers in [F23](evidence.md#f23). Route: [parity map](search-api-parity.md#parity-map), Lane 1 rerank.

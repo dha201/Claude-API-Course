@@ -22,19 +22,19 @@ Every Search API capability `chat_similarity` uses, where it sits in the retriev
 
 | Call site | Search API feature used | Retrieval API route | Status | Evidence, next step |
 |---|---|---|---|---|
-| **find_projects** Lane 1, `_hybrid_discovery` | `search` plus a precomputed vector (`vectorQueries`, `k` 50) plus `filter`, run twice in parallel (precision with the tag, recall without), merged by score | Two retrieve calls, one per filter. The service embeds `intents[].search` with the index vectorizer ([F8](evidence.md#f8)). Merge in code | Design | Hybrid retrieval with a filter is proven on the evidence fetch ([F16](evidence.md#f16)), not on discovery. [O2](runbook.md#o2) |
-| Lane 1, rerank | semantic ranker scoring a separate `semanticQuery` (the full question) | none: `intents[].search` is both the search string and the rerank string. With `resultsProcessing: "none"` nothing reranks | No route | Changes order, not the retrieved set. Parity was measured on sets ([F15](evidence.md#f15)) |
-| Lane 1, intent `search_fields` | per-request `searchFields` scoping BM25 | `search.ismatch` argument 2 in `filterAddOn`. It filters; it doesn't scope ranking | Syntax only | [F21](evidence.md#f21), [O9](runbook.md#o9) |
-| Lane 1, misspelled title | the Search API resolves "Fronteer" to project 1007814 ([F23](evidence.md#f23) row 13) | the vector query, or `search.ismatch('Fronteer~1','title','full','any')` | Syntax only | The filter matched 15 documents where no filter matched 0, with the vector query off ([F21](evidence.md#f21)). [O9](runbook.md#o9) |
-| Lane 2, `_facet_member_ids` | `facets` on `project_id`, `searchMode all`, `queryType simple`, `top 0` | All-words and field scope through `search.ismatch`; the complete project list through [enumeration](#complete-project-enumeration) | Design | [O10](runbook.md#o10) |
-| Lane 3, `_sorted_project_ids_by_field` | facets the distinct project set, reads each project's field value, sorts in code | The same [enumeration](#complete-project-enumeration), then sort on the value from `sourceData` in code. It doesn't need `orderby` | Design | [O10](runbook.md#o10) |
-| Lane 4, `_facet_confirm_filter` | facet total, stamped as `facet_total_count` | Count the distinct `project_id` values from the [enumeration](#complete-project-enumeration) | Design | [O10](runbook.md#o10) |
-| **profile_projects**, PSR sample | `top 1` plus a `gate_label` facet for `gates_present` | Gate coverage stamped onto every chunk at ingest, read from any one chunk ([gate coverage](#gate-coverage)) | Design | Needs an index change. [O6](runbook.md#o6) |
+| **find_projects** Lane 1, `_hybrid_discovery` | `search` plus a precomputed vector (`vectorQueries`, `k` 50) plus `filter`, run twice in parallel (precision with the tag, recall without), merged by score | Two retrieve calls, one per filter. The service embeds `intents[].search` with the index vectorizer ([F8](evidence.md#f8)). Merge in code | Design | Hybrid retrieval with a filter is proven on the evidence fetch ([F16](evidence.md#f16)), not on discovery. [U12](staging-findings.md#u12) |
+| Lane 1, rerank | semantic ranker scoring a separate `semanticQuery` (the full question) | none: `intents[].search` is both the search string and the rerank string. With `resultsProcessing: "none"` nothing reranks | No route | Changes order, not the retrieved set. Parity was measured on sets ([F15](evidence.md#f15)). [U17](staging-findings.md#u17) |
+| Lane 1, intent `search_fields` | per-request `searchFields` scoping BM25 | `search.ismatch` argument 2 in `filterAddOn`. It filters; it doesn't scope ranking | Syntax only | [F21](evidence.md#f21), [U13](staging-findings.md#u13) |
+| Lane 1, misspelled title | the Search API resolves "Fronteer" to project 1007814 ([F23](evidence.md#f23) row 13) | the vector query, or `search.ismatch('Fronteer~1','title','full','any')` | Syntax only | The filter matched 15 documents where no filter matched 0, with the vector query off ([F21](evidence.md#f21)). [U13](staging-findings.md#u13) |
+| Lane 2, `_facet_member_ids` | `facets` on `project_id`, `searchMode all`, `queryType simple`, `top 0` | All-words and field scope through `search.ismatch`; the complete project list through [enumeration](#complete-project-enumeration) | Design | [U9](staging-findings.md#u9), [U10](staging-findings.md#u10), [U13](staging-findings.md#u13) |
+| Lane 3, `_sorted_project_ids_by_field` | facets the distinct project set, reads each project's field value, sorts in code | The same [enumeration](#complete-project-enumeration), then sort on the value from `sourceData` in code. It doesn't need `orderby` | Design | [U9](staging-findings.md#u9), [U10](staging-findings.md#u10) |
+| Lane 4, `_facet_confirm_filter` | facet total, stamped as `facet_total_count` | Count the distinct `project_id` values from the [enumeration](#complete-project-enumeration) | Design | [U9](staging-findings.md#u9), [U10](staging-findings.md#u10) |
+| **profile_projects**, PSR sample | `top 1` plus a `gate_label` facet for `gates_present` | Gate coverage stamped onto every chunk at ingest, read from any one chunk ([gate coverage](#gate-coverage)) | Design | Needs an index change. [U14](staging-findings.md#u14) |
 | profile_projects, record read | `top 2`, filter on the record rows | Retrieve with the same filter; it returns up to 50, trim in code | Proven | Record rows came back for 7 of 8 projects; 1012329 has none ([F17](evidence.md#f17)) |
 | **fetch_evidence**, `_fetch_document_rank` | hybrid plus semantic ranker with `semanticQuery`, 13 content `searchFields`, `top` 50, per-gate filter, one query per named project | `searchFields` removed, `resultsProcessing: "none"`, `maxOutputDocuments` 50, `maxOutputSize` 200,000, one retrieve per project ([configuration](ground-truth.md#configuration-that-works)) | Proven | Same 50 chunks on 1009338 ([F15](evidence.md#f15)); same counts on 8 projects ([F16](evidence.md#f16)). [O2](runbook.md#o2), [O3](runbook.md#o3) |
-| **rank_projects**, score, order and elicit gate | `@search.rerankerScore` to order projects; the top score against 1.5 to decide whether to ask the user to narrow | `rerankerScore` is absent under `resultsProcessing: "none"` ([ranking signal](#ranking-signal)) | Design | [O6](runbook.md#o6) |
-| **determine_reply**, authoritative count | `facet_counts` | Lane 4's count | Design | [O10](runbook.md#o10) |
-| **Cross-cutting**, access control | per-source ACL filter columns on every query | The same columns in `filterAddOn` or `baseFilter`; `x-ms-query-source-authorization` per request | Design | Named projects passed 9 of 9 checks ([F17](evidence.md#f17)); open scope untested |
+| **rank_projects**, score, order and elicit gate | `@search.rerankerScore` to order projects; the top score against 1.5 to decide whether to ask the user to narrow | `rerankerScore` is absent under `resultsProcessing: "none"` ([ranking signal](#ranking-signal)) | Design | [U15](staging-findings.md#u15) |
+| **determine_reply**, authoritative count | `facet_counts` | Lane 4's count | Design | [U9](staging-findings.md#u9), [U10](staging-findings.md#u10) |
+| **Cross-cutting**, access control | per-source ACL filter columns on every query | The same columns in `filterAddOn` or `baseFilter`; `x-ms-query-source-authorization` per request | Design | Named projects passed 9 of 9 checks ([F17](evidence.md#f17)); open scope untested. [U16](staging-findings.md#u16) |
 | Cross-cutting, source isolation | one index per query | The production knowledge base queries 3 sources ([F4](evidence.md#f4)); a single-source knowledge base isolates one | Proven | [F7](evidence.md#f7). `neverQuerySource` is the other route, untested ([O7](runbook.md#o7)) |
 | Cross-cutting, trace | each request and response logged (`KB_TRACE`) | the `activity` array, which has no vector arguments and counts after the reranker ([F8](evidence.md#f8)), plus our own trace lines | Design | Spec work item 10 |
 
@@ -44,13 +44,21 @@ Every Search API capability `chat_similarity` uses, where it sits in the retriev
 
 Lanes 2, 3 and 4, and the count in `determine_reply`, need every distinct project that matches a filter. The Search API's facets give that over the whole index. The retrieve request has no `facets`, `count`, `orderby` or `skip`, and returns at most 200 rows per call ([F6](evidence.md#f6)).
 
-**Route (Design).** Retrieve with `filterAddOn` set to the filter, `search` `*`, `resultsProcessing: "none"`, `maxOutputDocuments` 200 and `maxOutputSize` 200,000. Take the distinct `project_id` values from `sourceData` in code. Their number is Lane 4's count. Sorting them by a field value in code gives Lane 3.
+**Route (Design).** Retrieve record rows only, one per project per source: `filterAddOn` set to the filter plus a `row_type` clause, for example `row_type eq '<PECT record value>' and project_solution eq '...'`. Use `search` `*`, `resultsProcessing: "none"`, `maxOutputDocuments` 200 and `maxOutputSize` 200,000. Take the distinct `project_id` values from `sourceData` in code: that's the list (Lane 2), their number is the count (Lane 4), and sorting them by a field value in code gives Lane 3.
+
+The route rests on three hypotheses, in order:
+
+| # | Hypothesis | Test |
+|---|---|---|
+| [U9](staging-findings.md#u9) | With the reranker bypassed, retrieve returns every row that matches the filter, up to 200 | [O10](runbook.md#o10) |
+| [U10](staging-findings.md#u10) | A `row_type` clause limits the rows to one per project per source | [O10](runbook.md#o10) with the clause added |
+| [U11](staging-findings.md#u11) | A filter over 200 rows can be split into slices and merged | after U9 and U10 |
 
 Risks:
 
-- **More than 200 matching rows.** There's no `skip`, so the filter would have to be split into narrower filters of 200 rows or fewer each. Untested.
+- **More than 200 matching rows.** There's no `skip`, so the filter has to be split into slices ([U11](staging-findings.md#u11)).
 - **Completeness.** With reranking bypassed, candidates follow `maxOutputDocuments` ([F13](evidence.md#f13)). But `*` with 200 documents returned 50 of 88 chunks on project 1012173, unexplained ([F18](evidence.md#f18)).
-- **Chunk rows crowd the slots.** Chunks carry stamped project metadata, so one project can fill many of the 200 rows. Filtering to record rows (`row_type`) gives one row per project per source; the `row_type` values aren't recorded here.
+- **Chunk rows crowd the slots.** Chunks carry stamped project metadata, so without the `row_type` clause one project can fill many of the 200 rows. The `row_type` values aren't recorded here ([U10](staging-findings.md#u10)).
 - **Fields.** `project_id` and the sort field must be in the knowledge source's `sourceDataFields`.
 
 **Test.** [O10](runbook.md#o10) runs the Hardware Deploy filter from [F23](evidence.md#f23) row 12 on both APIs and compares the project lists. ZEST 1012929 ($13.5M) should rank sixth by spend.
@@ -79,7 +87,7 @@ With no facets, state comes only from the record row's `work_status`. A project 
 2. Precompute gate coverage at ingest and stamp it onto every chunk.
 3. Give the Unknown state a non-empty source list.
 
-Option 2 keeps the current behavior on both APIs and needs an index change. The design choice is [O6](runbook.md#o6).
+Option 2 keeps today's behavior and needs an index change ([U14](staging-findings.md#u14)). The design choice is [O6](runbook.md#o6).
 
 ### Ranking signal
 
@@ -89,7 +97,7 @@ Option 2 keeps the current behavior on both APIs and needs an index change. The 
 - Rank by the stage 1 order, and base the narrow-down rule on how many projects came back instead of a score.
 - Keep default reranking on discovery calls only, where a score matters more than completeness.
 
-The choice is part of [O6](runbook.md#o6).
+The first option is [U15](staging-findings.md#u15). The choice is part of [O6](runbook.md#o6).
 
 ## Search API parameters against the Retrieval API
 
